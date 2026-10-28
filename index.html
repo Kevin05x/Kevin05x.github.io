@@ -7,7 +7,17 @@
 <meta name="description" content="Kevin Huamán, desarrollador en Cajamarca. Sistemas a medida, páginas web y campañas en Meta para empresas de todo el Perú.">
 <meta property="og:title" content="Kevin Huamán · Sistemas y webs que trabajan">
 <meta property="og:description" content="Sistemas a medida, páginas web y campañas en Meta para empresas de todo el Perú.">
-<meta property="og:image" content="img/hero-escritorio.jpg">
+<link rel="canonical" href="https://kevin05x.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PE">
+<meta property="og:url" content="https://kevin05x.github.io/">
+<meta property="og:image" content="https://kevin05x.github.io/img/hero-escritorio.jpg">
+<meta property="og:image:width" content="1680">
+<meta property="og:image:height" content="944">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "@id": "https://kevin05x.github.io/#negocio", "name": "Kevin Huamán · Sistemas y páginas web", "url": "https://kevin05x.github.io/", "image": "https://kevin05x.github.io/img/hero-escritorio.jpg", "description": "Desarrollo de sistemas ERP y CRM a medida, páginas web y tiendas en línea para empresas de todo el Perú. Trabajo directo con el desarrollador y pago fijo.", "telephone": "+51945906676", "email": "kevinhg4204g@gmail.com", "priceRange": "Desde S/ 900", "inLanguage": "es-PE", "address": {"@type": "PostalAddress", "addressLocality": "Cajamarca", "addressRegion": "Cajamarca", "addressCountry": "PE"}, "areaServed": {"@type": "Country", "name": "Perú"}, "founder": {"@type": "Person", "name": "Kevin Huamán Gonzales", "jobTitle": "Desarrollador de software", "sameAs": ["https://github.com/Kevin05x", "https://www.linkedin.com/in/kevin-jhoel-huaman-gonzales-8420b4290/"]}, "makesOffer": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Página web para empresas"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 900, "priceCurrency": "PEN"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Tienda en línea"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 3000, "priceCurrency": "PEN"}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sistema ERP o CRM a medida"}, "priceSpecification": {"@type": "PriceSpecification", "minPrice": 7000, "priceCurrency": "PEN"}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "¿Trabajas solo con empresas de Cajamarca?", "acceptedAnswer": {"@type": "Answer", "text": "No. Vivo en Cajamarca, pero trabajo con empresas de cualquier parte del Perú: Grúas VP y BEGA están en Trujillo y Nayumi en Lima. Coordinamos por videollamada y WhatsApp, y firmamos un contrato antes de empezar."}}, {"@type": "Question", "name": "¿Cuánto cuesta?", "acceptedAnswer": {"@type": "Answer", "text": "Depende de lo que necesites. Arriba puedes armar tu cotización y ver el precio al instante. Es referencial: después de conversar te dejo por escrito un precio fijo, antes de empezar."}}, {"@type": "Question", "name": "¿El sistema funciona en el celular?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Se usa desde el navegador en computadora, tablet o celular, sin instalar programas, y también se puede instalar como app."}}, {"@type": "Question", "name": "¿Qué pago después de la entrega?", "acceptedAnswer": {"@type": "Answer", "text": "Solo el hosting o servidor, contratado a nombre de tu empresa. El mantenimiento y las mejoras son opcionales y se acuerdan aparte."}}, {"@type": "Question", "name": "¿Puedo empezar con poco y crecer después?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Los módulos se agregan por etapas y la información que ya registraste se conserva."}}, {"@type": "Question", "name": "¿Quién es dueño de la información?", "acceptedAnswer": {"@type": "Answer", "text": "Tu empresa. El servidor está a tu nombre y se configuran copias de seguridad periódicas."}}]}</script>
+
 <meta name="theme-color" content="#08090b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232f5cf0'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EKH%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -371,6 +381,19 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
   .qopt.paso .p { grid-column: 1; }
   .qacc .fila { grid-template-columns: 1fr; }
 }
+/* Contacto rápido flotante: aparece al bajar de la portada y se oculta cuando ya se ve la sección Contacto */
+.flota { position: fixed; z-index: 25; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px)); display: flex; gap: 10px;
+  transition: opacity 250ms var(--ease), transform 250ms var(--ease); }
+.flota .btn { box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .9); }
+.flota .btn.alt { background: var(--grafito-2); }
+.flota.oculto { opacity: 0; transform: translateY(14px); pointer-events: none; visibility: hidden; }
+@media (max-width: 760px) {
+  .flota { left: max(16px, env(safe-area-inset-left, 0px)); }
+  .flota .btn { flex: 1; justify-content: center; padding: 15px 12px; }
+  footer { padding-bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) { .flota { transition: none; } }
+
 @media print {
   @page { margin: 16mm; }
   body { background: #fff; }
@@ -737,6 +760,12 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
   </div>
 </footer>
 
+<div class="flota oculto" id="flota" role="complementary" aria-label="Contacto rápido">
+  <a class="btn" data-ev="flotante" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">WhatsApp</a>
+  <a class="btn alt" data-ev="flotante" href="tel:+51945906676">Llamar</a>
+</div>
+
+
 <script>
 (() => {
   const barra = document.getElementById('barra');
@@ -916,6 +945,34 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
     if (navigator.clipboard) navigator.clipboard.writeText(texto()).then(ok, () => { b.textContent = 'No se pudo copiar'; }); else b.textContent = 'No se pudo copiar';
   });
   pintaOpciones(); pinta();
+})();
+</script>
+
+<script>
+/* Contacto flotante: se muestra al pasar la portada y se oculta en la sección Contacto. */
+(() => {
+  const f = document.getElementById('flota'), c = document.getElementById('contacto');
+  if (!f) return;
+  let enContacto = false;
+  const act = () => f.classList.toggle('oculto', window.scrollY < 520 || enContacto);
+  if (c && 'IntersectionObserver' in window) new IntersectionObserver(es => { enContacto = es[0].isIntersecting; act(); }).observe(c);
+  addEventListener('scroll', act, { passive: true }); act();
+})();
+
+/* Analítica (Google Analytics 4). Para activarla, pega tu ID de medición entre las comillas (formato G-XXXXXXXXXX).
+   Mientras esté vacío no se carga nada ni se guarda ninguna cookie. */
+const GA_ID = "";
+(() => {
+  if (!GA_ID) return;
+  const s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID); document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || []; window.gtag = function () { dataLayer.push(arguments); };
+  gtag('js', new Date()); gtag('config', GA_ID, { anonymize_ip: true });
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a[href*="wa.me"], a[href^="tel:"], #q-wa, #q-pdf'); if (!a) return;
+    const donde = a.dataset.ev || (a.closest('section') && a.closest('section').id) || 'pagina';
+    const ev = a.id === 'q-wa' ? 'cotizacion_whatsapp' : a.id === 'q-pdf' ? 'cotizacion_pdf' : a.href.startsWith('tel:') ? 'contacto_llamada' : 'contacto_whatsapp';
+    gtag('event', ev, { lugar: donde });
+  });
 })();
 </script>
 </body>
