@@ -293,6 +293,99 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 @media (max-width: 680px) { .contacto .caja { padding: 40px 20px; } .canales { grid-template-columns: 1fr; } .contacto { padding-block: 64px; } }
 footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-block: 0 40px; color: var(--texto-2); font: 400 13px/1.5 var(--mono); }
 
+/* Cotizador */
+.q { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+.q fieldset { border: 0; margin: 0 0 34px; padding: 0; min-width: 0; }
+.q legend { padding: 0; margin-bottom: 14px; font: 500 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--azul-claro); }
+.qtipos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.qtipo { position: relative; display: block; cursor: pointer; }
+.qtipo input { position: absolute; opacity: 0; inset: 0; cursor: pointer; }
+.qtipo span { display: grid; gap: 4px; height: 100%; padding: 18px 16px; border: 1px solid var(--linea); border-radius: 8px; background: var(--grafito); transition: border-color 200ms, background 200ms, box-shadow 300ms var(--ease); }
+.qtipo b { font: 700 19px/1.15 var(--titulo); letter-spacing: -0.01em; }
+.qtipo small { color: var(--texto-2); font-size: 14px; line-height: 1.4; }
+.qtipo em { margin-top: 8px; font: 500 13px/1 var(--mono); font-style: normal; color: var(--azul-claro); }
+.qtipo:hover span { border-color: #33405a; background: var(--grafito-2); }
+.qtipo input:checked + span { border-color: var(--azul); background: rgba(47, 92, 240, .12); box-shadow: 0 0 0 1px var(--azul); }
+.qtipo input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 3px; }
+.qincluye { margin: 0 0 20px; padding: 14px 16px; border: 1px dashed var(--linea); border-radius: 8px; color: var(--texto-2); font-size: 15px; }
+.qincluye b { color: var(--texto); font-weight: 600; }
+.qopts { display: grid; gap: 8px; }
+.qopt { display: grid; grid-template-columns: 22px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 13px 14px; border: 1px solid var(--linea); border-radius: 8px; background: var(--grafito); cursor: pointer; transition: border-color 160ms, background 160ms; }
+.qopt:hover { border-color: #33405a; }
+.qopt input { appearance: none; margin: 2px 0 0; width: 20px; height: 20px; border: 1.5px solid #5a6578; border-radius: 4px; display: grid; place-items: center; cursor: pointer; transition: background 160ms, border-color 160ms; }
+.qopt input:checked { background: var(--azul); border-color: var(--azul); }
+.qopt input:checked::after { content: ""; width: 9px; height: 5px; border: 2px solid #fff; border-top: 0; border-right: 0; transform: rotate(-45deg) translate(1px, -1px); }
+.qopt input:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.qopt:has(input:checked) { border-color: rgba(143, 176, 255, .6); background: rgba(47, 92, 240, .1); }
+.qopt strong { display: block; font: 500 16px/1.35 var(--body); }
+.qopt small { display: block; margin-top: 2px; color: var(--texto-2); font-size: 14px; line-height: 1.45; }
+.qopt .p { font: 500 14px/1.6 var(--mono); color: var(--azul-claro); white-space: nowrap; }
+.qopt.paso { cursor: default; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; }
+.qpaso { display: inline-flex; align-items: center; border: 1px solid var(--linea); border-radius: 6px; overflow: hidden; }
+.qpaso button { width: 36px; height: 36px; border: 0; background: transparent; color: var(--texto); font: 500 20px/1 var(--mono); cursor: pointer; transition: background 160ms; }
+.qpaso button:hover { background: var(--azul); }
+.qpaso output { min-width: 34px; text-align: center; font: 500 16px/1 var(--mono); }
+.qcontador { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 12px; font: 400 13px/1.5 var(--mono); color: var(--texto-2); }
+.qcontador b { color: var(--azul-claro); font-weight: 500; }
+.qdatos { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.qdatos label { display: grid; gap: 6px; font-size: 14px; color: var(--texto-2); }
+.qdatos input { width: 100%; padding: 13px 14px; border: 1px solid var(--linea); border-radius: 6px; background: var(--grafito); color: var(--texto); font: 400 16px/1.2 var(--body); transition: border-color 160ms; }
+.qdatos input:focus { outline: none; border-color: var(--azul-claro); box-shadow: 0 0 0 3px rgba(47, 92, 240, .25); }
+.qmini { display: none; }
+
+.qdoc { position: sticky; top: 92px; background: var(--grafito); padding: 26px 24px; border-radius: 4px; }
+.qdoc .cabdoc { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--linea); font: 400 13px/1.5 var(--mono); color: var(--texto-2); }
+.qdoc h3 { margin-top: 16px; font: 700 26px/1.1 var(--titulo); letter-spacing: -0.02em; }
+.qdoc .qcli { margin-top: 4px; color: var(--texto-2); font-size: 15px; min-height: 1.5em; }
+.qlin { list-style: none; margin: 18px 0 0; padding: 0; border-top: 1px solid var(--linea); }
+.qlin li { display: flex; justify-content: space-between; gap: 14px; padding: 10px 0; border-bottom: 1px solid var(--linea); font-size: 15px; line-height: 1.4; }
+.qlin li span:last-child { font: 500 14px/1.5 var(--mono); white-space: nowrap; }
+.qlin li.inc span:last-child { color: #7fd8a6; }
+.qtot { margin-top: 18px; display: grid; gap: 4px; }
+.qtot .l { font: 500 11px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--azul-claro); }
+.qtot .n { font: 700 clamp(38px, 4vw, 50px)/1 var(--titulo); letter-spacing: -0.03em; }
+.qmant { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: 16px; padding: 12px 14px; border: 1px solid var(--linea); border-radius: 6px; font-size: 15px; }
+.qmant label { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+.qmant input { accent-color: var(--azul); width: 18px; height: 18px; }
+.qmant b { font: 500 14px/1.4 var(--mono); white-space: nowrap; }
+.qnotas { margin: 16px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; color: var(--texto-2); font-size: 14px; line-height: 1.5; }
+.qnotas b { color: var(--texto); font-weight: 600; }
+.qacc { display: grid; gap: 10px; margin-top: 22px; }
+.qacc .btn { justify-content: center; width: 100%; }
+.qacc .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.qacc .fila .btn { padding-inline: 12px; font-size: 15px; }
+.qaviso { margin-top: 14px; color: var(--texto-2); font-size: 13px; line-height: 1.5; }
+.solo-imp { display: none; }
+@media (max-width: 980px) {
+  .q { grid-template-columns: 1fr; }
+  .qdoc { position: static; }
+  .qmini { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 26px; padding: 12px 14px; border: 1px solid var(--azul); border-radius: 8px; background: rgba(47, 92, 240, .1); text-decoration: none; font-size: 15px; }
+  .qmini b { font: 700 20px/1 var(--titulo); }
+}
+@media (max-width: 680px) {
+  .qtipos { grid-template-columns: 1fr; }
+  .qdatos { grid-template-columns: 1fr; }
+  .qopt { grid-template-columns: 22px minmax(0, 1fr); }
+  .qopt .p { grid-column: 2; }
+  .qopt.paso { grid-template-columns: minmax(0, 1fr) auto; }
+  .qopt.paso .p { grid-column: 1; }
+  .qacc .fila { grid-template-columns: 1fr; }
+}
+@media print {
+  @page { margin: 16mm; }
+  body { background: #fff; }
+  body > *:not(main), main > *:not(#cotizar), #cotizar .cab, #cotizar .qform, #cotizar .qmini { display: none !important; }
+  #cotizar { padding: 0 !important; border: 0 !important; }
+  #cotizar .q { display: block; }
+  .qdoc { position: static; padding: 0; border: 0 !important; background: #fff !important; color: #111 !important; }
+  .qdoc *, .qdoc { color: #111 !important; border-color: #bbb !important; background: transparent !important; box-shadow: none !important; }
+  .qdoc.marco::before, .qdoc.marco::after { display: none; }
+  .no-imp { display: none !important; }
+  .solo-imp { display: block; margin-bottom: 18px; padding-bottom: 12px; border-bottom: 2px solid #111; font: 400 13px/1.5 var(--body); }
+  .solo-imp strong { display: block; font: 700 22px/1.2 var(--titulo); }
+  .qtot .n { font-size: 34px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -304,7 +397,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
   <div class="in">
     <a class="marca" href="#inicio"><i>KH</i><b>Kevin Huamán</b></a>
     <nav aria-label="Secciones">
-      <a href="#trabajos">Trabajos</a><a href="#ayuda">Servicios</a><a href="#proceso">Cómo trabajo</a><a href="#preguntas">Preguntas</a>
+      <a href="#trabajos">Trabajos</a><a href="#ayuda">Servicios</a><a href="#cotizar">Cotizar</a><a href="#proceso">Cómo trabajo</a><a href="#preguntas">Preguntas</a>
       <a class="btn sm" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </div>
@@ -468,6 +561,55 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
     </div>
   </section>
 
+  <section class="sec gut" id="cotizar" aria-labelledby="h-cot">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Cotizar</p><h2 id="h-cot">Arma tu cotización</h2></div>
+        <p>Elige lo que necesitas y mira el precio al instante. No pido datos para calcular. Al final te llevas la cotización por WhatsApp o en PDF.</p>
+      </div>
+      <div class="q">
+        <div class="qform">
+          <fieldset>
+            <legend>1 · ¿Qué necesitas?</legend>
+            <div class="qtipos" id="qtipos"></div>
+          </fieldset>
+          <a class="qmini" href="#qdoc"><span>Tu cotización va en <b id="qmini-n">S/ 0</b></span><span aria-hidden="true">↓</span></a>
+          <fieldset>
+            <legend id="qleg2">2 · Personalízalo</legend>
+            <p class="qincluye" id="qincluye"></p>
+            <div id="qcontador" class="qcontador" hidden></div>
+            <div class="qopts" id="qopts"></div>
+          </fieldset>
+          <fieldset>
+            <legend>3 · ¿A nombre de quién? (opcional)</legend>
+            <div class="qdatos">
+              <label>Tu nombre<input id="q-nombre" type="text" autocomplete="name" maxlength="60" placeholder="Ej.: Ana Torres"></label>
+              <label>Empresa o negocio<input id="q-empresa" type="text" autocomplete="organization" maxlength="70" placeholder="Ej.: Ferretería Central"></label>
+            </div>
+          </fieldset>
+        </div>
+        <aside class="qdoc marco" id="qdoc" aria-labelledby="qdoc-t">
+          <div class="solo-imp"><strong>Kevin Huamán</strong>Desarrollador de sistemas y páginas web · Cajamarca, Perú<br>WhatsApp +51 945 906 676 · kevinhg4204g@gmail.com · kevin05x.github.io</div>
+          <div class="cabdoc"><span id="q-num">COT-</span><span id="q-fecha"></span></div>
+          <h3 id="qdoc-t">Tu cotización</h3>
+          <p class="qcli" id="q-cli"></p>
+          <ul class="qlin" id="q-lineas"></ul>
+          <div class="qtot" aria-live="polite"><span class="l">Pago único</span><span class="n" id="q-total">S/ 0</span></div>
+          <div class="qmant" id="q-mant"></div>
+          <ul class="qnotas" id="q-notas"></ul>
+          <div class="qacc no-imp">
+            <button class="btn" type="button" id="q-wa">Enviar por WhatsApp <span class="fl" aria-hidden="true">→</span></button>
+            <div class="fila">
+              <button class="btn alt" type="button" id="q-pdf">Descargar PDF</button>
+              <button class="btn alt" type="button" id="q-copiar">Copiar texto</button>
+            </div>
+          </div>
+          <p class="qaviso">Cotización referencial en soles. El precio final lo dejamos por escrito después de conversar y ver cómo trabaja tu negocio. Todo se calcula en tu navegador; no guardo lo que escribes.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
   <section class="sec gut" id="proceso" aria-labelledby="h-proc">
     <div class="in">
       <div class="cab">
@@ -492,6 +634,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
       </div>
       <div class="faq">
         <details><summary>¿Trabajas solo con empresas de Cajamarca?<span aria-hidden="true"></span></summary><p>No. Vivo en Cajamarca, pero trabajo con empresas de cualquier parte del Perú: Grúas VP y BEGA están en Trujillo y Nayumi en Lima. Coordinamos por videollamada y WhatsApp, y firmamos un contrato antes de empezar.</p></details>
+        <details><summary>¿Cuánto cuesta?<span aria-hidden="true"></span></summary><p>Depende de lo que necesites. Arriba puedes <a href="#cotizar">armar tu cotización</a> y ver el precio al instante. Es referencial: después de conversar te dejo por escrito un precio fijo, antes de empezar.</p></details>
         <details><summary>¿El sistema funciona en el celular?<span aria-hidden="true"></span></summary><p>Sí. Se usa desde el navegador en computadora, tablet o celular, sin instalar programas, y también se puede instalar como app.</p></details>
         <details><summary>¿Qué pago después de la entrega?<span aria-hidden="true"></span></summary><p>Solo el hosting o servidor, contratado a nombre de tu empresa. El mantenimiento y las mejoras son opcionales y se acuerdan aparte.</p></details>
         <details><summary>¿Puedo empezar con poco y crecer después?<span aria-hidden="true"></span></summary><p>Sí. Los módulos se agregan por etapas y la información que ya registraste se conserva.</p></details>
@@ -524,7 +667,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
         <p class="eti">Contacto</p>
         <h2 id="h-con">¿Conversamos?</h2>
         <p class="lead">Cuéntame cómo trabaja tu negocio hoy. Te respondo con una propuesta de precio fijo y, si es un sistema, con una demostración.</p>
-        <a class="btn" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">Escríbeme por WhatsApp <span class="fl" aria-hidden="true">→</span></a>
+        <div class="ctas" style="display:flex;flex-wrap:wrap;gap:14px;margin-top:32px"><a class="btn" style="margin-top:0" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">Escríbeme por WhatsApp <span class="fl" aria-hidden="true">→</span></a><a class="btn alt" style="margin-top:0" href="#cotizar">Armar mi cotización</a></div>
         <div class="canales">
           <div class="canal"><div><p class="eti">WhatsApp y llamadas</p><output id="tel">+51 945 906 676</output></div><button class="copiar" type="button" data-copy="tel">Copiar</button></div>
           <div class="canal"><div><p class="eti">Correo</p><output id="mail">kevinhg4204g@gmail.com</output></div><button class="copiar" type="button" data-copy="mail">Copiar</button></div>
@@ -572,6 +715,154 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
     const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecciona y copia'; };
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(ok, sel); else sel();
   }));
+  /* Cotizador. Los precios se cambian aquí, en este bloque (soles). */
+  const PRECIOS = {
+    vigenciaDias: 15,
+    modulosIncluidos: 5,
+    web: {
+      nombre: 'Página web', desde: 600, plazo: [1, 2], mant: { precio: 480, def: false, txt: 'Mantenimiento anual (cambios de textos y fotos, copias de seguridad)' },
+      pago: '50 % al empezar y 50 % al entregar',
+      resumen: 'Diseño propio, hasta 5 secciones, se ve bien en celular, botón de WhatsApp, mapa y formulario de contacto.',
+      opciones: [
+        { id: 'pag', t: 'Páginas adicionales', d: 'Cada sección o página extra (nosotros, servicios, galería…)', p: 80, paso: 10 },
+        { id: 'cat', t: 'Catálogo de productos o servicios', d: 'Hasta 20 productos con foto, descripción y botón de pedido por WhatsApp', p: 250 },
+        { id: 'blog', t: 'Sección de noticias o blog', d: 'Para que publiques tú mismo, sin pedirme cada cambio', p: 300 },
+        { id: 'seo', t: 'Aparecer mejor en Google', d: 'Configuración de Google Maps y Google Search para tu zona', p: 250 },
+        { id: 'tex', t: 'Redacción de los textos', d: 'Yo escribo los textos a partir de lo que me cuentes', p: 150 },
+        { id: 'dom', t: 'Dominio y hosting el primer año', d: 'Te lo dejo comprado y configurado a tu nombre (.com o .pe)', p: 300 }
+      ]
+    },
+    tienda: {
+      nombre: 'Tienda en línea', desde: 3500, plazo: [3, 5], mant: { precio: 1000, def: true, txt: 'Mantenimiento anual (soporte, respaldos y actualizaciones)' },
+      pago: '50 % al empezar y 50 % al entregar',
+      resumen: 'Catálogo de hasta 50 productos, carrito, pedidos, panel para administrar, botón de WhatsApp y diseño propio.',
+      opciones: [
+        { id: 'prod', t: 'Más productos cargados', d: 'Cada bloque de 50 productos adicionales con fotos y precios', p: 100, paso: 20 },
+        { id: 'pago', t: 'Pagos con tarjeta o billeteras', d: 'Conexión con una pasarela de pagos (tú abres la cuenta, yo la integro)', p: 500 },
+        { id: 'env', t: 'Costos de envío por zona', d: 'El cliente ve cuánto paga de delivery según su distrito o ciudad', p: 300 },
+        { id: 'cup', t: 'Cupones y descuentos', d: 'Códigos de descuento y precios de oferta', p: 300 },
+        { id: 'fe', t: 'Boletas y facturas electrónicas', d: 'Emisión desde la tienda mediante un proveedor autorizado por SUNAT (su costo aparte)', p: 1200 },
+        { id: 'dom', t: 'Dominio y hosting el primer año', d: 'A tu nombre y ya configurado', p: 300 }
+      ]
+    },
+    sistema: {
+      nombre: 'Sistema a medida (ERP o CRM)', desde: 7500, plazo: [6, 10], mant: { precio: 1000, def: true, txt: 'Mantenimiento anual (soporte, respaldos y ajustes menores)' },
+      pago: '40 % al empezar, 30 % a mitad del proyecto y 30 % al entregar',
+      resumen: 'usuarios con permisos, reportes básicos, servidor a tu nombre, capacitación inicial y los primeros 5 módulos que elijas abajo.',
+      modulo: 700,
+      modulos: [
+        ['Clientes y seguimiento', 'Ficha de cada cliente, historial y pendientes'], ['Cotizaciones', 'Armar, enviar y seguir cotizaciones'],
+        ['Servicios y órdenes de trabajo', 'Qué se vendió, a quién y en qué estado va'], ['Inventario y almacén', 'Stock, entradas, salidas y alertas'],
+        ['Compras y proveedores', 'Pedidos de compra y deudas con proveedores'], ['Ingresos y gastos', 'Facturas, cobros y gastos por categoría'],
+        ['Flota y equipos', 'Vehículos o máquinas, documentos y mantenimiento'], ['Programación diaria', 'Quién hace qué cada día, con salida en PDF'],
+        ['Trabajadores y documentos', 'Fichas y alertas de documentos por vencer'], ['Asistencia', 'Horas, tardanzas y horas extra'],
+        ['Planilla, gratificaciones y vacaciones', 'Cálculo y boletas'], ['Checklist de revisión', 'Listas de control antes de salir a campo'],
+        ['Reportes a medida', 'Los informes que tu gerente pide cada mes']
+      ],
+      opciones: [
+        { id: 'mig', t: 'Pasar tus datos desde Excel', d: 'Cargo tus clientes, productos o historial al sistema', p: 500 },
+        { id: 'fe', t: 'Facturación electrónica', d: 'Emitir comprobantes desde el sistema con un proveedor autorizado por SUNAT (su costo aparte)', p: 1500 },
+        { id: 'cap', t: 'Capacitación extra al equipo', d: 'Una sesión más por videollamada para cada área', p: 300 }
+      ]
+    }
+  };
+  const fmt = n => 'S/ ' + String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const $ = id => document.getElementById(id);
+  const st = { tipo: 'web', sel: {}, mods: new Set(['Clientes y seguimiento', 'Cotizaciones']), mant: {} };
+  const num = 'COT-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + String(Math.floor(100 + Math.random() * 900));
+  const hoy = new Date(), vence = new Date(Date.now() + PRECIOS.vigenciaDias * 864e5);
+  const fecha = d => d.toLocaleDateString('es-PE', { day: '2-digit', month: 'long', year: 'numeric' });
+  $('q-num').textContent = num; $('q-fecha').textContent = fecha(hoy);
+
+  const tipos = [['web', 'Una página web', 'Para que te encuentren y te escriban'], ['tienda', 'Una tienda en línea', 'Para vender tus productos por internet'], ['sistema', 'Un sistema a medida', 'Para ordenar clientes, ventas, personal o inventario']];
+  $('qtipos').innerHTML = tipos.map(([k, t, d]) => '<label class="qtipo"><input type="radio" name="qtipo" value="' + k + '"' + (k === st.tipo ? ' checked' : '') + '><span><b>' + t + '</b><small>' + d + '</small><em>desde ' + fmt(PRECIOS[k].desde) + '</em></span></label>').join('');
+
+  const lineas = () => {
+    const c = PRECIOS[st.tipo], out = [{ t: c.nombre + ' (base)', p: c.desde }], sel = st.sel[st.tipo] || {};
+    c.opciones.forEach(o => {
+      const v = sel[o.id]; if (!v) return;
+      out.push(o.paso ? { t: o.t + ' × ' + v, p: o.p * v } : { t: o.t, p: o.p });
+    });
+    if (st.tipo === 'sistema') {
+      const n = st.mods.size, ex = Math.max(0, n - PRECIOS.modulosIncluidos);
+      out.push({ t: n + ' módulo' + (n === 1 ? '' : 's') + ' elegido' + (n === 1 ? '' : 's') + ' (' + Math.min(n, PRECIOS.modulosIncluidos) + ' incluidos)', p: 0, inc: true });
+      if (ex) out.push({ t: 'Módulos adicionales × ' + ex, p: ex * c.modulo });
+    }
+    return out;
+  };
+  const semanas = () => {
+    const c = PRECIOS[st.tipo]; let [a, b] = c.plazo;
+    if (st.tipo === 'sistema') { const ex = Math.max(0, st.mods.size - PRECIOS.modulosIncluidos); a += Math.ceil(ex * 0.5); b += Math.ceil(ex * 1); }
+    return a + ' a ' + b + ' semanas';
+  };
+  const mantOn = () => (st.mant[st.tipo] === undefined ? PRECIOS[st.tipo].mant.def : st.mant[st.tipo]);
+  const calc = () => { const l = lineas(); return { l, total: l.reduce((s, x) => s + x.p, 0) }; };
+
+  const pintaOpciones = () => {
+    const c = PRECIOS[st.tipo], sel = st.sel[st.tipo] = st.sel[st.tipo] || {};
+    $('qincluye').innerHTML = '<b>Ya incluye:</b> ' + c.resumen;
+    let h = '';
+    if (st.tipo === 'sistema') {
+      h += c.modulos.map(([m, d]) => '<label class="qopt"><input type="checkbox" data-mod="' + m + '"' + (st.mods.has(m) ? ' checked' : '') + '><span><strong>' + m + '</strong><small>' + d + '</small></span><span class="p">' + '' + '</span></label>').join('');
+    }
+    h += c.opciones.map(o => o.paso
+      ? '<div class="qopt paso"><span><strong>' + o.t + '</strong><small>' + o.d + '</small></span><span class="p">+' + fmt(o.p) + ' c/u</span><span class="qpaso"><button type="button" data-menos="' + o.id + '" aria-label="Quitar uno: ' + o.t + '">−</button><output id="n-' + o.id + '">' + (sel[o.id] || 0) + '</output><button type="button" data-mas="' + o.id + '" aria-label="Agregar uno: ' + o.t + '">+</button></span></div>'
+      : '<label class="qopt"><input type="checkbox" data-op="' + o.id + '"' + (sel[o.id] ? ' checked' : '') + '><span><strong>' + o.t + '</strong><small>' + o.d + '</small></span><span class="p">+' + fmt(o.p) + '</span></label>').join('');
+    $('qopts').innerHTML = h;
+    const cont = $('qcontador');
+    cont.hidden = st.tipo !== 'sistema';
+    $('qleg2').textContent = st.tipo === 'sistema' ? '2 · Elige tus módulos y extras' : '2 · Personalízalo';
+  };
+  const pinta = () => {
+    const c = PRECIOS[st.tipo], { l, total } = calc();
+    $('q-lineas').innerHTML = l.map(x => '<li' + (x.inc ? ' class="inc"' : '') + '><span>' + x.t + '</span><span>' + (x.inc ? 'incluido' : fmt(x.p)) + '</span></li>').join('');
+    $('q-total').textContent = fmt(total); $('qmini-n').textContent = fmt(total);
+    const m = c.mant, on = mantOn();
+    $('q-mant').innerHTML = '<label><input type="checkbox" id="q-mant-ck"' + (on ? ' checked' : '') + '> ' + m.txt + '</label><b>' + fmt(m.precio) + ' / año</b>';
+    $('q-mant-ck').addEventListener('change', e => { st.mant[st.tipo] = e.target.checked; pinta(); });
+    $('q-notas').innerHTML = '<li><b>Tiempo estimado:</b> ' + semanas() + ' desde que empezamos.</li><li><b>Forma de pago:</b> ' + c.pago + '.</li><li><b>Vigencia:</b> hasta el ' + fecha(vence) + '.</li>';
+    if (st.tipo === 'sistema') {
+      const n = st.mods.size, r = PRECIOS.modulosIncluidos - n;
+      $('qcontador').innerHTML = '<span>Módulos elegidos: <b>' + n + '</b></span><span>' + (r > 0 ? 'te quedan <b>' + r + '</b> incluidos' : 'cada módulo adicional: <b>+' + fmt(c.modulo) + '</b>') + '</span>';
+    }
+    const nom = $('q-nombre').value.trim(), emp = $('q-empresa').value.trim();
+    $('q-cli').textContent = nom || emp ? 'Para: ' + [nom, emp].filter(Boolean).join(' · ') : 'Para: (escribe tu nombre abajo si quieres que aparezca)';
+  };
+  const texto = () => {
+    const c = PRECIOS[st.tipo], { l, total } = calc(), nom = $('q-nombre').value.trim(), emp = $('q-empresa').value.trim();
+    const quien = [nom, emp].filter(Boolean).join(' de ');
+    let t = 'Hola Kevin' + (quien ? ', soy ' + quien : '') + '. Armé esta cotización en tu portafolio (' + num + '):\n\n' + c.nombre + '\n';
+    l.forEach(x => { t += '• ' + x.t + (x.inc ? '' : ': ' + fmt(x.p)) + '\n'; });
+    t += '\nPago único: ' + fmt(total);
+    if (mantOn()) t += '\nMantenimiento anual: ' + fmt(c.mant.precio);
+    t += '\nTiempo estimado: ' + semanas() + '\n\nMe gustaría conversar para afinar los detalles.';
+    return t;
+  };
+
+  $('qtipos').addEventListener('change', e => { if (e.target.name !== 'qtipo') return; st.tipo = e.target.value; pintaOpciones(); pinta(); });
+  $('qopts').addEventListener('change', e => {
+    const t = e.target, sel = st.sel[st.tipo];
+    if (t.dataset.mod) { t.checked ? st.mods.add(t.dataset.mod) : st.mods.delete(t.dataset.mod); }
+    if (t.dataset.op) sel[t.dataset.op] = t.checked ? 1 : 0;
+    pinta();
+  });
+  $('qopts').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    const id = b.dataset.mas || b.dataset.menos, o = PRECIOS[st.tipo].opciones.find(x => x.id === id), sel = st.sel[st.tipo];
+    sel[id] = Math.max(0, Math.min(o.paso, (sel[id] || 0) + (b.dataset.mas ? 1 : -1)));
+    $('n-' + id).textContent = sel[id]; pinta();
+  });
+  ['q-nombre', 'q-empresa'].forEach(i => $(i).addEventListener('input', pinta));
+  $('q-wa').addEventListener('click', () => window.open('https://wa.me/51945906676?text=' + encodeURIComponent(texto()), '_blank', 'noopener'));
+  $('q-pdf').addEventListener('click', () => {
+    const t = document.title; document.title = 'Cotizacion-Kevin-Huaman-' + num;
+    window.print(); setTimeout(() => { document.title = t; }, 800);
+  });
+  $('q-copiar').addEventListener('click', e => {
+    const b = e.currentTarget, ok = () => { b.textContent = 'Copiado'; setTimeout(() => { b.textContent = 'Copiar texto'; }, 1600); };
+    if (navigator.clipboard) navigator.clipboard.writeText(texto()).then(ok, () => { b.textContent = 'No se pudo copiar'; }); else b.textContent = 'No se pudo copiar';
+  });
+  pintaOpciones(); pinta();
 })();
 </script>
 </body>
