@@ -386,6 +386,35 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
   .qtot .n { font-size: 34px; }
 }
 
+/* Comparación: alquilar vs. conmigo */
+.vs { border-top: 1px solid var(--linea); }
+.vsr { display: grid; grid-template-columns: minmax(150px, .7fr) minmax(0, 1.2fr) minmax(0, 1.2fr); gap: 0; border-bottom: 1px solid var(--linea); transition: background 200ms; }
+.vsr:hover { background: rgba(255, 255, 255, .02); }
+.vsr > * { padding: 22px 22px; }
+.vsr h3 { font: 600 17px/1.35 var(--titulo); letter-spacing: -0.01em; color: var(--texto); }
+.vsr .no { color: var(--texto-2); font-size: 16px; }
+.vsr .si { position: relative; font-size: 16px; background: rgba(47, 92, 240, .09); border-left: 1px solid rgba(143, 176, 255, .35); border-right: 1px solid rgba(143, 176, 255, .35); }
+.vsr .si b { font-weight: 600; color: var(--texto); }
+.vsr .tag { display: none; margin-bottom: 6px; font: 500 11px/1.4 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.vsr .no .tag { color: #8a93a3; } .vsr .si .tag { color: var(--azul-claro); }
+.vsh .no, .vsh .si { font: 500 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; padding-block: 16px; }
+.vsh .no { color: #8a93a3; } .vsh .si { color: #fff; background: var(--azul); border-color: var(--azul); }
+.vsr.vsh:hover { background: transparent; }
+.vsn { margin-top: 28px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; }
+.vsn p { padding: 20px 22px; border: 1px solid var(--linea); border-radius: 8px; background: var(--grafito); color: var(--texto-2); font-size: 16px; }
+.vsn p b { color: var(--texto); font-weight: 600; }
+.vsf { margin-top: 18px; color: #7d8696; font-size: 13px; line-height: 1.55; max-width: 60em; }
+@supports (animation-timeline: view()) { .vsr:not(.vsh) { animation: alza linear both; animation-timeline: view(); animation-range: entry 0% entry 60%; } }
+@media (max-width: 820px) {
+  .vsr { grid-template-columns: 1fr; padding-block: 8px; }
+  .vsr > * { padding: 12px 4px; }
+  .vsr .si { padding: 14px 16px; border: 1px solid rgba(143, 176, 255, .35); border-radius: 8px; margin-bottom: 10px; }
+  .vsr .no { padding-inline: 16px; }
+  .vsr .tag { display: block; }
+  .vsh { display: none; }
+  .vsn { grid-template-columns: 1fr; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
@@ -397,7 +426,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
   <div class="in">
     <a class="marca" href="#inicio"><i>KH</i><b>Kevin Huamán</b></a>
     <nav aria-label="Secciones">
-      <a href="#trabajos">Trabajos</a><a href="#ayuda">Servicios</a><a href="#cotizar">Cotizar</a><a href="#proceso">Cómo trabajo</a><a href="#preguntas">Preguntas</a>
+      <a href="#trabajos">Trabajos</a><a href="#ayuda">Servicios</a><a href="#ventajas">Ventajas</a><a href="#cotizar">Cotizar</a><a href="#proceso">Cómo trabajo</a><a href="#preguntas">Preguntas</a>
       <a class="btn sm" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">WhatsApp</a>
     </nav>
   </div>
@@ -558,6 +587,30 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
         <div class="ayuda"><p class="si">Si necesitas registrar ventas o trabajo desde el celular…</p><h3>Una app móvil</h3><p>Apps Android para vender, controlar inventario o registrar el trabajo en campo, con una cuenta para cada persona.</p><ul><li>Android</li><li>Datos en la nube</li></ul></div>
         <div class="ayuda"><p class="si">Si quieres más consultas cada semana…</p><h3>Anuncios en Facebook e Instagram</h3><p>Armo las campañas, las piezas y los textos, y revisamos juntos cuánto te cuesta cada persona que te escribe.</p><ul><li>Meta Ads</li><li>Costo por contacto</li></ul></div>
       </div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="ventajas" aria-labelledby="h-vs">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Alquilar o tener lo tuyo</p><h2 id="h-vs">Por qué hacerlo conmigo y no en Shopify u Hostinger</h2></div>
+        <p>Esas plataformas son buenas para empezar. La diferencia aparece con el tiempo: ahí pagas todos los meses y nada es tuyo. Conmigo pagas una vez y lo que se construye es de tu empresa.</p>
+      </div>
+      <div class="vs" role="table" aria-label="Comparación entre alquilar una plataforma y hacerlo conmigo">
+        <div class="vsr vsh" role="row"><span role="columnheader"></span><span class="no" role="columnheader">Alquilar una plataforma</span><span class="si" role="columnheader">Hacerlo conmigo</span></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Cuánto pagas</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Una cuota todos los meses, mientras tengas la tienda. Shopify Basic cuesta desde US$ 29 al mes (con pago anual) o US$ 39 pagando mes a mes, solo por la suscripción.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>Un pago fijo.</b> Lo acordamos por escrito antes de empezar. Si quieres soporte después, el mantenimiento es un monto anual fijo y opcional.</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Si un día dejas de pagar</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Tu tienda o tu web se apagan: es una cuenta que alquilas, no algo que tengas.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>Sigue funcionando.</b> El servidor y el dominio están a tu nombre. No dependes de mí para que tu negocio siga en línea.</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Quién es el dueño</h3><p class="no" role="cell"><span class="tag">Alquilar</span>La plataforma. Puedes sacar algunos datos, pero el diseño y las funciones no se pueden llevar completos a otro lado.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>Tú, al 100 %.</b> El código, la base de datos con tus clientes y productos y el dominio son de tu empresa.</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Comisiones y extras</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Si cobras con una pasarela que no es la suya, Shopify cobra una comisión extra por venta (2 % en el plan Basic). Muchas funciones se activan con apps que tienen su propia cuota mensual.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>Sin comisión mía por tus ventas.</b> Lo que necesites se agrega una vez y se cotiza aparte. (La pasarela de pagos con tarjeta sí cobra su propia comisión, en cualquier opción.)</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Los precios de mañana</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Los planes de entrada suelen tener precio de promoción. En Hostinger, por ejemplo, el precio sube cuando termina el periodo contratado.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>No cambia.</b> El precio que dejamos por escrito es el que pagas.</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Qué tanto se adapta a tu negocio</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Plantillas parecidas a las de miles de negocios. Lo que no entra en la plataforma, no se hace.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>A tu medida.</b> Se construye como ya trabaja tu empresa: tus pasos, tus reportes, tu forma de cotizar.</p></div>
+        <div class="vsr" role="row"><h3 role="rowheader">Con quién hablas</h3><p class="no" role="cell"><span class="tag">Alquilar</span>Chat o tickets de soporte general.</p><p class="si" role="cell"><span class="tag">Conmigo</span><b>Directo conmigo,</b> por WhatsApp o videollamada, desde la primera conversación hasta después de la entrega.</p></div>
+      </div>
+      <div class="vsn">
+        <p><b>Cuándo sí conviene alquilar:</b> si recién empiezas, vendes poco y quieres tener una tienda en un día, Shopify o Hostinger son una buena opción para probar.</p>
+        <p><b>Cuándo conviene tener lo tuyo:</b> cuando tu negocio ya vende, quieres que se ajuste a cómo trabajas y prefieres no pagar una cuota por siempre.</p>
+      </div>
+      <p class="vsf">Precios de lista de Shopify y Hostinger en dólares, revisados en 2026; pueden cambiar. Conviene confirmarlos en sus páginas oficiales antes de decidir. Con mi servicio sí pagas el dominio y el servidor (a tu nombre, directamente al proveedor), pero son costos aparte, bajos y sin intermediarios.</p>
     </div>
   </section>
 
