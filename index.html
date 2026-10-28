@@ -312,7 +312,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
 
 <main id="inicio">
   <section class="hero gut" aria-labelledby="titulo">
-    <div class="foto" aria-hidden="true"><img src="img/hero-escritorio-2x.webp" srcset="img/hero-escritorio.webp 1599w, img/hero-escritorio-2x.webp 3198w" sizes="(max-width: 760px) 100vw, 78vw" width="3198" height="1798" fetchpriority="high" alt=""></div>
+    <div class="foto" aria-hidden="true"><img src="img/hero-escritorio-2x.webp" srcset="img/hero-escritorio.webp 1680w, img/hero-escritorio-2x.webp 3360w" sizes="(max-width: 760px) 100vw, 78vw" width="3360" height="1888" fetchpriority="high" alt=""></div>
     <div class="in">
       <div class="txt">
         <p class="eti">Kevin Huamán · Desarrollador en Cajamarca</p>
@@ -362,7 +362,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
             <button class="pestana" role="tab" id="t6" aria-selected="false" data-img="erp-reportes" data-cap="Reportes listos para gerencia: asistencia y horas extra, rentabilidad por grúa, IGV del mes, inventario y gastos.">Reportes</button>
           </div>
           <figure class="pantalla marco" role="tabpanel" id="panel" aria-labelledby="t1">
-            <img id="shot" src="img/erp-panel-v2.webp" width="1903" height="855" alt="Pantalla de Inicio del sistema de Grúas VP">
+            <img id="shot" src="img/erp-panel-v3.webp" width="1903" height="855" alt="Pantalla de Inicio del sistema de Grúas VP">
           </figure>
           <div class="pie"><span>sistema.gruasvp.com</span><span>Los datos sensibles están pixelados</span></div>
           <p class="leyenda" id="cap" aria-live="polite">El panel de inicio avisa qué documentos están por vencer, qué cotizaciones esperan respuesta y qué productos se están acabando.</p>
@@ -549,7 +549,7 @@ footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap
 
   const tabs = [...document.querySelectorAll('.pestana')];
   const shot = document.getElementById('shot'), cap = document.getElementById('cap'), panel = document.getElementById('panel');
-  const src = t => 'img/' + t.dataset.img + '-v2.webp';
+  const src = t => 'img/' + t.dataset.img + '-v3.webp';
   tabs.forEach(t => { const i = new Image(); i.src = src(t); });
   const pick = t => {
     tabs.forEach(x => x.setAttribute('aria-selected', String(x === t)));
