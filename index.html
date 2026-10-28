@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kevin Huamán</title>
+<meta name="description" content="Kevin Huamán, desarrollador en Cajamarca. Sistemas a medida, páginas web y campañas en Meta para empresas de todo el Perú.">
+<meta property="og:title" content="Kevin Huamán · Sistemas y webs que trabajan">
+<meta property="og:description" content="Sistemas a medida, páginas web y campañas en Meta para empresas de todo el Perú.">
+<meta property="og:image" content="img/hero-escritorio.jpg">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%232f5cf0'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' fill='white' text-anchor='middle'%3EKH%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: negro y azul cobalto. Portada fotográfica a pantalla completa que se funde a negro hacia el texto;
+   el resto en columna de 1200px con secciones separadas por líneas finas. Detalles de plano (esquinas,
+   ficha tipo cajetín, cota) solo donde aportan. Tema único oscuro, a propósito. */
+:root {
+  --negro: #08090b;
+  --grafito: #101217;
+  --grafito-2: #161922;
+  --linea: #232833;
+  --texto: #eef1f5;
+  --texto-2: #a9b2bf;
+  --azul: #2f5cf0;
+  --azul-hover: #4a72ff;
+  --azul-claro: #8fb0ff;
+  --focus: #8fb0ff;
+  --titulo: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+  --ease: cubic-bezier(.23, 1, .32, 1);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--negro); color: var(--texto); font: 400 18px/1.65 var(--body); -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; border-radius: 4px; }
+h1, h2, h3 { margin: 0; font-family: var(--titulo); text-wrap: balance; letter-spacing: -0.02em; }
+p { margin: 0; }
+.gut { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.in { max-width: 1200px; margin: 0 auto; }
+.eti { font: 500 12px/1.5 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--azul-claro); }
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 15px 22px; border-radius: 6px; text-decoration: none; cursor: pointer;
+  font: 600 16px/1 var(--body); background: var(--azul); color: #fff; border: 1px solid var(--azul);
+  transition: background 160ms var(--ease), box-shadow 250ms var(--ease), transform 160ms var(--ease); }
+.btn:hover { background: var(--azul-hover); box-shadow: 0 10px 30px -8px rgba(47, 92, 240, .7); }
+.btn:active { transform: translateY(1px); }
+.btn .fl { transition: transform 200ms var(--ease); }
+.btn:hover .fl { transform: translateX(4px); }
+.btn.alt { background: rgba(255, 255, 255, .04); border-color: rgba(238, 241, 245, .28); color: var(--texto); }
+.btn.alt:hover { background: rgba(255, 255, 255, .09); border-color: var(--texto); box-shadow: none; }
+.btn.sm { padding: 10px 15px; font-size: 14px; }
+
+.marco { position: relative; border: 1px solid var(--linea); }
+.marco::before, .marco::after { content: ""; position: absolute; width: 14px; height: 14px; border: 2px solid var(--azul-claro); pointer-events: none; transition: width 300ms var(--ease), height 300ms var(--ease), border-color 300ms; }
+.marco::before { top: -2px; left: -2px; border-right: 0; border-bottom: 0; }
+.marco::after { bottom: -2px; right: -2px; border-left: 0; border-top: 0; }
+
+/* Barra superior: transparente sobre la foto, sólida al bajar */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--negro); }
+.top { position: fixed; top: env(safe-area-inset-top, 0px); left: 0; right: 0; z-index: 20; transition: background 250ms, border-color 250ms; border-bottom: 1px solid transparent; }
+.top.solida { background: rgba(8, 9, 11, .96); border-bottom-color: var(--linea); }
+.top .in { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-block: 16px; }
+.marca { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.marca i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 6px; background: var(--azul); font: 700 14px/1 var(--titulo); font-style: normal; color: #fff; }
+.marca b { font: 700 18px/1 var(--titulo); letter-spacing: -0.01em; }
+.top nav { display: flex; align-items: center; gap: 28px; }
+.top nav a:not(.btn) { position: relative; text-decoration: none; font-size: 15px; color: var(--texto-2); transition: color 160ms; }
+.top nav a:not(.btn)::after { content: ""; position: absolute; left: 0; right: 0; bottom: -5px; height: 1px; background: var(--azul-claro); transform: scaleX(0); transform-origin: left; transition: transform 250ms var(--ease); }
+.top nav a:not(.btn):hover { color: var(--texto); }
+.top nav a:not(.btn):hover::after { transform: scaleX(1); }
+@media (max-width: 880px) { .top nav a:not(.btn) { display: none; } }
+
+/* Portada fotográfica */
+.hero { position: relative; overflow: hidden; background: var(--negro); }
+.hero .foto { position: absolute; inset: 0; }
+.hero .foto img { position: absolute; right: 0; top: 0; height: 100%; width: 78%; object-fit: cover; object-position: 70% 50%; animation: acerca 2400ms var(--ease) both; }
+.hero .foto::after { content: ""; position: absolute; inset: 0;
+  background: linear-gradient(90deg, var(--negro) 0%, var(--negro) 24%, rgba(8, 9, 11, .82) 42%, rgba(8, 9, 11, .25) 70%, rgba(8, 9, 11, .1) 100%),
+              linear-gradient(0deg, var(--negro) 0%, rgba(8, 9, 11, 0) 30%); }
+@keyframes acerca { from { transform: scale(1.08); opacity: .4; } to { transform: none; opacity: 1; } }
+.hero .in { position: relative; padding-block: 170px 56px; }
+.hero .txt { max-width: 640px; }
+.hero h1 { margin-top: 18px; font-weight: 700; font-size: clamp(46px, 7vw, 92px); line-height: .98; letter-spacing: -0.035em; }
+.hero h1 .w { display: inline-block; animation: sube 900ms var(--ease) both; }
+.hero h1 .w:nth-child(2) { animation-delay: 90ms; } .hero h1 .w:nth-child(3) { animation-delay: 180ms; } .hero h1 .w:nth-child(4) { animation-delay: 270ms; }
+.hero h1 .ac { color: var(--azul-claro); }
+@keyframes sube { from { transform: translateY(35%); clip-path: inset(0 0 100% 0); } to { transform: none; clip-path: inset(-10% -5% -15% -5%); } }
+.hero .lead { margin-top: 24px; font-size: 20px; color: #c9d0da; max-width: 31em; animation: aparece 900ms var(--ease) 400ms both; }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 32px; animation: aparece 900ms var(--ease) 520ms both; }
+@keyframes aparece { from { transform: translateY(14px); } to { transform: none; } }
+.confian { margin-top: 72px; display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 28px; color: var(--texto-2); font-size: 15px; }
+.confian b { font: 600 17px/1 var(--titulo); color: var(--texto); letter-spacing: -0.01em; }
+.cifras { margin-top: 28px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--linea); }
+.cifra { padding: 22px 24px 0 0; display: grid; gap: 4px; }
+.cifra + .cifra { padding-left: 24px; border-left: 1px solid var(--linea); }
+.cifra b { font: 700 clamp(40px, 4.4vw, 56px)/1 var(--titulo); letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.cifra span { color: var(--texto-2); font-size: 15px; }
+@media (max-width: 760px) {
+  .hero .foto img { width: 100%; height: 58%; object-position: 72% 40%; }
+  .hero .foto::after { background: linear-gradient(0deg, var(--negro) 0%, var(--negro) 45%, rgba(8, 9, 11, .55) 62%, rgba(8, 9, 11, .15) 100%); }
+  .hero .in { padding-block: 230px 40px; }
+  .cifras { grid-template-columns: 1fr; } .cifra, .cifra + .cifra { padding: 16px 0; border-left: 0; border-bottom: 1px solid var(--linea); }
+  .confian { margin-top: 48px; }
+}
+
+/* Cinta */
+.cinta { border-block: 1px solid var(--linea); overflow: hidden; white-space: nowrap; background: var(--grafito); }
+.cinta div { display: inline-block; padding: 17px 0; font: 500 clamp(14px, 1.5vw, 17px)/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--texto-2); animation: corre 36s linear infinite; }
+.cinta div b { color: var(--texto); font-weight: 500; }
+.cinta div i { font-style: normal; color: var(--azul); padding-inline: 22px; }
+.cinta:hover div { animation-play-state: paused; }
+@keyframes corre { to { transform: translateX(-50%); } }
+
+/* Secciones */
+.sec { padding-block: 104px; border-bottom: 1px solid var(--linea); overflow: clip; }
+.cab { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: end; margin-bottom: 48px; }
+.cab h2 { margin-top: 14px; font-weight: 700; font-size: clamp(36px, 4.6vw, 60px); line-height: 1.02; }
+.cab p { color: var(--texto-2); max-width: 34em; }
+@media (max-width: 820px) { .cab { grid-template-columns: 1fr; gap: 18px; } .sec { padding-block: 72px; } }
+
+/* Caso ERP */
+.cota { display: flex; align-items: center; gap: 12px; margin-bottom: 28px; }
+.cota svg { flex: 1; height: 12px; min-width: 24px; overflow: visible; }
+.cota svg * { stroke: var(--azul-claro); stroke-width: 1.2; fill: none; vector-effect: non-scaling-stroke; }
+.cota .traza { stroke-dasharray: 1; }
+@supports (animation-timeline: view()) {
+  .cota .traza { animation: dibuja linear both; animation-timeline: view(); animation-range: entry 25% cover 40%; }
+  @keyframes dibuja { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+}
+.caso { display: grid; grid-template-columns: minmax(0, 310px) minmax(0, 1fr); gap: 40px; align-items: start; }
+.cajetin { width: 100%; border-collapse: collapse; font: 400 15px/1.5 var(--body); color: var(--texto); background: var(--grafito); }
+.cajetin caption { text-align: left; padding: 0 0 10px; }
+.cajetin th, .cajetin td { border: 1px solid var(--linea); padding: 11px 13px; text-align: left; vertical-align: top; }
+.cajetin th { width: 102px; font: 500 11px/1.7 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--azul-claro); }
+.cajetin td strong { font: 700 32px/1 var(--titulo); letter-spacing: -0.03em; }
+.cajetin tr { transition: background 160ms; }
+.cajetin tr:hover { background: var(--grafito-2); }
+.pestanas { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.pestana { font: 500 14px/1 var(--body); padding: 11px 15px; border-radius: 6px; border: 1px solid var(--linea); background: transparent; color: var(--texto-2); cursor: pointer; transition: border-color 160ms, color 160ms, background 160ms; }
+.pestana:hover { border-color: var(--azul-claro); color: var(--texto); }
+.pestana[aria-selected="true"] { background: var(--azul); border-color: var(--azul); color: #fff; }
+.pantalla { margin: 0; background: var(--grafito); padding: 10px; border-radius: 4px; }
+.pantalla img { width: 100%; height: auto; aspect-ratio: 1903 / 855; object-fit: cover; object-position: top left; border-radius: 3px; transition: opacity 180ms var(--ease); }
+.pantalla img.cambia { opacity: .2; }
+@supports (animation-timeline: view()) {
+  .pantalla img { animation: imprime linear both; animation-timeline: view(); animation-range: entry 0% cover 30%; }
+  @keyframes imprime { from { clip-path: inset(0 0 60% 0); } to { clip-path: inset(0 0 0 0); } }
+}
+.pie { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; margin-top: 14px; color: var(--texto-2); font: 400 13px/1.5 var(--mono); }
+.leyenda { margin-top: 10px; color: var(--texto-2); min-height: 3.3em; }
+.modulos { margin-top: 48px; }
+.modulos ol { list-style: none; margin: 16px 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); border-top: 1px solid var(--linea); border-left: 1px solid var(--linea); counter-reset: m; }
+.modulos li { counter-increment: m; border-right: 1px solid var(--linea); border-bottom: 1px solid var(--linea); padding: 10px 14px; font-size: 15px; display: flex; gap: 12px; align-items: baseline; color: var(--texto-2); transition: background 160ms, color 160ms; }
+.modulos li::before { content: counter(m, decimal-leading-zero); font: 500 11px/1 var(--mono); color: #6b7a90; transition: color 160ms; }
+.modulos li:hover { background: rgba(47, 92, 240, .14); color: var(--texto); }
+.modulos li:hover::before { color: var(--azul-claro); }
+@media (max-width: 980px) { .caso { grid-template-columns: 1fr; } }
+
+/* Riel */
+.riel { border-bottom: 1px solid var(--linea); overflow: hidden; white-space: nowrap; }
+.riel div { display: inline-block; padding: 22px 0; font: 700 clamp(34px, 5.6vw, 76px)/1 var(--titulo); letter-spacing: -0.03em; color: #2a303c; }
+.riel div b { color: var(--texto); font-weight: 700; }
+.riel div i { font-style: normal; color: var(--azul); }
+@supports (animation-timeline: view()) {
+  .riel div { animation: riel linear both; animation-timeline: view(); }
+  @keyframes riel { from { transform: translateX(0); } to { transform: translateX(-35%); } }
+}
+
+/* Webs: se iluminan al pasar el mouse */
+.webs { display: grid; gap: 80px; }
+.web { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+.web:nth-child(even) .foto { order: 2; }
+.web .foto { display: block; background: var(--grafito); padding: 10px; border-radius: 4px; text-decoration: none; transition: border-color 300ms, box-shadow 400ms var(--ease), transform 400ms var(--ease); }
+.web .foto img { width: 100%; height: auto; aspect-ratio: 1903 / 855; object-fit: cover; object-position: top left; border-radius: 3px; filter: brightness(.62) saturate(.6); transition: filter 400ms var(--ease); }
+.web .foto .url { position: absolute; left: 22px; bottom: 22px; background: rgba(8, 9, 11, .88); padding: 7px 10px; border-radius: 4px; font: 500 13px/1 var(--mono); opacity: 0; transform: translateY(6px); transition: opacity 250ms var(--ease), transform 250ms var(--ease); }
+.web h3 { margin-top: 12px; font-weight: 700; font-size: clamp(34px, 3.6vw, 46px); line-height: 1; transition: color 250ms; }
+.web .que { margin-top: 8px; color: var(--azul-claro); font-size: 16px; }
+.web .desc { margin-top: 14px; color: var(--texto-2); }
+.web .res { margin-top: 22px; display: flex; gap: 14px; align-items: center; padding: 14px 16px; border-radius: 6px; background: var(--grafito); border: 1px solid var(--linea); }
+.web .res b { font: 700 40px/1 var(--titulo); letter-spacing: -0.03em; white-space: nowrap; color: var(--azul-claro); }
+.web .res span { color: var(--texto-2); font-size: 15px; }
+.web .ir { display: inline-flex; align-items: center; gap: 10px; margin-top: 24px; font: 500 15px/1 var(--mono); text-decoration: none; color: var(--texto); padding: 12px 15px; border: 1px solid var(--linea); border-radius: 6px; transition: color 200ms, border-color 200ms, background 200ms, box-shadow 300ms; }
+.web .ir .fl { transition: transform 200ms var(--ease); }
+.web:hover .foto, .web:focus-within .foto { border-color: rgba(143, 176, 255, .6); box-shadow: 0 0 0 1px rgba(47, 92, 240, .45), 0 30px 80px -30px rgba(47, 92, 240, .65); transform: translateY(-5px); }
+.web:hover .foto img, .web:focus-within .foto img { filter: none; }
+.web:hover .foto::before, .web:hover .foto::after, .web:focus-within .foto::before, .web:focus-within .foto::after { width: 36px; height: 36px; border-color: var(--azul-hover); }
+.web:hover .foto .url, .web:focus-within .foto .url { opacity: 1; transform: none; }
+.web:hover h3 { color: var(--azul-claro); }
+.web:hover .ir, .web .ir:focus-visible { background: var(--azul); border-color: var(--azul); color: #fff; box-shadow: 0 10px 30px -6px rgba(47, 92, 240, .75); }
+.web:hover .ir .fl { transform: translate(3px, -3px); }
+@media (hover: none) { .web .foto img { filter: none; } .web .foto .url { opacity: 1; transform: none; } }
+@supports (animation-timeline: view()) {
+  .web, .prod, .ayuda { animation: alza linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  @keyframes alza { from { transform: translateY(40px); } to { transform: none; } }
+}
+@media (max-width: 880px) { .web { grid-template-columns: 1fr; gap: 24px; } .web:nth-child(even) .foto { order: 0; } .webs { gap: 60px; } }
+
+/* Apps y tiendas */
+.prods { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.prod { background: var(--grafito); border-radius: 4px; padding: 32px 30px; display: flex; flex-direction: column; gap: 12px; transition: border-color 300ms, box-shadow 400ms var(--ease); }
+.prod:hover { border-color: rgba(143, 176, 255, .5); box-shadow: 0 24px 60px -30px rgba(47, 92, 240, .55); }
+.prod:hover::before, .prod:hover::after { width: 30px; height: 30px; }
+.prod h3 { font-weight: 700; font-size: 36px; line-height: 1; padding-right: 140px; }
+.prod p { color: var(--texto-2); }
+.prod .stack { margin-top: auto; padding-top: 14px; border-top: 1px dashed var(--linea); font: 400 13px/1.5 var(--mono); color: var(--texto-2); }
+.sello { position: absolute; top: 28px; right: 26px; border: 1.5px solid currentColor; border-radius: 4px; padding: 6px 10px; font: 500 12px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; transform: rotate(-5deg); }
+.sello.uso { color: #7fd8a6; } .sello.dev { color: var(--azul-claro); }
+@supports (animation-timeline: view()) {
+  .sello { animation: sella linear both; animation-timeline: view(); animation-range: entry 40% entry 85%; }
+  @keyframes sella { from { transform: rotate(-14deg) scale(1.45); } to { transform: rotate(-5deg) scale(1); } }
+}
+@media (max-width: 780px) { .prods { grid-template-columns: 1fr; } .prod h3 { padding-right: 0; padding-top: 36px; } }
+
+/* En qué te puedo ayudar */
+.ayudas { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.ayuda { background: var(--grafito); border: 1px solid var(--linea); border-radius: 8px; padding: 28px 28px 30px; display: flex; flex-direction: column; gap: 10px; position: relative; overflow: hidden; transition: border-color 250ms, background 250ms; }
+.ayuda::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: var(--azul); transform: scaleY(0); transform-origin: top; transition: transform 350ms var(--ease); }
+.ayuda:hover { border-color: #33405a; background: var(--grafito-2); }
+.ayuda:hover::before { transform: scaleY(1); }
+.ayuda .si { color: var(--texto-2); font-size: 16px; font-style: italic; }
+.ayuda h3 { font-weight: 700; font-size: 26px; line-height: 1.1; }
+.ayuda p { color: var(--texto-2); font-size: 16px; }
+.ayuda ul { margin: 6px 0 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px; }
+.ayuda li { font-size: 14px; padding: 6px 10px; border-radius: 4px; background: var(--negro); border: 1px solid var(--linea); }
+@media (max-width: 760px) { .ayudas { grid-template-columns: 1fr; } }
+
+/* Cómo trabajo */
+.pasos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: relative; counter-reset: p; }
+.pasos::before { content: ""; position: absolute; left: 0; right: 0; top: 19px; height: 1px; background: var(--azul); transform-origin: left; }
+@supports (animation-timeline: view()) {
+  .pasos::before { animation: linea linear both; animation-timeline: view(); animation-range: entry 30% cover 50%; }
+  @keyframes linea { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+}
+.pasos li { counter-increment: p; padding-right: 22px; position: relative; min-width: 0; }
+.pasos li::before { content: counter(p); display: grid; place-items: center; width: 38px; height: 38px; border-radius: 50%; background: var(--negro); border: 1.5px solid var(--azul); color: var(--azul-claro); font: 500 14px/1 var(--mono); position: relative; transition: background 200ms, color 200ms; }
+.pasos li:hover::before { background: var(--azul); color: #fff; }
+.pasos b { display: block; margin-top: 18px; font: 700 20px/1.15 var(--titulo); letter-spacing: -0.01em; }
+.pasos p { margin-top: 8px; color: var(--texto-2); font-size: 16px; }
+@media (max-width: 900px) {
+  .pasos { grid-template-columns: 1fr; gap: 26px; }
+  .pasos::before { left: 19px; right: auto; top: 0; bottom: 0; width: 1px; height: auto; transform-origin: top; }
+  .pasos li { padding-left: 60px; padding-right: 0; } .pasos li::before { position: absolute; left: 0; top: 0; } .pasos b { margin-top: 6px; }
+  @supports (animation-timeline: view()) { @keyframes linea { from { transform: scaleY(0); } to { transform: scaleY(1); } } }
+}
+
+/* Preguntas */
+.faq { border-top: 1px solid var(--linea); max-width: 900px; }
+.faq details { border-bottom: 1px solid var(--linea); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 22px 0; font: 600 20px/1.3 var(--titulo); letter-spacing: -0.01em; transition: color 160ms; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--azul-claro); }
+.faq summary span { flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--linea); display: grid; place-items: center; transition: transform 300ms var(--ease), background 200ms, border-color 200ms; }
+.faq summary span::before { content: "+"; font: 400 18px/1 var(--mono); }
+.faq details[open] summary span { transform: rotate(45deg); background: var(--azul); border-color: var(--azul); }
+.faq details p { padding: 0 48px 24px 0; color: var(--texto-2); max-width: 46em; animation: abre 350ms var(--ease); }
+@keyframes abre { from { transform: translateY(-6px); } to { transform: none; } }
+
+/* Sobre mí */
+.yo { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 64px; }
+.yo h2 { margin-top: 14px; font-weight: 700; font-size: clamp(36px, 4.4vw, 56px); line-height: 1.02; }
+.yo .t { margin-top: 18px; color: #c9d0da; max-width: 32em; }
+.datos { margin: 0; border-top: 1px solid var(--linea); }
+.datos div { display: grid; grid-template-columns: 128px minmax(0, 1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--linea); font-size: 16px; }
+.datos dt { font: 500 11px/1.9 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--azul-claro); }
+.datos dd { margin: 0; color: var(--texto); }
+.datos a { text-decoration-color: var(--azul-claro); text-underline-offset: 4px; transition: color 160ms; }
+.datos a:hover { color: var(--azul-claro); }
+@media (max-width: 860px) { .yo { grid-template-columns: 1fr; gap: 32px; } }
+
+/* Contacto */
+.contacto { padding-block: 104px; }
+.contacto .caja { position: relative; overflow: hidden; border-radius: 10px; border: 1px solid var(--linea); padding: 64px 56px; background: var(--grafito); }
+.contacto .caja::before { content: ""; position: absolute; inset: 0; background: url("img/hero-escritorio.webp") right center / cover no-repeat; opacity: .28; }
+.contacto .caja::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, var(--grafito) 30%, rgba(16, 18, 23, .6) 100%); }
+.contacto .caja > * { position: relative; z-index: 1; }
+.contacto h2 { margin-top: 14px; font-weight: 700; font-size: clamp(40px, 6.4vw, 84px); line-height: 1; letter-spacing: -0.035em; }
+.contacto .lead { margin-top: 20px; max-width: 32em; color: #c9d0da; font-size: 19px; }
+.contacto .btn { margin-top: 32px; font-size: 17px; padding: 17px 24px; }
+.canales { margin-top: 40px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; max-width: 820px; }
+.canal { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 16px 18px; border: 1px solid var(--linea); border-radius: 6px; background: rgba(8, 9, 11, .6); min-width: 0; transition: border-color 200ms; }
+.canal:hover { border-color: var(--azul-claro); }
+.canal div { min-width: 0; }
+.canal output { display: block; margin-top: 4px; font: 500 17px/1.3 var(--mono); overflow-wrap: anywhere; }
+.copiar { flex: none; font: 500 12px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; padding: 9px 11px; border-radius: 4px; border: 1px solid var(--azul-claro); background: transparent; color: var(--texto); cursor: pointer; transition: background 160ms, color 160ms; }
+.copiar:hover { background: var(--azul); border-color: var(--azul); color: #fff; }
+@media (max-width: 680px) { .contacto .caja { padding: 40px 20px; } .canales { grid-template-columns: 1fr; } .contacto { padding-block: 64px; } }
+footer .in { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-block: 0 40px; color: var(--texto-2); font: 400 13px/1.5 var(--mono); }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+</style>
+</head>
+<body>
+<header class="top gut" id="barra">
+  <div class="in">
+    <a class="marca" href="#inicio"><i>KH</i><b>Kevin Huamán</b></a>
+    <nav aria-label="Secciones">
+      <a href="#trabajos">Trabajos</a><a href="#ayuda">Servicios</a><a href="#proceso">Cómo trabajo</a><a href="#preguntas">Preguntas</a>
+      <a class="btn sm" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero gut" aria-labelledby="titulo">
+    <div class="foto" aria-hidden="true"><img src="img/hero-escritorio-2x.webp" srcset="img/hero-escritorio.webp 1599w, img/hero-escritorio-2x.webp 3198w" sizes="(max-width: 760px) 100vw, 78vw" width="3198" height="1798" fetchpriority="high" alt=""></div>
+    <div class="in">
+      <div class="txt">
+        <p class="eti">Kevin Huamán · Desarrollador en Cajamarca</p>
+        <h1 id="titulo"><span class="w">Sistemas</span> <span class="w">y webs</span> <span class="w">que</span> <span class="w ac">trabajan.</span></h1>
+        <p class="lead">Hago sistemas a medida, páginas web y campañas en Meta para empresas que quieren ordenarse y vender más. Trabajo con clientes de todo el Perú.</p>
+        <div class="ctas">
+          <a class="btn" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">Escríbeme por WhatsApp <span class="fl" aria-hidden="true">→</span></a>
+          <a class="btn alt" href="#trabajos">Ver mis trabajos</a>
+        </div>
+      </div>
+      <p class="confian"><span>Han trabajado conmigo:</span> <b>Grúas VP</b> <b>BEGA</b> <b>Nayumi</b></p>
+      <div class="cifras">
+        <div class="cifra"><b>23</b><span>módulos en el sistema de Grúas VP</span></div>
+        <div class="cifra"><b>+15</b><span>clientes nuevos para BEGA en 2 meses</span></div>
+        <div class="cifra"><b>3</b><span>webs de empresas en línea</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cinta" aria-hidden="true"><div><b>Sistemas ERP</b><i>●</i>CRM<i>●</i><b>Páginas web</b><i>●</i>Apps Android<i>●</i><b>Anuncios en Meta</b><i>●</i>Tiendas en línea<i>●</i><b>Sistemas ERP</b><i>●</i>CRM<i>●</i><b>Páginas web</b><i>●</i>Apps Android<i>●</i><b>Anuncios en Meta</b><i>●</i>Tiendas en línea<i>●</i></div></div>
+
+  <section class="sec gut" id="trabajos" aria-labelledby="h-erp">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Mi proyecto más grande</p><h2 id="h-erp">El sistema de Grúas VP</h2></div>
+        <p>Grúas VP alquila grúas y transporta carga pesada desde Trujillo. Necesitaban que la oficina y el personal de campo trabajaran con la misma información. Hoy cotizan, programan las grúas, controlan la asistencia y llevan la planilla desde el mismo sistema, en la computadora o en el celular.</p>
+      </div>
+      <div class="cota eti" aria-hidden="true"><span>Oficina</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path d="M0 0 V12"/><path class="traza" pathLength="1" d="M0 6 H100"/></svg><span>mismo sistema</span><svg viewBox="0 0 100 12" preserveAspectRatio="none"><path class="traza" pathLength="1" d="M0 6 H100"/><path d="M100 0 V12"/></svg><span>Campo</span></div>
+      <div class="caso">
+        <table class="cajetin">
+          <caption class="eti">Ficha del proyecto</caption>
+          <tr><th>Módulos</th><td><strong>23</strong></td></tr>
+          <tr><th>Empresas</th><td>3 empresas del grupo, cada una con sus datos</td></tr>
+          <tr><th>Usuarios</th><td>Gerencia, oficina, contabilidad y operadores, cada uno con sus permisos</td></tr>
+          <tr><th>Equipos</th><td>Computadora y celular (se instala como app)</td></tr>
+          <tr><th>Extras</th><td>Lee partes diarios escaneados y guarda una copia de seguridad cada día</td></tr>
+          <tr><th>Tecnología</th><td>Next.js, TypeScript, PostgreSQL (Supabase), Cloudflare R2, servidor VPS</td></tr>
+          <tr><th>Qué hice</th><td>Todo: entender sus procesos, diseñar, programar y ponerlo en marcha</td></tr>
+        </table>
+        <div>
+          <div class="pestanas" role="tablist" aria-label="Pantallas del sistema">
+            <button class="pestana" role="tab" id="t1" aria-selected="true" data-img="erp-panel" data-cap="El panel de inicio avisa qué documentos están por vencer, qué cotizaciones esperan respuesta y qué productos se están acabando.">Inicio</button>
+            <button class="pestana" role="tab" id="t2" aria-selected="false" data-img="erp-finanzas" data-cap="Ingresos y gastos del mes por empresa y por categoría, comparados con el mes anterior.">Finanzas</button>
+            <button class="pestana" role="tab" id="t3" aria-selected="false" data-img="erp-cotizaciones" data-cap="Cada cotización con su estado, la grúa asignada y el total. Las condiciones salen de plantillas, así nadie las escribe de nuevo.">Cotizaciones</button>
+            <button class="pestana" role="tab" id="t4" aria-selected="false" data-img="erp-programacion" data-cap="La programación del día: qué grúa va a qué cliente, a qué hora sale y con quién. Se descarga en PNG o PDF para mandarla al grupo.">Programación</button>
+            <button class="pestana" role="tab" id="t5" aria-selected="false" data-img="erp-flota" data-cap="Cada grúa con su foto, su estado del día y sus documentos. El sistema avisa antes de que alguno venza.">Flota</button>
+            <button class="pestana" role="tab" id="t6" aria-selected="false" data-img="erp-reportes" data-cap="Reportes listos para gerencia: asistencia y horas extra, rentabilidad por grúa, IGV del mes, inventario y gastos.">Reportes</button>
+          </div>
+          <figure class="pantalla marco" role="tabpanel" id="panel" aria-labelledby="t1">
+            <img id="shot" src="img/erp-panel-v2.webp" width="1903" height="855" alt="Pantalla de Inicio del sistema de Grúas VP">
+          </figure>
+          <div class="pie"><span>sistema.gruasvp.com</span><span>Los datos sensibles están pixelados</span></div>
+          <p class="leyenda" id="cap" aria-live="polite">El panel de inicio avisa qué documentos están por vencer, qué cotizaciones esperan respuesta y qué productos se están acabando.</p>
+        </div>
+      </div>
+      <div class="modulos">
+        <p class="eti">Los 23 módulos</p>
+        <ol>
+          <li>Cotizaciones</li><li>Clientes</li><li>Servicios</li><li>Flota</li><li>Mantenimiento</li><li>Checklist de equipos</li><li>Trabajadores</li><li>Asistencia y horas extra</li><li>Planilla</li><li>Gratificación</li><li>Vacaciones</li><li>Liquidación</li><li>Programación diaria</li><li>EPP</li><li>Almacén</li><li>Documentos de flota y personal</li><li>Ingresos</li><li>Partes diarios</li><li>Cuentas por cobrar</li><li>Gastos</li><li>Viáticos</li><li>Proveedores</li><li>Reportes</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <div class="riel" aria-hidden="true"><div><b>Cotizaciones</b> · Flota · <i>Planilla</i> · Asistencia · <b>Viáticos</b> · Almacén · <i>Reportes</i> · Programación · <b>Ingresos</b> · Gastos · <i>IGV</i> · Partes diarios ·</div></div>
+
+  <section class="sec gut" id="webs" aria-labelledby="h-webs">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Páginas web</p><h2 id="h-webs">Webs hechas desde cero</h2></div>
+        <p>Diseño cada web con las fotos reales de la empresa. Me importa que el visitante entienda rápido qué hace el negocio y que pueda escribirle por WhatsApp en un toque, con el mensaje ya armado.</p>
+      </div>
+      <div class="webs">
+        <article class="web">
+          <a class="foto marco" href="https://bega.com.pe" target="_blank" rel="noopener" aria-label="Abrir bega.com.pe">
+            <img src="img/web-bega.webp" width="1903" height="855" loading="lazy" alt="Portada de la web de BEGA con el titular Subimos tu proyecto y un manlift animado">
+            <span class="url">bega.com.pe ↗</span>
+          </a>
+          <div>
+            <p class="eti">Trujillo · Trabajos en altura</p>
+            <h3>BEGA</h3>
+            <p class="que">Alquiler de manlift y elevadores tijera</p>
+            <p class="desc">Un manlift animado en la portada, una galería de obras que avanza con el scroll y un formulario que arma el pedido para enviarlo por WhatsApp o por correo.</p>
+            <div class="res"><b>+15</b><span>clientes nuevos en los primeros 2 meses, 120 % más que antes</span></div>
+            <a class="ir" href="https://bega.com.pe" target="_blank" rel="noopener">bega.com.pe <span class="fl" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="web">
+          <a class="foto marco" href="https://gruasvp.com" target="_blank" rel="noopener" aria-label="Abrir gruasvp.com">
+            <img src="img/web-gruasvp.webp" width="1903" height="855" loading="lazy" alt="Portada de la web de Grúas VP con una grúa Terex">
+            <span class="url">gruasvp.com ↗</span>
+          </a>
+          <div>
+            <p class="eti">Trujillo · Izaje y carga pesada</p>
+            <h3>Grúas VP</h3>
+            <p class="que">La web de la misma empresa del sistema</p>
+            <p class="desc">Galería de obras reales, la flota con la capacidad y el alcance de cada grúa, filtros por peso, los sectores que atienden y un botón para cotizar por WhatsApp.</p>
+            <a class="ir" href="https://gruasvp.com" target="_blank" rel="noopener">gruasvp.com <span class="fl" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+        <article class="web">
+          <a class="foto marco" href="https://nayumi.com.pe" target="_blank" rel="noopener" aria-label="Abrir nayumi.com.pe">
+            <img src="img/web-nayumi.webp" width="1903" height="855" loading="lazy" alt="Portada de la web de la agencia de empleos Nayumi">
+            <span class="url">nayumi.com.pe ↗</span>
+          </a>
+          <div>
+            <p class="eti">Lima · Agencia de empleos</p>
+            <h3>Nayumi</h3>
+            <p class="que">Web, y además manejo sus anuncios</p>
+            <p class="desc">Desde la portada hay dos caminos: el que busca personal y el que busca trabajo, cada uno con su formulario. También armo sus campañas en Facebook e Instagram para atraer postulantes y clientes.</p>
+            <a class="ir" href="https://nayumi.com.pe" target="_blank" rel="noopener">nayumi.com.pe <span class="fl" aria-hidden="true">↗</span></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gut" aria-labelledby="h-prod">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Productos propios</p><h2 id="h-prod">Apps y tiendas</h2></div>
+        <p>Además de trabajar para clientes, tengo mis propios proyectos. En ellos llevo todo, desde la idea hasta que un negocio los usa.</p>
+      </div>
+      <div class="prods">
+        <article class="prod marco">
+          <span class="sello uso">En uso</span>
+          <h3>Tiendix</h3>
+          <p>Una app Android para bodegas y boticas. Registra ventas con código de barras, ingresos, gastos e inventario, y cada vendedor entra con su propia cuenta y turno. El dueño ve cómo le va en un resumen con gráficas.</p>
+          <p class="stack">Android · Firebase · Cloudflare</p>
+        </article>
+        <article class="prod marco">
+          <span class="sello dev">En desarrollo</span>
+          <h3>Maquicaj</h3>
+          <p>Tienda en línea y web corporativa para una empresa de repuestos y filtros, con catálogo, búsqueda por código, carrito y pedidos, para vender en todo el Perú.</p>
+          <p class="stack">Laravel · PostgreSQL · Filament</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="ayuda" aria-labelledby="h-ayuda">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Servicios</p><h2 id="h-ayuda">En qué te puedo ayudar</h2></div>
+        <p>Puedes empezar por una sola cosa y sumar lo demás después. Todo lo que hago queda a nombre de tu empresa.</p>
+      </div>
+      <div class="ayudas">
+        <div class="ayuda"><p class="si">Si tu equipo trabaja con hojas de Excel y mensajes sueltos…</p><h3>Un sistema a medida (ERP o CRM)</h3><p>Un solo lugar para clientes, ventas, personal o inventario, hecho a la forma en que ya trabajan. Pagas un precio fijo, no una cuota por cada usuario.</p><ul><li>Precio fijo</li><li>Sin cobro por usuario</li><li>Servidor a tu nombre</li></ul></div>
+        <div class="ayuda"><p class="si">Si tus clientes no te encuentran en internet…</p><h3>Una página web</h3><p>Una web que explique bien lo que haces, cargue rápido en el celular y lleve a la gente directo a tu WhatsApp.</p><ul><li>Diseño propio</li><li>Lista para Google</li><li>Botón de WhatsApp</li></ul></div>
+        <div class="ayuda"><p class="si">Si necesitas registrar ventas o trabajo desde el celular…</p><h3>Una app móvil</h3><p>Apps Android para vender, controlar inventario o registrar el trabajo en campo, con una cuenta para cada persona.</p><ul><li>Android</li><li>Datos en la nube</li></ul></div>
+        <div class="ayuda"><p class="si">Si quieres más consultas cada semana…</p><h3>Anuncios en Facebook e Instagram</h3><p>Armo las campañas, las piezas y los textos, y revisamos juntos cuánto te cuesta cada persona que te escribe.</p><ul><li>Meta Ads</li><li>Costo por contacto</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gut" id="proceso" aria-labelledby="h-proc">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Cómo trabajo</p><h2 id="h-proc">Paso a paso, sin sorpresas</h2></div>
+        <p>Vas viendo cada avance antes de seguir. Así nunca pagas por algo que no viste.</p>
+      </div>
+      <ol class="pasos">
+        <li><b>Conversamos</b><p>Me cuentas cómo trabaja tu negocio y qué te urge resolver.</p></li>
+        <li><b>Te muestro una propuesta</b><p>Una demostración de cómo quedaría y un precio fijo.</p></li>
+        <li><b>Construyo por etapas</b><p>Primero lo más urgente. Revisas cada parte.</p></li>
+        <li><b>Te lo entrego funcionando</b><p>Enseño a cada persona a usar su parte.</p></li>
+        <li><b>Sigo contigo</b><p>Resuelvo dudas después de la entrega. Las mejoras las vemos cuando las necesites.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="sec gut" id="preguntas" aria-labelledby="h-faq">
+    <div class="in">
+      <div class="cab">
+        <div><p class="eti">Preguntas frecuentes</p><h2 id="h-faq">Lo que suelen preguntarme</h2></div>
+        <p>Si tu duda no está aquí, escríbeme y la vemos.</p>
+      </div>
+      <div class="faq">
+        <details><summary>¿Trabajas solo con empresas de Cajamarca?<span aria-hidden="true"></span></summary><p>No. Vivo en Cajamarca, pero trabajo con empresas de cualquier parte del Perú: Grúas VP y BEGA están en Trujillo y Nayumi en Lima. Coordinamos por videollamada y WhatsApp, y firmamos un contrato antes de empezar.</p></details>
+        <details><summary>¿El sistema funciona en el celular?<span aria-hidden="true"></span></summary><p>Sí. Se usa desde el navegador en computadora, tablet o celular, sin instalar programas, y también se puede instalar como app.</p></details>
+        <details><summary>¿Qué pago después de la entrega?<span aria-hidden="true"></span></summary><p>Solo el hosting o servidor, contratado a nombre de tu empresa. El mantenimiento y las mejoras son opcionales y se acuerdan aparte.</p></details>
+        <details><summary>¿Puedo empezar con poco y crecer después?<span aria-hidden="true"></span></summary><p>Sí. Los módulos se agregan por etapas y la información que ya registraste se conserva.</p></details>
+        <details><summary>¿Quién es dueño de la información?<span aria-hidden="true"></span></summary><p>Tu empresa. El servidor está a tu nombre y se configuran copias de seguridad periódicas.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec gut" aria-labelledby="h-yo">
+    <div class="in yo">
+      <div>
+        <p class="eti">Sobre mí</p>
+        <h2 id="h-yo">Hola, soy Kevin</h2>
+        <p class="t">Estudio Ingeniería de Sistemas en la Universidad Nacional de Cajamarca. Empecé con proyectos de la universidad y hoy trabajo con empresas reales: sistemas, webs, apps y anuncios.</p>
+        <p class="t">Antes de programar, me gusta entender cómo trabaja tu negocio. Vas a hablar directamente conmigo, desde la primera llamada hasta la entrega.</p>
+      </div>
+      <dl class="datos">
+        <div><dt>Vivo en</dt><dd>Cajamarca, Perú</dd></div>
+        <div><dt>Un logro</dt><dd>Primer puesto en la Maratón de Programación de la XVIII Semana Sistémica</dd></div>
+        <div><dt>Estudios</dt><dd>Cloud Computing (AWS, Azure, Google Cloud) y Ciencia de Datos en la UNI · Análisis de datos con Microsoft y LinkedIn</dd></div>
+        <div><dt>Programo en</dt><dd>TypeScript y Next.js, PHP y Laravel, Java para Android, C# y .NET, Python. Bases de datos PostgreSQL, SQL Server y Firebase</dd></div>
+        <div><dt>Perfiles</dt><dd><a href="https://github.com/Kevin05x" target="_blank" rel="noopener">GitHub</a> · <a href="https://www.linkedin.com/in/kevin-jhoel-huaman-gonzales-8420b4290/" target="_blank" rel="noopener">LinkedIn</a></dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="contacto gut" id="contacto" aria-labelledby="h-con">
+    <div class="in">
+      <div class="caja">
+        <p class="eti">Contacto</p>
+        <h2 id="h-con">¿Conversamos?</h2>
+        <p class="lead">Cuéntame cómo trabaja tu negocio hoy. Te respondo con una propuesta de precio fijo y, si es un sistema, con una demostración.</p>
+        <a class="btn" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20tu%20portafolio%20y%20quiero%20conversar%20sobre%20un%20proyecto." target="_blank" rel="noopener">Escríbeme por WhatsApp <span class="fl" aria-hidden="true">→</span></a>
+        <div class="canales">
+          <div class="canal"><div><p class="eti">WhatsApp y llamadas</p><output id="tel">+51 945 906 676</output></div><button class="copiar" type="button" data-copy="tel">Copiar</button></div>
+          <div class="canal"><div><p class="eti">Correo</p><output id="mail">kevinhg4204g@gmail.com</output></div><button class="copiar" type="button" data-copy="mail">Copiar</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="gut">
+  <div class="in">
+    <span>© 2026 Kevin Huamán Gonzales · Cajamarca, Perú</span>
+    <span>En las capturas de sistemas los datos sensibles están pixelados</span>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const barra = document.getElementById('barra');
+  const fija = () => barra.classList.toggle('solida', scrollY > 40);
+  fija(); addEventListener('scroll', fija, { passive: true });
+
+  const tabs = [...document.querySelectorAll('.pestana')];
+  const shot = document.getElementById('shot'), cap = document.getElementById('cap'), panel = document.getElementById('panel');
+  const src = t => 'img/' + t.dataset.img + '-v2.webp';
+  tabs.forEach(t => { const i = new Image(); i.src = src(t); });
+  const pick = t => {
+    tabs.forEach(x => x.setAttribute('aria-selected', String(x === t)));
+    shot.classList.add('cambia');
+    setTimeout(() => { shot.src = src(t); shot.alt = 'Pantalla de ' + t.textContent + ' del sistema de Grúas VP'; shot.classList.remove('cambia'); }, 140);
+    cap.textContent = t.dataset.cap;
+    panel.setAttribute('aria-labelledby', t.id);
+  };
+  tabs.forEach((t, i) => {
+    t.addEventListener('click', () => pick(t));
+    t.addEventListener('keydown', e => {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      const n = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+      n.focus(); pick(n);
+    });
+  });
+  document.querySelectorAll('.copiar').forEach(b => b.addEventListener('click', () => {
+    const el = document.getElementById(b.dataset.copy), text = el.textContent.trim();
+    const ok = () => { b.textContent = 'Copiado'; setTimeout(() => { b.textContent = 'Copiar'; }, 1600); };
+    const sel = () => { const r = document.createRange(); r.selectNodeContents(el); const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Selecciona y copia'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(text).then(ok, sel); else sel();
+  }));
+})();
+</script>
+</body>
+</html>
