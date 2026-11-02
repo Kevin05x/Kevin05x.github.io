@@ -238,7 +238,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:.6rem 2rem;flex-wrap
   var q={},lista=document.getElementById('lista'),res=document.getElementById('res'),err=document.getElementById('err');
   items.forEach(function(it){q[it[0]]=0;
     var d=document.createElement('div');d.className='fila';
-    d.innerHTML='<span class="ic"><svg viewBox="0 0 120 120" width="32" height="32"><use href="#i-'+it[2]+'"/></svg></span><div><b>'+it[0]+'</b><small>Unidad: '+it[1]+'</small></div><div class="step"><button type="button" aria-label="Quitar '+it[0]+'">−</button><output>0</output><button type="button" aria-label="Agregar '+it[0]+'">+</button></div>';
+    d.innerHTML='<span class="ic"><svg viewBox="0 0 120 120" width="32" height="32"><use href="#i-'+it[2]+'"/></svg></span><div><b>'+it[0]+'</b><small>Unidad: '+(it[1]==='L'?'litro':it[1])+'</small></div><div class="step"><button type="button" aria-label="Quitar '+it[0]+'">−</button><output>0</output><button type="button" aria-label="Agregar '+it[0]+'">+</button></div>';
     var b=d.querySelectorAll('button'),o=d.querySelector('output');
     b[0].onclick=function(){if(q[it[0]]>0){q[it[0]]--;o.textContent=q[it[0]];draw();}};
     b[1].onclick=function(){q[it[0]]++;o.textContent=q[it[0]];draw();};
