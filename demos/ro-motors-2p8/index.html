@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Boceto R&amp;O Motors Lubricentro y Taller</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --bg:#12100d; --bg2:#1a1612; --panel:#211c17; --panel2:#2a241d; --ink:#f6efe4; --mut:#b4a998; --line:#3a3228;
+  --amber:#f4a91b; --amber-ink:#1c1300; --red:#e5483a; --ok:#58d08a; --warn:#f4a91b; --bad:#ff6a58;
+  --glow:rgba(244,169,27,.18);
+  --f-head:"Bricolage Grotesque","Arial Narrow",system-ui,sans-serif; --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-head);font-weight:800;line-height:1.02;margin:0;letter-spacing:-.02em;text-wrap:balance}
+h2{font-size:clamp(1.9rem,4.4vw,3rem)}
+.eyebrow{font:800 .74rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
+.eyebrow::before{content:"";width:28px;height:3px;background:var(--amber);border-radius:2px}
+.lead{color:var(--mut);font-size:1.08rem;max-width:56ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.5rem;background:var(--amber);color:var(--amber-ink);text-decoration:none;font:800 1rem/1 var(--f-body);border:2px solid var(--amber);border-radius:12px;cursor:pointer;transition:transform .18s,box-shadow .18s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--glow)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--amber)}
+.btn.sm{padding:.7rem 1.05rem;font-size:.92rem}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+
+.boceto{background:#000;color:#e9dfcf;font-size:.8rem;text-align:center;padding:.55rem max(14px,env(safe-area-inset-right,0px)) .55rem max(14px,env(safe-area-inset-left,0px))}
+.boceto b{color:var(--amber)}
+header.top{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;gap:1rem;height:68px}
+.logo{display:flex;align-items:center;gap:.7rem;text-decoration:none;font:800 1.2rem var(--f-head);letter-spacing:-.01em}
+.logo .mk{width:40px;height:40px;border-radius:11px;background:var(--amber);color:var(--amber-ink);display:grid;place-items:center;font:800 1rem var(--f-head);letter-spacing:-.04em}
+.logo small{display:block;font:600 .66rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+nav.main{margin-left:auto;display:flex;gap:1.5rem}
+nav.main a{text-decoration:none;font-weight:600;font-size:.92rem;color:var(--mut)}
+nav.main a:hover{color:var(--ink)}
+.top .btn{margin-left:.4rem;white-space:nowrap}
+@media(max-width:860px){nav.main{display:none}.top .btn{margin-left:auto}}
+
+.hero{position:relative;padding:clamp(2.2rem,6vw,4.6rem) 0 clamp(2.6rem,6vw,4.4rem);background:radial-gradient(900px 420px at 85% 10%,var(--glow),transparent 70%),linear-gradient(180deg,var(--bg),var(--bg2))}
+.hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.6rem,4vw,3.4rem);align-items:center}
+.hero h1{font-size:clamp(2.5rem,6.6vw,4.9rem)}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lead{margin:1.2rem 0 1.7rem}
+.cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.chips{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.8rem}
+.chip{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .85rem;border:1px solid var(--line);border-radius:999px;font-size:.86rem;font-weight:600;background:var(--panel)}
+.chip b{color:var(--amber)}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px rgba(88,208,138,.18)}
+.dot.off{background:var(--bad);box-shadow:0 0 0 4px rgba(255,106,88,.18)}
+@media(max-width:900px){.hero .grid{grid-template-columns:1fr}}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(1.1rem,3vw,1.7rem);box-shadow:0 24px 60px rgba(0,0,0,.35)}
+.calc h3{font-size:1.45rem;margin-bottom:.25rem}
+.calc p.sub{margin:0 0 1rem;color:var(--mut);font-size:.9rem}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem;margin-bottom:.9rem}
+.seg label{position:relative;cursor:pointer}
+.seg input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.seg span{display:block;text-align:center;padding:.65rem .3rem;border:1.5px solid var(--line);border-radius:12px;font-weight:700;font-size:.88rem;background:var(--panel2);transition:.15s}
+.seg small{display:block;font-weight:500;color:var(--mut);font-size:.72rem;margin-top:1px}
+.seg input:checked+span{border-color:var(--amber);background:rgba(244,169,27,.12);color:var(--amber)}
+.seg input:checked+span small{color:var(--ink)}
+.seg input:focus-visible+span{outline:3px solid var(--amber);outline-offset:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.8rem;min-width:0}
+.field>span{font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.field input,.field select{width:100%;padding:.8rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);font-size:1rem}
+.field input:focus,.field select:focus{border-color:var(--amber);outline:none}
+.sev{display:flex;gap:.6rem;align-items:center;font-size:.9rem;margin:.1rem 0 1rem;cursor:pointer}
+.sev input{width:20px;height:20px;accent-color:var(--amber)}
+.gauge{position:relative;margin:.4rem auto .2rem;width:min(100%,300px)}
+.gauge svg{width:100%;height:auto}
+.gauge .arc{stroke:var(--amber);transition:stroke-dashoffset .7s cubic-bezier(.2,.8,.2,1),stroke .3s}
+.gauge .read{position:absolute;left:0;right:0;bottom:2px;text-align:center}
+.gauge .read b{display:block;font:800 2.1rem/1 var(--f-head)}
+.gauge .read span{font-size:.8rem;color:var(--mut)}
+.res{margin-top:.6rem;padding:.9rem 1rem;border-radius:14px;background:var(--bg);border:1px solid var(--line);font-size:.94rem}
+.res strong{display:block;font-size:1.02rem;margin-bottom:.15rem}
+.res.ok strong{color:var(--ok)}.res.warn strong{color:var(--warn)}.res.bad strong{color:var(--bad)}
+.note{font-size:.78rem;color:var(--mut);margin:.7rem 0 0}
+
+section{padding:clamp(3rem,7vw,5.5rem) 0}
+.sec-h{max-width:640px;margin-bottom:2rem}
+.sec-h .lead{margin-top:.8rem}
+.svc{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:980px){.svc{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.svc{grid-template-columns:1fr}}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.55rem;transition:.2s}
+.tile:hover{transform:translateY(-4px);border-color:var(--amber);box-shadow:0 16px 40px rgba(0,0,0,.35)}
+.tile svg{width:44px;height:44px;stroke:var(--amber);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile h3{font-size:1.15rem}
+.tile p{margin:0;color:var(--mut);font-size:.9rem;flex:1}
+.tile button{align-self:flex-start;background:none;border:0;padding:0;color:var(--amber);font-weight:700;font-size:.88rem;cursor:pointer}
+.tile button:hover{text-decoration:underline}
+
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.book{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+@media(max-width:900px){.book{grid-template-columns:1fr}}
+.steps{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;counter-reset:s}
+.steps li{display:flex;gap:1rem;align-items:flex-start;counter-increment:s}
+.steps li::before{content:counter(s);flex:none;width:38px;height:38px;border-radius:50%;background:var(--amber);color:var(--amber-ink);display:grid;place-items:center;font:800 1rem var(--f-head)}
+.steps b{display:block}
+.steps span{color:var(--mut);font-size:.92rem}
+.vehs{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin-bottom:1rem}
+@media(max-width:480px){.vehs{grid-template-columns:repeat(2,1fr)}}
+.vehs label{position:relative;cursor:pointer}
+.vehs input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.vehs span{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.8rem .3rem;border:1.5px solid var(--line);border-radius:14px;background:var(--panel2);font-weight:700;font-size:.85rem;transition:.15s}
+.vehs svg{width:30px;height:30px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.vehs input:checked+span{border-color:var(--amber);background:rgba(244,169,27,.12);color:var(--amber)}
+.vehs input:focus-visible+span{outline:3px solid var(--amber);outline-offset:2px}
+.lab{font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:.2rem 0 .5rem}
+.checks{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem}
+@media(max-width:520px){.checks{grid-template-columns:1fr}}
+.checks label{display:flex;align-items:center;gap:.6rem;padding:.65rem .8rem;border:1.5px solid var(--line);border-radius:12px;background:var(--panel2);cursor:pointer;font-size:.9rem;font-weight:600;transition:.15s}
+.checks input{width:18px;height:18px;accent-color:var(--amber);flex:none}
+.checks label:has(input:checked){border-color:var(--amber);background:rgba(244,169,27,.1)}
+.sum{margin:.4rem 0 1rem;padding:.9rem 1rem;border-radius:14px;background:var(--bg);border:1px dashed var(--line);font-size:.9rem;color:var(--mut)}
+.sum b{color:var(--ink)}
+.full{width:100%;padding:1.05rem}
+
+.guide{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:860px){.guide{grid-template-columns:1fr}}
+.oil{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.4rem;position:relative;overflow:hidden}
+.oil::after{content:"";position:absolute;right:-30px;top:-30px;width:120px;height:120px;border-radius:50%;background:var(--c);opacity:.14}
+.oil .k{font:800 2.2rem/1 var(--f-head);color:var(--c)}
+.oil .k small{font:600 .9rem var(--f-body);color:var(--mut)}
+.oil h3{font-size:1.25rem;margin:.5rem 0 .4rem}
+.oil p{margin:0;color:var(--mut);font-size:.92rem}
+.oil ul{margin:.8rem 0 0;padding-left:1.1rem;color:var(--mut);font-size:.88rem}
+
+.rate{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(1.3rem,4vw,2.4rem)}
+@media(max-width:640px){.rate{grid-template-columns:1fr}}
+.rate .big{font:800 clamp(4rem,10vw,6.4rem)/.9 var(--f-head);color:var(--amber)}
+.stars{display:flex;gap:4px;margin:.5rem 0}
+.stars svg{width:24px;height:24px;fill:var(--amber)}
+.rate p{margin:.3rem 0 1rem;color:var(--mut)}
+
+details{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:.7rem}
+summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--amber);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0;padding:0 1.2rem 1.1rem;color:var(--mut)}
+.faq{max-width:760px}
+
+.where{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:760px){.where{grid-template-columns:1fr}}
+.where .card{box-shadow:none}
+.where h3{font-size:1.3rem;margin-bottom:.6rem}
+.where ul{list-style:none;margin:0 0 1.2rem;padding:0;display:grid;gap:.5rem;color:var(--mut)}
+.where li b{color:var(--ink)}
+
+footer{padding:2rem 0 5.5rem;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem}
+footer .in{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:50;display:flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;background:#25d366;color:#052e16;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.wa svg{width:22px;height:22px;fill:currentColor}
+@media(max-width:480px){.wa span{display:none}.wa{padding:.95rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body>
+<div class="boceto">Boceto de propuesta preparado por <b>Kevin Huamán</b> para R&amp;O Motors · Los datos de servicios y precios se ajustan con ustedes</div>
+
+<header class="top"><div class="wrap in">
+  <a class="logo" href="#top"><span class="mk">R&amp;O</span><span>R&amp;O Motors<small>Lubricentro y taller</small></span></a>
+  <nav class="main"><a href="#servicios">Servicios</a><a href="#aceites">Aceites</a><a href="#turno">Reservar turno</a><a href="#preguntas">Preguntas</a><a href="#donde">Ubicación</a></nav>
+  <a class="btn sm" href="#turno">Reservar turno</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap grid">
+  <div>
+    <div class="eyebrow">Cajamarca · Cambio de aceite y mecánica</div>
+    <h1>Sepa cuándo le toca el aceite. <em>Reserve en un minuto.</em></h1>
+    <p class="lead">Calcule el próximo cambio de aceite de su vehículo, elija sus servicios y envíe el turno por WhatsApp. Sin llamadas, sin esperar en cola.</p>
+    <div class="cta"><a class="btn" href="#turno">Reservar turno por WhatsApp</a><a class="btn ghost" href="#servicios">Ver servicios</a></div>
+    <div class="chips">
+      <span class="chip"><b>★ 4,9</b> en Google · 8 reseñas</span>
+      <span class="chip"><span class="dot" id="dot"></span><span id="open">Atención hasta las 7:00 p. m.</span></span>
+    </div>
+  </div>
+
+  <div class="card calc" id="calc">
+    <h3>¿Cuándo toca el próximo cambio?</h3>
+    <p class="sub">Calcule en 10 segundos. Es referencial: lo exacto está en el manual de su vehículo.</p>
+    <div class="lab">Tipo de aceite</div>
+    <div class="seg" role="radiogroup" aria-label="Tipo de aceite">
+      <label><input type="radio" name="oil" value="mineral"><span>Mineral<small>cada ~4 000 km</small></span></label>
+      <label><input type="radio" name="oil" value="semi" checked><span>Semisintético<small>cada ~6 000 km</small></span></label>
+      <label><input type="radio" name="oil" value="sint"><span>Sintético<small>cada ~9 000 km</small></span></label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Km del último cambio</span><input id="kmLast" inputmode="numeric" placeholder="Ej. 74 500" value="74500"></label>
+      <label class="field"><span>Km actual</span><input id="kmNow" inputmode="numeric" placeholder="Ej. 78 900" value="78900"></label>
+    </div>
+    <label class="sev"><input type="checkbox" id="sev"> Uso exigente: tráfico, polvo, subidas</label>
+    <div class="gauge" aria-live="polite">
+      <svg viewBox="0 0 240 135" aria-hidden="true"><path d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke="var(--line)" stroke-width="16" stroke-linecap="round"/><path class="arc" id="arc" d="M 20 120 A 100 100 0 0 1 220 120" fill="none" stroke-width="16" stroke-linecap="round" stroke-dasharray="314.16" stroke-dashoffset="314.16"/></svg>
+      <div class="read"><b id="gKm">—</b><span id="gLbl">km restantes</span></div>
+    </div>
+    <div class="res ok" id="res"><strong>—</strong>—</div>
+    <p style="margin:1rem 0 0"><button class="btn full" id="useCalc" type="button">Reservar este cambio</button></p>
+  </div>
+</div></section>
+
+<section id="servicios"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">Servicios</div><h2>Todo lo que su vehículo necesita, en un solo lugar.</h2><p class="lead">Elija uno o varios y se agregan a su turno. El taller confirma por WhatsApp.</p></div>
+  <div class="svc">
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M24 5c7 9 12 15 12 22a12 12 0 0 1-24 0c0-7 5-13 12-22z"/><path d="M18 29a6 6 0 0 0 6 6"/></svg><h3>Cambio de aceite y filtro</h3><p>Aceite de motor y filtro con el tipo que su vehículo pide. Mineral, semisintético o sintético.</p><button type="button" data-add="aceite">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><rect x="12" y="9" width="24" height="30" rx="5"/><path d="M12 17h24M12 31h24M20 9v30M28 9v30"/></svg><h3>Filtros</h3><p>Aire, combustible y cabina. Un filtro sucio gasta más combustible y exige al motor.</p><button type="button" data-add="filtros">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="15"/><circle cx="24" cy="24" r="5"/><path d="M24 9v5M24 34v5M9 24h5M34 24h5"/></svg><h3>Frenos</h3><p>Revisión de pastillas, discos y líquido. Se revisa antes de que haga ruido.</p><button type="button" data-add="frenos">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><rect x="6" y="16" width="36" height="22" rx="4"/><path d="M14 16v-4h6v4M28 16v-4h6v4M14 27h6M31 24v6M28 27h6"/></svg><h3>Batería y sistema eléctrico</h3><p>Prueba de carga y bornes. Evite quedarse sin arranque por la mañana.</p><button type="button" data-add="bateria">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M20 6h8v22a8 8 0 1 1-8 0z"/><path d="M24 14v18M20 12h4M20 18h4M20 24h4"/></svg><h3>Refrigerante y temperatura</h3><p>Nivel, mangueras y radiador. En subidas largas el motor se calienta más.</p><button type="button" data-add="refri">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M10 34l6-14 8-4 10 2 6 8v8H10z"/><circle cx="17" cy="35" r="4"/><circle cx="36" cy="35" r="4"/></svg><h3>Suspensión y dirección</h3><p>Amortiguadores, rótulas y terminales. Las calles de Cajamarca castigan la suspensión.</p><button type="button" data-add="susp">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="24" rx="4"/><path d="M13 20l4 4-4 4M21 28h8"/><path d="M18 40h12"/></svg><h3>Escaneo y diagnóstico</h3><p>Lectura de fallas cuando se enciende el check engine, para saber qué revisar.</p><button type="button" data-add="scan">Agregar al turno →</button></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M30 8a9 9 0 0 0-8 12L8 34l6 6 14-14a9 9 0 0 0 12-8l-6 5-5-1-1-5z"/></svg><h3>Mecánica general</h3><p>Afinamiento, correas, fugas y más. Cuéntenos el síntoma y el taller le dice qué hacer.</p><button type="button" data-add="general">Agregar al turno →</button></div>
+  </div>
+</div></section>
+
+<section class="alt" id="aceites"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">Guía rápida</div><h2>¿Qué aceite le conviene?</h2><p class="lead">Una guía simple para decidir. Para la viscosidad exacta, el manual manda; si no lo tiene, el taller lo revisa.</p></div>
+  <div class="guide">
+    <div class="oil" style="--c:#c9a56b"><div class="k">~4 000 <small>km</small></div><h3>Mineral</h3><p>Es la opción más económica, para motores sencillos y de uso moderado.</p><ul><li>Cambios más frecuentes</li><li>Vehículos antiguos o de bajo kilometraje</li></ul></div>
+    <div class="oil" style="--c:#f4a91b"><div class="k">~6 000 <small>km</small></div><h3>Semisintético</h3><p>El punto medio: mejor protección que el mineral sin pagar lo de un sintético.</p><ul><li>Uso diario en ciudad</li><li>La opción de la mayoría de autos y camionetas</li></ul></div>
+    <div class="oil" style="--c:#5cc8ff"><div class="k">~9 000 <small>km</small></div><h3>Sintético</h3><p>Protege mejor con calor, subidas y arranques en frío. Dura más entre cambios.</p><ul><li>Motores modernos y turbo</li><li>Uso exigente o viajes largos</li></ul></div>
+  </div>
+  <p class="note">Los kilometrajes son referenciales. R&amp;O Motors puede ajustarlos según las marcas y lubricantes que trabaje.</p>
+</div></section>
+
+<section id="turno"><div class="wrap book">
+  <div>
+    <div class="eyebrow">Reserva</div>
+    <h2>Su turno, listo en tres pasos.</h2>
+    <p class="lead" style="margin-top:.8rem">Usted llena esto, el mensaje llega al WhatsApp del taller con todo ordenado y le confirman el horario.</p>
+    <ol class="steps">
+      <li><div><b>Elija su vehículo y servicios</b><span>Solo lo que necesita hoy.</span></div></li>
+      <li><div><b>Envíe el turno por WhatsApp</b><span>Llega el detalle completo, sin explicar nada dos veces.</span></div></li>
+      <li><div><b>Le confirman y usted llega</b><span>Hora acordada y el trabajo ya preparado.</span></div></li>
+    </ol>
+  </div>
+  <form class="card" id="form" onsubmit="return false">
+    <div class="lab">Vehículo</div>
+    <div class="vehs" role="radiogroup" aria-label="Vehículo">
+      <label><input type="radio" name="veh" value="Auto" checked><span><svg viewBox="0 0 32 32"><path d="M4 21v-5l3-6h14l4 6h3v5h-3M4 21h3m18 0H11"/><circle cx="9" cy="22" r="2.5"/><circle cx="23" cy="22" r="2.5"/></svg>Auto</span></label>
+      <label><input type="radio" name="veh" value="Camioneta"><span><svg viewBox="0 0 32 32"><path d="M3 21v-7l4-5h10l3 5h8v7h-3M3 21h4m16 0H11"/><circle cx="9" cy="22" r="2.5"/><circle cx="23" cy="22" r="2.5"/></svg>Camioneta</span></label>
+      <label><input type="radio" name="veh" value="Moto"><span><svg viewBox="0 0 32 32"><circle cx="8" cy="21" r="4"/><circle cx="24" cy="21" r="4"/><path d="M8 21l5-8h6l5 8M13 13l-2-3h-3M17 17h5"/></svg>Moto</span></label>
+      <label><input type="radio" name="veh" value="Camión"><span><svg viewBox="0 0 32 32"><path d="M2 21V9h16v12M18 13h6l4 5v3"/><circle cx="8" cy="22" r="2.5"/><circle cx="23" cy="22" r="2.5"/></svg>Camión</span></label>
+    </div>
+    <div class="lab">Servicios</div>
+    <div class="checks" id="checks">
+      <label><input type="checkbox" value="aceite" data-t="Cambio de aceite y filtro"> Cambio de aceite y filtro</label>
+      <label><input type="checkbox" value="filtros" data-t="Filtros de aire, combustible o cabina"> Filtros</label>
+      <label><input type="checkbox" value="frenos" data-t="Revisión de frenos"> Frenos</label>
+      <label><input type="checkbox" value="bateria" data-t="Batería y sistema eléctrico"> Batería / eléctrico</label>
+      <label><input type="checkbox" value="refri" data-t="Refrigerante y temperatura"> Refrigerante</label>
+      <label><input type="checkbox" value="susp" data-t="Suspensión y dirección"> Suspensión</label>
+      <label><input type="checkbox" value="scan" data-t="Escaneo y diagnóstico"> Escaneo / diagnóstico</label>
+      <label><input type="checkbox" value="general" data-t="Mecánica general"> Mecánica general</label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Día</span><select id="day"></select></label>
+      <label class="field"><span>Horario</span><select id="slot"><option>En la mañana</option><option>Al mediodía</option><option>En la tarde</option><option>Última hora (antes de las 7 p. m.)</option></select></label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Placa (opcional)</span><input id="plate" placeholder="ABC-123" maxlength="8" autocapitalize="characters"></label>
+      <label class="field"><span>Su nombre</span><input id="nm" placeholder="Nombre" autocomplete="given-name"></label>
+    </div>
+    <div class="sum" id="sum"></div>
+    <a class="btn full" id="send" href="#" target="_blank" rel="noopener">Enviar turno por WhatsApp</a>
+    <p class="note" style="text-align:center">Se abre WhatsApp con el mensaje ya escrito. Usted lo revisa y lo envía.</p>
+  </form>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="rate">
+    <div><div class="big">4,9</div><div class="stars" aria-label="4,9 de 5 estrellas"><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg></div><div style="color:var(--mut);font-size:.9rem">8 reseñas en Google</div></div>
+    <div><h2 style="font-size:clamp(1.6rem,3.4vw,2.3rem)">Sus clientes ya lo recomiendan. Que lo encuentren también en internet.</h2><p>Con su propia página, quien busque “cambio de aceite en Cajamarca” ve sus servicios, sus reseñas y reserva sin llamar.</p><a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=R%26O+Motors+Lubricentro+Cajamarca" target="_blank" rel="noopener">Ver reseñas en Google Maps</a></div>
+  </div>
+</div></section>
+
+<section id="preguntas"><div class="wrap faq">
+  <div class="sec-h"><div class="eyebrow">Preguntas frecuentes</div><h2>Antes de venir</h2></div>
+  <details><summary>¿Cuánto cuesta el cambio de aceite?</summary><p>Depende del vehículo y del aceite que elija. Envíe su turno con el tipo de vehículo y el taller le confirma el precio por WhatsApp antes de empezar.</p></details>
+  <details><summary>¿Cuánto demora?</summary><p>Un cambio de aceite con filtro suele tomar un rato corto. Si agrega otros servicios, el taller le avisa el tiempo al confirmar el turno.</p></details>
+  <details><summary>¿Puedo traer mi propio aceite?</summary><p>Consúltelo en el mensaje del turno y el taller le dice. También pueden recomendarle el aceite que corresponde a su vehículo.</p></details>
+  <details><summary>No sé qué aceite usa mi vehículo.</summary><p>No hay problema: escríbanos la marca, modelo y año, o el taller lo revisa cuando llegue.</p></details>
+  <details><summary>¿Atienden camionetas y camiones?</summary><p>Sí. Elija “Camioneta” o “Camión” al reservar y el taller prepara lo necesario.</p></details>
+</div></section>
+
+<section class="alt" id="donde"><div class="wrap">
+  <div class="where">
+    <div class="card"><h3>Escríbanos</h3><ul><li><b>WhatsApp:</b> 976 310 069</li><li><b>Horario:</b> hasta las 7:00 p. m.</li><li><b>Ciudad:</b> Cajamarca</li></ul><a class="btn" id="waMain" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+    <div class="card"><h3>Cómo llegar</h3><ul><li>Encuéntrenos en Google Maps y llegue con la ruta directa.</li><li><b>Tip:</b> reserve turno para no esperar en cola.</li></ul><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=R%26O+Motors+Lubricentro+Cajamarca" target="_blank" rel="noopener">Abrir en Google Maps</a></div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap in"><span>© R&amp;O Motors · Lubricentro y taller mecánico · Cajamarca</span><span>Boceto web por Kevin Huamán · <a href="https://kevin05x.github.io">kevin05x.github.io</a></span></div></footer>
+
+<a class="wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.1c-.2.6-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800 0-1.300.7-2 .9-2.200.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.300 0 .5l-.3.500-.4.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg><span>WhatsApp</span></a>
+
+<script>
+const PHONE="51976310069";
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const wa=t=>"https://wa.me/"+PHONE+"?text="+encodeURIComponent(t);
+const hello="Hola R&O Motors, vi su página y quisiera consultar.";
+$("#waMain").href=wa(hello);$("#waFloat").href=wa(hello);
+
+/* Estado de atención (hora de Lima). Solo se conoce el cierre: 7 p. m. */
+(function(){
+  const h=parseInt(new Intl.DateTimeFormat("en-GB",{hour:"2-digit",hour12:false,timeZone:"America/Lima"}).format(new Date()),10);
+  const off=h>=19||h<6;
+  $("#dot").classList.toggle("off",off);
+  $("#open").textContent=off?"Cerrado ahora · escríbanos y le responden":"Atención hasta las 7:00 p. m.";
+})();
+
+/* Calculadora de próximo cambio */
+const INT={mineral:4000,semi:6000,sint:9000};
+const num=v=>parseInt(String(v).replace(/\D/g,""),10)||0;
+const fmt=n=>n.toLocaleString("es-PE").replace(/,/g," ");
+function calc(){
+  const oil=document.querySelector('input[name=oil]:checked').value;
+  const last=num($("#kmLast").value), now=num($("#kmNow").value);
+  const k=INT[oil]*($("#sev").checked?0.75:1);
+  const arc=$("#arc"), res=$("#res"), L=314.16;
+  if(!last||!now||now<last){
+    arc.style.strokeDashoffset=L;$("#gKm").textContent="—";$("#gLbl").textContent="km restantes";
+    res.className="res warn";res.innerHTML="<strong>Complete los dos kilometrajes</strong>El km actual debe ser mayor al del último cambio.";return null;
+  }
+  const used=now-last, left=Math.round(k-used), pct=Math.max(0,Math.min(1,left/k));
+  arc.style.strokeDashoffset=L*(1-pct);
+  let cls,tt,tx;
+  if(left<0){cls="bad";tt="Cambio vencido";tx="Se pasó por "+fmt(-left)+" km. Conviene hacerlo esta semana.";arc.style.stroke="var(--bad)"}
+  else if(left<=1000){cls="warn";tt="Programe pronto";tx="Le quedan "+fmt(left)+" km. Reserve su turno ahora y no se pase.";arc.style.stroke="var(--warn)"}
+  else{cls="ok";tt="Al día";tx="Le quedan "+fmt(left)+" km. Próximo cambio cerca de los "+fmt(last+Math.round(k))+" km.";arc.style.stroke="var(--ok)"}
+  $("#gKm").textContent=left<0?"0":fmt(left);$("#gLbl").textContent=left<0?"vencido":"km restantes";
+  res.className="res "+cls;res.innerHTML="<strong>"+tt+"</strong>"+tx;
+  return {oil,last,now,left,k:Math.round(k)};
+}
+["input","change"].forEach(e=>$("#calc").addEventListener(e,()=>{calc();if(typeof build==="function")build()}));
+
+/* Turnos */
+const OILN={mineral:"Mineral",semi:"Semisintético",sint:"Sintético"};
+const dayNames=["domingo","lunes","martes","miércoles","jueves","viernes","sábado"];
+const monN=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];
+(function(){
+  const sel=$("#day");const now=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Lima"}));
+  for(let i=0;i<6;i++){const d=new Date(now);d.setDate(now.getDate()+i);
+    const lab=(i===0?"Hoy · ":i===1?"Mañana · ":"")+dayNames[d.getDay()]+" "+d.getDate()+" "+monN[d.getMonth()];
+    const o=document.createElement("option");o.value=lab;o.textContent=lab;sel.appendChild(o);}
+  if(now.getHours()>=16)sel.selectedIndex=1;
+})();
+let extra="";
+function build(){
+  const veh=document.querySelector('input[name=veh]:checked').value;
+  const svcs=$$("#checks input:checked").map(i=>i.dataset.t);
+  const oil=document.querySelector('input[name=oil]:checked').value;
+  const nm=$("#nm").value.trim(), pl=$("#plate").value.trim().toUpperCase();
+  const wantsOil=$("#checks input[value=aceite]").checked;
+  const parts=["Hola R&O Motors, quisiera reservar un turno."];
+  parts.push("Vehículo: "+veh+(pl?" ("+pl+")":""));
+  parts.push("Servicios: "+(svcs.length?svcs.join(", "):"quiero que me orienten"));
+  if(wantsOil)parts.push("Aceite: "+OILN[oil]);
+  if(extra)parts.push(extra);
+  parts.push("Día: "+$("#day").value+", "+$("#slot").value.toLowerCase());
+  parts.push(nm?"Mi nombre es "+nm+". ¿Me confirman horario y precio, por favor?":"¿Me confirman horario y precio, por favor?");
+  const msg=parts.join("\n");
+  $("#send").href=wa(msg);
+  $("#sum").innerHTML="<b>"+veh+"</b> · "+(svcs.length?svcs.length+" servicio"+(svcs.length>1?"s":""):"sin servicios elegidos (el taller lo orienta)")+" · "+$("#day").value.split(" · ").pop()+", "+$("#slot").value.toLowerCase();
+}
+["input","change"].forEach(e=>$("#form").addEventListener(e,build));
+$$("[data-add]").forEach(b=>b.addEventListener("click",()=>{
+  const c=$("#checks input[value="+b.dataset.add+"]");c.checked=true;build();
+  $("#turno").scrollIntoView({behavior:"smooth"});
+}));
+$("#useCalc").addEventListener("click",()=>{
+  const r=calc();
+  $("#checks input[value=aceite]").checked=true;
+  const radio=document.querySelector('input[name=oil][value="'+(r?r.oil:'semi')+'"]');
+  extra=r?"Mi último cambio fue a los "+fmt(r.last)+" km y hoy tengo "+fmt(r.now)+" km.":"";
+  build();$("#turno").scrollIntoView({behavior:"smooth"});
+});
+calc();build();
+</script>
+</body></html>
