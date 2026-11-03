@@ -1,0 +1,382 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Boceto Conversiones Linares GLP GDI y Auxilio 24 h</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --bg:#0a1019; --bg2:#0f1826; --panel:#131f30; --panel2:#1a2a40; --ink:#eef3fa; --mut:#9fb0c6; --line:#243650;
+  --blue:#35b5ff; --blue-ink:#00121f; --amber:#ffb020; --amber-ink:#1c1100; --green:#3fe08a; --red:#ff5d4d;
+  --glow-b:rgba(53,181,255,.2); --glow-a:rgba(255,176,32,.2);
+  --f-head:"Space Grotesk","Arial Narrow",system-ui,sans-serif; --f-body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.55;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-head);font-weight:700;line-height:1.05;margin:0;letter-spacing:-.025em;text-wrap:balance}
+h2{font-size:clamp(1.8rem,4.4vw,2.9rem)}
+.eyebrow{font:700 .74rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--blue);margin-bottom:.8rem;display:flex;align-items:center;gap:.6rem}
+.eyebrow::before{content:"";width:26px;height:3px;border-radius:2px;background:currentColor}
+.eyebrow.a{color:var(--amber)}
+.lead{color:var(--mut);font-size:1.06rem;max-width:56ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.4rem;background:var(--blue);color:var(--blue-ink);text-decoration:none;font:700 1rem/1.1 var(--f-body);border:2px solid var(--blue);border-radius:12px;transition:transform .16s,box-shadow .16s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px var(--glow-b)}
+.btn.am{background:var(--amber);border-color:var(--amber);color:var(--amber-ink)}
+.btn.am:hover{box-shadow:0 10px 28px var(--glow-a)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.btn.ghost:hover{border-color:var(--blue)}
+.btn.sm{padding:.65rem 1rem;font-size:.9rem}
+.btn.full{width:100%}
+.btn:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+.boceto{background:#000;color:#dfe7f2;font-size:.8rem;text-align:center;padding:.55rem max(14px,env(safe-area-inset-right,0px)) .55rem max(14px,env(safe-area-inset-left,0px))}
+.boceto b{color:var(--amber)}
+header.top{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .in{display:flex;align-items:center;gap:1rem;min-height:66px}
+.logo{display:flex;align-items:center;gap:.65rem;text-decoration:none}
+.logo .mk{width:40px;height:40px;border-radius:11px;background:linear-gradient(135deg,var(--blue),#1d7fd0);display:grid;place-items:center}
+.logo .mk svg{width:24px;height:24px}
+.logo b{font:700 1.08rem/1.05 var(--f-head);letter-spacing:-.01em}
+.logo small{display:block;font:600 .62rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);margin-top:2px}
+nav.main{margin-left:auto;display:flex;gap:1.4rem}
+nav.main a{text-decoration:none;font-weight:600;font-size:.9rem;color:var(--mut)}
+nav.main a:hover{color:var(--ink)}
+.top .btn{margin-left:.3rem;white-space:nowrap}
+@media(max-width:860px){nav.main{display:none}.top .btn{margin-left:auto}}
+
+.hero{position:relative;padding:clamp(2rem,6vw,4.4rem) 0 clamp(2.4rem,6vw,4rem);background:radial-gradient(700px 360px at 8% 0%,var(--glow-a),transparent 70%),radial-gradient(760px 420px at 100% 20%,var(--glow-b),transparent 70%),var(--bg)}
+.live{display:inline-flex;align-items:center;gap:.55rem;padding:.45rem .85rem;border:1px solid var(--line);border-radius:999px;background:var(--panel);font-weight:700;font-size:.84rem;margin-bottom:1.1rem}
+.live i{width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(63,224,138,.6);animation:p 1.8s infinite}
+@keyframes p{70%{box-shadow:0 0 0 9px rgba(63,224,138,0)}100%{box-shadow:0 0 0 0 rgba(63,224,138,0)}}
+.hg{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+.hg>*{min-width:0}
+.map{border:1px solid var(--line);border-radius:28px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+@media(max-width:900px){.hg{grid-template-columns:1fr}.map{display:none}}
+.hero h1{font-size:clamp(2.3rem,7vw,4.7rem);max-width:15ch}
+.hero h1 em{font-style:normal;color:var(--amber)}
+.hero .lead{margin:1.1rem 0 1.7rem}
+.hero .cta{display:flex;flex-wrap:wrap;gap:.8rem}
+.stats{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.8rem}
+.stat{padding:.55rem .9rem;border:1px solid var(--line);border-radius:12px;background:var(--panel);font-size:.86rem;color:var(--mut)}
+.stat b{display:block;color:var(--ink);font:700 1.1rem var(--f-head)}
+
+section{padding:clamp(2.8rem,7vw,5rem) 0}
+.alt{background:var(--bg2);border-block:1px solid var(--line)}
+.sec-h{max-width:640px;margin-bottom:1.8rem}
+.sec-h .lead{margin-top:.8rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:clamp(1.1rem,3vw,1.8rem)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.2rem,3.5vw,2.6rem);align-items:start}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.lab{font-size:.74rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);margin:.2rem 0 .55rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.chips label{position:relative;cursor:pointer}
+.chips input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chips span{display:block;padding:.6rem .95rem;border:1.5px solid var(--line);border-radius:999px;background:var(--panel2);font-weight:600;font-size:.9rem;transition:.15s}
+.chips input:checked+span{border-color:var(--amber);background:rgba(255,176,32,.14);color:var(--amber)}
+.chips.b input:checked+span{border-color:var(--blue);background:rgba(53,181,255,.14);color:var(--blue)}
+.chips input:focus-visible+span{outline:3px solid var(--blue);outline-offset:2px}
+.field{display:flex;flex-direction:column;gap:.3rem;margin-bottom:.8rem;min-width:0}
+.field>span{font-size:.74rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mut)}
+.field input,.field select{width:100%;padding:.8rem .9rem;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);font-size:1rem}
+.field input:focus,.field select:focus{border-color:var(--blue);outline:none}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.hint{font-size:.8rem;color:var(--mut);margin:.6rem 0 0}
+.status{margin-top:.8rem;padding:.75rem .9rem;border-radius:12px;background:var(--bg);border:1px solid var(--line);font-size:.9rem}
+.status.ok{border-color:var(--green);color:var(--green)}
+.status.bad{border-color:var(--amber);color:var(--amber)}
+
+.cmp{display:grid;gap:.9rem;margin:.4rem 0 1rem}
+.bar{display:grid;grid-template-columns:96px 1fr auto;gap:.8rem;align-items:center;font-size:.9rem}
+.bar .tr{height:30px;background:var(--bg);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.bar .fl{height:100%;border-radius:7px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.bar .fl.g{background:linear-gradient(90deg,#c97a00,var(--amber))}
+.bar .fl.l{background:linear-gradient(90deg,#1c7fc0,var(--blue))}
+.bar b{font:700 1rem var(--f-head);min-width:84px;text-align:right}
+.save{padding:1.1rem;border-radius:16px;background:linear-gradient(135deg,rgba(63,224,138,.16),rgba(53,181,255,.12));border:1px solid rgba(63,224,138,.4)}
+.save .big{font:700 clamp(2rem,6vw,2.9rem)/1 var(--f-head);color:var(--green)}
+.save small{display:block;color:var(--mut);margin-top:.3rem}
+.pb{margin-top:.6rem;font-size:.92rem}
+
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+@media(max-width:900px){.svc{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.svc{grid-template-columns:1fr}}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:1.3rem;display:flex;flex-direction:column;gap:.55rem;transition:.2s}
+.tile:hover{transform:translateY(-4px);border-color:var(--blue)}
+.tile.hot{border-color:rgba(255,176,32,.5);background:linear-gradient(160deg,rgba(255,176,32,.1),var(--panel))}
+.tile svg{width:44px;height:44px;stroke:var(--blue);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.tile.hot svg{stroke:var(--amber)}
+.tile h3{font-size:1.2rem}
+.tile p{margin:0;color:var(--mut);font-size:.92rem;flex:1}
+.tile a{color:var(--blue);font-weight:700;font-size:.9rem;text-decoration:none}
+.tile.hot a{color:var(--amber)}
+.tile a:hover{text-decoration:underline}
+
+.res{margin-top:.4rem;padding:1.1rem;border-radius:16px;background:var(--bg);border:1px solid var(--line)}
+.res strong{display:block;font:700 1.15rem var(--f-head);margin-bottom:.3rem;color:var(--blue)}
+.res p{margin:0 0 .9rem;color:var(--mut);font-size:.94rem}
+
+.steps{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;counter-reset:s}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:480px){.steps{grid-template-columns:1fr}}
+.steps li{counter-increment:s;border-top:3px solid var(--blue);padding-top:.9rem}
+.steps li::before{content:"0" counter(s);display:block;font:700 2.2rem/1 var(--f-head);color:var(--blue);margin-bottom:.5rem}
+.steps b{display:block;margin-bottom:.25rem}
+.steps span{color:var(--mut);font-size:.92rem}
+
+.rate{display:grid;grid-template-columns:auto 1fr;gap:clamp(1.2rem,4vw,3rem);align-items:center}
+@media(max-width:640px){.rate{grid-template-columns:1fr}}
+.rate .big{font:700 clamp(4rem,10vw,6rem)/.9 var(--f-head);color:var(--amber)}
+.stars{display:flex;gap:4px;margin:.5rem 0}
+.stars svg{width:24px;height:24px;fill:var(--amber)}
+
+details{border:1px solid var(--line);border-radius:14px;background:var(--panel);margin-bottom:.7rem}
+summary{cursor:pointer;padding:1rem 1.2rem;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--blue);font-size:1.4rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:0;padding:0 1.2rem 1.1rem;color:var(--mut)}
+.faq{max-width:760px}
+.where{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:760px){.where{grid-template-columns:1fr}}
+.where h3{font-size:1.3rem;margin-bottom:.7rem}
+.where ul{list-style:none;margin:0 0 1.2rem;padding:0;display:grid;gap:.5rem;color:var(--mut)}
+.where li b{color:var(--ink)}
+footer{padding:2rem 0 6rem;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem}
+footer .in{display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;justify-content:space-between}
+.sos{position:fixed;left:max(14px,env(safe-area-inset-left,0px));right:max(14px,env(safe-area-inset-right,0px));bottom:max(14px,env(safe-area-inset-bottom,0px));z-index:55;display:none;gap:.6rem}
+.sos .btn{flex:1;box-shadow:0 12px 30px rgba(0,0,0,.5)}
+@media(max-width:760px){.sos{display:flex}}
+.wa{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:55;display:flex;align-items:center;gap:.6rem;padding:.85rem 1.1rem;background:#25d366;color:#052e16;border-radius:999px;font-weight:800;text-decoration:none;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+.wa svg{width:22px;height:22px;fill:currentColor}
+@media(max-width:760px){.wa{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body>
+<div class="boceto">Boceto de propuesta preparado por <b>Kevin Huamán</b> para Conversiones Linares · Precios y valores de la calculadora son de ejemplo</div>
+
+<header class="top"><div class="wrap in">
+  <a class="logo" href="#top"><span class="mk"><svg viewBox="0 0 24 24" fill="none" stroke="#00121f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 .2 2 1 3 2 3 0-3-.5-6 1-9z"/></svg></span><span><b>Conversiones Linares</b><small>GLP · GDI · Mecánica</small></span></a>
+  <nav class="main"><a href="#auxilio">Auxilio 24 h</a><a href="#glp">Conversión a GLP</a><a href="#servicios">Servicios</a><a href="#preguntas">Preguntas</a><a href="#donde">Contacto</a></nav>
+  <a class="btn am sm" href="#auxilio">Pedir auxilio</a>
+</div></header>
+
+<main id="top">
+<section class="hero"><div class="wrap hg"><div>
+  <span class="live"><i></i><span>Auxilio mecánico · atendemos las 24 horas</span></span>
+  <h1>¿Varado en Cajamarca? <em>Lo ayudamos ahora.</em></h1>
+  <p class="lead">Auxilio mecánico las 24 horas y conversión a GLP/GDI para ahorrar en combustible. Escríbanos por WhatsApp y comparta su ubicación en un toque.</p>
+  <div class="cta"><a class="btn am" href="#auxilio">Pedir auxilio mecánico</a><a class="btn ghost" href="#glp">Calcular mi ahorro con GLP</a></div>
+  <div class="stats"><div class="stat"><b>★ 4,7</b>en Google · 20 reseñas</div><div class="stat"><b>24 horas</b>auxilio mecánico</div><div class="stat"><b>+3 años</b>de experiencia</div></div>
+</div>
+<div class="map" aria-hidden="true"><svg viewBox="0 0 420 460"><defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#162a44"/><stop offset="1" stop-color="#0d1a2c"/></linearGradient></defs><rect width="420" height="460" rx="28" fill="url(#mg)"/>
+<g stroke="#27405f" stroke-width="2" fill="none"><path d="M0 120h420M0 250h420M0 360h420M90 0v460M210 0v460M330 0v460"/></g>
+<g stroke="#2f4d73" stroke-width="12" fill="none" stroke-linecap="round"><path d="M-10 300C90 280 120 190 210 180s150-70 240-100"/><path d="M60 470C100 380 190 340 230 260s20-170 60-280"/></g>
+<g stroke="#0d1a2c" stroke-width="2" fill="none" stroke-dasharray="10 12" stroke-linecap="round"><path d="M-10 300C90 280 120 190 210 180s150-70 240-100"/></g>
+<circle cx="216" cy="186" r="62" fill="rgba(255,176,32,.12)"><animate attributeName="r" values="30;74;30" dur="2.4s" repeatCount="indefinite"/><animate attributeName="opacity" values=".9;0;.9" dur="2.4s" repeatCount="indefinite"/></circle>
+<circle cx="216" cy="186" r="30" fill="rgba(255,176,32,.2)"/>
+<path d="M216 214c-18-22-28-34-28-50a28 28 0 0 1 56 0c0 16-10 28-28 50z" fill="#ffb020"/><circle cx="216" cy="164" r="10" fill="#1c1100"/>
+<rect x="30" y="338" width="210" height="84" rx="16" fill="#131f30" stroke="#243650"/><text x="50" y="368" font-family="DM Sans,Arial" font-size="13" font-weight="700" fill="#9fb0c6" letter-spacing="1.5">SU UBICACIÓN</text><text x="50" y="394" font-family="Space Grotesk,Arial" font-size="19" font-weight="700" fill="#eef3fa">Llega al taller</text><text x="50" y="412" font-family="DM Sans,Arial" font-size="13" fill="#9fb0c6">en un solo toque</text>
+<rect x="262" y="360" width="128" height="40" rx="12" fill="#3fe08a"/><text x="326" y="385" text-anchor="middle" font-family="DM Sans,Arial" font-size="14" font-weight="700" fill="#052e16">WhatsApp</text></svg></div>
+</div></section>
+
+<section class="alt" id="auxilio"><div class="wrap two">
+  <div>
+    <div class="eyebrow a">Auxilio mecánico 24 h</div>
+    <h2>Pida ayuda sin explicar nada por teléfono.</h2>
+    <p class="lead" style="margin-top:.9rem">Elija qué le pasó y envíe su ubicación. El mensaje le llega al taller con el problema y el punto exacto en el mapa.</p>
+    <p class="hint" style="margin-top:1.2rem">Si hay un accidente con heridos, llame primero al 105 (Policía) o al 116 (Bomberos).</p>
+  </div>
+  <div class="card" id="aux">
+    <div class="lab">¿Qué le pasó a su vehículo?</div>
+    <div class="chips" id="prob">
+      <label><input type="radio" name="p" value="No arranca" checked><span>No arranca</span></label>
+      <label><input type="radio" name="p" value="Se quedó sin batería"><span>Batería</span></label>
+      <label><input type="radio" name="p" value="Se recalentó el motor"><span>Se recalentó</span></label>
+      <label><input type="radio" name="p" value="Llanta baja o rota"><span>Llanta</span></label>
+      <label><input type="radio" name="p" value="Se quedó sin combustible o gas"><span>Sin combustible / gas</span></label>
+      <label><input type="radio" name="p" value="Falla en la carretera"><span>Falla en carretera</span></label>
+      <label><input type="radio" name="p" value="Otro problema"><span>Otro</span></label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Vehículo</span><input id="vh" placeholder="Ej. Toyota Yaris 2014"></label>
+      <label class="field"><span>Su nombre</span><input id="nm" placeholder="Nombre" autocomplete="given-name"></label>
+    </div>
+    <label class="field"><span>¿Dónde está? (referencia)</span><input id="ref" placeholder="Ej. Carretera a Baños del Inca, km 3"></label>
+    <button class="btn am full" id="loc" type="button">Enviar mi ubicación por WhatsApp</button>
+    <div class="status" id="locSt" hidden></div>
+    <p class="hint">Se abre WhatsApp con el mensaje escrito. Usted lo revisa y lo envía. Tocar el botón le pedirá permiso para ver su ubicación.</p>
+    <a class="btn ghost full" id="noLoc" href="#" target="_blank" rel="noopener" style="margin-top:.7rem">Prefiero escribir mi ubicación</a>
+  </div>
+</div></section>
+
+<section id="glp"><div class="wrap two">
+  <div>
+    <div class="eyebrow">Conversión a GLP</div>
+    <h2>Calcule cuánto se ahorra al mes.</h2>
+    <p class="lead" style="margin-top:.9rem">Ponga cuánto maneja y los precios actuales por galón. Los valores de abajo son de ejemplo: cámbielos por los de hoy.</p>
+    <div class="save" style="margin-top:1.4rem" aria-live="polite"><div class="big" id="sv">S/ 0</div><small id="svl">de ahorro al mes</small><div class="pb" id="pb"></div></div>
+  </div>
+  <div class="card">
+    <div class="row2">
+      <label class="field"><span>Km al mes</span><input id="km" inputmode="numeric" value="1500"></label>
+      <label class="field"><span>Km por galón (gasolina)</span><input id="rend" inputmode="decimal" value="35"></label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Precio gasolina (S/ gal)</span><input id="pg" inputmode="decimal" value="16"></label>
+      <label class="field"><span>Precio GLP (S/ gal)</span><input id="pl" inputmode="decimal" value="7"></label>
+    </div>
+    <label class="field"><span>Costo de conversión (cotice con el taller)</span><input id="cc" inputmode="numeric" placeholder="Opcional: para ver en cuánto se paga"></label>
+    <div class="cmp" aria-hidden="true">
+      <div class="bar"><span>Gasolina</span><div class="tr"><div class="fl g" id="bg" style="width:100%"></div></div><b id="tg">—</b></div>
+      <div class="bar"><span>GLP</span><div class="tr"><div class="fl l" id="bl" style="width:50%"></div></div><b id="tl">—</b></div>
+    </div>
+    <p class="hint">Cálculo referencial: con GLP se recorren unos 20 % menos km por galón. El ahorro real depende de su vehículo y del precio del día.</p>
+    <a class="btn full" id="glpWa" href="#" target="_blank" rel="noopener" style="margin-top:.8rem">Quiero cotizar mi conversión</a>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap two">
+  <div>
+    <div class="eyebrow">¿Mi auto se puede convertir?</div>
+    <h2>Averígüelo en 3 respuestas.</h2>
+    <p class="lead" style="margin-top:.9rem">Una orientación rápida. El taller confirma si su vehículo es apto después de revisarlo.</p>
+  </div>
+  <div class="card" id="qz">
+    <div class="lab">Tipo de motor</div>
+    <div class="chips b">
+      <label><input type="radio" name="mo" value="carb"><span>Carburado</span></label>
+      <label><input type="radio" name="mo" value="inj" checked><span>Inyección normal</span></label>
+      <label><input type="radio" name="mo" value="gdi"><span>GDI (inyección directa)</span></label>
+      <label><input type="radio" name="mo" value="turbo"><span>Turbo</span></label>
+      <label><input type="radio" name="mo" value="nose"><span>No sé</span></label>
+    </div>
+    <div class="row2">
+      <label class="field"><span>Año</span><select id="yr"><option>Antes de 2000</option><option>2000 – 2010</option><option selected>2011 – 2018</option><option>2019 o más nuevo</option></select></label>
+      <label class="field"><span>Uso</span><select id="us"><option>Particular</option><option>Taxi o mototaxi</option><option>Camioneta de carga</option><option>Flota de empresa</option></select></label>
+    </div>
+    <div class="res" id="qres"></div>
+  </div>
+</div></section>
+
+<section id="servicios"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">Servicios</div><h2>Gas, mecánica y auxilio en un solo taller.</h2></div>
+  <div class="svc">
+    <div class="tile hot"><svg viewBox="0 0 48 48"><path d="M6 32h4M38 32h4M10 32l3-9h18l6 9M8 32v5h6v-5M34 32v5h6v-5M13 23l3-6h10M30 12l6 4-2 5M32 8l4 2"/></svg><h3>Auxilio mecánico 24 h</h3><p>Batería, llanta, recalentamiento o falla en carretera. Atendemos de día y de noche.</p><a href="#auxilio">Pedir auxilio →</a></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M24 5c2 8 11 10 11 21a11 11 0 0 1-22 0c0-4 2-7 4-9 .5 4 2 6 4 6-1-6-1-12 3-18z"/></svg><h3>Conversión a GLP</h3><p>Instalación de equipo de gas para que su vehículo gaste menos en combustible.</p><a href="#glp">Calcular ahorro →</a></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="8"/><path d="M24 8v4M24 36v4M8 24h4M36 24h4M13 13l3 3M32 32l3 3M35 13l-3 3M16 32l-3 3"/></svg><h3>Conversión GDI</h3><p>Motores de inyección directa: se evalúa su caso y se instala el sistema adecuado.</p><a href="#preguntas">Ver preguntas →</a></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><path d="M31 8a9 9 0 0 0-8 12L9 34l5 5 14-14a9 9 0 0 0 12-8l-6 5-5-1-1-5z"/></svg><h3>Mecánica en general</h3><p>Afinamiento, frenos, suspensión, fugas y todo lo que su vehículo necesite.</p><a href="#donde">Consultar →</a></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><rect x="8" y="14" width="32" height="22" rx="4"/><path d="M16 14v-4h6v4M26 14v-4h6v4M16 25h6M29 22v6M26 25h6"/></svg><h3>Revisión del equipo de gas</h3><p>Revisión periódica de su equipo GLP para que siga funcionando bien.</p><a href="#donde">Consultar →</a></div>
+    <div class="tile"><svg viewBox="0 0 48 48"><rect x="7" y="10" width="34" height="24" rx="4"/><path d="M13 20l4 4-4 4M21 28h8M18 40h12"/></svg><h3>Diagnóstico</h3><p>Revisión de fallas del motor para saber qué reparar y cuánto cuesta antes de empezar.</p><a href="#donde">Consultar →</a></div>
+  </div>
+</div></section>
+
+<section class="alt"><div class="wrap">
+  <div class="sec-h"><div class="eyebrow">Cómo es la conversión</div><h2>Así se hace, paso a paso.</h2></div>
+  <ol class="steps">
+    <li><b>Revisión de su vehículo</b><span>Vemos el tipo de motor y confirmamos si es apto.</span></li>
+    <li><b>Cotización clara</b><span>Le decimos el costo antes de empezar.</span></li>
+    <li><b>Instalación y ajuste</b><span>Se instala el equipo y se calibra para su motor.</span></li>
+    <li><b>Prueba y seguimiento</b><span>Probamos el vehículo y queda atendido si necesita revisión.</span></li>
+  </ol>
+</div></section>
+
+<section><div class="wrap"><div class="card rate">
+  <div><div class="big">4,7</div><div class="stars" aria-label="4,7 de 5 estrellas"><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3 7 7 .6-5.3 4.7 1.7 7.2L12 17.8 5.6 21.5l1.7-7.2L2 9.6 9 9z"/></svg></div><div style="color:var(--mut);font-size:.9rem">20 reseñas en Google</div></div>
+  <div><h2 style="font-size:clamp(1.5rem,3.4vw,2.2rem)">Sus clientes ya confían. Que lo encuentren también cuando buscan en internet.</h2><p style="color:var(--mut);margin:.7rem 0 1rem">Quien se queda varado busca “auxilio mecánico en Cajamarca” y llama al primero que ve. Con su página, esa llamada le llega a usted.</p><a class="btn ghost sm" href="https://www.google.com/maps/search/?api=1&query=Conversiones+Linares+GLP+Cajamarca" target="_blank" rel="noopener">Ver reseñas en Google Maps</a></div>
+</div></div></section>
+
+<section class="alt" id="preguntas"><div class="wrap faq">
+  <div class="sec-h"><div class="eyebrow">Preguntas frecuentes</div><h2>Antes de decidir</h2></div>
+  <details><summary>¿Cuánto cuesta convertir mi vehículo a GLP?</summary><p>Depende del vehículo y del equipo. Envíe marca, modelo y año por WhatsApp y el taller le da el costo antes de empezar.</p></details>
+  <details><summary>¿Se puede convertir un motor GDI?</summary><p>Sí se puede evaluar. Los motores de inyección directa requieren un sistema específico; el taller revisa su caso y le dice qué opciones hay.</p></details>
+  <details><summary>¿En cuánto tiempo recupero la inversión?</summary><p>Depende de cuánto maneje. Use la calculadora con sus kilómetros y el costo de conversión que le cotice el taller para verlo.</p></details>
+  <details><summary>¿Atienden de noche y en carretera?</summary><p>Sí, el auxilio mecánico funciona las 24 horas. Envíe su ubicación desde esta página y le responden.</p></details>
+  <details><summary>¿Trabajan con taxis y flotas?</summary><p>Sí. Si tiene varios vehículos, escríbanos y se prepara una propuesta para toda la flota.</p></details>
+</div></section>
+
+<section id="donde"><div class="wrap where">
+  <div class="card"><h3>Escríbanos</h3><ul><li><b>WhatsApp:</b> 970 073 279</li><li><b>Auxilio mecánico:</b> 24 horas</li><li><b>Ciudad:</b> Cajamarca</li></ul><a class="btn" id="waMain" href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a></div>
+  <div class="card"><h3>Cómo llegar</h3><ul><li>Encuéntrenos en Google Maps y llegue con la ruta directa.</li><li>Si no puede moverse, use el botón de auxilio y vamos a usted.</li></ul><a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=Conversiones+Linares+GLP+Cajamarca" target="_blank" rel="noopener">Abrir en Google Maps</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap in"><span>© Conversiones Linares · GLP, GDI y mecánica en general · Cajamarca</span><span>Boceto web por Kevin Huamán · <a href="https://kevin05x.github.io">kevin05x.github.io</a></span></div></footer>
+
+<div class="sos"><a class="btn am" href="#auxilio">Pedir auxilio</a><a class="btn" id="waSos" href="#" target="_blank" rel="noopener">WhatsApp</a></div>
+<a class="wa" id="waFloat" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.200 14.100c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800 0-1.300.7-2 .9-2.200.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 1.900c.1.200.1.300 0 .5l-.3.500-.4.400c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.5.100.6-.1l.9-1.100c.2-.3.400-.2.600-.1l1.800.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg><span>WhatsApp</span></a>
+
+<script>
+const PHONE="51970073279";
+const $=s=>document.querySelector(s);
+const wa=t=>"https://wa.me/"+PHONE+"?text="+encodeURIComponent(t);
+const hello="Hola Conversiones Linares, vi su página y quisiera consultar.";
+["#waMain","#waFloat","#waSos"].forEach(s=>$(s).href=wa(hello));
+
+/* ---------- Auxilio ---------- */
+function auxMsg(loc){
+  const p=document.querySelector('input[name=p]:checked').value;
+  const vh=$("#vh").value.trim(),nm=$("#nm").value.trim(),rf=$("#ref").value.trim();
+  const l=["Hola Conversiones Linares, necesito auxilio mecánico."];
+  l.push("Problema: "+p);
+  if(vh)l.push("Vehículo: "+vh);
+  if(rf)l.push("Referencia: "+rf);
+  if(loc)l.push("Mi ubicación: "+loc);
+  l.push(nm?"Soy "+nm+". ¿Pueden venir?":"¿Pueden venir?");
+  return l.join("\n");
+}
+function refreshNoLoc(){$("#noLoc").href=wa(auxMsg(""))}
+$("#aux").addEventListener("input",refreshNoLoc);$("#aux").addEventListener("change",refreshNoLoc);refreshNoLoc();
+$("#loc").addEventListener("click",()=>{
+  const st=$("#locSt");st.hidden=false;st.className="status";st.textContent="Buscando su ubicación…";
+  const fallback=m=>{st.className="status bad";st.textContent=m;};
+  if(!navigator.geolocation){fallback("Su navegador no permite ubicación. Use el botón de abajo y escriba una referencia.");return;}
+  navigator.geolocation.getCurrentPosition(pos=>{
+    const lat=pos.coords.latitude.toFixed(6),lng=pos.coords.longitude.toFixed(6);
+    const link="https://maps.google.com/?q="+lat+","+lng;
+    st.className="status ok";st.textContent="Ubicación lista. Abriendo WhatsApp…";
+    const url=wa(auxMsg(link));
+    const w=window.open(url,"_blank","noopener");if(!w)location.href=url;
+  },err=>{
+    fallback(err.code===1?"No dio permiso de ubicación. Use “Prefiero escribir mi ubicación” y deje una referencia.":"No pudimos obtener la ubicación. Use “Prefiero escribir mi ubicación”.");
+  },{enableHighAccuracy:true,timeout:12000,maximumAge:30000});
+});
+
+/* ---------- Calculadora GLP ---------- */
+const n=v=>parseFloat(String(v).replace(",","."))||0;
+const fm=x=>"S/ "+Math.round(x).toLocaleString("es-PE").replace(/,/g," ");
+function calc(){
+  const km=n($("#km").value),rd=n($("#rend").value),pg=n($("#pg").value),pl=n($("#pl").value),cc=n($("#cc").value);
+  if(!km||!rd||!pg||!pl){$("#sv").textContent="—";$("#svl").textContent="complete los datos";$("#pb").textContent="";$("#tg").textContent=$("#tl").textContent="—";return;}
+  const g=km/rd*pg, l=km/(rd*0.8)*pl, ah=g-l;
+  $("#tg").textContent=fm(g)+"/mes";$("#tl").textContent=fm(l)+"/mes";
+  $("#bg").style.width="100%";$("#bl").style.width=Math.max(4,Math.min(100,l/g*100))+"%";
+  if(ah>0){
+    $("#sv").textContent=fm(ah);$("#svl").textContent="de ahorro al mes · "+fm(ah*12)+" al año";
+    $("#pb").textContent=cc>0?"Con una conversión de "+fm(cc)+", se paga en unos "+Math.max(1,Math.ceil(cc/ah))+" meses.":"Agregue el costo de conversión para ver en cuántos meses se paga.";
+  }else{$("#sv").textContent="Sin ahorro";$("#svl").textContent="con estos precios el GLP no conviene";$("#pb").textContent="Revise los precios por galón.";}
+  $("#glpWa").href=wa("Hola Conversiones Linares, quiero cotizar la conversión a GLP de mi vehículo. Manejo unos "+km+" km al mes y gasto unos "+fm(g)+" al mes en gasolina. ¿Me pueden dar el costo?");
+}
+["km","rend","pg","pl","cc"].forEach(i=>$("#"+i).addEventListener("input",calc));calc();
+
+/* ---------- ¿Se puede convertir? ---------- */
+const MO={
+ carb:["Motor carburado: suele ser un buen candidato","Los carburados se convierten con kits conocidos. El taller lo revisa y le confirma."],
+ inj:["Inyección normal: es el caso más común","La mayoría de autos con inyección se pueden convertir. El taller confirma tras revisarlo."],
+ gdi:["GDI: se evalúa con un sistema específico","La inyección directa requiere un equipo distinto. El taller revisa su caso y le dice las opciones."],
+ turbo:["Turbo: se evalúa caso por caso","Depende del motor y del equipo. Envíe marca, modelo y año para que el taller le responda."],
+ nose:["No pasa nada, nosotros lo identificamos","Envíe marca, modelo y año y el taller le dice qué tipo de motor tiene y si se puede convertir."]};
+function qz(){
+  const mo=document.querySelector('input[name=mo]:checked').value,yr=$("#yr").value,us=$("#us").value;
+  const [t,d]=MO[mo];
+  const mt={carb:"carburado",inj:"inyección normal",gdi:"GDI (inyección directa)",turbo:"turbo",nose:"no sé qué tipo"}[mo];
+  $("#qres").innerHTML="<strong>"+t+"</strong><p>"+d+"</p><a class='btn full' target='_blank' rel='noopener' href='"+wa("Hola Conversiones Linares, quiero saber si mi vehículo se puede convertir a GLP. Motor: "+mt+". Año: "+yr+". Uso: "+us+". Marca y modelo: ")+"'>Preguntar por mi vehículo</a>";
+}
+$("#qz").addEventListener("input",qz);$("#qz").addEventListener("change",qz);qz();
+</script>
+</body></html>
