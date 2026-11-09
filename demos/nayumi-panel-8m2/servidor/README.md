@@ -1,5 +1,9 @@
 # API del panel NAYUMI
 
+Servidor publicado en la cuenta de Cloudflare de Kevin: https://nayumi-panel-api.tiendix-fotos-worker.workers.dev. Base de datos D1: nayumi-panel-datos; enlace DB. La configuración de despliegue está en wrangler.jsonc y se mantiene el plan gratuito; no se necesita R2 para guardar los registros del panel.
+
+La base está creada y contiene las tablas de esquema.sql. No volver a ejecutar ese esquema sobre la base publicada. Las contraseñas vigentes de Kevin y Nayumi se conservaron; sus hashes y la firma de sesiones están configurados como secretos del Worker, sin valores en este repositorio.
+
 La interfaz está en ../index.html y se publica desde este repositorio mediante GitHub Pages. El servidor valida los usuarios, guarda los registros compartidos y controla las actualizaciones simultáneas. GitHub Pages publica archivos estáticos y no ejecuta este servidor.
 
 Este directorio contiene la API equivalente como Worker ESM independiente, para que su código también esté en el repositorio de Kevin. Requiere una base Cloudflare D1 con el enlace DB y las tablas de esquema.sql. Los secretos de ejecución son NAYUMI_PASSWORD_HASH, KEVIN_PASSWORD_HASH y NAYUMI_SESSION_SECRET. Sus valores nunca se guardan aquí. El formato de hash es PBKDF2 SHA-256, 100000 iteraciones, sal y resultado en base64url.
