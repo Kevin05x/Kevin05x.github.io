@@ -6,6 +6,11 @@
   "compatibility_date": "2026-11-08",
   "compatibility_flags": ["nodejs_compat"],
   "workers_dev": true,
+  "assets": {
+    "directory": "../materiales",
+    "binding": "MATERIALES",
+    "run_worker_first": true
+  },
   "d1_databases": [
     {
       "binding": "DB",
@@ -14,3 +19,4 @@
     }
   ]
 }
+
