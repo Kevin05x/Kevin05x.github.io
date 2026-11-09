@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/workers-sdk/main/packages/wrangler/config-schema.json",
+  "name": "nayumi-panel-api",
+  "account_id": "0fb568644c2551b96e5454140a045046",
+  "main": "nayumi-api.mjs",
+  "compatibility_date": "2026-11-08",
+  "compatibility_flags": ["nodejs_compat"],
+  "workers_dev": true,
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "nayumi-panel-datos",
+      "database_id": "10e09670-4c30-4251-9243-4beafef3aac5"
+    }
+  ]
+}
