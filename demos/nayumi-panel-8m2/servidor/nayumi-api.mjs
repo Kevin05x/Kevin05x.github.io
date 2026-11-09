@@ -1,5 +1,6 @@
 // API de NAYUMI. Las claves y los datos se configuran fuera del repositorio.
 import { env } from 'cloudflare:workers';
+import { vacancyIds, vacancyCatalog, validatePublicationMap } from '../vacantes-modelo.mjs';
 const encoder = new TextEncoder();
 const encode = (value) => btoa(String.fromCharCode(...value)).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
 const decode = (value) => Uint8Array.from(atob(value.replace(/-/g, '+').replace(/_/g, '/')), c => c.charCodeAt(0));
@@ -64,7 +65,7 @@ async function passwordMatches(username, password) {
 }
 function allowedOrigin(request) {
     const origin = request.headers.get('origin');
-    return origin === new URL(request.url).origin || origin === 'https://kevin05x.github.io' || (process.env.NODE_ENV === 'development' && ['http://127.0.0.1:4173', 'http://127.0.0.1:5181', 'http://localhost:4173'].includes(origin || ''));
+    return origin === new URL(request.url).origin || origin === 'https://kevin05x.github.io' || (env.DEV_ORIGIN && ['127.0.0.1','localhost'].includes(new URL(request.url).hostname) && origin === env.DEV_ORIGIN);
 }
 const isSameOrigin = (request) => allowedOrigin(request) && request.headers.get('X-Nayumi-Request') === '1';
 function corsHeaders(request) {
@@ -74,15 +75,14 @@ function corsHeaders(request) {
 function preflight(request) {
     if (!allowedOrigin(request))
         return new Response(null, { status: 403 });
-    return new Response(null, { status: 204, headers: { ...corsHeaders(request), 'Access-Control-Allow-Methods': 'GET,POST,PUT,OPTIONS', 'Access-Control-Allow-Headers': 'Authorization,Content-Type,X-Nayumi-Request', 'Access-Control-Max-Age': '600' } });
+    return new Response(null, { status: 204, headers: { ...corsHeaders(request), 'Access-Control-Allow-Methods': 'GET,POST,PUT,OPTIONS', 'Access-Control-Allow-Headers': 'Authorization,Content-Type,X-Nayumi-Request,X-Nayumi-Image-Revision', 'Access-Control-Max-Age': '600' } });
 }
 const json = (data, status = 200, headers = {}) => Response.json(data, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', ...headers } });
 const htmlHeaders = { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff', 'X-Frame-Options': 'DENY', 'Referrer-Policy': 'no-referrer', 'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; frame-ancestors 'none'; form-action 'self'; base-uri 'none'" };
 
-const emptyData = () => ({ version: 1, entries: [], vacancies: {} });
+const emptyData = () => ({ version: 1, entries: [], vacancies: {}, vacancyPlatforms: {} });
 const fields = ['contacts', 'appointments', 'visits', 'interviews', 'contracts', 'spend', 'revenue'];
 const channels = ['WhatsApp', 'Facebook', 'Instagram', 'TikTok', 'Meta Ads', 'Web', 'Referidos', 'Presencial', 'Sin identificar'];
-const vacancyIds = ['rimac', 'victoria', 'santa-anita', 'agustino', 'molina', 'sjl', 'ate', 'cosmiatria', 'panaderia', 'sjm', 'salamanca', 'surco', 'cocina-victoria', 'abancay'];
 function validateData(value) {
     if (!value || value.version !== 1 || !Array.isArray(value.entries) || value.entries.length > 20000)
         throw Error('Formato de registro inválido.');
@@ -116,7 +116,7 @@ function validateData(value) {
     for (const [id, status] of Object.entries(value.vacancies || {}))
         if (vacancyIds.includes(id) && ['Por confirmar', 'Vigente', 'En entrevistas', 'Cubierta', 'Retirada'].includes(status))
             vacancies[id] = status;
-    return { version: 1, entries, vacancies };
+    return { version: 1, entries, vacancies, vacancyPlatforms: validatePublicationMap(value.vacancyPlatforms) };
 }
 
 const loginHandlers=(()=>{
@@ -166,7 +166,8 @@ async function GET(request) {
     if (!env.DB)
         return reply({ error: 'Guardado compartido no disponible.' }, 503);
     const row = await env.DB.prepare('SELECT revision,data FROM panel_state WHERE id=1').first();
-    return reply(row ? { revision: row.revision, data: JSON.parse(row.data), username } : { revision: 0, data: emptyData(), username });
+    const assets = await env.DB.prepare('SELECT vacancy_id,mime,revision,updated_by,updated_at FROM vacancy_assets').all();
+    return reply({... (row ? { revision: row.revision, data: JSON.parse(row.data), username } : { revision: 0, data: emptyData(), username }), assets: assets.results || []});
 }
 async function PUT(request) {
     const reply = (data, status = 200) => json(data, status, corsHeaders(request));
@@ -190,9 +191,18 @@ async function PUT(request) {
             return reply({ error: 'Otro integrante actualizó el panel. Vuelva a revisar.' }, 409);
         const key = (r) => [r.date, r.audience, r.channel].join('|');
         const stored = validateData(previous ? JSON.parse(previous.data) : emptyData());
+        data.vacancies = {...stored.vacancies, ...data.vacancies};
+        // Older clients/backups must not erase the new publication tracking.
+        if (input.data.vacancyPlatforms === undefined) data.vacancyPlatforms = stored.vacancyPlatforms;
         const byKey = new Map(stored.entries.map((r) => [key(r), r]));
         const contentFields = ['date', 'audience', 'channel', 'contacts', 'appointments', 'visits', 'interviews', 'contracts', 'spend', 'revenue', 'notes'];
         const now = new Date().toISOString();
+        for (const [id, channelRows] of Object.entries(data.vacancyPlatforms)) {
+            for (const [channel, row] of Object.entries(channelRows)) {
+                const old = stored.vacancyPlatforms[id]?.[channel];
+                channelRows[channel] = old && ['status','date','url'].every(f => old[f] === row[f]) ? old : {...row, updatedBy: username, updatedAt: now};
+            }
+        }
         data.entries = data.entries.map((r) => {
             const old = byKey.get(key(r));
             // Preserve existing attribution on unchanged rows; clients cannot assign authors.
@@ -224,4 +234,48 @@ async function POST(request) {
 return {POST,OPTIONS};
 })();
 
-export default {async fetch(request){const routes={'/api/login':loginHandlers,'/api/panel':panelHandlers,'/api/logout':logoutHandlers};const handlers=routes[new URL(request.url).pathname];if(!handlers)return json({error:'Ruta no disponible.'},404,corsHeaders(request));const handle=handlers[request.method];return handle?handle(request):json({error:'Método no permitido.'},405,corsHeaders(request));}};
+async function imageHandler(request, id) {
+    const username = await session(request), reply = (data,status=200) => json(data,status,corsHeaders(request));
+    if (!username) return reply({error:'Inicie sesión.'},401);
+    if (!vacancyIds.includes(id)) return reply({error:'Vacante no disponible.'},404);
+    if (request.method === 'GET') {
+        const row = await env.DB.prepare('SELECT mime,image_bytes FROM vacancy_assets WHERE vacancy_id=?').bind(id).first();
+        if (!row) {
+            const image = vacancyCatalog.find(v => v.id === id)?.image;
+            if (!image || !env.MATERIALES) return reply({error:'Aún no hay una imagen subida para este puesto.'},404);
+            const asset = await env.MATERIALES.fetch(new Request('https://materiales.local/vacantes/'+image));
+            if (!asset.ok) return reply({error:'La imagen preparada no está disponible.'},404);
+            return new Response(asset.body,{headers:{...corsHeaders(request),'Content-Type':'image/jpeg','Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Disposition':'inline; filename="nayumi-'+id+'.jpg"'}});
+        }
+        return new Response(new Uint8Array(row.image_bytes),{headers:{...corsHeaders(request),'Content-Type':row.mime,'Cache-Control':'no-store','X-Content-Type-Options':'nosniff','Content-Security-Policy':"default-src 'none'; sandbox",'Content-Disposition':'inline; filename="nayumi-'+id+(row.mime==='image/png'?'.png':row.mime==='image/webp'?'.webp':'.jpg')+'"'}});
+    }
+    if (request.method !== 'PUT') return reply({error:'Método no permitido.'},405);
+    if (!isSameOrigin(request)) return reply({error:'Solicitud no permitida.'},403);
+    const revisionHeader = request.headers.get('X-Nayumi-Image-Revision');
+    if (!revisionHeader || !/^\d+$/.test(revisionHeader) || !Number.isSafeInteger(Number(revisionHeader))) return reply({error:'Actualice el panel antes de subir la imagen.'},400);
+    const expected = Number(revisionHeader), limit=1200000;
+    const mime=request.headers.get('Content-Type');
+    if (!['image/jpeg','image/png','image/webp'].includes(mime)) return reply({error:'Use una imagen JPG, PNG o WebP.'},415);
+    if (Number(request.headers.get('Content-Length')||0)>limit) return reply({error:'La imagen preparada excede 1,2 MB.'},413);
+    const reader=request.body?.getReader();if(!reader)return reply({error:'Falta la imagen.'},400);
+    let size=0;const chunks=[];
+    while(true){const {done,value}=await reader.read();if(done)break;size+=value.length;if(size>limit){await reader.cancel();return reply({error:'La imagen preparada excede 1,2 MB.'},413)}chunks.push(value)}
+    const bytes=new Uint8Array(size);let offset=0;for(const chunk of chunks){bytes.set(chunk,offset);offset+=chunk.length}
+    const matches = mime==='image/jpeg' ? bytes[0]===255&&bytes[1]===216&&bytes[2]===255 : mime==='image/png' ? [137,80,78,71,13,10,26,10].every((n,i)=>bytes[i]===n) : new TextDecoder().decode(bytes.slice(0,4))==='RIFF'&&new TextDecoder().decode(bytes.slice(8,12))==='WEBP';
+    if(size<16||!matches)return reply({error:'El archivo no corresponde a una imagen válida.'},400);
+    const previous=await env.DB.prepare('SELECT revision FROM vacancy_assets WHERE vacancy_id=?').bind(id).first();
+    if((previous?.revision||0)!==expected)return reply({error:'Otro integrante cambió la imagen. Cierre el detalle, pulse Actualizar y revísela antes de reemplazarla.'},409);
+    const now=new Date().toISOString();
+    const asset=await env.DB.prepare('INSERT INTO vacancy_assets (vacancy_id,mime,image_bytes,revision,updated_by,updated_at) VALUES (?,?,?,1,?,?) ON CONFLICT(vacancy_id) DO UPDATE SET mime=excluded.mime,image_bytes=excluded.image_bytes,revision=vacancy_assets.revision+1,updated_by=excluded.updated_by,updated_at=excluded.updated_at WHERE vacancy_assets.revision=? RETURNING vacancy_id,mime,revision,updated_by,updated_at').bind(id,mime,Array.from(bytes),username,now,expected).first();
+    if(!asset)return reply({error:'La imagen cambió mientras se guardaba. Actualice y vuelva a revisar.'},409);
+    return reply({asset});
+}
+export default {async fetch(request){
+    const path=new URL(request.url).pathname;
+    if(path.startsWith('/api/vacancy-image/')){
+        if(request.method==='OPTIONS')return preflight(request);
+        try{return await imageHandler(request,path.slice('/api/vacancy-image/'.length))}catch{return json({error:'No se pudo recuperar o guardar la imagen. Intente de nuevo.'},503,corsHeaders(request))}
+    }
+    const routes={'/api/login':loginHandlers,'/api/panel':panelHandlers,'/api/logout':logoutHandlers};const handlers=routes[path];if(!handlers)return json({error:'Ruta no disponible.'},404,corsHeaders(request));const handle=handlers[request.method];return handle?handle(request):json({error:'Método no permitido.'},405,corsHeaders(request));
+}};
+
