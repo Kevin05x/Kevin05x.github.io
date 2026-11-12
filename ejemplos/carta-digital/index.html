@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17120e">
+<title>La Huerta Bistró · Carta digital (ejemplo de Kuntek)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Karla:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17120e;--card:#211a14;--line:#352b21;--ink:#f3eadc;--muted:#b5a690;--gold:#e0a458;--green:#7fa37a;--red:#d9603b;box-sizing:border-box;color-scheme:dark}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.55 Karla,system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:90px}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0;line-height:1.1}
+img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px}
+.w{max-width:860px;margin:0 auto;padding:0 18px}
+.demo{background:#0c0907;color:#b5a690;font-size:.82rem;padding:8px 0}.demo .w{display:flex;flex-wrap:wrap;gap:4px 16px;justify-content:space-between}.demo a{color:var(--gold)}
+.hero{position:relative;height:min(52vh,420px);display:flex;align-items:flex-end;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,18,14,.2),var(--bg))}
+.hero .w{position:relative;z-index:1;width:100%;padding-bottom:22px}
+.hero small{letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;font-size:.8rem}.hero h1{font-size:clamp(2.4rem,8vw,3.8rem);margin:6px 0 8px}.hero p{margin:0;color:var(--muted)}
+.info{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:12px;font-size:.88rem;color:var(--muted)}.info b{color:var(--ink)}
+.nav{position:sticky;top:0;z-index:15;background:rgba(23,18,14,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .w{padding-top:10px;padding-bottom:10px}
+.search{width:100%;background:var(--card);border:1px solid var(--line);border-radius:999px;color:var(--ink);padding:10px 18px;font:inherit;margin-bottom:10px}
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}.tabs::-webkit-scrollbar{display:none}
+.tabs a{flex:none;text-decoration:none;color:var(--muted);padding:7px 15px;border-radius:999px;border:1px solid var(--line);font-weight:700;font-size:.92rem}.tabs a.on{background:var(--gold);color:#1a1208;border-color:var(--gold)}
+.opts{display:flex;gap:14px;margin-top:10px;font-size:.88rem;color:var(--muted)}.opts label{display:flex;gap:6px;align-items:center;cursor:pointer}.opts input{accent-color:var(--gold)}
+section.c{padding-top:34px}section.c h2{font-size:1.9rem;margin-bottom:14px;color:var(--gold)}
+.it{display:grid;grid-template-columns:132px 1fr;gap:14px;background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-bottom:12px}
+.it .ph{height:100%;min-height:132px}.it .ph img{width:100%;height:100%;object-fit:cover}
+.it .b{padding:12px 14px 12px 0;display:flex;flex-direction:column;gap:4px}
+.it h3{font-size:1.15rem}.it p{margin:0;color:var(--muted);font-size:.9rem;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}.tag{font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid}
+.tag.v{color:var(--green);border-color:var(--green)}.tag.d{color:var(--gold);border-color:var(--gold)}.tag.c{color:var(--red);border-color:var(--red)}
+.it .r{display:flex;justify-content:space-between;align-items:center;margin-top:6px}.pr{font:700 1.15rem "Playfair Display"}
+.add{font:700 .9rem Karla;background:var(--gold);color:#1a1208;border:none;border-radius:999px;padding:8px 16px;cursor:pointer}.add:hover{filter:brightness(1.1)}
+.stp{display:inline-flex;align-items:center;background:var(--gold);color:#1a1208;border-radius:999px}.stp button{width:32px;height:32px;border:none;background:none;font-size:1.1rem;font-weight:700;cursor:pointer;color:inherit}.stp i{font-style:normal;font-weight:700;min-width:20px;text-align:center}
+@media (max-width:480px){.it{grid-template-columns:104px 1fr}.it .ph{min-height:112px}}
+.none{color:var(--muted);text-align:center;padding:40px 0;display:none}
+footer{margin-top:40px;padding:20px 0;color:var(--muted);font-size:.84rem;border-top:1px solid var(--line)}footer a{color:var(--gold)}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:12px 18px calc(12px + env(safe-area-inset-bottom));background:rgba(12,9,7,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .25s}.bar.on{transform:none}
+.bar .w{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0}.bar b{font:700 1.2rem "Playfair Display"}.bar span{color:var(--muted);font-size:.85rem;display:block}
+.go{font:700 1rem Karla;background:#25d366;color:#08210f;border:none;border-radius:999px;padding:13px 22px;cursor:pointer;text-decoration:none;white-space:nowrap}
+.sheet{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.6);display:none;align-items:flex-end;justify-content:center}.sheet.on{display:flex}
+.sheet .p{background:var(--card);width:min(560px,100%);max-height:88vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom))}
+.sheet h2{font-size:1.6rem;margin-bottom:10px}.sheet .l{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.95rem}
+.sheet .t{display:flex;justify-content:space-between;font:700 1.3rem "Playfair Display";margin:14px 0}
+.sheet input[type=text],.sheet input[type=number]{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit}.sheet label{font-size:.85rem;color:var(--muted);display:block;margin:10px 0 4px}
+.sheet .go{display:block;text-align:center;width:100%;margin-top:14px}.sheet .cl{background:none;border:none;color:var(--muted);width:100%;margin-top:8px;cursor:pointer;font:inherit}
+.sheet small{color:var(--muted);display:block;margin-top:10px;font-size:.8rem}
+</style>
+</head>
+<body>
+<div class="demo"><div class="w"><span>Carta de ejemplo: platos, precios y local son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Pedir una carta para mi negocio</a></span></div></div>
+<section class="hero"><img src="../../img/ejemplos/k-hero.webp" alt="Salón de un restaurante con mesas y luz cálida" width="1600" height="1067" fetchpriority="high">
+<div class="w"><small>Cocina de mercado · Café</small><h1>La Huerta Bistró</h1><p>Carta digital: mire, elija y pida desde su mesa o para llevar.</p><div class="info"><span><b>Abierto</b> 8:00 a. m. – 10:00 p. m. (ejemplo)</span><span>Cajamarca, Perú (ejemplo)</span></div></div></section>
+
+<div class="nav"><div class="w"><input class="search" id="q" type="search" placeholder="Buscar un plato…" aria-label="Buscar un plato"><div class="tabs" id="tabs"></div>
+<div class="opts"><label><input type="checkbox" id="veg"> Solo vegetariano</label></div></div></div>
+
+<main class="w" id="menu"></main>
+<div class="w"><p class="none" id="none">No encontramos ese plato. Pruebe con otra palabra.</p>
+<footer>© 2026 La Huerta Bistró (ejemplo) · Fotos: Unsplash · Carta de demostración hecha por <a href="../../">Kuntek</a>. En su carta van sus platos, sus precios y sus fotos reales.</footer></div>
+
+<div class="bar" id="bar"><div class="w"><div><b id="tot">S/ 0.00</b><span id="cnt">0 platos</span></div><button class="go" id="see" style="background:var(--gold);color:#1a1208">Ver mi pedido</button></div></div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-label="Mi pedido"><div class="p">
+  <h2>Mi pedido</h2><div id="lines"></div>
+  <div class="t"><span>Total</span><span id="tot2">S/ 0.00</span></div>
+  <div class="opts" style="margin:0"><label><input type="radio" name="m" value="mesa" checked> En mesa</label><label><input type="radio" name="m" value="llevar"> Para llevar</label></div>
+  <div id="mesaw"><label for="mesa">Número de mesa</label><input id="mesa" type="number" min="1" max="40" value="5"></div>
+  <label for="nom">Su nombre</label><input id="nom" type="text" placeholder="Ej. Ana" autocomplete="given-name">
+  <a class="go" id="wa" href="#" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
+  <button class="cl" id="cl">Seguir viendo la carta</button>
+  <small>En un local real, el pedido llega al WhatsApp del negocio. En esta demostración se abre con el mensaje armado.</small>
+</div></div>
+
+<script>
+(function(){
+var C=['Entradas','Principales','Pizzas','Brunch','Cafés'];
+var D=[
+ {id:1,c:0,n:'Tabla de la casa',d:'Selección de entradas calientes con salsas caseras y pan artesanal.',p:28,i:'k-entrada',t:['d']},
+ {id:2,c:0,n:'Ensalada de temporada',d:'Hojas frescas, cítricos, frutos secos y aderezo de miel.',p:24,i:'k-ensalada',t:['v']},
+ {id:3,c:1,n:'Degustación de la casa',d:'Carne a la parrilla, ensalada y croquetas para compartir entre dos.',p:52,i:'k-fondo1',t:['d']},
+ {id:4,c:1,n:'Plato del chef',d:'Preparación del día con guarniciones de la huerta. Pregunte por el de hoy.',p:46,i:'k-fondo2',t:['d']},
+ {id:5,c:2,n:'Pizza artesanal',d:'Masa de fermentación lenta, queso, cebolla morada y hierbas. Picante opcional.',p:38,i:'k-pizza',t:['v','c']},
+ {id:6,c:3,n:'Brunch para dos',d:'Waffles, huevos, frutas, jugo y café. Servido hasta el mediodía.',p:58,i:'k-brunch',t:['v']},
+ {id:7,c:4,n:'Latte de la casa',d:'Espresso doble con leche vaporizada y arte en espuma.',p:12,i:'k-latte',t:['v']},
+ {id:8,c:4,n:'Café filtrado',d:'Grano de altura, preparado a la hora en método de filtro.',p:9,i:'k-cafe',t:['v']}
+];
+var TG={v:['Vegetariano','v'],d:['Recomendado','d'],c:['Picante','c']};
+var cart={},$=function(i){return document.getElementById(i)};
+function m(x){return 'S/ '+x.toFixed(2)}function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+function ctl(id){var q=cart[id]||0;return q?'<span class="stp"><button data-d="'+id+'" aria-label="Quitar uno">−</button><i>'+q+'</i><button data-a="'+id+'" aria-label="Agregar uno">+</button></span>':'<button class="add" data-a="'+id+'">Agregar</button>'}
+function render(){
+ var q=norm($('q').value.trim()),veg=$('veg').checked,h='',any=false,tabs='';
+ C.forEach(function(cn,ci){
+  var its=D.filter(function(x){return x.c===ci&&(!veg||x.t.indexOf('v')>-1)&&(!q||norm(x.n+' '+x.d).indexOf(q)>-1)});
+  if(!its.length)return;any=true;tabs+='<a href="#c'+ci+'" data-t="'+ci+'">'+cn+'</a>';
+  h+='<section class="c" id="c'+ci+'"><h2>'+cn+'</h2>'+its.map(function(x){return '<article class="it"><div class="ph"><img src="../../img/ejemplos/'+x.i+'.webp" alt="'+esc(x.n)+'" loading="lazy" width="300" height="300"></div><div class="b"><h3>'+esc(x.n)+'</h3><div class="tags">'+x.t.map(function(t){return '<span class="tag '+TG[t][1]+'">'+TG[t][0]+'</span>'}).join('')+'</div><p>'+esc(x.d)+'</p><div class="r"><span class="pr">'+m(x.p)+'</span><span data-ctl="'+x.id+'">'+ctl(x.id)+'</span></div></div></article>'}).join('')+'</section>'});
+ $('menu').innerHTML=h;$('tabs').innerHTML=tabs;$('none').style.display=any?'none':'block';
+}
+function find(id){return D.filter(function(x){return x.id===+id})[0]}
+function totals(){var c=0,t=0;Object.keys(cart).forEach(function(k){c+=cart[k];t+=cart[k]*find(k).p});return{c:c,t:t}}
+function bar(){var s=totals();$('tot').textContent=m(s.t);$('cnt').textContent=s.c+(s.c===1?' plato':' platos');$('bar').classList.toggle('on',s.c>0);if(!s.c)$('sheet').classList.remove('on')}
+function sheet(){
+ var ks=Object.keys(cart),h='',s=totals();
+ ks.forEach(function(k){var x=find(k);h+='<div class="l"><span>'+cart[k]+' × '+esc(x.n)+'</span><b>'+m(cart[k]*x.p)+'</b></div>'});
+ $('lines').innerHTML=h;$('tot2').textContent=m(s.t);
+ var llevar=document.querySelector('input[name=m]:checked').value==='llevar';$('mesaw').style.display=llevar?'none':'block';
+ var nom=$('nom').value.trim(),msg='Hola, quisiera hacer este pedido (demo de carta digital):\n'+ks.map(function(k){return '• '+cart[k]+' × '+find(k).n}).join('\n')+'\nTotal: '+m(s.t)+'\n'+(llevar?'Para llevar':'En mesa '+$('mesa').value)+(nom?'\nNombre: '+nom:'');
+ $('wa').href='https://wa.me/51945906676?text='+encodeURIComponent(msg);
+}
+function upd(id){var el=document.querySelector('[data-ctl="'+id+'"]');if(el)el.innerHTML=ctl(id);bar();if($('sheet').classList.contains('on'))sheet()}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('button,a');if(!b)return;
+ if(b.dataset.a){cart[b.dataset.a]=(cart[b.dataset.a]||0)+1;upd(b.dataset.a);return}
+ if(b.dataset.d){if(--cart[b.dataset.d]<=0)delete cart[b.dataset.d];upd(b.dataset.d);return}
+ if(b.id==='see'){sheet();$('sheet').classList.add('on');return}
+ if(b.id==='cl'){$('sheet').classList.remove('on');return}
+});
+$('sheet').addEventListener('click',function(e){if(e.target.id==='sheet')$('sheet').classList.remove('on')});
+['input','change'].forEach(function(ev){$('sheet').addEventListener(ev,sheet)});
+$('q').addEventListener('input',render);$('veg').addEventListener('change',render);
+document.addEventListener('keydown',function(e){if(e.key==='Escape')$('sheet').classList.remove('on')});
+// scrollspy
+window.addEventListener('scroll',function(){var cur=null;document.querySelectorAll('section.c').forEach(function(s){if(s.getBoundingClientRect().top<150)cur=s.id});document.querySelectorAll('#tabs a').forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)})},{passive:true});
+render();
+})();
+</script>
+</body>
+</html>
