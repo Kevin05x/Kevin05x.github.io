@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Demostración interactiva de un sistema de ventas y gestión (CRM y ERP) a medida. Elige el nivel, arma tu combinación de módulos y compara costos. Kuntek, Cajamarca.">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://kevin05x.github.io/sistemas/crm/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 200 200%27%3E%3Crect width=%27200%27 height=%27200%27 rx=%2744%27 fill=%27%232f5cf0%27/%3E%3Cpolygon points=%2746,30 80,50 80,170 46,170%27 fill=%27white%27/%3E%3Cpolygon points=%2794,114 144,48 176,48 176,64 128,128%27 fill=%27white%27/%3E%3Cpolygon points=%27106,114 124,100 182,170 142,170%27 fill=%27white%27/%3E%3Cpolygon points=%27150,26 184,26 184,44%27 fill=%27%23ffb547%27/%3E%3C/svg%3E">
+<title>Kuntek | Su propio sistema: propuesta y demostración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#08090b; --surface:#101217; --surface-2:#161922; --ink:#eef1f5; --muted:#a9b2bf;
+  --line:#232833; --accent:#2f5cf0; --accent-ink:#ffffff; --teal:#4cc9a0; --teal-soft:#10302a;
+  --gold-soft:#2b2412; --danger:#f0836b; --danger-soft:#3a1f1a;
+  --app-bg:#0c0e13; --app-side:#08090b; --app-side-ink:#a9b2bf;
+  color-scheme: dark;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:"Schibsted Grotesk","IBM Plex Sans",system-ui,sans-serif;line-height:1.1;margin:0;letter-spacing:-0.01em}
+h1{font-size:clamp(2.3rem,7vw,4.2rem);font-weight:800}
+h2{font-size:clamp(1.7rem,4.5vw,2.5rem);font-weight:700;margin-bottom:.6rem}
+h3{font-size:1.2rem;font-weight:700}
+p{margin:0 0 1rem}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+.wide{max-width:1140px;margin:0 auto;padding:0 22px}
+section{padding:72px 0 0}
+.lead{font-size:1.15rem;color:var(--muted);max-width:60ch}
+.muted{color:var(--muted)}
+.small{font-size:.88rem}
+
+/* Header & hero */
+.top{display:flex;justify-content:space-between;align-items:center;padding:18px 0;border-bottom:1px solid var(--line)}
+.brand{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;font-size:1.05rem}
+
+.hero{padding:64px 0 8px}
+.hero h1{max-width:15ch;margin-bottom:22px}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.btn{display:inline-block;font:600 1rem "IBM Plex Sans",sans-serif;padding:13px 20px;border-radius:10px;text-decoration:none;border:2px solid var(--line);color:var(--ink);background:transparent;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:56px;border-top:2px solid var(--accent)}
+.promises div{padding:16px 16px 0 0}
+.promises strong{display:block;font-family:"Schibsted Grotesk",sans-serif;font-size:1.15rem}
+.promises span{color:var(--muted);font-size:.95rem}
+@media (max-width:640px){.promises{grid-template-columns:1fr}.promises div{padding:14px 0;border-bottom:1px solid var(--line)}}
+
+/* What is */
+.pillars{display:grid;grid-template-columns:1fr 1fr;gap:22px 34px;margin:28px 0}
+.pillars h3{margin-bottom:4px}
+.pillars p{color:var(--muted);margin:0}
+@media (max-width:640px){.pillars{grid-template-columns:1fr}}
+.note{background:var(--gold-soft);border-left:5px solid #ffb547;padding:18px 20px;border-radius:0 10px 10px 0}
+.note p:last-child{margin:0}
+.users-example{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);padding:6px 12px;border-radius:999px;font-size:.92rem}
+.chip i{font-style:normal;width:22px;height:22px;border-radius:50%;background:var(--teal-soft);color:var(--teal);display:grid;place-items:center;font-weight:700;font-size:.75rem}
+
+/* Module table */
+.table-scroll{overflow-x:auto;margin-top:24px;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+th{font-family:"Schibsted Grotesk",sans-serif;font-size:1rem;background:var(--surface-2)}
+td.c,th.c{text-align:center;width:92px}
+td .d{display:block;color:var(--muted);font-size:.88rem}
+.yes{color:var(--teal);font-weight:700}
+.no{color:var(--line)}
+
+/* Demo */
+.demo-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:18px}
+.seg{display:inline-flex;background:var(--surface);border:2px solid var(--line);border-radius:12px;padding:4px;gap:4px;flex-wrap:wrap}
+.seg button{font:600 .98rem "IBM Plex Sans",sans-serif;border:none;background:transparent;color:var(--ink);padding:10px 14px;border-radius:8px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.level-desc{margin:16px 0 18px;color:var(--muted);max-width:70ch}
+.custom{display:none;background:var(--surface);border:1px dashed var(--teal);border-radius:12px;padding:18px;margin-bottom:18px}
+.custom.on{display:block}
+.custom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:8px 16px;margin:12px 0}
+.custom label{display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:.96rem;padding:6px 0}
+.custom input{width:18px;height:18px;margin-top:3px;accent-color:var(--teal)}
+.custom textarea{width:100%;min-height:120px;font:inherit;font-size:.92rem;padding:12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);resize:vertical}
+
+.app{display:grid;grid-template-columns:220px 1fr;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--app-bg);box-shadow:0 30px 80px -30px rgba(47,92,240,.35)}
+.side{background:var(--app-side);color:var(--app-side-ink);padding:18px 12px}
+.side .logo{font-family:"Schibsted Grotesk",sans-serif;font-weight:700;color:#fff;padding:4px 10px 16px;font-size:1.05rem}
+.side ul{list-style:none;margin:0;padding:0}
+.side button{display:block;width:100%;text-align:left;background:none;border:none;color:inherit;font:500 .93rem "IBM Plex Sans",sans-serif;padding:9px 10px;border-radius:8px;cursor:pointer}
+.side button:hover{background:rgba(255,255,255,.07)}
+.side button.active{background:var(--accent);color:#fff;font-weight:600}
+.main{padding:18px;min-width:0}
+.bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;margin-bottom:14px}
+.bar h3{font-size:1.15rem}
+.bar .right{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pill{font-size:.82rem;padding:5px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);color:var(--muted)}
+.info{background:var(--teal-soft);color:var(--ink);border-radius:10px;padding:10px 14px;font-size:.93rem;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.kpi b{display:block;font-family:"Schibsted Grotesk",sans-serif;font-size:1.45rem;line-height:1.2}
+.kpi span{font-size:.84rem;color:var(--muted)}
+.kpi.warn b{color:var(--danger)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.w{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0;overflow-x:auto}
+.w.full{grid-column:1/-1}
+.w h4{margin:0 0 10px;font:700 .98rem "Schibsted Grotesk",sans-serif}
+.w ul{list-style:none;margin:0;padding:0}
+.w li{display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid var(--line);font-size:.9rem}
+.w li:last-child{border-bottom:none}
+.w li .m{color:var(--muted);white-space:nowrap}
+.tag{font-size:.75rem;padding:2px 8px;border-radius:999px;white-space:nowrap;align-self:center}
+.tag.ok{background:var(--teal-soft);color:var(--teal)}
+.tag.pend{background:var(--gold-soft);color:var(--ink)}
+.tag.bad{background:var(--danger-soft);color:var(--danger)}
+.pipe{display:grid;grid-template-columns:repeat(4,minmax(130px,1fr));gap:8px;overflow-x:auto;min-width:0}
+.col{background:var(--app-bg);border-radius:8px;padding:8px}
+.col h5{margin:0 0 6px;font:600 .82rem "IBM Plex Sans",sans-serif;color:var(--muted)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:7px;padding:7px 9px;margin-bottom:6px;font-size:.82rem;line-height:1.35}
+.card b{display:block;font-size:.84rem}
+.mini-table{width:100%;min-width:0;font-size:.86rem}
+.mini-table th{background:none;font:600 .8rem "IBM Plex Sans",sans-serif;color:var(--muted);padding:6px 6px}
+.mini-table td{padding:7px 6px}
+.meter{height:8px;background:var(--app-bg);border-radius:99px;overflow:hidden;margin-top:4px}
+.meter i{display:block;height:100%;background:var(--teal);border-radius:99px}
+.empty{color:var(--muted);font-size:.92rem;padding:20px;text-align:center}
+@media (max-width:820px){
+  .app{grid-template-columns:minmax(0,1fr)}
+  .side{padding:12px}
+  .side .logo{padding:2px 4px 10px}
+  .side ul{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+  .side li{flex:0 0 auto}
+  .side button{white-space:nowrap}
+  .grid{grid-template-columns:minmax(0,1fr)}
+}
+
+/* Module screens */
+.view{animation:viewIn .25s ease}
+@keyframes viewIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.search{flex:1;min-width:180px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 12px;color:var(--muted);font-size:.9rem}
+.mbtn{font:600 .86rem "IBM Plex Sans",sans-serif;background:var(--accent);color:#fff;border:1px solid var(--accent);border-radius:8px;padding:8px 13px;cursor:pointer}
+.mbtn.ghost{background:transparent;color:var(--ink);border-color:var(--line)}
+.split{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:12px}
+.grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1000px){.split,.grid.three{grid-template-columns:minmax(0,1fr)}}
+.tscroll{overflow-x:auto}
+.mini-table tr[data-client]{cursor:pointer}
+.mini-table tr[data-client]:hover td{background:var(--app-bg)}
+.mini-table tr.sel td{background:var(--teal-soft)}
+.hint{font-size:.82rem;color:var(--muted);margin:10px 0 0}
+.field-m{display:flex;flex-direction:column;gap:4px;margin-bottom:10px;font-size:.82rem;color:var(--muted)}
+.field-m .v{background:var(--app-bg);border:1px solid var(--line);border-radius:7px;padding:7px 10px;color:var(--ink);font-size:.9rem}
+.minseg{display:inline-flex;border:1px solid var(--line);border-radius:7px;overflow:hidden;width:max-content}
+.minseg b,.minseg i{font-style:normal;padding:6px 14px;font-size:.88rem}
+.minseg b{background:var(--accent);color:#fff}
+.minseg i{color:var(--ink)}
+.total{display:flex;justify-content:space-between;border-top:2px solid var(--line);margin-top:8px;padding-top:8px;font-size:.92rem}
+.total b{font-family:"Schibsted Grotesk",sans-serif;font-size:1.15rem}
+.w li.task label{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.w li.task input{width:17px;height:17px;margin-top:2px;accent-color:var(--teal);flex:0 0 auto}
+.w li.task input:not(.sw):checked + span{text-decoration:line-through;color:var(--muted)}
+.w li.task em{font-style:normal;font-size:.78rem;color:var(--teal);margin-left:4px}
+.card .cm{display:block;color:var(--muted);font-size:.76rem;margin-top:2px}
+.col h5 b{color:var(--ink);font-size:.86rem}
+.chat{background:#E9E2D6;border-radius:10px;padding:16px;min-height:150px}
+.bubble{background:#DCF8C6;color:#14213D;border-radius:10px 10px 10px 2px;padding:10px 12px;font-size:.88rem;line-height:1.45;max-width:320px}
+.bubble small{display:block;text-align:right;color:#5A6577;font-size:.72rem;margin-top:4px}
+
+/* Compare */
+.calc{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:22px;margin-top:22px}
+.calc-row{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media (max-width:640px){.calc-row{grid-template-columns:1fr}}
+.field label{display:flex;justify-content:space-between;font-weight:600;margin-bottom:6px}
+.field output{font-family:"Schibsted Grotesk",sans-serif;color:var(--teal)}
+input[type=range]{width:100%;accent-color:var(--teal)}
+.plans{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.plans label{display:flex;gap:8px;align-items:center;border:1px solid var(--line);padding:8px 12px;border-radius:10px;cursor:pointer;font-size:.95rem}
+.plans input{accent-color:var(--teal)}
+.result{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+@media (max-width:640px){.result{grid-template-columns:1fr}}
+.res{border-radius:12px;padding:18px}
+.res.them{background:var(--danger-soft)}
+.res.us{background:var(--teal-soft)}
+.res h3{font-size:1.05rem;margin-bottom:8px}
+.res .big{font-family:"Schibsted Grotesk",sans-serif;font-size:2rem;font-weight:800;line-height:1.1;margin-bottom:6px}
+.res.them .big{color:var(--danger)}
+.res.us .big{color:var(--teal)}
+.chart-wrap svg{width:100%;height:auto;display:block;margin-top:10px}
+.versus th:nth-child(2){color:var(--danger)}
+.versus th:nth-child(3){color:var(--teal)}
+
+/* Steps & FAQ */
+.steps{list-style:none;padding:0;margin:26px 0 0;counter-reset:s}
+.steps li{counter-increment:s;display:grid;grid-template-columns:52px 1fr;gap:6px 14px;padding:16px 0;border-top:1px solid var(--line)}
+.steps li::before{content:counter(s);font-family:"Schibsted Grotesk",sans-serif;font-weight:800;font-size:1.6rem;color:var(--accent);grid-row:span 2;line-height:1}
+.steps h3{font-size:1.08rem}
+.steps p{margin:0;color:var(--muted)}
+details{border-top:1px solid var(--line);padding:14px 0}
+details:last-of-type{border-bottom:1px solid var(--line)}
+summary{cursor:pointer;font-weight:600;font-size:1.03rem}
+details p{margin:10px 0 0;color:var(--muted)}
+.cta{margin:80px 0 0;background:linear-gradient(135deg,#16224a,#0c0e13);border-top:1px solid var(--line);color:var(--ink);padding:56px 0}
+.cta h2{color:var(--ink)}
+.cta p{color:var(--muted);max-width:56ch}
+.cta .btn{border-color:var(--accent);background:var(--accent);color:#fff}
+.cta .btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+footer{padding:26px 0 40px;font-size:.85rem;color:var(--muted)}
+
+.sitebar{position:sticky;top:0;z-index:30;background:rgba(8,9,11,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.sb{display:flex;align-items:center;gap:18px;padding-block:12px}
+.sb .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:1.35rem;letter-spacing:-.04em}
+.sb .brand svg{border-radius:7px;display:block}
+.sb .brand em{font-style:normal;color:#8fb0ff}
+.sb nav{display:flex;gap:22px;margin-left:auto;align-items:center}
+.sb nav a{text-decoration:none;color:var(--muted);font-size:.95rem;white-space:nowrap}
+.sb nav a:hover,.sb nav a[aria-current]{color:var(--ink)}
+.sb nav a[aria-current]{font-weight:500}
+.sb .wa{padding:9px 14px;background:var(--accent);border-color:var(--accent);color:#fff;font-size:.9rem}
+@media (max-width:880px){.sb{flex-wrap:wrap;gap:4px 12px;padding-block:10px 0}.sb nav{order:3;flex:1 0 100%;margin:0 -22px;padding:4px 22px 10px;overflow-x:auto;gap:20px;scrollbar-width:none}.sb nav::-webkit-scrollbar{display:none}.sb .wa{margin-left:auto}}
+.crumb{margin:0 0 18px;font-size:.9rem;color:var(--muted)}
+.crumb a{color:#8fb0ff;text-decoration:none}
+.tabsbar{position:sticky;top:57px;z-index:20;background:rgba(8,9,11,.96);border-bottom:1px solid var(--line);margin-top:56px}
+@media (max-width:880px){.tabsbar{top:96px}}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding:10px 0;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tabs button{font:600 .95rem "IBM Plex Sans",sans-serif;border:1px solid transparent;background:transparent;color:var(--muted);padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{background:var(--accent);color:#fff}
+.panel[hidden]{display:none!important}
+.panel>section:first-child{padding-top:44px}
+</style>
+</head>
+<body>
+<header class="sitebar">
+  <div class="wide sb">
+    <a class="brand" href="../../#inicio" aria-label="Kuntek, ir al inicio"><svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true"><rect width="200" height="200" rx="44" fill="#2f5cf0"/><polygon points="46,30 80,50 80,170 46,170" fill="#fff"/><polygon points="94,114 144,48 176,48 176,64 128,128" fill="#fff"/><polygon points="106,114 124,100 182,170 142,170" fill="#fff"/><polygon points="150,26 184,26 184,44" fill="#ffb547"/></svg><b>kun<em>tek</em></b></a>
+    <nav aria-label="Secciones del sitio"><a href="../../#inicio">Inicio</a><a href="../../#trabajos">Trabajos</a><a href="../../#sistemas" aria-current="page">Sistemas</a><a href="../../#demos">Demos</a><a href="../../#cotizar">Cotizar</a><a href="../../#como">Cómo trabajo</a></nav>
+    <a class="btn wa" href="https://wa.me/51945906676?text=Hola%20Kevin%2C%20vi%20la%20demo%20del%20sistema%20y%20quiero%20una%20propuesta." target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<div class="wrap">
+  
+
+  <div class="hero">
+    <p class="crumb"><a href="../../#sistemas">← Sistemas a medida</a> · CRM y ERP</p>
+    <h1>Un sistema de ventas y gestión que es de su empresa</h1>
+    <p class="lead">Le explicamos qué es un CRM, qué módulos puede tener y cómo se vería en su negocio. Usted elige el nivel o arma su propia combinación, y el sistema queda a su nombre, sin pagos por cada usuario.</p>
+    <div class="actions">
+      <a class="btn primary" href="#demo" data-tab="demo">Ver la demostración</a>
+      <a class="btn" href="#comparar" data-tab="comparar">Comparar costos</a>
+    </div>
+    <div class="promises">
+      <div><strong>Precio fijo</strong><span>Se acuerda una vez, según los módulos que elija.</span></div>
+      <div><strong>Sin cobro por usuario</strong><span>Agregue vendedores o personal sin que suba la cuota.</span></div>
+      <div><strong>Su servidor, sus datos</strong><span>El hosting o VPS se contrata a nombre de su empresa.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tabsbar"><div class="wide"><div class="tabs" role="tablist" aria-label="Contenido"><button type="button" role="tab" id="tab-que-es" data-tab="que-es" aria-selected="false">Qué es</button><button type="button" role="tab" id="tab-modulos" data-tab="modulos" aria-selected="false">Módulos</button><button type="button" role="tab" id="tab-demo" data-tab="demo" aria-selected="true">Demostración</button><button type="button" role="tab" id="tab-comparar" data-tab="comparar" aria-selected="false">Comparar costos</button><button type="button" role="tab" id="tab-proceso" data-tab="proceso" aria-selected="false">Cómo trabajamos</button></div></div></div>
+<div class="panel" data-panel="que-es" role="tabpanel" aria-labelledby="tab-que-es" hidden>
+<section id="que-es">
+  <div class="wrap">
+    <h2>¿Qué es un CRM?</h2>
+    <p class="lead">CRM significa gestión de la relación con clientes. Es un sistema donde su equipo registra a cada cliente, sigue cada venta y sabe qué hay que hacer hoy, sin depender de cuadernos, hojas de Excel o la memoria de cada vendedor.</p>
+    <div class="pillars">
+      <div><h3>Clientes en un solo lugar</h3><p>Datos de contacto, compras anteriores, deudas y notas de cada cliente.</p></div>
+      <div><h3>Ventas con seguimiento</h3><p>Cada oportunidad avanza por etapas: interesado, cotizado, negociando y cerrado.</p></div>
+      <div><h3>Recordatorios</h3><p>El sistema avisa a quién llamar, qué cotización vence y qué cobro está pendiente.</p></div>
+      <div><h3>Reportes al instante</h3><p>Cuánto se vendió, quién vendió más y qué productos se mueven mejor.</p></div>
+    </div>
+    <div class="note">
+      <p><strong>CRM y ERP en un mismo sistema.</strong> El CRM mira hacia los clientes y las ventas. Cuando además se necesita almacén, compras, caja o contabilidad, se habla de un ERP. Nosotros podemos unir ambos en una sola plataforma, para que la venta descuente el stock y aparezca en los reportes sin escribir nada dos veces.</p>
+    </div>
+  </div>
+</section>
+
+<section id="usuarios">
+  <div class="wrap">
+    <h2>¿Qué es un usuario?</h2>
+    <p>Un usuario es cada persona que entra al sistema con su propia cuenta. Los clientes que usted registra no cuentan como usuarios: puede tener miles de clientes y solo seis personas usando el sistema.</p>
+    <div class="users-example" aria-label="Ejemplo de usuarios">
+      <span class="chip"><i>G</i>Gerencia</span>
+      <span class="chip"><i>V</i>Vendedor 1</span>
+      <span class="chip"><i>V</i>Vendedor 2</span>
+      <span class="chip"><i>V</i>Vendedor 3</span>
+      <span class="chip"><i>A</i>Almacén</span>
+      <span class="chip"><i>C</i>Contabilidad</span>
+    </div>
+    <p class="muted">Cada usuario tiene permisos según su rol: el vendedor ve sus clientes, el almacenero ve el stock y gerencia ve todo. Muchas plataformas cobran una cuota mensual por cada una de estas cuentas.</p>
+  </div>
+</section>
+
+</div>
+<div class="panel" data-panel="modulos" role="tabpanel" aria-labelledby="tab-modulos" hidden>
+<section id="modulos">
+  <div class="wrap">
+    <h2>Módulos disponibles</h2>
+    <p>Estos son los módulos que puede tener su sistema y en qué nivel se incluye cada uno. En el nivel personalizado usted elige cualquier combinación.</p>
+  </div>
+  <div class="wrap">
+    <div class="table-scroll">
+      <table id="modTable">
+        <thead><tr><th>Módulo</th><th class="c">Básico</th><th class="c">Intermedio</th><th class="c">Avanzado</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+<div class="panel" data-panel="demo" role="tabpanel" aria-labelledby="tab-demo">
+<section id="demo">
+  <div class="wide">
+    <div class="demo-head">
+      <div>
+        <h2>Así se vería su sistema</h2>
+        <p class="muted" style="margin:0">Demostración con datos de ejemplo. Elija un nivel y toque cada opción del menú para ver su pantalla.</p>
+      </div>
+      <div class="seg" role="group" aria-label="Nivel del sistema">
+        <button type="button" data-level="basico" aria-pressed="false">Básico</button>
+        <button type="button" data-level="intermedio" aria-pressed="true">Intermedio</button>
+        <button type="button" data-level="avanzado" aria-pressed="false">Avanzado</button>
+        <button type="button" data-level="personalizado" aria-pressed="false">Personalizado</button>
+      </div>
+    </div>
+    <p class="level-desc" id="levelDesc"></p>
+
+    <div class="custom" id="customPanel">
+      <h3>Arme su sistema</h3>
+      <p class="muted small" style="margin:4px 0 0">Marque los módulos que necesita. La demostración se actualiza al instante.</p>
+      <div class="custom-grid" id="customGrid"></div>
+      <label for="summary" style="padding:0 0 6px;font-weight:600">Su selección, lista para enviarnos</label>
+      <textarea id="summary" readonly></textarea>
+    </div>
+
+    <div class="app" id="app">
+      <nav class="side" aria-label="Menú del sistema de ejemplo">
+        <div class="logo">Su Empresa</div>
+        <ul id="sideList"></ul>
+      </nav>
+      <div class="main" id="main"></div>
+    </div>
+  </div>
+</section>
+
+</div>
+<div class="panel" data-panel="comparar" role="tabpanel" aria-labelledby="tab-comparar" hidden>
+<section id="comparar">
+  <div class="wrap">
+    <h2>Pagar por usuario o tener su propio sistema</h2>
+    <p>Las plataformas en la nube cobran cada mes por cada persona que usa el sistema. Al inicio parece poco, pero la cuota sube cada vez que el equipo crece y se paga mientras use el servicio. Calcule cuánto sería en su caso.</p>
+
+    <div class="calc">
+      <div class="calc-row">
+        <div class="field">
+          <label for="uIn">Personas que usarán el sistema <output id="uOut">6</output></label>
+          <input type="range" id="uIn" min="1" max="30" value="6">
+        </div>
+        <div class="field">
+          <label for="gIn">Personas nuevas cada año <output id="gOut">2</output></label>
+          <input type="range" id="gIn" min="0" max="6" value="2">
+        </div>
+      </div>
+      <div class="field" style="margin-top:18px">
+        <label for="yIn">Años de uso <output id="yOut">3</output></label>
+        <input type="range" id="yIn" min="1" max="5" value="3">
+      </div>
+      <div class="plans" role="radiogroup" aria-label="Plan de referencia">
+        <label><input type="radio" name="plan" value="15" checked>Plan de entrada, US$ 15 por usuario al mes</label>
+        <label><input type="radio" name="plan" value="90">Plan profesional, US$ 90 por usuario al mes</label>
+      </div>
+
+      <div class="result">
+        <div class="res them">
+          <h3>Plataforma con cobro por usuario</h3>
+          <div class="big" id="themTotal">US$ 0</div>
+          <div class="small" id="themDetail"></div>
+          <div class="chart-wrap" id="themChart"></div>
+        </div>
+        <div class="res us">
+          <h3>Su propio sistema</h3>
+          <div class="big">Precio fijo</div>
+          <div class="small">Un pago acordado según los módulos que elija, más el hosting o VPS a nombre de su empresa. Si contrata más personal, el costo no cambia.</div>
+        </div>
+      </div>
+      <p class="small muted" style="margin:16px 0 0">Referencia: precios de lista publicados en 2026 por plataformas como Zoho CRM (desde US$ 14 por usuario) y HubSpot Sales Hub Professional (US$ 90 por usuario, más una tarifa de inicio). Los precios de cada proveedor pueden cambiar.</p>
+    </div>
+
+    <div class="table-scroll versus">
+      <table>
+        <thead><tr><th>Aspecto</th><th>Plataforma por usuario</th><th>Su propio sistema</th></tr></thead>
+        <tbody>
+          <tr><td>Pago mensual</td><td>Una cuota por cada usuario</td><td>Solo su hosting o VPS</td></tr>
+          <tr><td>Si contrata más personal</td><td>La cuota sube</td><td>No cambia</td></tr>
+          <tr><td>Dueño de los datos</td><td>Quedan en la plataforma; si deja de pagar, pierde el acceso</td><td>Su empresa, en un servidor a su nombre</td></tr>
+          <tr><td>Adaptación</td><td>Su empresa se adapta al programa</td><td>El programa se adapta a cómo trabaja su empresa</td></tr>
+          <tr><td>Funciones extra</td><td>Suelen requerir un plan superior o complementos pagados</td><td>Se agregan cuando las necesite</td></tr>
+          <tr><td>Atención</td><td>Soporte general, a veces en inglés</td><td>Trato directo con quien construyó su sistema</td></tr>
+          <tr><td>Tiempo para empezar</td><td>Inmediato</td><td>Unas semanas de desarrollo, por etapas</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+</div>
+<div class="panel" data-panel="proceso" role="tabpanel" aria-labelledby="tab-proceso" hidden>
+<section id="proceso">
+  <div class="wrap">
+    <h2>Cómo trabajamos</h2>
+    <ol class="steps">
+      <li><h3>Conversación inicial</h3><p>Unas pocas preguntas para entender su negocio, cuántas personas lo usarán y qué le urge resolver.</p></li>
+      <li><h3>Propuesta y demostración</h3><p>Le mostramos cómo quedaría su sistema y le entregamos un precio fijo por los módulos elegidos.</p></li>
+      <li><h3>Desarrollo por etapas</h3><p>Construimos primero lo más urgente. Usted revisa cada avance antes de seguir.</p></li>
+      <li><h3>Capacitación y entrega</h3><p>Enseñamos a cada usuario a usar su parte y dejamos el sistema funcionando en su servidor.</p></li>
+      <li><h3>Acompañamiento</h3><p>Resolvemos dudas tras la entrega. Las mejoras y nuevos módulos se acuerdan cuando los necesite.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="preguntas">
+  <div class="wrap">
+    <h2>Preguntas frecuentes</h2>
+    <details><summary>¿Funciona en el celular?</summary><p>Sí. Se usa desde el navegador en computadora, tablet o celular, sin instalar programas.</p></details>
+    <details><summary>¿Qué pago después de la entrega?</summary><p>El hosting o VPS, contratado directamente a nombre de su empresa. El mantenimiento y las mejoras son opcionales y se acuerdan aparte.</p></details>
+    <details><summary>¿Puedo empezar con el nivel básico y crecer después?</summary><p>Sí. Los módulos se agregan por etapas y la información que ya registró se conserva.</p></details>
+    <details><summary>¿Puede emitir facturas y boletas electrónicas?</summary><p>Sí. El sistema se conecta con un proveedor de facturación electrónica autorizado por SUNAT, para emitir comprobantes desde la misma venta.</p></details>
+    <details><summary>¿Quién es dueño de la información?</summary><p>Su empresa. El servidor está a su nombre y se configuran copias de seguridad periódicas.</p></details>
+  </div>
+</section>
+
+</div>
+<div class="cta">
+  <div class="wrap">
+    <h2>Conversemos sobre su sistema</h2>
+    <p>Cuéntenos cómo trabaja hoy su negocio y le preparamos una propuesta con precio fijo y una demostración adaptada a usted.</p>
+    <a class="btn" href="https://wa.me/51945906676?text=Hola%2C%20quiero%20una%20propuesta%20de%20sistema%20para%20mi%20negocio" rel="noopener">Escribir por WhatsApp</a> <a class="btn ghost" href="#demo">Volver a la demostración</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>Kuntek · Cajamarca, Perú. Documento informativo. Los datos de la demostración son de ejemplo y los precios de plataformas externas son referenciales.</footer>
+</div>
+
+<script>
+const MODULES = [
+  {id:"clientes", name:"Clientes y contactos", desc:"Ficha de cada cliente con datos, compras, deudas y notas.", level:1},
+  {id:"cotizaciones", name:"Cotizaciones", desc:"Cotizaciones en PDF listas para enviar, con vencimiento y estado.", level:1},
+  {id:"ventas", name:"Ventas", desc:"Registro de cada venta con su detalle y vendedor.", level:1},
+  {id:"agenda", name:"Seguimiento y recordatorios", desc:"Tareas del día: llamadas, visitas y cotizaciones por vencer.", level:1},
+  {id:"usuarios", name:"Usuarios y permisos", desc:"Cada persona con su cuenta y acceso solo a lo que le corresponde.", level:1},
+  {id:"embudo", name:"Embudo de ventas", desc:"Tablero que muestra en qué etapa está cada oportunidad.", level:2},
+  {id:"inventario", name:"Almacén e inventario", desc:"Stock en tiempo real, entradas, salidas y alertas de stock bajo.", level:2},
+  {id:"compras", name:"Compras y proveedores", desc:"Órdenes de compra, proveedores y seguimiento de pedidos.", level:2},
+  {id:"cobranzas", name:"Caja y cobranzas", desc:"Pagos recibidos, cuentas por cobrar y cierre de caja.", level:2},
+  {id:"facturacion", name:"Facturación electrónica", desc:"Facturas y boletas electrónicas emitidas desde la venta.", level:2},
+  {id:"contabilidad", name:"Contabilidad", desc:"Ingresos, egresos e impuestos del mes, con reportes para su contador.", level:3},
+  {id:"sucursales", name:"Varias sucursales y almacenes", desc:"Control separado y consolidado de cada local o almacén.", level:3},
+  {id:"mensajes", name:"Avisos por WhatsApp y correo", desc:"Recordatorios de pago y confirmaciones de pedido automáticos.", level:3},
+  {id:"indicadores", name:"Indicadores avanzados", desc:"Metas por vendedor, comparación entre meses y proyecciones.", level:3},
+  {id:"historial", name:"Historial de cambios", desc:"Registro de quién creó, cambió o anuló cada documento.", level:3}
+];
+const LEVELS = {basico:1, intermedio:2, avanzado:3};
+const LEVEL_TEXT = {
+  basico:"Para empezar a ordenar clientes y ventas: fichas de clientes, cotizaciones, registro de ventas, recordatorios y usuarios con permisos.",
+  intermedio:"Para negocios que venden y manejan stock: suma el embudo de ventas, almacén, compras, caja y cobranzas, y facturación electrónica.",
+  avanzado:"Para empresas con varios locales o más control: suma contabilidad, sucursales, avisos automáticos, indicadores por vendedor e historial de cambios.",
+  personalizado:"Usted elige exactamente los módulos que necesita, sin pagar por lo que no usará."
+};
+
+let level = "intermedio";
+let custom = new Set(MODULES.filter(m => m.level <= 2).map(m => m.id));
+let activeMod = "inicio";
+
+function enabled(){
+  if(level === "personalizado") return custom;
+  return new Set(MODULES.filter(m => m.level <= LEVELS[level]).map(m => m.id));
+}
+
+/* Module table */
+(function(){
+  const tb = document.querySelector("#modTable tbody");
+  tb.innerHTML = MODULES.map(m => {
+    const cells = [1,2,3].map(l => l >= m.level
+      ? '<td class="c"><span class="yes" aria-label="Incluido">✓</span></td>'
+      : '<td class="c"><span class="no" aria-label="No incluido">–</span></td>').join("");
+    return `<tr><td><strong>${m.name}</strong><span class="d">${m.desc}</span></td>${cells}</tr>`;
+  }).join("");
+})();
+
+/* Custom panel */
+(function(){
+  const g = document.getElementById("customGrid");
+  g.innerHTML = MODULES.map(m =>
+    `<label><input type="checkbox" value="${m.id}" ${custom.has(m.id) ? "checked" : ""}><span>${m.name}</span></label>`
+  ).join("");
+  g.addEventListener("change", e => {
+    if(e.target.checked) custom.add(e.target.value); else custom.delete(e.target.value);
+    render();
+  });
+})();
+
+function updateSummary(){
+  const list = MODULES.filter(m => custom.has(m.id)).map(m => "• " + m.name);
+  document.getElementById("summary").value = list.length
+    ? "Módulos que me interesan para mi sistema:\n" + list.join("\n")
+    : "Aún no ha marcado ningún módulo.";
+}
+
+const fmt = n => "S/ " + n.toLocaleString("es-PE");
+
+function chartSVG(showGoal){
+  const months = ["May","Jun","Jul","Ago","Set","Oct"];
+  const vals = [31.2,35.8,33.1,40.6,44.9,48.3];
+  const goal = 45, max = 52, W = 320, H = 150, base = 128, bw = 32, gap = (W - 20 - bw*6)/5;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Ventas de los últimos seis meses en miles de soles">`;
+  vals.forEach((v,i) => {
+    const h = v/max*(base-14), x = 10 + i*(bw+gap);
+    const last = i === vals.length-1;
+    s += `<rect x="${x}" y="${base-h}" width="${bw}" height="${h}" rx="4" fill="${last ? "var(--accent)" : "var(--teal)"}" opacity="${last ? 1 : .75}"></rect>`;
+    s += `<text x="${x+bw/2}" y="${base-h-4}" font-size="9" text-anchor="middle" fill="var(--muted)">${v}k</text>`;
+    s += `<text x="${x+bw/2}" y="${base+14}" font-size="10" text-anchor="middle" fill="var(--muted)">${months[i]}</text>`;
+  });
+  if(showGoal){
+    const y = base - goal/max*(base-14);
+    s += `<line x1="6" x2="${W-6}" y1="${y}" y2="${y}" stroke="var(--danger)" stroke-dasharray="5 4" stroke-width="1.5"></line>`;
+    s += `<text x="${W-8}" y="${y-5}" font-size="9" text-anchor="end" fill="var(--danger)">Meta S/ 45k</text>`;
+  }
+  return s + "</svg>";
+}
+
+const CLIENTS = [
+  {n:"Comercial Los Andes SAC", doc:"RUC 20481234561", tel:"976 412 380", last:"24 oct", debt:0, seller:"Luis Chávez", contact:"Ricardo Vásquez, compras", addr:"Jr. Amazonas 845, Cajamarca", year:38420, notes:[["Prefiere entregas los lunes","12 oct"],["Pidió precio especial por volumen","03 oct"]]},
+  {n:"Bodega Santa Elena", doc:"DNI 41235678", tel:"945 220 117", last:"22 oct", debt:486, seller:"Carmen Rojas", contact:"Elena Cueva, propietaria", addr:"Av. Atahualpa 1210, Cajamarca", year:6870, notes:[["Paga con Yape al recibir","22 oct"],["Interesada en leche evaporada por caja","15 oct"]]},
+  {n:"Distribuidora El Valle EIRL", doc:"RUC 20601122334", tel:"976 880 541", last:"21 oct", debt:8174, seller:"Luis Chávez", contact:"Marco Huamán, gerente", addr:"Jr. Del Comercio 332, Baños del Inca", year:52310, notes:[["Crédito aprobado a 15 días","01 oct"],["Negociando pedido grande para noviembre","20 oct"]]},
+  {n:"Minimarket La Colmena", doc:"RUC 10412233445", tel:"951 334 902", last:"18 oct", debt:2960, seller:"Jorge Mendoza", contact:"Lucía Terrones, administradora", addr:"Jr. Silva Santisteban 410, Cajamarca", year:14250, notes:[["Factura vencida, llamar el lunes","26 oct"]]},
+  {n:"Abarrotes San José", doc:"DNI 70123456", tel:"938 117 226", last:"15 oct", debt:1120, seller:"Carmen Rojas", contact:"José Chilón, propietario", addr:"Jr. Junín 77, Cajamarca", year:5940, notes:[["Compra cada quince días","15 oct"]]}
+];
+let selClient = 0;
+const S = n => (n < 0 ? "-S/ " : "S/ ") + Math.abs(n).toLocaleString("es-PE", {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2});
+const tg = (t,k) => `<span class="tag ${k}">${t}</span>`;
+const M = t => `<span class="m">${t}</span>`;
+const UL = items => `<ul>${items.map(([a,b]) => `<li><span>${a}</span>${b}</li>`).join("")}</ul>`;
+const W = (title, body, full) => `<div class="w${full ? " full" : ""}"><h4>${title}</h4>${body}</div>`;
+const tools = (ph, btns) => `<div class="tools"><span class="search">${ph}</span>${btns.filter(Boolean).map((b,i) => `<button type="button" class="mbtn${i ? " ghost" : ""}">${b}</button>`).join("")}</div>`;
+const KP = arr => `<div class="kpis">${arr.map(([v,l,w]) => `<div class="kpi${w ? " warn" : ""}"><b>${v}</b><span>${l}</span></div>`).join("")}</div>`;
+function tbl(head, rows, attrs){
+  return `<div class="tscroll"><table class="mini-table"><thead><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr></thead><tbody>${
+    rows.map((r,i) => `<tr${attrs ? attrs[i] : ""}>${r.map(c => `<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+
+const VIEWS = {
+  inicio: has => {
+    let h = "";
+    let k = [];
+    if(has("ventas")) k.push([S(48320),"Ventas del mes"]);
+    if(has("clientes")) k.push(["14","Clientes nuevos"]);
+    if(has("cotizaciones")) k.push(["9","Cotizaciones abiertas"]);
+    if(has("cobranzas")) k.push([S(12740),"Por cobrar"]);
+    if(has("inventario")) k.push(["5","Productos con stock bajo",1]);
+    if(has("facturacion")) k.push(["23","Comprobantes electrónicos hoy"]);
+    if(k.length) h += KP(k);
+    let g = "";
+    if(has("ventas")) g += W("Ventas de los últimos 6 meses", chartSVG(has("indicadores")));
+    if(has("agenda")) g += W("Pendientes de hoy", UL([["Llamar a Comercial Los Andes por la cotización C-0142",M("10:00")],["Visita a Bodega Santa Elena",M("12:30")],["Confirmar pedido de Minimarket La Colmena",M("16:00")]]));
+    if(has("embudo")) g += W("Embudo de ventas", UL([["Interesado, 4 oportunidades",M(S(9150))],["Cotizado, 3 oportunidades",M(S(14460))],["Negociando, 2 oportunidades",M(S(18100))],["Cerrado este mes, 3",M(S(9850))]]));
+    if(has("inventario")) g += W("Stock bajo", UL([["Arroz extra 50 kg",tg("6 de 20 mín.","bad")],["Aceite vegetal 1 L",tg("18 de 60 mín.","bad")],["Azúcar rubia 50 kg",tg("4 de 15 mín.","bad")]]));
+    if(has("compras")) g += W("Compras en camino", UL([["OC-0057, Molino San Martín",tg("Llega jueves","pend")],["OC-0058, Distribuidora Norte",tg("En camino","pend")]]));
+    if(has("indicadores")) g += W("Avance de meta por vendedor", meters());
+    if(has("contabilidad")) g += W("Resumen contable de octubre", UL([["Ingresos",M(S(48320))],["Egresos",M(S(31950))],["IGV estimado por pagar",M(S(2497))]]));
+    if(has("mensajes")) g += W("Avisos automáticos de hoy", UL([["Recordatorios de pago por WhatsApp",M("12")],["Confirmaciones de pedido por correo",M("5")]]));
+    if(has("historial")) g += W("Actividad reciente", UL([["Carmen cambió el precio de Aceite vegetal 1 L",M("09:42")],["Luis anuló la nota NV-0308",M("Ayer")]]));
+    if(has("clientes") && !has("ventas")) g += W("Clientes recientes", UL([["Comercial Los Andes",M("Hace 2 días")],["Bodega Santa Elena",M("Hace 5 días")]]));
+    if(g) h += `<div class="grid">${g}</div>`;
+    return h;
+  },
+
+  clientes: has => {
+    const head = ["Cliente","Documento","Teléfono","Última compra"].concat(has("cobranzas") ? ["Deuda"] : []).concat(has("usuarios") ? ["Vendedor"] : []);
+    const rows = CLIENTS.map(c => [`<strong>${c.n}</strong>`, c.doc, c.tel, c.last]
+      .concat(has("cobranzas") ? [c.debt ? tg(S(c.debt),"pend") : tg("Al día","ok")] : [])
+      .concat(has("usuarios") ? [c.seller] : []));
+    const attrs = CLIENTS.map((c,i) => ` data-client="${i}" class="${i === selClient ? "sel" : ""}"`);
+    const c = CLIENTS[selClient];
+    const ficha = `<div class="w"><h4>${c.n}</h4>
+      <div class="field-m">Contacto<span class="v">${c.contact}</span></div>
+      <div class="field-m">Dirección<span class="v">${c.addr}</span></div>
+      <div class="field-m">Compras en 2026<span class="v">${S(c.year)}</span></div>
+      <h4 style="margin-top:14px">Notas del vendedor</h4>${UL(c.notes.map(n => [n[0], M(n[1])]))}</div>`;
+    return tools("Buscar por nombre, RUC o DNI", ["+ Nuevo cliente"]) +
+      `<div class="split"><div class="w"><h4>Clientes (5 de 386)</h4>${tbl(head, rows, attrs)}<p class="hint">Toque un cliente para ver su ficha.</p></div>${ficha}</div>`;
+  },
+
+  cotizaciones: has => {
+    const rows = [
+      ["C-0142","Comercial Los Andes","20 oct","30 oct",S(8400),tg("Enviada","pend")],
+      ["C-0141","Minimarket La Colmena","18 oct","28 oct",S(2960),tg("Enviada","pend")],
+      ["C-0140","Restaurante El Fogón","15 oct","25 oct",S(2300),tg("Aceptada","ok")],
+      ["C-0139","Hostal El Mirador","02 oct","12 oct",S(1540),tg("Vencida","bad")]
+    ];
+    const prev = `<div class="w doc"><h4>Cotización C-0142</h4><p class="hint" style="margin:0 0 8px">Comercial Los Andes SAC, válida hasta el 30 de octubre</p>
+      ${tbl(["Producto","Cant.","P. unit.","Total"],[["Arroz extra 50 kg","40",S(165),S(6600)],["Aceite vegetal 1 L","120",S(8.5),S(1020)],["Azúcar rubia 50 kg","4",S(195),S(780)]])}
+      <div class="total">Total con IGV <b>${S(8400)}</b></div>
+      <div class="tools" style="margin:10px 0 0">${["Descargar PDF", has("mensajes") ? "Enviar por WhatsApp" : "", has("ventas") ? "Convertir en venta" : ""].filter(Boolean).map((b,i) => `<button type="button" class="mbtn${i ? " ghost" : ""}">${b}</button>`).join("")}</div></div>`;
+    return KP([["9","Abiertas"],["11","Aceptadas este mes"],["2","Vencidas sin respuesta",1]]) +
+      tools("Buscar cotización o cliente", ["+ Nueva cotización"]) +
+      `<div class="split"><div class="w"><h4>Cotizaciones recientes</h4>${tbl(["N.°","Cliente","Fecha","Vence","Monto","Estado"], rows)}</div>${prev}</div>`;
+  },
+
+  ventas: has => {
+    const f = has("facturacion");
+    const form = `<div class="w"><h4>Nueva venta</h4>
+      <div class="field-m">Cliente<span class="v">Bodega Santa Elena</span></div>
+      ${f ? `<div class="field-m">Comprobante<span class="minseg"><b>Boleta</b><i>Factura</i></span></div>` : ""}
+      ${tbl(["Producto","Cant.","Precio","Subtotal"],[["Arroz extra 50 kg","2",S(165),S(330)],["Aceite vegetal 1 L","12",S(8.5),S(102)],["Fideos 5 kg","3",S(18),S(54)]])}
+      ${has("cobranzas") ? `<div class="field-m" style="margin-top:10px">Forma de pago<span class="v">Crédito a 15 días</span></div>` : ""}
+      <div class="total">Total <b>${S(486)}</b></div>
+      <div class="tools" style="margin:10px 0 0"><button type="button" class="mbtn">${f ? "Registrar y emitir boleta" : "Registrar venta"}</button></div>
+      ${has("inventario") ? `<p class="hint">El stock se descuenta solo al registrar la venta.</p>` : ""}</div>`;
+    const doc = f ? ["F001-00482","B001-01210","F001-00481","B001-01209"] : ["NV-0311","NV-0310","NV-0309","NV-0308"];
+    const head = [f ? "Comprobante" : "Nota de venta","Cliente","Monto"].concat(has("usuarios") ? ["Vendedor"] : []);
+    const data = [["Comercial Los Andes",6240,"Luis"],["Bodega Santa Elena",486,"Carmen"],["Distribuidora El Valle",9870,"Luis"],["Hostal El Mirador",1210,"Jorge"]];
+    const rows = data.map((d,i) => [doc[i], d[0], S(d[1])].concat(has("usuarios") ? [d[2]] : []));
+    return KP([[S(3480),"Vendido hoy, 12 ventas"],[S(14960),"Esta semana"],[S(48320),"Octubre"]]) +
+      `<div class="split">${form}${W("Últimas ventas", tbl(head, rows))}</div>`;
+  },
+
+  agenda: has => {
+    const task = (t, txt, who) => `<li class="task"><label><input type="checkbox"><span>${txt}${has("usuarios") ? ` <em>${who}</em>` : ""}</span></label>${M(t)}</li>`;
+    const today = `<ul>${task("10:00","Llamar a Comercial Los Andes por la cotización C-0142","Luis")}${task("12:30","Visita a Bodega Santa Elena","Carmen")}${task("16:00","Confirmar pedido de Minimarket La Colmena","Jorge")}${task("17:30","Enviar lista de precios de noviembre","Rosa")}</ul>`;
+    const week = UL([
+      ["Vence la cotización C-0142, Comercial Los Andes",M("Mié 28")],
+      [has("compras") ? "Llega OC-0057 de Molino San Martín" : "Visita a Hostal El Mirador",M("Jue 29")],
+      ["Cobrar a Minimarket La Colmena",M("Vie 30")],
+      ["Revisión semanal de ventas",M("Sáb 31")]
+    ]);
+    return tools("Buscar tarea o cliente", ["+ Nueva tarea"]) +
+      `<div class="split">${W("Hoy, martes 27 de octubre", today + `<p class="hint">Marque una tarea para darla por hecha.</p>`)}${W("Esta semana", week)}</div>`;
+  },
+
+  usuarios: has => {
+    const users = [["Rosa Díaz","Gerencia","Ahora"],["Luis Chávez","Ventas","Hace 10 min"],["Carmen Rojas","Ventas","Hace 1 h"],["Jorge Mendoza","Ventas","Ayer"],["Pedro Quispe","Almacén","Hace 25 min"],["Ana Torres","Contabilidad","Hace 3 días"]];
+    const perms = {
+      Gerencia: MODULES.map(m => m.id),
+      Ventas: ["clientes","cotizaciones","ventas","agenda","embudo","cobranzas","facturacion","mensajes"],
+      "Almacén": ["inventario","compras","sucursales","agenda"],
+      Contabilidad: ["contabilidad","facturacion","cobranzas","compras","ventas","historial"]
+    };
+    const mods = MODULES.filter(m => has(m.id) && m.id !== "usuarios").slice(0, 8);
+    const matrix = tbl(["Rol"].concat(mods.map(m => m.name)), Object.keys(perms).map(r => [`<strong>${r}</strong>`].concat(mods.map(m => perms[r].includes(m.id) ? '<span class="yes">✓</span>' : '<span class="no">–</span>'))));
+    return tools("Buscar usuario", ["+ Nuevo usuario"]) +
+      W("Usuarios (6 cuentas, sin costo adicional por usuario)", tbl(["Nombre","Rol","Último acceso","Estado"], users.map(u => [`<strong>${u[0]}</strong>`, u[1], u[2], tg("Activo","ok")])), true) +
+      `<div style="height:12px"></div>` + W("Qué puede ver cada rol", matrix + `<p class="hint">Cada permiso se activa o desactiva por rol.</p>`, true);
+  },
+
+  embudo: has => {
+    const cols = [
+      ["Interesado",[["Bodega Santa Elena",3200,"Carmen","2 días"],["Abarrotes San José",1850,"Carmen","4 días"],["Hostal El Mirador",2700,"Jorge","1 día"],["Panadería La Espiga",1400,"Luis","6 días"]]],
+      ["Cotizado",[["Comercial Los Andes",8400,"Luis","7 días"],["Minimarket La Colmena",2960,"Jorge","9 días"],["Cafetería Plaza",3100,"Carmen","3 días"]]],
+      ["Negociando",[["Distribuidora El Valle",12500,"Luis","5 días"],["Hotel Las Lomas",5600,"Jorge","2 días"]]],
+      ["Cerrado",[["Tienda Doña Carmen",4100,"Carmen","Ganado"],["Restaurante El Fogón",2300,"Jorge","Ganado"],["Pollería El Dorado",3450,"Luis","Ganado"]]]
+    ];
+    const html = cols.map(([name, cards]) => `<div class="col"><h5>${name} (${cards.length})<br><b>${S(cards.reduce((a,c) => a + c[1], 0))}</b></h5>${
+      cards.map(c => `<div class="card"><b>${c[0]}</b>${S(c[1])}<span class="cm">${has("usuarios") ? c[2] + ", " : ""}${c[3]}</span></div>`).join("")}</div>`).join("");
+    return KP([[S(41710),"En proceso"],["38 %","Tasa de cierre"],["6 días","Tiempo promedio por etapa"]]) +
+      tools("Buscar oportunidad", ["+ Nueva oportunidad"]) +
+      W("Oportunidades por etapa", `<div class="pipe">${html}</div><p class="hint">En el sistema real, cada tarjeta se arrastra de una etapa a otra.</p>`, true);
+  },
+
+  inventario: has => {
+    const suc = has("sucursales");
+    const prods = [["P-001","Arroz extra 50 kg","Centro",6,20,165],["P-002","Aceite vegetal 1 L","Centro",18,60,8.5],["P-003","Azúcar rubia 50 kg","Baños del Inca",4,15,195],["P-004","Harina 50 kg","Centro",7,10,142],["P-005","Sal yodada 1 kg","Baños del Inca",20,40,1.8],["P-006","Fideos 5 kg","Centro",64,30,18],["P-007","Leche evaporada caja x24","Centro",41,25,98]];
+    const head = ["Código","Producto"].concat(suc ? ["Almacén"] : []).concat(["Stock","Mínimo","Precio","Estado"]);
+    const rows = prods.map(p => [p[0], `<strong>${p[1]}</strong>`].concat(suc ? [p[2]] : []).concat([p[3], p[4], S(p[5]), p[3] < p[4] ? tg("Bajo","bad") : tg("Normal","ok")]));
+    const mov = UL([
+      [`Salida por venta ${has("facturacion") ? "F001-00482" : "NV-0311"}, 10 sacos de arroz`, M("09:15")],
+      [has("compras") ? "Entrada por OC-0056, 60 aceites" : "Entrada manual, 60 aceites", M("11:40")],
+      ["Ajuste por merma, 2 cajas de leche", M("12:05")]
+    ]);
+    return KP([["5","Productos con stock bajo",1],["214","Productos registrados"],[S(21480),"Valor del inventario"]]) +
+      tools("Buscar producto o código", ["+ Nuevo producto","Ajuste de stock"]) +
+      `<div class="split">${W("Productos", tbl(head, rows))}${W("Movimientos de hoy", mov)}</div>`;
+  },
+
+  compras: has => {
+    const rows = [["OC-0059","Azucarera Andina","27 oct",S(2340),tg("Por aprobar","pend")],["OC-0058","Distribuidora Norte","26 oct",S(4080),tg("En camino","pend")],["OC-0057","Molino San Martín","25 oct",S(5200),tg("Llega jueves","pend")],["OC-0056","Aceites del Norte","20 oct",S(3060),tg("Recibida","ok")]];
+    const prov = UL([["Molino San Martín, arroz",M("Crédito 30 días")],["Distribuidora Norte, aceites",M("Contado")],["Azucarera Andina, azúcar",M("Crédito 15 días")]]);
+    return KP([[S(14680),"Comprado en octubre"],["3","Órdenes pendientes"],["12","Proveedores activos"]]) +
+      tools("Buscar orden o proveedor", ["+ Nueva orden de compra"]) +
+      `<div class="split">${W("Órdenes de compra", tbl(["N.°","Proveedor","Fecha","Monto","Estado"], rows) + (has("inventario") ? `<p class="hint">Al recibir una orden, el stock se actualiza solo.</p>` : ""))}${W("Proveedores", prov)}</div>`;
+  },
+
+  cobranzas: has => {
+    const f = has("facturacion");
+    const caja = UL([["Apertura de caja",M(S(300))],["Ventas en efectivo",M(S(1840))],["Yape y Plin",M(S(960))],["Transferencias",M(S(680))],["Gastos de caja",M(S(-120))],["<strong>Efectivo esperado en caja</strong>",`<strong>${S(2020)}</strong>`]]) +
+      `<div class="tools" style="margin:10px 0 0"><button type="button" class="mbtn">Cerrar caja</button></div>`;
+    const rows = [
+      ["Distribuidora El Valle", f ? "F001-00460" : "NV-0290", S(8174), "05 nov", tg("Al día","ok")],
+      ["Minimarket La Colmena", f ? "F001-00471" : "NV-0298", S(2960), "20 oct", tg("7 días de atraso","bad")],
+      ["Abarrotes San José", f ? "B001-01188" : "NV-0302", S(1120), "25 oct", tg("2 días de atraso","pend")],
+      ["Bodega Santa Elena", f ? "B001-01210" : "NV-0310", S(486), "11 nov", tg("Al día","ok")]
+    ];
+    return KP([[S(3480),"Cobrado hoy"],[S(12740),"Por cobrar"],[S(4080),"Con atraso",1]]) +
+      `<div class="split">${W("Cuentas por cobrar", tbl(["Cliente","Documento","Monto","Vence","Estado"], rows) + (has("mensajes") ? `<div class="tools" style="margin:10px 0 0"><button type="button" class="mbtn ghost">Enviar recordatorios por WhatsApp</button></div>` : ""))}${W("Caja de hoy", caja)}</div>`;
+  },
+
+  facturacion: has => {
+    const rows = [
+      ["F001-00482","Factura","Comercial Los Andes",S(6240),tg("Aceptada","ok")],
+      ["B001-01210","Boleta","Bodega Santa Elena",S(486),tg("Aceptada","ok")],
+      ["F001-00481","Factura","Distribuidora El Valle",S(9870),tg("Aceptada","ok")],
+      ["FC01-00003","Nota de crédito","Restaurante El Fogón",S(-120),tg("Aceptada","ok")],
+      ["B001-01211","Boleta","Cliente varios",S(58.5),tg("Por enviar","pend")]
+    ];
+    return KP([["128","Facturas en octubre"],["342","Boletas en octubre"],["3","Notas de crédito"],["0","Rechazadas"]]) +
+      tools("Buscar por serie, número o cliente", ["+ Nueva factura","+ Nueva boleta"]) +
+      W("Comprobantes electrónicos", tbl(["Serie y número","Tipo","Cliente","Monto","Estado SUNAT"], rows) +
+        `<p class="hint">Los comprobantes se envían a SUNAT mediante un proveedor autorizado. El cliente recibe su PDF y XML por correo.</p>`, true);
+  },
+
+  contabilidad: has => {
+    const gastos = [["Mercadería",24600],["Planilla",4800],["Alquiler",1500],["Servicios",1050]];
+    const bars = `<ul style="display:block">${gastos.map(([n,v]) => `<li style="display:block"><div style="display:flex;justify-content:space-between"><span>${n}</span><span class="m">${S(v)}</span></div><div class="meter"><i style="width:${v/24600*100}%"></i></div></li>`).join("")}</ul>`;
+    const igv = UL([["IGV de ventas",M(S(7371))],["IGV de compras",M(S(-4874))],["<strong>IGV estimado por pagar</strong>",`<strong>${S(2497)}</strong>`]]);
+    return KP([[S(48320),"Ingresos de octubre"],[S(31950),"Egresos de octubre"],[S(16370),"Resultado estimado"]]) +
+      `<div class="split">${W("Egresos por categoría", bars)}${W("Impuestos del mes", igv)}</div>` +
+      `<div style="height:12px"></div>` + W("Reportes para su contador", `<div class="tools" style="margin:0"><button type="button" class="mbtn">Exportar registro de ventas</button><button type="button" class="mbtn ghost">Exportar registro de compras</button><button type="button" class="mbtn ghost">Estado de resultados</button></div>`, true);
+  },
+
+  sucursales: has => {
+    const s = [["Cajamarca Centro",27400,"2","4"],["Baños del Inca",13120,"3","2"],["Celendín",7800,"0","1"]];
+    const cards = s.map(([n,v,b,u]) => W(n, UL([["Ventas de octubre",M(S(v))],["Productos con stock bajo",b === "0" ? tg("Ninguno","ok") : tg(b,"bad")],["Personal conectado",M(u)]]))).join("");
+    return KP([["3","Locales"],[S(48320),"Ventas consolidadas"]]) +
+      `<div class="grid three">${cards}</div><div style="height:12px"></div>` +
+      W("Traslados entre almacenes", UL([["T-019, 20 sacos de arroz, Centro a Baños del Inca",tg("En camino","pend")],["T-018, 30 cajas de leche, Centro a Celendín",tg("Recibido","ok")]]), true);
+  },
+
+  mensajes: has => {
+    const tpl = [["Recordatorio de pago, un día antes del vencimiento",1],["Confirmación de pedido",1],["Cotización enviada",1],["Saludo de cumpleaños al cliente",0]];
+    const list = `<ul>${tpl.map(([t,on]) => `<li class="task"><label><input type="checkbox" class="sw" ${on ? "checked" : ""}><span>${t}</span></label></li>`).join("")}</ul>`;
+    const prev = `<div class="chat"><div class="bubble">Hola, Bodega Santa Elena. Le recordamos que su boleta B001-01210 por S/ 486 vence mañana. Puede pagar por Yape o transferencia. ¡Gracias por su preferencia!<small>08:00 ✓✓</small></div></div>`;
+    return KP([["12","Recordatorios de pago hoy"],["5","Confirmaciones de pedido"],["87 %","Mensajes leídos"]]) +
+      `<div class="split">${W("Mensajes automáticos", list + `<p class="hint">Active solo los avisos que quiera enviar.</p>`)}${W("Vista previa por WhatsApp", prev)}</div>`;
+  },
+
+  indicadores: has => {
+    const top = UL([["Arroz extra 50 kg",M(S(19800))],["Aceite vegetal 1 L",M(S(8160))],["Azúcar rubia 50 kg",M(S(6630))]]);
+    return KP([["+7.6 %","Ventas frente a setiembre"],[S(402),"Ticket promedio"],["38 %","Tasa de cierre"]]) +
+      `<div class="split">${W("Ventas frente a la meta mensual", chartSVG(true))}${W("Meta por vendedor", meters(true))}</div>` +
+      `<div style="height:12px"></div>` + W("Productos más vendidos en octubre", top, true);
+  },
+
+  historial: has => {
+    const rows = [["27 oct, 09:42","Carmen Rojas","Cambió el precio","Aceite vegetal 1 L, de S/ 8.20 a S/ 8.50"],["27 oct, 09:15","Luis Chávez","Registró venta", has("facturacion") ? "F001-00482" : "NV-0311"],["26 oct, 18:05","Luis Chávez","Anuló","NV-0308"],["26 oct, 16:30","Pedro Quispe","Ajustó stock","Leche evaporada, -2 cajas"],["26 oct, 11:02","Rosa Díaz","Creó usuario","Ana Torres, Contabilidad"]];
+    return tools("Buscar por usuario, acción o documento", ["Exportar"]) +
+      W("Registro de cambios", tbl(["Fecha y hora","Usuario","Acción","Detalle"], rows) + `<p class="hint">Nada se borra sin dejar rastro: cada cambio queda registrado con su autor.</p>`, true);
+  }
+};
+
+function meters(amounts){
+  const v = [["Luis Chávez",92,18400,20000],["Carmen Rojas",78,11700,15000],["Jorge Mendoza",64,9600,15000]];
+  return `<ul style="display:block">${v.map(([n,p,a,g]) => `<li style="display:block"><div style="display:flex;justify-content:space-between;gap:8px"><span>${n}</span><span class="m">${amounts ? S(a) + " de " + S(g) : p + " %"}</span></div><div class="meter"><i style="width:${p}%"></i></div></li>`).join("")}</ul>`;
+}
+
+function render(){
+  const on = enabled();
+  const has = id => on.has(id);
+
+  document.querySelectorAll(".seg button").forEach(b => b.setAttribute("aria-pressed", b.dataset.level === level));
+  document.getElementById("levelDesc").textContent = LEVEL_TEXT[level];
+  document.getElementById("customPanel").classList.toggle("on", level === "personalizado");
+  updateSummary();
+
+  if(activeMod !== "inicio" && !has(activeMod)) activeMod = "inicio";
+
+  const items = [{id:"inicio", name:"Inicio"}].concat(MODULES.filter(m => has(m.id)));
+  document.getElementById("sideList").innerHTML = items.map(m =>
+    `<li><button type="button" data-mod="${m.id}" class="${m.id === activeMod ? "active" : ""}"${m.id === activeMod ? ' aria-current="page"' : ""}>${m.name}</button></li>`
+  ).join("");
+
+  const main = document.getElementById("main");
+  if(on.size === 0){
+    main.innerHTML = '<div class="empty">Marque al menos un módulo arriba para ver cómo quedaría su sistema.</div>';
+    return;
+  }
+
+  const mod = MODULES.find(x => x.id === activeMod);
+  let h = `<div class="bar"><h3>${mod ? mod.name : "Inicio"}</h3><div class="right">`;
+  if(has("sucursales")) h += `<span class="pill">Local: Todos ▾</span>`;
+  h += `<span class="pill">Octubre 2026</span>`;
+  h += `<span class="pill">${has("usuarios") ? "Rosa Díaz, Gerencia" : "Mi cuenta"}</span></div></div>`;
+  h += `<div class="info">${mod ? mod.desc : "Resumen de su negocio. Toque cualquier opción del menú para abrir la pantalla de ese módulo."}</div>`;
+  h += `<div class="view">${VIEWS[activeMod](has)}</div>`;
+  main.innerHTML = h;
+}
+
+document.getElementById("main").addEventListener("click", e => {
+  const r = e.target.closest("[data-client]"); if(!r) return;
+  selClient = +r.dataset.client; render();
+});
+
+document.querySelector(".seg").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  level = b.dataset.level; render();
+});
+document.getElementById("sideList").addEventListener("click", e => {
+  const b = e.target.closest("button"); if(!b) return;
+  activeMod = b.dataset.mod; render();
+});
+
+/* Calculator */
+const uIn = document.getElementById("uIn"), gIn = document.getElementById("gIn"), yIn = document.getElementById("yIn");
+function calc(){
+  const u = +uIn.value, gr = +gIn.value, y = +yIn.value;
+  const price = +document.querySelector('input[name="plan"]:checked').value;
+  document.getElementById("uOut").textContent = u;
+  document.getElementById("gOut").textContent = gr;
+  document.getElementById("yOut").textContent = y;
+  const yearly = [];
+  for(let i = 0; i < y; i++){ const users = u + gr*i; yearly.push({users, cost: users*price*12}); }
+  const total = yearly.reduce((a,b) => a + b.cost, 0);
+  document.getElementById("themTotal").textContent = "US$ " + total.toLocaleString("es-PE");
+  const last = yearly[yearly.length-1];
+  document.getElementById("themDetail").textContent =
+    y > 1 && gr > 0
+      ? `Empieza en US$ ${yearly[0].cost.toLocaleString("es-PE")} el primer año y llega a US$ ${last.cost.toLocaleString("es-PE")} el año ${y}, con ${last.users} usuarios.`
+      : `US$ ${yearly[0].cost.toLocaleString("es-PE")} por año con ${u} usuarios.`;
+  const W = 300, H = 120, base = 98, max = Math.max(...yearly.map(v => v.cost)), bw = Math.min(46, (W-20)/y - 12);
+  const step = (W-20)/y;
+  let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Costo por año en la plataforma por usuario">`;
+  yearly.forEach((v,i) => {
+    const hh = v.cost/max*(base-18), x = 10 + i*step + (step-bw)/2;
+    s += `<rect x="${x}" y="${base-hh}" width="${bw}" height="${hh}" rx="4" fill="var(--danger)" opacity="${.55 + .45*(i+1)/y}"></rect>`;
+    s += `<text x="${x+bw/2}" y="${base-hh-4}" font-size="9" text-anchor="middle" fill="var(--ink)">$${(v.cost/1000).toFixed(1)}k</text>`;
+    s += `<text x="${x+bw/2}" y="${base+13}" font-size="10" text-anchor="middle" fill="var(--muted)">Año ${i+1}</text>`;
+  });
+  document.getElementById("themChart").innerHTML = s + "</svg>";
+}
+[uIn,gIn,yIn].forEach(el => el.addEventListener("input", calc));
+document.querySelectorAll('input[name="plan"]').forEach(el => el.addEventListener("change", calc));
+
+(function(){
+  const t = (location.hash || "").slice(1);
+  if(["basico","intermedio","avanzado","personalizado"].includes(t)) level = t;
+})();
+render(); calc();
+</script>
+
+<script>
+(() => {
+  const names = ['que-es','modulos','demo','comparar','proceso'];
+  const alias = { usuarios: 'que-es', preguntas: 'proceso', basico: 'demo', intermedio: 'demo', avanzado: 'demo', personalizado: 'demo' };
+  const tabs = [...document.querySelectorAll('.tabs [data-tab]')], panels = [...document.querySelectorAll('.panel')];
+  const show = n => {
+    panels.forEach(p => { p.hidden = p.dataset.panel !== n; });
+    tabs.forEach(t => { const on = t.dataset.tab === n; t.setAttribute('aria-selected', String(on)); if (on) t.scrollIntoView({ block: 'nearest', inline: 'center' }); });
+  };
+  const go = (n, push) => {
+    show(n);
+    if (push) history.replaceState(null, '', '#' + n);
+    const bar = document.querySelector('.tabsbar');
+    if (bar) window.scrollTo({ top: Math.max(0, bar.getBoundingClientRect().top + scrollY - (innerWidth > 880 ? 57 : 96)), behavior: 'instant' });
+  };
+  tabs.forEach(t => t.addEventListener('click', () => go(t.dataset.tab, true)));
+  document.querySelectorAll('[data-tab]:not(button)').forEach(a => a.addEventListener('click', e => { e.preventDefault(); go(a.dataset.tab, true); }));
+  const fromHash = () => {
+    const id = location.hash.slice(1); const n = names.includes(id) ? id : alias[id];
+    if (n) { show(n); const el = document.getElementById(id); if (el && id !== n) el.scrollIntoView(); }
+  };
+  addEventListener('hashchange', fromHash); fromHash();
+})();
+</script>
+</body>
+</html>
