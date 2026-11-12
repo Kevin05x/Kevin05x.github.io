@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Demostración interactiva de un sistema de pedidos y delivery: carta en el celular, pantalla de cocina, repartidores y avisos al cliente. Kuntek, Cajamarca.">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://kevin05x.github.io/sistemas/pedidos/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22kbg%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%233a68ff%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%231b3fc4%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width=%22200%22%20height=%22200%22%20rx=%2244%22%20fill=%22url(%23kbg)%22/%3E%3Cdefs%3E%3ClinearGradient%20id=%22kg%22%20x1=%220%22%20y1=%220%22%20x2=%220%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23d3e0ff%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon%20points=%2244,28%2078,46%2078,172%2044,172%22%20fill=%22url(%23kg)%22/%3E%3Cpolygon%20points=%22114,100%20148,50%20180,50%20146,100%20180,150%20148,150%22%20fill=%22%235d86ff%22/%3E%3Cpolygon%20points=%2286,100%20132,32%20146,32%20100,100%22%20fill=%22%23fff%22/%3E%3Cpolygon%20points=%22100,100%20146,32%20164,32%20118,100%22%20fill=%22%23d3e0ff%22/%3E%3Cpolygon%20points=%2286,100%20102,100%20148,168%20132,168%22%20fill=%22%23a9c3ff%22/%3E%3Cpolygon%20points=%22102,100%20118,100%20164,168%20148,168%22%20fill=%22%237fa3ff%22/%3E%3Cpolygon%20points=%2286,100%20118,100%20102,114%22%20fill=%22%233a62e6%22/%3E%3C/svg%3E">
+<title>Kuntek | Pedidos y delivery · demostración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#08090b;--surface:#101217;--surface-2:#161922;--ink:#eef1f5;--muted:#a9b2bf;--line:#232833;--accent:#2f5cf0;--accent-2:#8fb0ff;--teal:#4cc9a0;--teal-soft:#10302a;--warm:#f0b35b;--warm-soft:#2b2412;--danger:#f0836b;--danger-soft:#3a1f1a;--app:#0c0e13;color-scheme:dark;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0)}
+h1,h2,h3,h4{font-family:"Schibsted Grotesk","IBM Plex Sans",sans-serif;line-height:1.1;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,6.5vw,4rem);font-weight:800}h2{font-size:clamp(1.6rem,4.2vw,2.3rem);font-weight:700;margin-bottom:.6rem}h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 1rem}a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wide{max-width:1140px;margin:0 auto;padding:0 22px}.muted{color:var(--muted)}.lead{font-size:1.12rem;color:var(--muted);max-width:60ch}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem "Schibsted Grotesk",sans-serif}.brand em{font-style:normal;color:var(--accent-2)}
+.btn{display:inline-block;font:600 .98rem "IBM Plex Sans",sans-serif;padding:12px 18px;border-radius:10px;text-decoration:none;border:2px solid var(--line);color:var(--ink);background:transparent;cursor:pointer}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.sm{padding:8px 14px;font-size:.9rem}
+.crumb{padding:18px 0 0;font-size:.92rem}.crumb a{color:var(--accent-2);text-decoration:none}
+.hero{padding:34px 0 6px}.hero .eb{font:500 .85rem "IBM Plex Sans";letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}.hero h1{max-width:17ch;margin-bottom:18px}
+.tabs{position:sticky;top:0;z-index:5;background:rgba(8,9,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:30px}
+.tabs .wide{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.tabs .wide::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:600 .95rem "IBM Plex Sans";color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;padding:14px 14px 11px;cursor:pointer}.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--accent)}
+[data-panel]{display:none;padding:38px 0 0}[data-panel].on{display:block}
+.pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 34px;margin:26px 0}.pillars p{color:var(--muted);margin:0}.pillars h3{margin-bottom:4px}
+@media (max-width:700px){.pillars{grid-template-columns:1fr}}
+.note{background:var(--warm-soft);border-left:5px solid var(--warm);padding:16px 18px;border-radius:0 10px 10px 0;margin:22px 0}.note p:last-child{margin:0}
+.banner{border-radius:16px;overflow:hidden;margin:24px 0;position:relative;aspect-ratio:21/8}.banner img{width:100%;height:100%;object-fit:cover}.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,11,.85),transparent 70%)}.banner div{position:absolute;z-index:1;left:24px;top:50%;transform:translateY(-50%);max-width:20ch;font:700 clamp(1.2rem,3vw,2rem) "Schibsted Grotesk"}
+@media (max-width:600px){.banner{aspect-ratio:16/9}}
+.steps{counter-reset:s;list-style:none;margin:22px 0;padding:0;display:grid;gap:14px}.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 62px;position:relative}.steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font:700 .95rem "Schibsted Grotesk"}.steps b{display:block;font:700 1.02rem "Schibsted Grotesk"}.steps span{color:var(--muted);font-size:.95rem}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}@media (max-width:700px){.two{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}.box h3{margin-bottom:8px}.box ul{margin:0;padding-left:18px;color:var(--muted)}.box li{margin:4px 0}
+
+.dh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;margin-bottom:14px}.dh p{margin:0;color:var(--muted);max-width:62ch}
+.app{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--app);box-shadow:0 30px 80px -30px rgba(47,92,240,.35)}
+.kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}.kp div{background:var(--surface);padding:12px 14px}.kp b{display:block;font:800 1.45rem/1.1 "Schibsted Grotesk"}.kp span{font-size:.8rem;color:var(--muted)}@media (max-width:700px){.kp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tag{font-size:.74rem;padding:2px 9px;border-radius:99px;white-space:nowrap}.ok{background:var(--teal-soft);color:var(--teal)}.lo{background:var(--danger-soft);color:var(--danger)}
+.fine{margin-top:12px;font-size:.84rem;color:var(--muted)}
+.cta{margin:54px 0 0;padding:30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#101a3a,#0c0e13)}.cta h2{margin-bottom:8px}.cta .btn{margin:6px 8px 0 0}
+footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+.sitebar{position:sticky;top:0;z-index:30;background:rgba(8,9,11,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.sb{display:flex;align-items:center;gap:22px;height:62px}
+.sb .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem "Schibsted Grotesk",sans-serif;letter-spacing:-.04em}.sb .brand em{font-style:normal;color:var(--accent-2)}
+.sb nav{display:flex;gap:4px;margin-left:auto}.sb nav a{text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem}.sb nav a:hover{color:var(--ink);background:var(--surface)}.sb nav a[aria-current="page"]{color:var(--ink);background:var(--surface-2)}
+@media (max-width:860px){.sitebar{position:static}.sb{height:auto;flex-wrap:wrap;padding:12px 0;gap:8px 12px}.sb nav{order:3;width:100%;margin:0;overflow-x:auto;scrollbar-width:none}.sb nav::-webkit-scrollbar{display:none}.sb .btn{margin-left:auto}.tabs{top:0!important}}
+.tabs{top:62px}
+.back{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:20px 0 0}
+.backbtn{display:inline-flex;align-items:center;gap:10px;font:600 1rem "IBM Plex Sans",sans-serif;text-decoration:none;color:#fff;background:var(--surface-2);border:2px solid var(--accent);border-radius:999px;padding:10px 20px 10px 14px;transition:background .15s}
+.backbtn span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);font-size:1rem}.backbtn:hover{background:var(--accent)}
+.backlink{color:var(--accent-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.where{color:var(--muted);font-size:.88rem;margin-left:auto}@media (max-width:700px){.where{display:none}}
+
+
+.at{display:flex;gap:4px;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--surface);align-items:center;overflow-x:auto}
+.at button{flex:none;font:600 .92rem "IBM Plex Sans";background:none;border:none;color:var(--muted);padding:8px 14px;border-radius:8px;cursor:pointer}.at button[aria-pressed="true"]{background:var(--accent);color:#fff}.at button b{background:var(--danger);color:#fff;border-radius:99px;font-size:.7rem;padding:1px 7px;margin-left:6px}
+.at .sp{flex:1}.at .tg{flex:none;font-size:.8rem;color:var(--muted);padding:0 8px}
+.pane{display:none}.pane.on{display:block}
+.pd{display:grid;grid-template-columns:minmax(0,1fr) 330px}@media (max-width:900px){.pd{grid-template-columns:minmax(0,1fr)}}
+.mn{padding:14px;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+.it{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}.it img{width:100%;aspect-ratio:4/3;object-fit:cover}.it .b{padding:10px 12px 12px;display:flex;flex-direction:column;gap:2px;flex:1}.it b{font:600 .95rem "IBM Plex Sans"}.it p{margin:0;color:var(--muted);font-size:.8rem;flex:1}.it .r{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.it .pr{font:700 1rem "Schibsted Grotesk"}
+.add{font:700 .82rem "IBM Plex Sans";background:var(--accent);color:#fff;border:none;border-radius:99px;padding:6px 13px;cursor:pointer}
+.stp{display:inline-flex;align-items:center;background:var(--accent);border-radius:99px}.stp button{width:28px;height:28px;border:none;background:none;color:#fff;cursor:pointer;font-size:1rem}.stp i{font-style:normal;min-width:18px;text-align:center;font-weight:700;font-size:.85rem}
+.tk{border-left:1px solid var(--line);padding:14px;background:var(--surface)}@media (max-width:900px){.tk{border-left:none;border-top:1px solid var(--line)}}
+.tk h4{font:700 .8rem "IBM Plex Sans";letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:0 0 8px}
+.ln{min-height:60px;max-height:190px;overflow-y:auto}.l{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line);font-size:.88rem}.empty{color:var(--muted);font-size:.88rem;padding:14px 0}
+.tt{display:flex;justify-content:space-between;font:800 1.4rem "Schibsted Grotesk";margin:10px 0 2px}.sub{color:var(--muted);font-size:.8rem}
+.tk label{font-size:.8rem;color:var(--muted);display:block;margin:10px 0 4px}.tk input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:9px 11px;font:inherit;font-size:.9rem}
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px}.seg button{font:600 .85rem "IBM Plex Sans";background:var(--bg);border:1.5px solid var(--line);color:var(--muted);border-radius:8px;padding:8px;cursor:pointer}.seg button[aria-pressed="true"]{border-color:var(--accent);color:#fff;background:#16224a}.seg.t3{grid-template-columns:repeat(3,1fr)}
+.go{margin-top:12px;width:100%;font:700 1rem "IBM Plex Sans";background:var(--teal);color:#06231a;border:none;border-radius:10px;padding:13px;cursor:pointer}.go:disabled{opacity:.4;cursor:not-allowed}
+.sent{background:var(--teal-soft);border:1px solid #1d4a3b;border-radius:10px;padding:12px;margin-top:12px;font-size:.9rem}.sent button{margin-top:8px;font:600 .85rem "IBM Plex Sans";background:transparent;border:1.5px solid var(--teal);color:var(--teal);border-radius:99px;padding:6px 14px;cursor:pointer}
+.kb{padding:14px;overflow-x:auto}.cols{display:grid;grid-template-columns:repeat(5,minmax(190px,1fr));gap:10px;min-width:980px}
+.cl{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px;min-height:260px}.cl h4{font:700 .85rem "Schibsted Grotesk";display:flex;justify-content:space-between;margin:0 0 8px}.cl h4 span{color:var(--muted);font-weight:500}
+.oc{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;margin-bottom:8px;font-size:.84rem}.oc .h{display:flex;justify-content:space-between;font-weight:700}.oc .mn2{color:var(--muted);font-weight:500;font-size:.78rem}.oc .late{color:var(--danger)}
+.oc ul{margin:6px 0;padding-left:16px;color:var(--ink)}.oc .w{color:var(--muted);font-size:.78rem}
+.oc button{margin-top:8px;width:100%;font:600 .8rem "IBM Plex Sans";background:var(--accent);color:#fff;border:none;border-radius:8px;padding:8px;cursor:pointer}.oc select{width:100%;margin-top:8px;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px;font:inherit;font-size:.8rem}
+.under{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 14px 14px}@media (max-width:800px){.under{grid-template-columns:1fr}}
+.under .bx{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px}.under h4{font:700 .85rem "IBM Plex Sans";margin:0 0 8px}
+.lg{max-height:160px;overflow-y:auto}.lg div{font-size:.8rem;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--line)}
+.kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}@media (max-width:700px){.kp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rsm{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:14px}@media (max-width:800px){.rsm{grid-template-columns:1fr}}
+.bar{margin:10px 0}.bar span{display:flex;justify-content:space-between;font-size:.88rem}.bar i{display:block;height:8px;border-radius:99px;background:var(--line);margin-top:4px;overflow:hidden}.bar i b{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--teal))}
+.rsm ul{list-style:none;margin:0;padding:0}.rsm li{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.banner{border-radius:16px;overflow:hidden;margin:24px 0;position:relative;aspect-ratio:21/8}.banner img{width:100%;height:100%;object-fit:cover}.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,11,.85),transparent 70%)}.banner div{position:absolute;z-index:1;left:24px;top:50%;transform:translateY(-50%);max-width:20ch;font:700 clamp(1.2rem,3vw,2rem) "Schibsted Grotesk"}@media (max-width:600px){.banner{aspect-ratio:16/9}}
+
+</style>
+</head>
+<body>
+<header class="sitebar"><div class="wide sb"><a class="brand" href="../../#inicio" aria-label="Kuntek, ir al inicio"><svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="kbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a68ff"/><stop offset="1" stop-color="#1b3fc4"/></linearGradient></defs><rect width="200" height="200" rx="44" fill="url(#kbg)"/><defs><linearGradient id="kg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d3e0ff"/></linearGradient></defs><polygon points="44,28 78,46 78,172 44,172" fill="url(#kg)"/><polygon points="114,100 148,50 180,50 146,100 180,150 148,150" fill="#5d86ff"/><polygon points="86,100 132,32 146,32 100,100" fill="#fff"/><polygon points="100,100 146,32 164,32 118,100" fill="#d3e0ff"/><polygon points="86,100 102,100 148,168 132,168" fill="#a9c3ff"/><polygon points="102,100 118,100 164,168 148,168" fill="#7fa3ff"/><polygon points="86,100 118,100 102,114" fill="#3a62e6"/></svg><b>kun<em>tek</em></b></a>
+  <nav aria-label="Secciones del sitio"><a href="../../#inicio">Inicio</a><a href="../../#trabajos">Trabajos</a><a href="../../#sistemas" aria-current="page">Sistemas</a><a href="../../#demos">Demos</a><a href="../../#cotizar">Cotizar</a></nav>
+  <a class="btn primary sm" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20de%20pedidos%20y%20delivery%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a></div></header>
+<div class="wide"><div class="back"><a class="backbtn" href="../../#sistemas"><span aria-hidden="true">←</span>Volver a Sistemas a medida</a><a class="backlink" href="../../#demos">Ver todas las demos</a><span class="where">Inicio › Sistemas › Pedidos y delivery</span></div></div>
+<div class="wide">
+  <section class="hero"><div class="eb">Pedidos y delivery</div><h1>Cada pedido en su lugar: del WhatsApp a la cocina y al repartidor.</h1><p class="lead">Los clientes piden desde una carta en su celular. La cocina ve los pedidos en una pantalla y el cliente recibe un aviso en cada paso.</p></section>
+</div>
+<nav class="tabs" aria-label="Secciones"><div class="wide" role="tablist"><button role="tab" data-tab="demo" aria-selected="true">Demostración</button><button role="tab" data-tab="que-es" aria-selected="false">Para qué sirve</button><button role="tab" data-tab="como" aria-selected="false">Cómo se pone en marcha</button></div></nav>
+<main class="wide">
+<div data-panel="demo" class="on">
+  <div class="dh"><div><h2>Pruébelo aquí</h2><p>Haga un pedido como cliente. Luego entre a «Cocina» y avance el pedido paso a paso: en cada paso el sistema le avisa al cliente por WhatsApp.</p></div><button class="btn sm" id="reset">Reiniciar demo</button></div>
+  <div class="app">
+    <div class="at" role="tablist"><button data-v="ped" aria-pressed="true">Pedir (vista del cliente)</button><button data-v="coc" aria-pressed="false">Cocina<b id="nb">0</b></button><button data-v="res" aria-pressed="false">Resumen del día</button><span class="sp"></span><span class="tg">Datos de ejemplo</span></div>
+    <div class="pane on" id="p-ped"><div class="pd"><div class="mn" id="mn"></div>
+      <div class="tk"><h4>Su pedido</h4><div class="ln" id="ln"></div>
+        <div class="tt"><span>Total</span><span id="tt">S/ 0.00</span></div><div class="sub" id="sb"></div>
+        <label>¿Cómo lo recibe?</label><div class="seg" id="tp"><button data-t="Delivery" aria-pressed="true">Delivery</button><button data-t="Recojo" aria-pressed="false">Recojo en local</button></div>
+        <label for="nm">Nombre</label><input id="nm" placeholder="Ej. Diego" autocomplete="given-name">
+        <div id="adw"><label for="ad">Dirección</label><input id="ad" placeholder="Ej. Jr. Los Pinos 123" autocomplete="street-address"></div>
+        <label>Pago</label><div class="seg t3" id="py"><button data-y="Yape" aria-pressed="true">Yape</button><button data-y="Efectivo" aria-pressed="false">Efectivo</button><button data-y="Tarjeta" aria-pressed="false">Tarjeta</button></div>
+        <button class="go" id="go" disabled>Hacer pedido</button><div id="sent"></div></div></div></div>
+    <div class="pane" id="p-coc"><div class="kb"><div class="cols" id="cols"></div></div>
+      <div class="under"><div class="bx"><h4>Mensajes que recibe el cliente</h4><div class="lg" id="lg"></div></div><div class="bx"><h4>Probar los tiempos</h4><p class="muted" style="margin:0 0 8px;font-size:.85rem">Los pedidos que pasan de 30 minutos se marcan en rojo para que cocina los priorice.</p><button class="btn sm" id="t10">⏩ Pasar 10 minutos</button></div></div></div>
+    <div class="pane" id="p-res"><div class="kp"><div><b id="r1">0</b><span>Pedidos de hoy</span></div><div><b id="r2">S/ 0</b><span>Ventas</span></div><div><b id="r3">S/ 0</b><span>Ticket promedio</span></div><div><b id="r4">0 min</b><span>Tiempo de entrega promedio</span></div></div>
+      <div class="rsm"><div><h4 style="margin:0 0 6px">Por tipo de entrega</h4><div id="bt"></div><h4 style="margin:16px 0 6px">En la calle ahora</h4><ul id="rp"></ul></div><div><h4 style="margin:0 0 6px">Lo más pedido</h4><ul id="top"></ul></div></div></div>
+  </div>
+  <p class="fine">Los platos, precios y pedidos son inventados. En su sistema van su carta, sus precios y sus repartidores.</p>
+</div><div data-panel="que-es">
+  <h2>Para qué sirve</h2>
+  <p class="lead">Cuando los pedidos llegan por WhatsApp, llamadas e Instagram se mezclan y se olvidan. Aquí todos entran por el mismo lugar, la cocina los ve en una pantalla y el cliente sabe en qué va su pedido.</p>
+  <div class="banner"><img src="../../img/ejemplos/pe-hero.webp" alt="Repartidor en bicicleta por una calle angosta" width="1600" height="1067" loading="lazy"><div>Cada pedido, en su lugar.</div></div>
+  <div class="pillars">
+    <div><h3>Carta en el celular</h3><p>El cliente elige sus platos, deja su dirección y paga como prefiera. Usted recibe el pedido ya armado.</p></div>
+    <div><h3>Pantalla para la cocina</h3><p>Los pedidos se ordenan por etapa: nuevo, en preparación, listo, en camino y entregado. Los atrasados se marcan en rojo.</p></div>
+    <div><h3>Repartidores</h3><p>Usted asigna cada pedido a un repartidor y sabe cuántos lleva cada uno.</p></div>
+    <div><h3>Avisos al cliente</h3><p>El cliente recibe un mensaje en cada paso. Así deja de escribir para preguntar «¿ya viene mi pedido?».</p></div>
+  </div>
+  <div class="two"><div class="box"><h3>Sirve para</h3><ul><li>Restaurantes y pollerías</li><li>Pizzerías y hamburgueserías</li><li>Cafeterías y pastelerías</li><li>Cualquier negocio con delivery</li></ul></div><div class="box"><h3>Puede sumar</h3><ul><li>Cobro en línea con tarjeta</li><li>Zonas de reparto con costo distinto</li><li>Promociones y cupones</li><li>Ver al repartidor en el mapa</li></ul></div></div>
+  <div class="note"><p>Los avisos por WhatsApp usan la conexión oficial de WhatsApp. Esa conexión tiene un costo de Meta, aparte del sistema. Se lo explico antes de empezar.</p></div>
+</div><div data-panel="como">
+  <h2>Cómo se pone en marcha</h2>
+  <ol class="steps">
+    <li><b>Conversamos sobre su negocio</b><span>Cómo recibe los pedidos hoy, cuántos repartidores tiene y dónde se le complican las cosas. No tiene costo.</span></li>
+    <li><b>Le armo una demostración con su carta</b><span>Con sus platos, fotos y precios. Si no le gusta, no paga.</span></li>
+    <li><b>Configuramos su local</b><span>Zonas de reparto, costos de envío, horarios y formas de pago.</span></li>
+    <li><b>Capacitamos a su equipo</b><span>Una sesión corta para cocina, caja y repartidores.</span></li>
+  </ol>
+  <div class="note"><p>El precio depende de lo que necesite. Lo acordamos por escrito antes de empezar.</p></div>
+</div>
+<section class="cta"><h2>¿Le sirve para su negocio?</h2><p class="muted">Le armo una demostración gratis con sus datos. Si no le gusta, no paga nada.</p>
+<a class="btn primary" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20de%20pedidos%20y%20delivery%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir mi demostración por WhatsApp</a><a class="btn" href="../../#sistemas">← Volver a Sistemas a medida</a><a class="btn" href="../../#demos">Ver todas las demos</a></section>
+</main>
+<div class="wide"><footer>© 2026 Kuntek · Kevin Huamán Gonzales · Cajamarca, Perú · Fotos: Unsplash</footer></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function m(x){return 'S/ '+x.toFixed(2)}
+var M=[{id:1,n:'Hamburguesa clásica',d:'Carne, queso, lechuga y tomate. Con papas.',p:18,i:'pe-burger'},{id:2,n:'Lomo con papas',d:'Corte a la parrilla con papas fritas.',p:28,i:'pe-lomo'},{id:3,n:'Tacos de la casa (3 u.)',d:'Con pico de gallo y limón.',p:20,i:'pe-tacos'},{id:4,n:'Pizza personal',d:'Masa artesanal, queso y cebolla.',p:24,i:'k-pizza'},{id:5,n:'Ensalada fresca',d:'Hojas, frutos secos y aderezo de miel.',p:16,i:'k-ensalada'},{id:6,n:'Plato del día',d:'Pregunte por el de hoy.',p:25,i:'k-fondo2'}];
+var REP=['Marco','Diana'],ST=['Nuevo','En preparación','Listo','En camino','Entregado'],FEE=5;
+function it(id){return M.filter(function(x){return x.id===id})[0]}
+function ago(min){return Date.now()-min*60000}
+function seed(){return{n:1044,cart:{},tp:'Delivery',py:'Yape',log:[],lastId:null,
+ o:[{id:1041,it:{1:1,5:1},tp:'Delivery',nm:'Rosa',ad:'Jr. Amazonas 220',py:'Yape',t:34,st:4,c:ago(58),e:ago(24),rp:'Diana'},
+    {id:1042,it:{2:1,3:1},tp:'Delivery',nm:'Carlos',ad:'Av. Independencia 540',py:'Efectivo',t:53,st:3,c:ago(26),rp:'Marco'},
+    {id:1043,it:{4:2},tp:'Recojo',nm:'Elena',ad:'',py:'Tarjeta',t:48,st:1,c:ago(14)},
+    {id:1044,it:{1:2,5:1},tp:'Delivery',nm:'Jorge',ad:'Jr. Los Pinos 123',py:'Yape',t:57,st:0,c:ago(3)}]}}
+var S=seed();
+function total(c,tp){var t=0;Object.keys(c).forEach(function(k){t+=c[k]*it(+k).p});return t+(tp==='Delivery'&&t>0?FEE:0)}
+function menu(){$('mn').innerHTML=M.map(function(x){var q=S.cart[x.id]||0;return '<div class="it"><img src="../../img/ejemplos/'+x.i+'.webp" alt="'+esc(x.n)+'" loading="lazy" width="400" height="300"><div class="b"><b>'+esc(x.n)+'</b><p>'+esc(x.d)+'</p><div class="r"><span class="pr">'+m(x.p)+'</span>'+(q?'<span class="stp"><button data-d="'+x.id+'" aria-label="Quitar uno">−</button><i>'+q+'</i><button data-a="'+x.id+'" aria-label="Agregar uno">+</button></span>':'<button class="add" data-a="'+x.id+'">Agregar</button>')+'</div></div></div>'}).join('')}
+function cart(){
+ var ks=Object.keys(S.cart),h='',sub=0;
+ ks.forEach(function(k){var x=it(+k);sub+=S.cart[k]*x.p;h+='<div class="l"><span>'+S.cart[k]+' × '+esc(x.n)+'</span><b>'+m(S.cart[k]*x.p)+'</b></div>'});
+ $('ln').innerHTML=h||'<div class="empty">Agregue platos de la carta.</div>';
+ $('tt').textContent=m(total(S.cart,S.tp));$('sb').textContent=ks.length?(S.tp==='Delivery'?'Incluye envío de '+m(FEE):'Sin costo de envío'):'';
+ $('adw').style.display=S.tp==='Delivery'?'block':'none';
+ document.querySelectorAll('#tp button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.t===S.tp)});
+ document.querySelectorAll('#py button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.y===S.py)});
+ $('go').disabled=!(ks.length&&$('nm').value.trim()&&(S.tp==='Recojo'||$('ad').value.trim().length>3));
+}
+function msg(o,txt){S.log.unshift('A '+o.nm+': '+txt)}
+function summ(o){return Object.keys(o.it).map(function(k){return o.it[k]+' × '+it(+k).n}).join(', ')}
+function board(){
+ var h='',open=0;
+ ST.forEach(function(sn,si){
+  var os=S.o.filter(function(o){return o.st===si});if(si<4)open+=os.length;
+  h+='<div class="cl"><h4>'+sn+'<span>'+os.length+'</span></h4>'+os.map(function(o){
+   var mins=Math.floor(((o.e||Date.now())-o.c)/60000),late=o.st<4&&mins>30;
+   var act='';
+   if(o.st===0)act='<button data-n="'+o.id+'">Aceptar y preparar</button>';
+   else if(o.st===1)act='<button data-n="'+o.id+'">Marcar listo</button>';
+   else if(o.st===2)act=o.tp==='Delivery'?'<select id="rp'+o.id+'" aria-label="Repartidor">'+REP.map(function(r){return '<option>'+r+'</option>'}).join('')+'</select><button data-n="'+o.id+'">Enviar con repartidor</button>':'<button data-n="'+o.id+'">Entregar en el local</button>';
+   else if(o.st===3)act='<button data-n="'+o.id+'">Marcar entregado</button>';
+   return '<div class="oc"><div class="h"><span>#'+o.id+'</span><span class="mn2'+(late?' late':'')+'">'+mins+' min'+(late?' · atrasado':'')+'</span></div><ul>'+Object.keys(o.it).map(function(k){return '<li>'+o.it[k]+' × '+esc(it(+k).n)+'</li>'}).join('')+'</ul><div class="w">'+esc(o.nm)+' · '+o.tp+(o.ad?' · '+esc(o.ad):'')+'<br>'+m(o.t)+' · '+o.py+(o.rp?' · '+o.rp:'')+'</div>'+act+'</div>'}).join('')+'</div>'});
+ $('cols').innerHTML=h;$('nb').textContent=open;
+ $('lg').innerHTML=S.log.length?S.log.slice(0,10).map(function(x){return '<div>✓ '+esc(x)+'</div>'}).join(''):'<div>Aquí verá los mensajes que recibe cada cliente.</div>';
+}
+function resumen(){
+ var os=S.o,T=0,d=0,dm=0,by={Delivery:0,Recojo:0},cnt={};
+ os.forEach(function(o){T+=o.t;by[o.tp]++;if(o.st===4&&o.e){d++;dm+=(o.e-o.c)/60000}Object.keys(o.it).forEach(function(k){cnt[k]=(cnt[k]||0)+o.it[k]})});
+ $('r1').textContent=os.length;$('r2').textContent='S/ '+Math.round(T);$('r3').textContent='S/ '+(os.length?(T/os.length).toFixed(1):0);$('r4').textContent=d?Math.round(dm/d)+' min':'—';
+ $('bt').innerHTML=['Delivery','Recojo'].map(function(k){var p=os.length?by[k]/os.length*100:0;return '<div class="bar"><span><b>'+k+'</b><span>'+by[k]+' · '+Math.round(p)+' %</span></span><i><b style="width:'+p+'%"></b></i></div>'}).join('');
+ $('rp').innerHTML=REP.map(function(r){var n=os.filter(function(o){return o.rp===r&&o.st===3}).length;return '<li><span>'+r+'</span><b>'+n+(n===1?' pedido':' pedidos')+'</b></li>'}).join('');
+ $('top').innerHTML=Object.keys(cnt).sort(function(a,b){return cnt[b]-cnt[a]}).slice(0,5).map(function(k){return '<li><span>'+esc(it(+k).n)+'</span><b>'+cnt[k]+' u.</b></li>'}).join('');
+}
+function all(){menu();cart();board();resumen()}
+function advance(id,sel){
+ var o=S.o.filter(function(x){return x.id===id})[0];if(!o)return;o.st++;
+ if(o.st===1)msg(o,'Su pedido #'+o.id+' ya está en preparación. Tiempo estimado: 25 minutos.');
+ if(o.st===2)msg(o,o.tp==='Delivery'?'Su pedido #'+o.id+' está listo. En un momento sale con el repartidor.':'Su pedido #'+o.id+' está listo para recoger.');
+ if(o.st===3){o.rp=sel||REP[0];msg(o,'Su pedido #'+o.id+' salió con '+o.rp+'. Llegará en unos 10 minutos.')}
+ if(o.st===4){o.e=Date.now();msg(o,'Su pedido #'+o.id+' fue entregado. ¡Gracias por su compra!')}
+ board();resumen()}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;var D=b.dataset;
+ if(b.id==='reset'){S=seed();$('nm').value='';$('ad').value='';$('sent').innerHTML='';all();return}
+ if(b.id==='t10'){S.o.forEach(function(o){if(o.st<4)o.c-=600000});board();return}
+ if(b.id==='go'){var c={};Object.keys(S.cart).forEach(function(k){c[k]=S.cart[k]});S.n++;var o={id:S.n,it:c,tp:S.tp,nm:$('nm').value.trim(),ad:S.tp==='Delivery'?$('ad').value.trim():'',py:S.py,t:total(c,S.tp),st:0,c:Date.now()};S.o.push(o);msg(o,'Recibimos su pedido #'+o.id+' por '+m(o.t)+'. Le avisaremos cuando esté en preparación.');
+  S.cart={};$('nm').value='';$('ad').value='';$('sent').innerHTML='<div class="sent"><b>¡Pedido enviado!</b> Es el #'+o.id+'. Ya está en la pantalla de la cocina.<br><button data-go="coc">Ver en la cocina</button></div>';all();return}
+ if(D.go){document.querySelector('.at button[data-v="coc"]').click();return}
+ if(D.v){document.querySelectorAll('.at button[data-v]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='p-'+D.v)});return}
+ if(D.a){S.cart[D.a]=(S.cart[D.a]||0)+1;menu();cart();return}
+ if(D.d){if(--S.cart[D.d]<=0)delete S.cart[D.d];menu();cart();return}
+ if(D.t){S.tp=D.t;cart();return}
+ if(D.y){S.py=D.y;cart();return}
+ if(D.n){var s=document.getElementById('rp'+D.n);advance(+D.n,s?s.value:null);return}
+});
+$('nm').addEventListener('input',cart);$('ad').addEventListener('input',cart);
+setInterval(function(){if(document.getElementById('p-coc').classList.contains('on'))board()},30000);
+all();
+})();
+function tab(t){var ok=false;document.querySelectorAll('[data-panel]').forEach(function(p){var on=p.getAttribute('data-panel')===t;p.classList.toggle('on',on);if(on)ok=true});if(!ok){tab('demo');return}document.querySelectorAll('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-tab')===t?'true':'false')})}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(b){tab(b.getAttribute('data-tab'));history.replaceState(null,'','#'+b.getAttribute('data-tab'))}});
+tab((location.hash||'#demo').slice(1));
+</script>
+</body>
+</html>

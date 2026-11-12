@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Demostración interactiva de un sistema de citas y reservas con agenda por profesional y recordatorios automáticos por WhatsApp. Kuntek, Cajamarca.">
+<meta name="theme-color" content="#08090b">
+<link rel="canonical" href="https://kevin05x.github.io/sistemas/citas/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%22http://www.w3.org/2000/svg%22%20viewBox=%220%200%20200%20200%22%3E%3Cdefs%3E%3ClinearGradient%20id=%22kbg%22%20x1=%220%22%20y1=%220%22%20x2=%221%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%233a68ff%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%231b3fc4%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect%20width=%22200%22%20height=%22200%22%20rx=%2244%22%20fill=%22url(%23kbg)%22/%3E%3Cdefs%3E%3ClinearGradient%20id=%22kg%22%20x1=%220%22%20y1=%220%22%20x2=%220%22%20y2=%221%22%3E%3Cstop%20offset=%220%22%20stop-color=%22%23fff%22/%3E%3Cstop%20offset=%221%22%20stop-color=%22%23d3e0ff%22/%3E%3C/linearGradient%3E%3C/defs%3E%3Cpolygon%20points=%2244,28%2078,46%2078,172%2044,172%22%20fill=%22url(%23kg)%22/%3E%3Cpolygon%20points=%22114,100%20148,50%20180,50%20146,100%20180,150%20148,150%22%20fill=%22%235d86ff%22/%3E%3Cpolygon%20points=%2286,100%20132,32%20146,32%20100,100%22%20fill=%22%23fff%22/%3E%3Cpolygon%20points=%22100,100%20146,32%20164,32%20118,100%22%20fill=%22%23d3e0ff%22/%3E%3Cpolygon%20points=%2286,100%20102,100%20148,168%20132,168%22%20fill=%22%23a9c3ff%22/%3E%3Cpolygon%20points=%22102,100%20118,100%20164,168%20148,168%22%20fill=%22%237fa3ff%22/%3E%3Cpolygon%20points=%2286,100%20118,100%20102,114%22%20fill=%22%233a62e6%22/%3E%3C/svg%3E">
+<title>Kuntek | Citas y reservas en línea · demostración</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@500;600;700;800&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+
+:root{--bg:#08090b;--surface:#101217;--surface-2:#161922;--ink:#eef1f5;--muted:#a9b2bf;--line:#232833;--accent:#2f5cf0;--accent-2:#8fb0ff;--teal:#4cc9a0;--teal-soft:#10302a;--warm:#f0b35b;--warm-soft:#2b2412;--danger:#f0836b;--danger-soft:#3a1f1a;--app:#0c0e13;color-scheme:dark;box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "IBM Plex Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0)}
+h1,h2,h3,h4{font-family:"Schibsted Grotesk","IBM Plex Sans",sans-serif;line-height:1.1;margin:0;letter-spacing:-.01em}
+h1{font-size:clamp(2.2rem,6.5vw,4rem);font-weight:800}h2{font-size:clamp(1.6rem,4.2vw,2.3rem);font-weight:700;margin-bottom:.6rem}h3{font-size:1.15rem;font-weight:700}
+p{margin:0 0 1rem}a{color:inherit}img{display:block;max-width:100%}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
+.wide{max-width:1140px;margin:0 auto;padding:0 22px}.muted{color:var(--muted)}.lead{font-size:1.12rem;color:var(--muted);max-width:60ch}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 0;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:700 1.05rem "Schibsted Grotesk",sans-serif}.brand em{font-style:normal;color:var(--accent-2)}
+.btn{display:inline-block;font:600 .98rem "IBM Plex Sans",sans-serif;padding:12px 18px;border-radius:10px;text-decoration:none;border:2px solid var(--line);color:var(--ink);background:transparent;cursor:pointer}.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}.btn.sm{padding:8px 14px;font-size:.9rem}
+.crumb{padding:18px 0 0;font-size:.92rem}.crumb a{color:var(--accent-2);text-decoration:none}
+.hero{padding:34px 0 6px}.hero .eb{font:500 .85rem "IBM Plex Sans";letter-spacing:.08em;text-transform:uppercase;color:var(--accent-2);margin-bottom:14px}.hero h1{max-width:17ch;margin-bottom:18px}
+.tabs{position:sticky;top:0;z-index:5;background:rgba(8,9,11,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin-top:30px}
+.tabs .wide{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}.tabs .wide::-webkit-scrollbar{display:none}
+.tabs button{flex:none;font:600 .95rem "IBM Plex Sans";color:var(--muted);background:none;border:none;border-bottom:3px solid transparent;padding:14px 14px 11px;cursor:pointer}.tabs button[aria-selected="true"]{color:var(--ink);border-color:var(--accent)}
+[data-panel]{display:none;padding:38px 0 0}[data-panel].on{display:block}
+.pillars{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 34px;margin:26px 0}.pillars p{color:var(--muted);margin:0}.pillars h3{margin-bottom:4px}
+@media (max-width:700px){.pillars{grid-template-columns:1fr}}
+.note{background:var(--warm-soft);border-left:5px solid var(--warm);padding:16px 18px;border-radius:0 10px 10px 0;margin:22px 0}.note p:last-child{margin:0}
+.banner{border-radius:16px;overflow:hidden;margin:24px 0;position:relative;aspect-ratio:21/8}.banner img{width:100%;height:100%;object-fit:cover}.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,11,.85),transparent 70%)}.banner div{position:absolute;z-index:1;left:24px;top:50%;transform:translateY(-50%);max-width:20ch;font:700 clamp(1.2rem,3vw,2rem) "Schibsted Grotesk"}
+@media (max-width:600px){.banner{aspect-ratio:16/9}}
+.steps{counter-reset:s;list-style:none;margin:22px 0;padding:0;display:grid;gap:14px}.steps li{counter-increment:s;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px 16px 62px;position:relative}.steps li::before{content:counter(s);position:absolute;left:16px;top:14px;width:32px;height:32px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font:700 .95rem "Schibsted Grotesk"}.steps b{display:block;font:700 1.02rem "Schibsted Grotesk"}.steps span{color:var(--muted);font-size:.95rem}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}@media (max-width:700px){.two{grid-template-columns:1fr}}
+.box{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px}.box h3{margin-bottom:8px}.box ul{margin:0;padding-left:18px;color:var(--muted)}.box li{margin:4px 0}
+
+.dh{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:14px;margin-bottom:14px}.dh p{margin:0;color:var(--muted);max-width:62ch}
+.app{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--app);box-shadow:0 30px 80px -30px rgba(47,92,240,.35)}
+.kp{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border-bottom:1px solid var(--line)}.kp div{background:var(--surface);padding:12px 14px}.kp b{display:block;font:800 1.45rem/1.1 "Schibsted Grotesk"}.kp span{font-size:.8rem;color:var(--muted)}@media (max-width:700px){.kp{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tag{font-size:.74rem;padding:2px 9px;border-radius:99px;white-space:nowrap}.ok{background:var(--teal-soft);color:var(--teal)}.lo{background:var(--danger-soft);color:var(--danger)}
+.fine{margin-top:12px;font-size:.84rem;color:var(--muted)}
+.cta{margin:54px 0 0;padding:30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#101a3a,#0c0e13)}.cta h2{margin-bottom:8px}.cta .btn{margin:6px 8px 0 0}
+footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+.sitebar{position:sticky;top:0;z-index:30;background:rgba(8,9,11,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.sb{display:flex;align-items:center;gap:22px;height:62px}
+.sb .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem "Schibsted Grotesk",sans-serif;letter-spacing:-.04em}.sb .brand em{font-style:normal;color:var(--accent-2)}
+.sb nav{display:flex;gap:4px;margin-left:auto}.sb nav a{text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem}.sb nav a:hover{color:var(--ink);background:var(--surface)}.sb nav a[aria-current="page"]{color:var(--ink);background:var(--surface-2)}
+@media (max-width:860px){.sitebar{position:static}.sb{height:auto;flex-wrap:wrap;padding:12px 0;gap:8px 12px}.sb nav{order:3;width:100%;margin:0;overflow-x:auto;scrollbar-width:none}.sb nav::-webkit-scrollbar{display:none}.sb .btn{margin-left:auto}.tabs{top:0!important}}
+.tabs{top:62px}
+.back{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:20px 0 0}
+.backbtn{display:inline-flex;align-items:center;gap:10px;font:600 1rem "IBM Plex Sans",sans-serif;text-decoration:none;color:#fff;background:var(--surface-2);border:2px solid var(--accent);border-radius:999px;padding:10px 20px 10px 14px;transition:background .15s}
+.backbtn span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);font-size:1rem}.backbtn:hover{background:var(--accent)}
+.backlink{color:var(--accent-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.where{color:var(--muted);font-size:.88rem;margin-left:auto}@media (max-width:700px){.where{display:none}}
+
+
+.at{display:flex;gap:4px;padding:8px 10px;border-bottom:1px solid var(--line);background:var(--surface);align-items:center;overflow-x:auto}
+.at button{flex:none;font:600 .92rem "IBM Plex Sans";background:none;border:none;color:var(--muted);padding:8px 14px;border-radius:8px;cursor:pointer}.at button[aria-pressed="true"]{background:var(--accent);color:#fff}
+.at .sp{flex:1}.at .tg{flex:none;font-size:.8rem;color:var(--muted);padding:0 8px}
+.pane{display:none}.pane.on{display:block}
+.rs{display:grid;grid-template-columns:minmax(0,1fr) 330px}@media (max-width:900px){.rs{grid-template-columns:minmax(0,1fr)}}
+.rs .f{padding:18px}.rs .f h4,.dt h4{font:700 .8rem "IBM Plex Sans";letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}.rs .f h4:first-child{margin-top:0}
+.ch{display:flex;gap:8px;flex-wrap:wrap}.ch button{font:600 .9rem "IBM Plex Sans";background:var(--surface);border:1.5px solid var(--line);color:var(--ink);border-radius:10px;padding:9px 13px;cursor:pointer;text-align:left}.ch button small{display:block;color:var(--muted);font-weight:400;font-size:.76rem}.ch button[aria-pressed="true"]{border-color:var(--accent);background:#16224a}.ch button:disabled{opacity:.35;cursor:not-allowed}
+.sl{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:6px}.sl button{font:600 .88rem "IBM Plex Sans";background:var(--surface);border:1.5px solid var(--line);color:var(--ink);border-radius:8px;padding:8px 4px;cursor:pointer}.sl button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}.sl button:disabled{opacity:.3;text-decoration:line-through;cursor:not-allowed}
+.rs input{width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;color:var(--ink);padding:10px 12px;font:inherit;font-size:.95rem}.two2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.go{margin-top:16px;font:700 1rem "IBM Plex Sans";background:var(--teal);color:#06231a;border:none;border-radius:10px;padding:13px 22px;cursor:pointer}.go:disabled{opacity:.4;cursor:not-allowed}
+.dt{border-left:1px solid var(--line);padding:18px;background:var(--surface)}@media (max-width:900px){.dt{border-left:none;border-top:1px solid var(--line)}}
+.dt .im{border-radius:10px;overflow:hidden;margin-bottom:12px;aspect-ratio:16/9}.dt .im img{width:100%;height:100%;object-fit:cover}
+.sum{font-size:.92rem}.sum .r{display:flex;justify-content:space-between;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.sum .r span:first-child{color:var(--muted)}
+.msg{background:#0f2a22;border:1px solid #1d4a3b;border-radius:12px 12px 12px 3px;padding:10px 12px;font-size:.88rem;margin-top:8px;white-space:pre-line}.msg small{display:block;color:var(--teal);margin-bottom:4px;font-size:.74rem}
+.okb{background:var(--teal-soft);border:1px solid #1d4a3b;border-radius:10px;padding:12px 14px;margin-top:14px;font-size:.92rem}
+.ag{padding:14px}.days{display:flex;gap:6px;overflow-x:auto;margin-bottom:12px;scrollbar-width:none}.days::-webkit-scrollbar{display:none}.days button{flex:none;font:600 .86rem "IBM Plex Sans";background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:6px 14px;cursor:pointer}.days button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.gw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+.grid{display:grid;min-width:560px;position:relative}
+.hd{display:grid;border-bottom:1px solid var(--line);position:sticky;top:0;background:var(--surface-2);z-index:2}.hd div{padding:9px 10px;font:700 .86rem "Schibsted Grotesk";border-left:1px solid var(--line)}.hd div:first-child{border-left:none}.hd small{display:block;font:400 .72rem "IBM Plex Sans";color:var(--muted)}
+.body{display:grid;position:relative}
+.tc{border-right:1px solid var(--line)}.tc div{height:34px;font-size:.72rem;color:var(--muted);padding:2px 6px;border-bottom:1px solid #1a1e27}
+.col{position:relative;border-left:1px solid var(--line);background-image:linear-gradient(#1a1e27 1px,transparent 1px);background-size:100% 34px}
+.ap{position:absolute;left:4px;right:4px;border-radius:8px;padding:5px 8px;font-size:.78rem;line-height:1.25;cursor:pointer;overflow:hidden;border:1px solid transparent;text-align:left;color:var(--ink);font-family:inherit}
+.ap b{display:block;font-size:.8rem}.ap span{color:inherit;opacity:.8}
+.s-Pendiente{background:var(--warm-soft);border-color:#5a4720}.s-Confirmada{background:#10302a;border-color:#1d5a47}.s-Llegó{background:#16224a;border-color:#2f5cf0}.s-Cancelada{background:#2a1d1a;border-color:#4a2e27;opacity:.55;text-decoration:line-through}.ap.sel{outline:2px solid #fff}
+.leg{display:flex;gap:12px;flex-wrap:wrap;margin:10px 0;font-size:.8rem;color:var(--muted)}.leg i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:5px}
+.det{margin-top:12px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:grid;grid-template-columns:1fr 1fr;gap:14px}@media (max-width:800px){.det{grid-template-columns:1fr}}
+.det h4{margin:0 0 6px;font:700 1rem "Schibsted Grotesk"}.det .bt{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.det .bt button{font:600 .84rem "IBM Plex Sans";background:transparent;border:1.5px solid var(--accent);color:var(--accent-2);border-radius:99px;padding:6px 13px;cursor:pointer}.det .bt button:hover{background:var(--accent);color:#fff}.det .bt button.dn{border-color:var(--danger);color:var(--danger)}.det .bt button.dn:hover{background:var(--danger);color:#fff}
+.lg{max-height:170px;overflow-y:auto}.lg div{font-size:.8rem;color:var(--muted);padding:5px 0;border-bottom:1px solid var(--line)}
+.banner{border-radius:16px;overflow:hidden;margin:24px 0;position:relative;aspect-ratio:21/8}.banner img{width:100%;height:100%;object-fit:cover}.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,9,11,.85),transparent 70%)}.banner div{position:absolute;z-index:1;left:24px;top:50%;transform:translateY(-50%);max-width:20ch;font:700 clamp(1.2rem,3vw,2rem) "Schibsted Grotesk"}@media (max-width:600px){.banner{aspect-ratio:16/9}}
+
+</style>
+</head>
+<body>
+<header class="sitebar"><div class="wide sb"><a class="brand" href="../../#inicio" aria-label="Kuntek, ir al inicio"><svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="kbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a68ff"/><stop offset="1" stop-color="#1b3fc4"/></linearGradient></defs><rect width="200" height="200" rx="44" fill="url(#kbg)"/><defs><linearGradient id="kg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d3e0ff"/></linearGradient></defs><polygon points="44,28 78,46 78,172 44,172" fill="url(#kg)"/><polygon points="114,100 148,50 180,50 146,100 180,150 148,150" fill="#5d86ff"/><polygon points="86,100 132,32 146,32 100,100" fill="#fff"/><polygon points="100,100 146,32 164,32 118,100" fill="#d3e0ff"/><polygon points="86,100 102,100 148,168 132,168" fill="#a9c3ff"/><polygon points="102,100 118,100 164,168 148,168" fill="#7fa3ff"/><polygon points="86,100 118,100 102,114" fill="#3a62e6"/></svg><b>kun<em>tek</em></b></a>
+  <nav aria-label="Secciones del sitio"><a href="../../#inicio">Inicio</a><a href="../../#trabajos">Trabajos</a><a href="../../#sistemas" aria-current="page">Sistemas</a><a href="../../#demos">Demos</a><a href="../../#cotizar">Cotizar</a></nav>
+  <a class="btn primary sm" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20de%20citas%20y%20reservas%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a></div></header>
+<div class="wide"><div class="back"><a class="backbtn" href="../../#sistemas"><span aria-hidden="true">←</span>Volver a Sistemas a medida</a><a class="backlink" href="../../#demos">Ver todas las demos</a><span class="where">Inicio › Sistemas › Citas y reservas</span></div></div>
+<div class="wide">
+  <section class="hero"><div class="eb">Citas y reservas</div><h1>Que sus clientes reserven solos y nadie falte a su cita.</h1><p class="lead">El cliente elige servicio, profesional, día y hora desde su celular. Usted ve la agenda completa y el sistema le recuerda la cita por WhatsApp.</p></section>
+</div>
+<nav class="tabs" aria-label="Secciones"><div class="wide" role="tablist"><button role="tab" data-tab="demo" aria-selected="true">Demostración</button><button role="tab" data-tab="que-es" aria-selected="false">Qué es</button><button role="tab" data-tab="como" aria-selected="false">Cómo se pone en marcha</button></div></nav>
+<main class="wide">
+<div data-panel="demo" class="on">
+  <div class="dh"><div><h2>Pruébelo aquí</h2><p>Reserve una cita como si fuera un cliente. Después entre a «Agenda» para verla del lado del negocio: ahí puede confirmarla, marcar que llegó o cancelarla.</p></div><button class="btn sm" id="reset">Reiniciar demo</button></div>
+  <div class="app">
+    <div class="at" role="tablist"><button data-v="res" aria-pressed="true">Reservar (vista del cliente)</button><button data-v="ag" aria-pressed="false">Agenda (vista del negocio)</button><span class="sp"></span><span class="tg">Datos de ejemplo</span></div>
+    <div class="pane on" id="p-res"><div class="rs">
+      <div class="f">
+        <h4>1. Servicio</h4><div class="ch" id="svc"></div>
+        <h4>2. Profesional</h4><div class="ch" id="pro"></div>
+        <h4>3. Día</h4><div class="days" id="rdays"></div>
+        <h4>4. Hora</h4><div class="sl" id="slots"></div>
+        <h4>5. Sus datos</h4><div class="two2"><input id="nom" placeholder="Su nombre" autocomplete="given-name" aria-label="Su nombre"><input id="tel" placeholder="Celular" inputmode="tel" aria-label="Celular"></div>
+        <button class="go" id="conf" disabled>Confirmar mi cita</button>
+      </div>
+      <div class="dt"><div class="im"><img src="../../img/ejemplos/ci-hero.webp" alt="Salón de belleza moderno con espejos y sillones" width="1600" height="1111" loading="lazy"></div><h4>Resumen de su cita</h4><div class="sum" id="sum"></div><div id="after"></div></div>
+    </div></div>
+    <div class="pane" id="p-ag"><div class="kp"><div><b id="k1">0</b><span>Citas del día</span></div><div><b id="k2">0</b><span>Confirmadas</span></div><div><b id="k3">0</b><span>Pendientes de confirmar</span></div><div><b id="k4">S/ 0</b><span>Ingreso estimado</span></div></div>
+      <div class="ag"><div class="days" id="adays"></div><div class="gw"><div id="gr"></div></div>
+        <div class="leg"><span><i style="background:#f0b35b"></i>Pendiente</span><span><i style="background:#4cc9a0"></i>Confirmada</span><span><i style="background:#2f5cf0"></i>Llegó</span><span><i style="background:#f0836b"></i>Cancelada</span></div>
+        <div class="det" id="det"></div></div></div>
+  </div>
+  <p class="fine">Los nombres, servicios y precios son inventados. En su sistema van los suyos.</p>
+</div><div data-panel="que-es">
+  <h2>Para qué sirve</h2>
+  <p class="lead">Ya no tiene que coordinar horarios por llamadas y mensajes. Cada cita queda en la agenda de quien la atiende, sin cruces, y el cliente recibe un recordatorio.</p>
+  <div class="banner"><img src="../../img/ejemplos/ci-clinica.webp" alt="Consultorio moderno y ordenado" width="1200" height="802" loading="lazy"><div>Sin llamadas para coordinar horarios.</div></div>
+  <div class="pillars">
+    <div><h3>Reserva desde el celular</h3><p>El cliente solo ve los horarios libres y elige el que le conviene.</p></div>
+    <div><h3>Una agenda por persona</h3><p>Cada profesional tiene su columna. Se ve rápido quién está libre y a qué hora.</p></div>
+    <div><h3>Recordatorios por WhatsApp</h3><p>Se avisa un día antes y unas horas antes. Así faltan menos clientes.</p></div>
+    <div><h3>Historial del cliente</h3><p>Cada cita queda guardada con su cliente y suma a lo que se gana en el día.</p></div>
+  </div>
+  <div class="two"><div class="box"><h3>Sirve para</h3><ul><li>Salones de belleza y barberías</li><li>Clínicas, consultorios y dentistas</li><li>Spas y centros de estética</li><li>Psicólogos, abogados y asesores</li></ul></div><div class="box"><h3>Puede sumar</h3><ul><li>Pago o adelanto para reservar</li><li>Lista de espera si el horario se llena</li><li>Historial y fichas del cliente</li><li>Varias sedes</li></ul></div></div>
+  <div class="note"><p>Los recordatorios por WhatsApp usan la conexión oficial de WhatsApp. Esa conexión tiene un costo de Meta, aparte del sistema. Se lo explico antes de empezar.</p></div>
+</div><div data-panel="como">
+  <h2>Cómo se pone en marcha</h2>
+  <ol class="steps">
+    <li><b>Conversamos sobre su negocio</b><span>Qué servicios ofrece, cuántas personas atienden y cuántas citas se le pierden hoy. No tiene costo.</span></li>
+    <li><b>Le preparamos una demostración con su rubro</b><span>Con sus servicios, sus tiempos y sus precios. Si no le gusta, no paga.</span></li>
+    <li><b>Cargamos su agenda</b><span>Sus horarios, sus descansos y las citas que ya tiene, para que no empiece de cero.</span></li>
+    <li><b>Capacitamos a su equipo</b><span>Una sesión corta para quien atiende en recepción y para los profesionales.</span></li>
+  </ol>
+  <div class="note"><p>El precio depende de lo que necesite. Lo acordamos por escrito antes de empezar.</p></div>
+</div>
+<section class="cta"><h2>¿Le sirve para su negocio?</h2><p class="muted">Le armo una demostración gratis con sus datos. Si no le gusta, no paga nada.</p>
+<a class="btn primary" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20de%20citas%20y%20reservas%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir mi demostración por WhatsApp</a><a class="btn" href="../../#sistemas">← Volver a Sistemas a medida</a><a class="btn" href="../../#demos">Ver todas las demos</a></section>
+</main>
+<div class="wide"><footer>© 2026 Kuntek · Kevin Huamán Gonzales · Cajamarca, Perú · Fotos: Unsplash</footer></div>
+<script>
+(function(){
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function m(x){return 'S/ '+x}
+var SV=[{id:1,n:'Corte de cabello',d:45,p:35},{id:2,n:'Tinte completo',d:120,p:120},{id:3,n:'Manicure',d:45,p:30},{id:4,n:'Limpieza facial',d:60,p:70},{id:5,n:'Peinado',d:60,p:50}];
+var PR=[{id:1,n:'Ana',s:[1,2,5]},{id:2,n:'Carla',s:[3,4]},{id:3,n:'Luis',s:[1,5]}];
+var ST=540,EN=1080,STEP=30; // 9:00 a 18:00
+var DN=['dom','lun','mar','mié','jue','vie','sáb'];
+function days(){var out=[],d=new Date();d.setHours(0,0,0,0);while(out.length<6){if(d.getDay()!==0)out.push({k:d.getTime(),l:out.length===0?'Hoy':out.length===1?'Mañana':DN[d.getDay()]+' '+d.getDate()});d=new Date(d.getTime()+864e5)}return out}
+var DY=days();
+function hm(x){var h=Math.floor(x/60),mm=x%60;return h+':'+(mm<10?'0':'')+mm}
+function seed(){return{n:20,sel:{s:null,p:0,d:0,t:null},day:0,cur:null,res:'res',log:[],ap:[
+ {id:1,d:0,p:3,t:540,s:1,c:'Mario R.',tel:'+51 9•• ••• 140',st:'Llegó'},{id:2,d:0,p:1,t:570,s:1,c:'Rosa M.',tel:'+51 9•• ••• 214',st:'Confirmada'},{id:3,d:0,p:2,t:600,s:3,c:'Elena V.',tel:'+51 9•• ••• 387',st:'Pendiente'},{id:4,d:0,p:1,t:660,s:2,c:'Lucía P.',tel:'+51 9•• ••• 655',st:'Confirmada'},{id:5,d:0,p:2,t:840,s:4,c:'Sofía C.',tel:'+51 9•• ••• 902',st:'Pendiente'},{id:6,d:0,p:3,t:930,s:5,c:'Jorge T.',tel:'+51 9•• ••• 511',st:'Confirmada'},
+ {id:7,d:1,p:1,t:600,s:1,c:'Karla D.',tel:'+51 9•• ••• 228',st:'Confirmada'},{id:8,d:1,p:2,t:660,s:3,c:'Pilar S.',tel:'+51 9•• ••• 731',st:'Pendiente'},{id:9,d:1,p:3,t:960,s:1,c:'Raúl A.',tel:'+51 9•• ••• 066',st:'Confirmada'},{id:10,d:2,p:1,t:780,s:5,c:'Tania L.',tel:'+51 9•• ••• 319',st:'Confirmada'}]}}
+var S=seed();
+function sv(id){return SV.filter(function(x){return x.id===id})[0]}
+function pr(id){return PR.filter(function(x){return x.id===id})[0]}
+function busy(p,d,t,dur){return S.ap.some(function(a){return a.d===d&&a.p===p&&a.st!=='Cancelada'&&t<a.t+sv(a.s).d&&a.t<t+dur})}
+function now(){return 0}
+// reserva
+function drawRes(){
+ var s=S.sel;
+ $('svc').innerHTML=SV.map(function(x){return '<button data-s="'+x.id+'" aria-pressed="'+(s.s===x.id)+'">'+esc(x.n)+'<small>'+x.d+' min · '+m(x.p)+'</small></button>'}).join('');
+ var el=PR.filter(function(p){return !s.s||p.s.indexOf(s.s)>-1});
+ $('pro').innerHTML='<button data-p="0" aria-pressed="'+(s.p===0)+'">Cualquiera</button>'+el.map(function(p){return '<button data-p="'+p.id+'" aria-pressed="'+(s.p===p.id)+'">'+p.n+'</button>'}).join('');
+ $('rdays').innerHTML=DY.map(function(d,i){return '<button data-d="'+i+'" aria-pressed="'+(s.d===i)+'">'+d.l+'</button>'}).join('');
+ var h='';
+ if(!s.s){h='<p class="muted" style="grid-column:1/-1;margin:0;font-size:.9rem">Elija primero un servicio.</p>'}
+ else{var dur=sv(s.s).d,cands=s.p?[s.p]:el.map(function(p){return p.id});
+  for(var t=ST;t+dur<=EN;t+=STEP){var free=cands.some(function(p){return !busy(p,s.d,t,dur)});h+='<button data-t="'+t+'" aria-pressed="'+(s.t===t)+'"'+(free?'':' disabled')+'>'+hm(t)+'</button>'}}
+ $('slots').innerHTML=h;
+ var nm=$('nom').value.trim(),tl=$('tel').value.trim();
+ $('conf').disabled=!(s.s&&s.t!==null&&nm&&tl.length>=6);
+ var r='';
+ if(s.s){r+='<div class="r"><span>Servicio</span><b>'+esc(sv(s.s).n)+'</b></div><div class="r"><span>Precio</span><b>'+m(sv(s.s).p)+'</b></div>'}
+ r+='<div class="r"><span>Día</span><b>'+DY[s.d].l+'</b></div>';
+ if(s.t!==null)r+='<div class="r"><span>Hora</span><b>'+hm(s.t)+'</b></div>';
+ $('sum').innerHTML=r||'<p class="muted">Elija un servicio para empezar.</p>';
+}
+function confirmRes(){
+ var s=S.sel,dur=sv(s.s).d,p=s.p;
+ if(!p){var c=PR.filter(function(x){return x.s.indexOf(s.s)>-1&&!busy(x.id,s.d,s.t,dur)});if(!c.length)return;p=c[0].id}
+ S.n++;var a={id:S.n,d:s.d,p:p,t:s.t,s:s.s,c:$('nom').value.trim(),tel:'+51 '+$('tel').value.trim(),st:'Pendiente'};S.ap.push(a);S.cur=a.id;
+ var txt='Hola '+a.c.split(' ')[0]+', su cita en Studio Luna quedó reservada:\n'+sv(a.s).n+' con '+pr(a.p).n+'\n'+DY[a.d].l+' a las '+hm(a.t)+'\nResponda 1 para confirmar o 2 para cambiarla.';
+ S.log.unshift('Mensaje enviado a '+a.c+': cita reservada.');
+ $('after').innerHTML='<div class="okb"><b>¡Cita reservada!</b> Con '+esc(pr(a.p).n)+'. Ya aparece en la agenda del negocio.</div><div class="msg"><small>WhatsApp automático al cliente</small>'+esc(txt)+'</div><div class="msg"><small>Recordatorios programados</small>• Un día antes, 6:00 p. m.\n• Dos horas antes de la cita</div><button class="go" data-go="ag" style="background:var(--accent);color:#fff">Ver en la agenda</button>';
+ S.sel={s:null,p:0,d:s.d,t:null};$('nom').value='';$('tel').value='';drawRes();drawAg();
+}
+// agenda
+function drawAg(){
+ var d=S.day,list=S.ap.filter(function(a){return a.d===d}),act=list.filter(function(a){return a.st!=='Cancelada'});
+ $('k1').textContent=act.length;$('k2').textContent=act.filter(function(a){return a.st==='Confirmada'||a.st==='Llegó'}).length;$('k3').textContent=act.filter(function(a){return a.st==='Pendiente'}).length;
+ var inc=0;act.forEach(function(a){inc+=sv(a.s).p});$('k4').textContent=m(inc);
+ $('adays').innerHTML=DY.map(function(x,i){return '<button data-ad="'+i+'" aria-pressed="'+(d===i)+'">'+x.l+'</button>'}).join('');
+ var rows=(EN-ST)/STEP,H=34,cols=PR.length;
+ var g='<div class="grid"><div class="hd" style="grid-template-columns:52px repeat('+cols+',1fr)"><div></div>'+PR.map(function(p){var n=act.filter(function(a){return a.p===p.id}).length;return '<div>'+p.n+'<small>'+n+' citas</small></div>'}).join('')+'</div>';
+ g+='<div class="body" style="grid-template-columns:52px repeat('+cols+',1fr)"><div class="tc">';
+ for(var i=0;i<rows;i++)g+='<div>'+(i%2===0?hm(ST+i*STEP):'')+'</div>';
+ g+='</div>';
+ PR.forEach(function(p){g+='<div class="col" style="height:'+(rows*H)+'px">';list.filter(function(a){return a.p===p.id}).forEach(function(a){var top=(a.t-ST)/STEP*H+1,h=sv(a.s).d/STEP*H-3;g+='<button class="ap s-'+a.st+(S.cur===a.id?' sel':'')+'" data-ap="'+a.id+'" style="top:'+top+'px;height:'+h+'px"><b>'+esc(a.c)+'</b><span>'+esc(sv(a.s).n)+' · '+hm(a.t)+'</span></button>'});g+='</div>'});
+ g+='</div></div>';$('gr').innerHTML=g;
+ var a=S.ap.filter(function(x){return x.id===S.cur})[0];
+ var lg='<div class="lg">'+(S.log.length?S.log.slice(0,8).map(function(x){return '<div>✓ '+esc(x)+'</div>'}).join(''):'<div>Aquí verá los mensajes automáticos que envía el sistema.</div>')+'</div>';
+ $('det').innerHTML=(a?'<div><h4>'+esc(a.c)+'</h4><div class="sum"><div class="r"><span>Servicio</span><b>'+esc(sv(a.s).n)+'</b></div><div class="r"><span>Profesional</span><b>'+esc(pr(a.p).n)+'</b></div><div class="r"><span>Hora</span><b>'+DY[a.d].l+' · '+hm(a.t)+'</b></div><div class="r"><span>Celular</span><b>'+esc(a.tel)+'</b></div><div class="r"><span>Estado</span><b>'+a.st+'</b></div></div><div class="bt"><button data-st="Confirmada">Confirmar</button><button data-st="Llegó">Marcó llegada</button><button data-rem="1">Enviar recordatorio</button><button class="dn" data-st="Cancelada">Cancelar</button></div></div>':'<div><h4>Toque una cita</h4><p class="muted" style="margin:0;font-size:.9rem">Elija una cita de la agenda para confirmarla, marcar que llegó, enviarle un recordatorio o cancelarla.</p></div>')+'<div><h4>Mensajes automáticos</h4>'+lg+'</div>';
+}
+document.addEventListener('click',function(e){
+ var b=e.target.closest('button');if(!b)return;var D=b.dataset;
+ if(b.id==='reset'){S=seed();$('after').innerHTML='';drawRes();drawAg();return}
+ if(b.id==='conf'){confirmRes();return}
+ if(D.v){document.querySelectorAll('.at button[data-v]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});document.querySelectorAll('.pane').forEach(function(p){p.classList.toggle('on',p.id==='p-'+D.v)});return}
+ if(D.go){document.querySelector('.at button[data-v="ag"]').click();return}
+ if(D.s){S.sel.s=+D.s;var okp=pr(S.sel.p);if(S.sel.p&&okp.s.indexOf(S.sel.s)<0)S.sel.p=0;S.sel.t=null;drawRes();return}
+ if(D.p!==undefined&&b.closest('#pro')){S.sel.p=+D.p;S.sel.t=null;drawRes();return}
+ if(D.d!==undefined&&b.closest('#rdays')){S.sel.d=+D.d;S.sel.t=null;drawRes();return}
+ if(D.t!==undefined){S.sel.t=+D.t;drawRes();return}
+ if(D.ad!==undefined){S.day=+D.ad;S.cur=null;drawAg();return}
+ if(D.ap){S.cur=+D.ap;drawAg();return}
+ if(D.st){var a=S.ap.filter(function(x){return x.id===S.cur})[0];if(!a)return;a.st=D.st;S.log.unshift(D.st==='Confirmada'?'Mensaje a '+a.c+': su cita fue confirmada.':D.st==='Llegó'?a.c+' marcó llegada. Se avisó a '+pr(a.p).n+'.':'Mensaje a '+a.c+': su cita fue cancelada. Horario liberado.');drawAg();return}
+ if(D.rem){var a2=S.ap.filter(function(x){return x.id===S.cur})[0];if(a2){S.log.unshift('Recordatorio enviado a '+a2.c+': su cita es '+DY[a2.d].l+' a las '+hm(a2.t)+'.');drawAg()}return}
+});
+$('nom').addEventListener('input',drawRes);$('tel').addEventListener('input',drawRes);
+drawRes();drawAg();
+})();
+function tab(t){var ok=false;document.querySelectorAll('[data-panel]').forEach(function(p){var on=p.getAttribute('data-panel')===t;p.classList.toggle('on',on);if(on)ok=true});if(!ok){tab('demo');return}document.querySelectorAll('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-tab')===t?'true':'false')})}
+document.addEventListener('click',function(e){var b=e.target.closest('[data-tab]');if(b){tab(b.getAttribute('data-tab'));history.replaceState(null,'','#'+b.getAttribute('data-tab'))}});
+tab((location.hash||'#demo').slice(1));
+</script>
+</body>
+</html>

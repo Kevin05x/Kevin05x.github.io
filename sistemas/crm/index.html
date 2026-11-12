@@ -236,6 +236,10 @@ footer{padding:26px 0 40px;font-size:.85rem;color:var(--muted)}
 .tabs button[aria-selected="true"]{background:var(--accent);color:#fff}
 .panel[hidden]{display:none!important}
 .panel>section:first-child{padding-top:44px}
+.back{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:0 0 18px}
+.backbtn{display:inline-flex;align-items:center;gap:10px;font:600 1rem "IBM Plex Sans",sans-serif;text-decoration:none;color:#fff;background:var(--surface-2,#171a21);border:2px solid #2f5cf0;border-radius:999px;padding:10px 20px 10px 14px}
+.backbtn span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#2f5cf0}.backbtn:hover{background:#2f5cf0}
+.backlink{color:#8fb0ff;font-weight:500;text-decoration:underline;text-underline-offset:3px}.where{color:#9aa3b2;font-size:.88rem;margin-left:auto}@media (max-width:700px){.where{display:none}}
 </style>
 </head>
 <body>
@@ -251,7 +255,7 @@ footer{padding:26px 0 40px;font-size:.85rem;color:var(--muted)}
   
 
   <div class="hero">
-    <p class="crumb"><a href="../../#sistemas">← Sistemas a medida</a> · CRM y ERP</p>
+    <div class="back"><a class="backbtn" href="../../#sistemas"><span aria-hidden="true">←</span>Volver a Sistemas a medida</a><a class="backlink" href="../../#demos">Ver todas las demos</a><span class="where">Inicio › Sistemas › CRM y ERP</span></div>
     <h1>Un sistema de ventas y gestión que es de su empresa</h1>
     <p class="lead">Le explicamos qué es un CRM, qué módulos puede tener y cómo se vería en su negocio. Usted elige el nivel o arma su propia combinación, y el sistema queda a su nombre, sin pagos por cada usuario.</p>
     <div class="actions">
@@ -444,7 +448,7 @@ footer{padding:26px 0 40px;font-size:.85rem;color:var(--muted)}
   <div class="wrap">
     <h2>Conversemos sobre su sistema</h2>
     <p>Cuéntenos cómo trabaja hoy su negocio y le preparamos una propuesta con precio fijo y una demostración adaptada a usted.</p>
-    <a class="btn" href="https://wa.me/51945906676?text=Hola%2C%20quiero%20una%20propuesta%20de%20sistema%20para%20mi%20negocio" rel="noopener">Escribir por WhatsApp</a> <a class="btn ghost" href="#demo">Volver a la demostración</a>
+    <a class="btn" href="https://wa.me/51945906676?text=Hola%2C%20quiero%20una%20propuesta%20de%20sistema%20para%20mi%20negocio" rel="noopener">Escribir por WhatsApp</a> <a class="btn ghost" href="#demo">Volver a la demostración</a> <a class="btn ghost" href="../../#sistemas">← Volver a Sistemas a medida</a> <a class="btn ghost" href="../../#demos">Ver todas las demos</a>
   </div>
 </div>
 

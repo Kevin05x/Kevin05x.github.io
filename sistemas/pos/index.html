@@ -75,13 +75,26 @@ p{margin:0 0 1rem}a{color:inherit}img{display:block;max-width:100%}
 .rec{background:#fff;color:#14171c;width:min(340px,100%);border-radius:6px;padding:22px 20px;font:13px/1.45 "IBM Plex Sans",monospace;max-height:92vh;overflow-y:auto}.rec h3{text-align:center;font:800 1rem "Schibsted Grotesk"}.rec .c{text-align:center;color:#555;font-size:.78rem}.rec hr{border:none;border-top:1px dashed #999;margin:10px 0}.rec .r{display:flex;justify-content:space-between;gap:8px}.rec .t{font-weight:700;font-size:1rem}.rec button{width:100%;margin-top:12px;background:#14171c;color:#fff;border:none;border-radius:6px;padding:11px;font:600 .92rem "IBM Plex Sans";cursor:pointer}
 .cta{margin:54px 0 0;padding:30px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(135deg,#101a3a,#0c0e13)}.cta h2{margin-bottom:8px}.cta .btn{margin:6px 8px 0 0}
 footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:.88rem}
+
+.sitebar{position:sticky;top:0;z-index:30;background:rgba(8,9,11,.96);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+.sb{display:flex;align-items:center;gap:22px;height:62px}
+.sb .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 1.3rem "Schibsted Grotesk",sans-serif;letter-spacing:-.04em}.sb .brand em{font-style:normal;color:var(--accent-2)}
+.sb nav{display:flex;gap:4px;margin-left:auto}.sb nav a{text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:8px;font-weight:500;font-size:.95rem}.sb nav a:hover{color:var(--ink);background:var(--surface)}.sb nav a[aria-current="page"]{color:var(--ink);background:var(--surface-2)}
+@media (max-width:860px){.sitebar{position:static}.sb{height:auto;flex-wrap:wrap;padding:12px 0;gap:8px 12px}.sb nav{order:3;width:100%;margin:0;overflow-x:auto;scrollbar-width:none}.sb nav::-webkit-scrollbar{display:none}.sb .btn{margin-left:auto}.tabs{top:0!important}}
+.tabs{top:62px}
+.back{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding:20px 0 0}
+.backbtn{display:inline-flex;align-items:center;gap:10px;font:600 1rem "IBM Plex Sans",sans-serif;text-decoration:none;color:#fff;background:var(--surface-2);border:2px solid var(--accent);border-radius:999px;padding:10px 20px 10px 14px;transition:background .15s}
+.backbtn span{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--accent);font-size:1rem}.backbtn:hover{background:var(--accent)}
+.backlink{color:var(--accent-2);font-weight:500;text-decoration:underline;text-underline-offset:3px}
+.where{color:var(--muted);font-size:.88rem;margin-left:auto}@media (max-width:700px){.where{display:none}}
 </style>
 </head>
 <body>
 <div class="wide">
-  <header class="top"><a class="brand" href="../../#inicio" aria-label="Kuntek, ir al inicio"><svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="kbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a68ff"/><stop offset="1" stop-color="#1b3fc4"/></linearGradient></defs><rect width="200" height="200" rx="44" fill="url(#kbg)"/><defs><linearGradient id="kg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d3e0ff"/></linearGradient></defs><polygon points="44,28 78,46 78,172 44,172" fill="url(#kg)"/><polygon points="114,100 148,50 180,50 146,100 180,150 148,150" fill="#5d86ff"/><polygon points="86,100 132,32 146,32 100,100" fill="#fff"/><polygon points="100,100 146,32 164,32 118,100" fill="#d3e0ff"/><polygon points="86,100 102,100 148,168 132,168" fill="#a9c3ff"/><polygon points="102,100 118,100 164,168 148,168" fill="#7fa3ff"/><polygon points="86,100 118,100 102,114" fill="#3a62e6"/></svg><b>kun<em>tek</em></b></a>
-  <a class="btn primary sm" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20del%20punto%20de%20venta%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a></header>
-  <div class="crumb"><a href="../../#sistemas">← Sistemas a medida</a> · <span class="muted">Punto de venta</span></div>
+  <header class="sitebar"><div class="wide sb"><a class="brand" href="../../#inicio" aria-label="Kuntek, ir al inicio"><svg width="30" height="30" viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="kbg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3a68ff"/><stop offset="1" stop-color="#1b3fc4"/></linearGradient></defs><rect width="200" height="200" rx="44" fill="url(#kbg)"/><defs><linearGradient id="kg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#d3e0ff"/></linearGradient></defs><polygon points="44,28 78,46 78,172 44,172" fill="url(#kg)"/><polygon points="114,100 148,50 180,50 146,100 180,150 148,150" fill="#5d86ff"/><polygon points="86,100 132,32 146,32 100,100" fill="#fff"/><polygon points="100,100 146,32 164,32 118,100" fill="#d3e0ff"/><polygon points="86,100 102,100 148,168 132,168" fill="#a9c3ff"/><polygon points="102,100 118,100 164,168 148,168" fill="#7fa3ff"/><polygon points="86,100 118,100 102,114" fill="#3a62e6"/></svg><b>kun<em>tek</em></b></a>
+  <nav aria-label="Secciones del sitio"><a href="../../#inicio">Inicio</a><a href="../../#trabajos">Trabajos</a><a href="../../#sistemas" aria-current="page">Sistemas</a><a href="../../#demos">Demos</a><a href="../../#cotizar">Cotizar</a></nav>
+  <a class="btn primary sm" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20del%20punto%20de%20venta%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">WhatsApp</a></div></header>
+<div class="wide"><div class="back"><a class="backbtn" href="../../#sistemas"><span aria-hidden="true">←</span>Volver a Sistemas a medida</a><a class="backlink" href="../../#demos">Ver todas las demos</a><span class="where">Inicio › Sistemas › Punto de venta</span></div></div>
   <section class="hero"><div class="eb">POS · Punto de venta con inventario y caja</div><h1>Vender rápido y cerrar la caja sin cuadrar a mano.</h1><p class="lead">Un sistema para bodegas, boticas, minimarkets y tiendas: cobra en segundos, descuenta el stock solo y le dice cuánto vendió en el día.</p></section>
 </div>
 <nav class="tabs" aria-label="Secciones"><div class="wide" role="tablist">
@@ -113,12 +126,12 @@ footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line);colo
 
 <div data-panel="que-es">
   <h2>Qué es un punto de venta (POS)</h2>
-  <p class="lead">Es el sistema que usted usa en el mostrador: registra cada venta, descuenta el producto del inventario y suma la caja. Todo en un solo lugar y sin cuaderno.</p>
-  <div class="banner"><img src="../../img/ejemplos/p-hero.webp" alt="Pasillo de un supermercado con productos ordenados" width="1600" height="1200" loading="lazy"><div>Menos errores. Más control.</div></div>
+  <p class="lead">Es el sistema que usted usa en el mostrador. Registra cada venta, descuenta el producto del inventario y suma la caja. Todo en un solo lugar, sin cuaderno.</p>
+  <div class="banner"><img src="../../img/ejemplos/p-hero.webp" alt="Pasillo de un supermercado con productos ordenados" width="1600" height="1200" loading="lazy"></div>
   <div class="pillars">
     <div><h3>Cobra en segundos</h3><p>Busque el producto o escanee el código, elija cómo paga el cliente y el sistema calcula el vuelto.</p></div>
     <div><h3>Inventario siempre al día</h3><p>Cada venta descuenta el stock. Le avisa qué se está acabando antes de que se quede sin mercadería.</p></div>
-    <div><h3>Caja sin sorpresas</h3><p>Ve cuánto vendió, por qué medio (efectivo, Yape, Plin o tarjeta) y cuánto debería haber en la caja.</p></div>
+    <div><h3>Caja al día</h3><p>Ve cuánto vendió, por qué medio (efectivo, Yape, Plin o tarjeta) y cuánto debería haber en la caja.</p></div>
     <div><h3>Comprobantes</h3><p>Emite boletas, facturas o notas de venta. La emisión electrónica se conecta con un proveedor autorizado.</p></div>
   </div>
   <div class="two">
@@ -140,7 +153,7 @@ footer{margin-top:56px;padding:26px 0 40px;border-top:1px solid var(--line);colo
 </div>
 
 <section class="cta"><h2>¿Lo quiere ver con su negocio?</h2><p class="muted">Le preparamos una demostración gratis con sus propios productos. Si no le gusta, no paga.</p>
-<a class="btn primary" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20del%20punto%20de%20venta%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir mi demostración por WhatsApp</a><a class="btn" href="../crm/">CRM y ERP</a><a class="btn" href="../arm/">ARM</a></section>
+<a class="btn primary" href="https://wa.me/51945906676?text=Hola%2C%20vi%20la%20demo%20del%20punto%20de%20venta%20en%20su%20portafolio%20y%20quisiera%20una%20demostraci%C3%B3n%20para%20mi%20negocio." target="_blank" rel="noopener">Pedir mi demostración por WhatsApp</a><a class="btn" href="../crm/">CRM y ERP</a><a class="btn" href="../arm/">ARM</a><a class="btn" href="../../#sistemas">← Volver a Sistemas a medida</a><a class="btn" href="../../#demos">Ver todas las demos</a></section>
 </main>
 <div class="wide"><footer>© 2026 Kuntek · Kevin Huamán Gonzales · Cajamarca, Perú · Fotos: Unsplash</footer></div>
 

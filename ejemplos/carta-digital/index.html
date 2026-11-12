@@ -55,10 +55,10 @@ footer{margin-top:40px;padding:20px 0;color:var(--muted);font-size:.84rem;border
 .sheet input[type=text],.sheet input[type=number]{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);border-radius:10px;padding:11px 12px;font:inherit}.sheet label{font-size:.85rem;color:var(--muted);display:block;margin:10px 0 4px}
 .sheet .go{display:block;text-align:center;width:100%;margin-top:14px}.sheet .cl{background:none;border:none;color:var(--muted);width:100%;margin-top:8px;cursor:pointer;font:inherit}
 .sheet small{color:var(--muted);display:block;margin-top:10px;font-size:.8rem}
-</style>
+.volver{position:fixed;left:14px;bottom:84px;z-index:90;background:#2f5cf0;color:#fff!important;font:600 .9rem system-ui,sans-serif;padding:11px 18px;border-radius:999px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);border:2px solid #fff}.volver:hover{background:#1f46c9}.demo .back2{background:#2f5cf0;color:#fff!important;padding:5px 14px;border-radius:99px;font-weight:600;text-decoration:none;white-space:nowrap}</style>
 </head>
 <body>
-<div class="demo"><div class="w"><span>Carta de ejemplo: platos, precios y local son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Pedir una carta para mi negocio</a></span></div></div>
+<div class="demo"><div class="w"><a class="back2" href="../../#demos">← Volver a las demos</a><span>Carta de ejemplo: platos, precios y local son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Pedir una carta para mi negocio</a></span></div></div>
 <section class="hero"><img src="../../img/ejemplos/k-hero.webp" alt="Salón de un restaurante con mesas y luz cálida" width="1600" height="1067" fetchpriority="high">
 <div class="w"><small>Cocina de mercado · Café</small><h1>La Huerta Bistró</h1><p>Carta digital: mire, elija y pida desde su mesa o para llevar.</p><div class="info"><span><b>Abierto</b> 8:00 a. m. – 10:00 p. m. (ejemplo)</span><span>Cajamarca, Perú (ejemplo)</span></div></div></section>
 
@@ -136,5 +136,5 @@ window.addEventListener('scroll',function(){var cur=null;document.querySelectorA
 render();
 })();
 </script>
-</body>
+<a class="volver" href="../../#demos">← Volver a las demos de Kuntek</a></body>
 </html>

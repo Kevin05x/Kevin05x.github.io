@@ -64,10 +64,10 @@ footer{padding:36px 0 50px;color:var(--muted);font-size:.9rem}footer .w{display:
 .sum{padding:16px 20px 20px;border-top:1px solid var(--line);background:#fbf5ea}.sum .row{display:flex;justify-content:space-between;margin:4px 0}.sum .tot{font:700 1.3rem Fraunces;margin-top:8px}
 .sum .btn{width:100%;text-align:center;margin-top:12px}.sum .btn[aria-disabled="true"]{opacity:.45;pointer-events:none}.sum small{display:block;color:var(--muted);margin-top:10px;font-size:.8rem}
 .bar{height:6px;background:var(--line);border-radius:99px;margin:6px 0 10px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);transition:width .3s}
-</style>
+.volver{position:fixed;left:14px;bottom:16px;z-index:90;background:#2f5cf0;color:#fff!important;font:600 .9rem system-ui,sans-serif;padding:11px 18px;border-radius:999px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);border:2px solid #fff}.volver:hover{background:#1f46c9}.demo .back2{background:#2f5cf0;color:#fff!important;padding:5px 14px;border-radius:99px;font-weight:600;text-decoration:none;white-space:nowrap}</style>
 </head>
 <body>
-<div class="demo"><div class="w"><span>Tienda de ejemplo: productos, precios y marca son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Cotizar una tienda para mi negocio</a></span></div></div>
+<div class="demo"><div class="w"><a class="back2" href="../../#demos">← Volver a las demos</a><span>Tienda de ejemplo: productos, precios y marca son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Cotizar una tienda para mi negocio</a></span></div></div>
 <header class="h"><div class="w">
   <a class="logo" href="#"><i></i>Altura</a>
   <nav><a href="#productos">Productos</a><a href="#historia">Historia</a><a href="#contacto">Contacto</a></nav>
@@ -150,5 +150,5 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape')open(false)}
 chips();grid();draw();
 })();
 </script>
-</body>
+<a class="volver" href="../../#demos">← Volver a las demos de Kuntek</a></body>
 </html>

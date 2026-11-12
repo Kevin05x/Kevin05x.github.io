@@ -67,10 +67,10 @@ input[type=range]{padding:0;accent-color:var(--amber);background:transparent;bor
 ol.p{list-style:none;margin:0;padding:0;counter-reset:n}ol.p li{counter-increment:n;display:grid;grid-template-columns:54px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}ol.p li::before{content:counter(n,decimal-leading-zero);font:800 2rem "Barlow Condensed";color:var(--amber-d)}ol.p b{display:block;font:700 1.35rem "Barlow Condensed";text-transform:uppercase}ol.p span{color:var(--muted);font-size:.95rem}
 .contact{margin:84px 0 0;background:var(--amber);color:var(--navy)}.contact .w{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:20px;padding:44px 22px}.contact h2{margin:0;font-size:clamp(2rem,5vw,3.2rem)}.contact .btn{background:var(--navy);color:#fff}.contact .btn:hover{background:#000}
 footer{background:#07111b;color:#8ea0b2;padding:30px 0 40px;font-size:.9rem}footer .w{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}footer a{color:var(--amber)}
-</style>
+.volver{position:fixed;left:14px;bottom:16px;z-index:90;background:#2f5cf0;color:#fff!important;font:600 .9rem system-ui,sans-serif;padding:11px 18px;border-radius:999px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.35);border:2px solid #fff}.volver:hover{background:#1f46c9}.demo .back2{background:#2f5cf0;color:#fff!important;padding:5px 14px;border-radius:99px;font-weight:600;text-decoration:none;white-space:nowrap}</style>
 </head>
 <body>
-<div class="demo"><div class="w"><span>Web de ejemplo: empresa, cifras y proyectos son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Cotizar una web para mi empresa</a></span></div></div>
+<div class="demo"><div class="w"><a class="back2" href="../../#demos">← Volver a las demos</a><span>Web de ejemplo: empresa, cifras y proyectos son ficticios.</span><span>Hecha por <a href="../../">Kuntek</a> · <a href="../../#cotizar">Cotizar una web para mi empresa</a></span></div></div>
 <header class="h"><div class="w">
   <a class="logo" href="#"><i></i>Andina</a>
   <nav><a href="#servicios">Servicios</a><a href="#proyectos">Proyectos</a><a href="#plazo">Plazo de obra</a><a href="#proceso">Cómo trabajamos</a><a class="btn" href="#contacto">Cotizar</a></nav>
@@ -141,5 +141,5 @@ function calc(){var t=$('tipo').value,a=+$('m2').value,b=base[t],m=b.m+a*b.k,lo=
 $('tipo').addEventListener('change',calc);$('m2').addEventListener('input',calc);calc();
 })();
 </script>
-</body>
+<a class="volver" href="../../#demos">← Volver a las demos de Kuntek</a></body>
 </html>
