@@ -17,7 +17,7 @@ Este repo es el portafolio de Kevin Huamán (desarrollador, Cajamarca, Perú). L
 - Todo **precio, tarifa, horario o promo que el negocio no haya publicado** va como **"de ejemplo"**, visible en la página.
 - Fotos: solo las del propio negocio (su Instagram, TikTok, ficha de Maps), rotuladas "foto referencial". Nunca fotos de terceros ni de stock presentadas como del negocio.
 - Reseñas: solo reales, atribuidas ("Huésped · Google Maps"). No pongas estrellas individuales si no las conoces.
-- Los precios de Kevin (web desde S/ 900, etc.) **no aparecen** en la demo: la demo es del negocio, no de Kevin.
+- Los precios de Kevin (web desde S/ 600, etc.) **no aparecen** en la demo: la demo es del negocio, no de Kevin.
 
 ## 4. Banner y SEO
 - Primera línea de la página: `Boceto de propuesta preparado por Kevin Huamán para <Negocio> · <qué es de ejemplo>`.
