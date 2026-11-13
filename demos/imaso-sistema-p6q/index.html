@@ -149,6 +149,48 @@ label,.lb{display:block;font:700 .7rem/1 var(--fb);letter-spacing:.12em;text-tra
 .toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,30px);opacity:0;pointer-events:none;background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;font-weight:700;z-index:90;transition:all .3s;max-width:92vw;text-align:center;border:1px solid var(--lime)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .scrim{display:none}
+
+/* ---- v2 ---- */
+.g2.eq{grid-template-columns:1fr 1fr}
+.meta .mh{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.meta p{margin-top:10px;color:var(--muted);font-size:.9rem}.meta p b{color:var(--ink)}
+.mbar{background:#ECEDE3;border-radius:99px;height:16px;overflow:hidden}
+.mbar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--green),var(--lime));transition:width .6s cubic-bezier(.2,.7,.2,1)}
+.mbar.sm{height:10px}.mbar.warn i{background:#E0A100}.mbar.over i{background:var(--red)}
+.btn.sm{padding:5px 11px;min-height:34px;font-size:.8rem}
+.mini-p{margin-top:12px;color:var(--muted);font-size:.86rem}.mini-p b{color:var(--ink)}
+.tag{display:inline-block;font:700 .68rem/1 var(--fb);padding:4px 8px;border-radius:7px;background:#EEF0E4;color:#3B4A3E;white-space:nowrap}
+.cc .tg{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.lnk{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-color:#C5D69A;text-underline-offset:3px}
+.lnk:hover{text-decoration-color:var(--green-d);color:var(--green-d)}
+.rt{color:#E0A100;letter-spacing:1px;font-size:.9rem;white-space:nowrap}
+.spark{width:84px;height:26px;display:block}
+.dn-w{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.donut{width:132px;height:132px;flex:none}
+.dl{list-style:none;display:grid;gap:7px;flex:1;min-width:140px;font-size:.84rem}
+.dl li{display:grid;grid-template-columns:12px 1fr auto;gap:8px;align-items:center}
+.dl i{width:12px;height:12px;border-radius:4px}.dl b{font-variant-numeric:tabular-nums}
+.sh{font:800 .78rem/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.tl{display:grid;gap:0;border-left:2px solid #D9DEC9;margin-left:5px}
+.tl div{position:relative;padding:0 0 12px 16px;display:grid;gap:1px}
+.tl i{position:absolute;left:-7px;top:3px;width:12px;height:12px;border-radius:50%;background:var(--green);border:2px solid #fff}
+.tl b{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}.tl span{font-size:.9rem}
+.bgts{display:grid;gap:12px}
+.bgt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:5px 10px;align-items:center}
+.bgt>div:first-child{display:flex;flex-direction:column;min-width:0}.bgt b{font-size:.88rem}.bgt span{font-size:.78rem;color:var(--muted)}
+.bgt .mbar{grid-column:1/-1;grid-row:2}.bgt em{font-style:normal;font-weight:800;font-size:.9rem;grid-column:2;grid-row:1}
+select.sel{width:auto;min-width:170px;min-height:40px;border-radius:999px;padding:6px 14px;font-weight:700;font-size:.85rem}
+tfoot td{background:#F6F7F0;border-top:2px solid var(--line);border-bottom:0}
+.addln.mini{grid-template-columns:minmax(0,1fr) auto}
+.kpi b .up,.kpi b .dn,.kpi small span,.kpi small .up,.kpi small .dn{display:inline;font:inherit;letter-spacing:0;text-transform:none;margin:0;color:inherit}
+.kpi b .up{color:var(--green-d)}.kpi b .dn{color:var(--red)}.kpi small .up{color:var(--green-d);font-weight:700}.kpi small .dn{color:var(--red);font-weight:700}
+.kpi.dark b .up{color:var(--lime)}
+.li>b,.li .seg{white-space:nowrap}
+.dl li{grid-template-columns:12px minmax(0,1fr) auto}.dl b{white-space:nowrap}
+.donut{width:112px;height:112px}
+.kpi b span{display:inline;font:inherit;letter-spacing:0;text-transform:none;margin:0}
+table.pv td:nth-child(2){min-width:230px}table.pv{min-width:860px}
+@media (max-width:1100px){.g2.eq{grid-template-columns:1fr}}
 @media (max-width:1100px){.kpis{grid-template-columns:repeat(2,1fr)}.g2,.g3{grid-template-columns:1fr}.qwrap{grid-template-columns:1fr}}
 @media (max-width:860px){
  .app{grid-template-columns:minmax(0,1fr)}
@@ -210,53 +252,62 @@ function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate
 var T=new Date();T.setHours(12,0,0,0);
 function ago(n){var d=new Date(T);d.setDate(d.getDate()-n);return iso(d)}
 function pd(s){var a=s.split('-');return new Date(+a[0],+a[1]-1,+a[2],12)}
+function dd(a,b){return Math.round((pd(a)-pd(b))/864e5)}
 var MES=['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'];
 function fd(s){var d=pd(s);return d.getDate()+' '+MES[d.getMonth()]}
 function fdy(s){var d=pd(s);return d.getDate()+' '+MES[d.getMonth()]+' '+d.getFullYear()}
 function ym(s){return s.slice(0,7)}
 function fmt(n){var neg=n<0;n=Math.abs(Math.round(n*100)/100);var p=n.toFixed(2).split('.');p[0]=p[0].replace(/\B(?=(\d{3})+(?!\d))/g,',');return (neg?'−':'')+'S/ '+p[0]+(p[1]!=='00'?'.'+p[1]:'')}
-function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('on')},3600)}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('on')},3800)}
 function months(n){var a=[];for(var i=n-1;i>=0;i--){var d=new Date(T.getFullYear(),T.getMonth()-i,1,12);a.push({k:d.getFullYear()+'-'+pad(d.getMonth()+1),l:MES[d.getMonth()]})}return a}
-var CURM=ym(iso(T));
+var TODAY=iso(T),CURM=ym(TODAY);
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
 
 /* ---------- datos de ejemplo (todo inventado) ---------- */
 var STG=[['nuevo','Nuevo'],['int','Interesado'],['cot','Cotizado'],['cli','Cliente'],['noi','No interesado']];
+var PROB={nuevo:.1,int:.3,cot:.6};
+var LIN=['Diseño gráfico','Impresiones','Audiovisual','Gigantografías','Otros'];
+var ORI=['Instagram','Facebook','WhatsApp','Referido','Web','Visita'];
 function stn(k){return STG.filter(function(s){return s[0]===k})[0][1]}
 function badge(k){return '<span class="bd st-'+k+'">'+stn(k)+'</span>'}
 var C=[
- [1,'Constructora Cumbre Norte','Empresa','Ing. Marco Salas','976 000 101','cli',1,'Rotulado de flota y brochure anual',null],
- [2,'Lácteos Valle Verde','Empresa','Sra. Rocío Díaz','976 000 102','cli',1,'Packaging y etiquetas de quesos',null],
- [3,'Clínica Santa Aurora','Institución','Lic. Karina Vega','976 000 103','cot',1,'Señalética y folletos',0],
- [4,'Hotel Los Pinos','Empresa','Sr. Hugo Paredes','976 000 104','int',1,'Gigantografías y spot de radio',1],
- [5,'Colegio Horizonte','Institución','Prof. Elena Ruiz','976 000 105','cli',0,'Calendarios y revista institucional',null],
- [6,'Panadería El Trigal','Empresa','Sra. Marta León','976 000 106','int',0,'Pidió ver ejemplos de empaques',2],
- [7,'Café Cumbre','Empresa','Sr. Jorge Tello','976 000 107','nuevo',0,'Llegó por Instagram',null],
- [8,'Ferretería El Maestro','Empresa','Sr. Luis Cabrera','976 000 108','cot',0,'Vinil y letrero de fachada',-1],
- [9,'Transportes Altoandino','Empresa','Sr. Raúl Mejía','976 000 109','cli',1,'Rotulado de vehículos',null],
- [10,'Academia Nuevo Saber','Empresa','Srta. Paola Ríos','976 000 110','noi',0,'Por ahora sin presupuesto',null],
- [11,'Inmobiliaria Hogar Norte','Empresa','Sr. Diego Alva','976 000 111','int',1,'Letreros y video de proyecto',3],
- [12,'Restaurante Sabor Serrano','Empresa','Sra. Julia Chávez','976 000 112','noi',0,'Prefiere hacerlo por su cuenta',null],
- [13,'Cooperativa Agraria Sol','Institución','Ing. Víctor Mendoza','976 000 113','nuevo',0,'Pidió información por WhatsApp',null],
- [14,'Boticas Salud Total','Empresa','Sra. Lucía Herrera','976 000 114','cli',0,'Community manager mensual',null]
-].map(function(a){return {id:a[0],n:a[1],tipo:a[2],ct:a[3],tel:a[4],st:a[5],pr:!!a[6],nota:a[7],seg:a[8]}});
+ [1,'Constructora Cumbre Norte','Empresa','Ing. Marco Salas','976 000 101','cli',1,'Rotulado de flota y brochure anual',null,'Referido',6000,[[40,'Aprobó la cotización COT-38'],[60,'Reunión en su oficina: flota de 6 camionetas'],[120,'Cliente registrado']]],
+ [2,'Lácteos Valle Verde','Empresa','Sra. Rocío Díaz','976 000 102','cli',1,'Packaging y etiquetas de quesos',null,'Referido',3000,[[20,'Aprobó la cotización COT-39'],[90,'Pidió nuevas etiquetas para queso paria'],[150,'Cliente registrado']]],
+ [3,'Clínica Santa Aurora','Institución','Lic. Karina Vega','976 000 103','cot',1,'Señalética y folletos',0,'Instagram',3500,[[3,'Se envió la cotización COT-41'],[10,'Llamó pidiendo señalética para 2 sedes'],[12,'Cliente registrado']]],
+ [4,'Hotel Los Pinos','Empresa','Sr. Hugo Paredes','976 000 104','int',1,'Gigantografías y spot de radio',1,'WhatsApp',5200,[[5,'Se envió la cotización COT-42'],[8,'Pidió gigantografías para fachada y spot de radio']]],
+ [5,'Colegio Horizonte','Institución','Prof. Elena Ruiz','976 000 105','cli',0,'Calendarios y revista institucional',null,'Visita',2500,[[10,'Entrega de brochures'],[100,'Cliente registrado']]],
+ [6,'Panadería El Trigal','Empresa','Sra. Marta León','976 000 106','int',0,'Pidió ver ejemplos de empaques',2,'Instagram',1800,[[6,'Se le enviaron ejemplos de empaques'],[9,'Cliente registrado']]],
+ [7,'Café Cumbre','Empresa','Sr. Jorge Tello','976 000 107','nuevo',0,'Llegó por Instagram',null,'Instagram',1200,[[2,'Cliente registrado']]],
+ [8,'Ferretería El Maestro','Empresa','Sr. Luis Cabrera','976 000 108','cot',0,'Vinil y letrero de fachada',-1,'Visita',2100,[[9,'Se envió la cotización COT-43'],[14,'Visita al local para medir la fachada']]],
+ [9,'Transportes Altoandino','Empresa','Sr. Raúl Mejía','976 000 109','cli',1,'Rotulado de vehículos',null,'Referido',4000,[[8,'Rotulado de 3 camiones en proceso'],[70,'Cliente registrado']]],
+ [10,'Academia Nuevo Saber','Empresa','Srta. Paola Ríos','976 000 110','noi',0,'Por ahora sin presupuesto',null,'Facebook',2200,[[30,'Rechazó la cotización COT-40'],[45,'Cliente registrado']]],
+ [11,'Inmobiliaria Hogar Norte','Empresa','Sr. Diego Alva','976 000 111','int',1,'Letreros y video de proyecto',3,'Web',6500,[[1,'Se preparó la cotización COT-44 (borrador)'],[4,'Pidió letreros y video de su nuevo proyecto']]],
+ [12,'Restaurante Sabor Serrano','Empresa','Sra. Julia Chávez','976 000 112','noi',0,'Prefiere hacerlo por su cuenta',null,'Facebook',1500,[[25,'Dijo que prefiere hacerlo por su cuenta']]],
+ [13,'Cooperativa Agraria Sol','Institución','Ing. Víctor Mendoza','976 000 113','nuevo',0,'Pidió información por WhatsApp',null,'WhatsApp',3800,[[1,'Cliente registrado']]],
+ [14,'Boticas Salud Total','Empresa','Sra. Lucía Herrera','976 000 114','cli',0,'Community manager mensual',null,'Web',1600,[[12,'Flyers promocionales entregados'],[150,'Cliente registrado']]]
+].map(function(a){return {id:a[0],n:a[1],tipo:a[2],ct:a[3],tel:a[4],st:a[5],pr:!!a[6],nota:a[7],seg:a[8],ori:a[9],val:a[10],log:a[11].map(function(l){return {f:ago(l[0]),t:l[1]}})}});
 var V=[
- [1,'Distribuidora Gráfica del Norte','Materiales',1,'Sr. Pablo Rojas','976 000 201'],
- [2,'Insumos Vinil Sur','Materiales',1,'Sra. Ana Quispe','976 000 202'],
- [3,'Imprenta Offset Andina','Impresión tercerizada',1,'Sr. Walter Cruz','976 000 203'],
- [4,'Merchandising Express','Merchandising',0,'Srta. Nelly Soto','976 000 204'],
- [5,'Estudio Sonido Pro','Servicios',0,'Sr. Iván Lara','976 000 205'],
- [6,'Transportes Rápidos Cajamarca','Transporte',0,'Sr. Omar Díaz','976 000 206'],
- [7,'Tintas y Placas Lima','Materiales',1,'Sra. Gina Vega','976 000 207'],
- [8,'Cine Andes · Alquiler de equipos','Servicios',0,'Sr. Saúl Peña','976 000 208']
-].map(function(a){return {id:a[0],n:a[1],cat:a[2],pr:!!a[3],ct:a[4],tel:a[5]}});
+ [1,'Distribuidora Gráfica del Norte','Materiales',1,'Sr. Pablo Rojas','976 000 201',4,'30 días'],
+ [2,'Insumos Vinil Sur','Materiales',1,'Sra. Ana Quispe','976 000 202',5,'15 días'],
+ [3,'Imprenta Offset Andina','Impresión tercerizada',1,'Sr. Walter Cruz','976 000 203',4,'Contado'],
+ [4,'Merchandising Express','Merchandising',0,'Srta. Nelly Soto','976 000 204',3,'Contado'],
+ [5,'Estudio Sonido Pro','Servicios',0,'Sr. Iván Lara','976 000 205',5,'Contado'],
+ [6,'Transportes Rápidos Cajamarca','Transporte',0,'Sr. Omar Díaz','976 000 206',4,'Contado'],
+ [7,'Tintas y Placas Lima','Materiales',1,'Sra. Gina Vega','976 000 207',4,'30 días'],
+ [8,'Cine Andes · Alquiler de equipos','Servicios',0,'Sr. Saúl Peña','976 000 208',3,'Contado']
+].map(function(a){return {id:a[0],n:a[1],cat:a[2],pr:!!a[3],ct:a[4],tel:a[5],rt:a[6],plazo:a[7]}});
 var I=[
- [1,'Rotulado de 6 camionetas',5400,3,'Transferencia','cobrado'],[2,'Etiquetas de queso (5 000 u.)',1850,5,'Yape','cobrado'],[9,'Rotulado de 3 camiones',3200,8,'Transferencia','xcobrar'],[5,'Brochures institucionales',1200,10,'Efectivo','cobrado'],[14,'Flyers promocionales',680,12,'Yape','cobrado'],
- [1,'Brochure anual',2600,18,'Transferencia','cobrado'],[2,'Diseño de packaging',1900,22,'Transferencia','cobrado'],[5,'Rotafolio educativo',1500,20,'Transferencia','xcobrar'],[14,'Tarjetas y folders',720,26,'Efectivo','cobrado'],[5,'Calendarios de pared',2400,31,'Transferencia','cobrado'],[9,'Vinil adhesivo para oficinas',1350,36,'Plin','cobrado'],
- [1,'Gigantografía de obra',5200,46,'Transferencia','cobrado'],[2,'Fotografía de producto',900,52,'Yape','cobrado'],[9,'Rotulado de 2 vehículos',2100,58,'Transferencia','cobrado'],[14,'Community manager (mes)',800,64,'Transferencia','cobrado'],
- [1,'Catálogo corporativo',3100,77,'Transferencia','cobrado'],[5,'Revista institucional',2800,84,'Transferencia','cobrado'],[2,'Etiquetas (3 000 u.)',1250,90,'Yape','cobrado'],[14,'Lapiceros personalizados',950,96,'Efectivo','cobrado'],
- [9,'Letrero en alto relieve',2200,107,'Transferencia','cobrado'],[1,'Video institucional',4200,115,'Transferencia','cobrado'],[5,'Afiches y banners',760,124,'Yape','cobrado'],
- [2,'Cajas de packaging',2300,138,'Transferencia','cobrado'],[14,'Community manager (mes)',800,146,'Transferencia','cobrado'],[1,'Folletería de campaña',1700,155,'Transferencia','cobrado']
-].map(function(a,i){return {id:i+1,c:a[0],con:a[1],m:a[2],f:ago(a[3]),pago:a[4],est:a[5]}});
+ [1,'Rotulado de 6 camionetas',5400,3,'Transferencia','cobrado','Gigantografías'],[2,'Etiquetas de queso (5 000 u.)',1850,5,'Yape','cobrado','Impresiones'],[9,'Rotulado de 3 camiones',3200,8,'Transferencia','xcobrar','Gigantografías'],[5,'Brochures institucionales',1200,10,'Efectivo','cobrado','Impresiones'],[14,'Flyers promocionales',680,12,'Yape','cobrado','Impresiones'],
+ [1,'Brochure anual',2600,18,'Transferencia','cobrado','Diseño gráfico'],[2,'Diseño de packaging',1900,22,'Transferencia','cobrado','Diseño gráfico'],[5,'Rotafolio educativo',1500,20,'Transferencia','xcobrar','Impresiones'],[14,'Tarjetas y folders',720,26,'Efectivo','cobrado','Impresiones'],[5,'Calendarios de pared',2400,31,'Transferencia','cobrado','Impresiones'],[9,'Vinil adhesivo para oficinas',1350,36,'Plin','cobrado','Gigantografías'],
+ [1,'Gigantografía de obra',5200,46,'Transferencia','cobrado','Gigantografías'],[2,'Fotografía de producto',900,52,'Yape','cobrado','Audiovisual'],[9,'Rotulado de 2 vehículos',2100,58,'Transferencia','cobrado','Gigantografías'],[14,'Community manager (mes)',800,64,'Transferencia','cobrado','Otros'],
+ [1,'Catálogo corporativo',3100,77,'Transferencia','cobrado','Diseño gráfico'],[5,'Revista institucional',2800,84,'Transferencia','cobrado','Impresiones'],[2,'Etiquetas (3 000 u.)',1250,90,'Yape','cobrado','Impresiones'],[14,'Lapiceros personalizados',950,96,'Efectivo','cobrado','Otros'],
+ [9,'Letrero en alto relieve',2200,107,'Transferencia','cobrado','Gigantografías'],[1,'Video institucional',4200,115,'Transferencia','cobrado','Audiovisual'],[5,'Afiches y banners',760,124,'Yape','cobrado','Impresiones'],
+ [2,'Cajas de packaging',2300,138,'Transferencia','cobrado','Diseño gráfico'],[14,'Community manager (mes)',800,146,'Transferencia','cobrado','Otros'],[1,'Folletería de campaña',1700,155,'Transferencia','cobrado','Impresiones']
+].map(function(a,i){return {id:i+1,c:a[0],con:a[1],m:a[2],f:ago(a[3]),pago:a[4],est:a[5],lin:a[6]}});
+var GC=['Materiales','Impresión tercerizada','Sueldos','Alquiler','Servicios','Transporte','Merchandising','Publicidad'];
+var DOC={'Materiales':'Factura','Impresión tercerizada':'Factura','Sueldos':'Planilla','Alquiler':'Recibo','Servicios':'Boleta','Transporte':'Boleta','Merchandising':'Factura','Publicidad':'Factura'};
+var BUD={'Materiales':3500,'Impresión tercerizada':1500,'Sueldos':2400,'Alquiler':900,'Servicios':800,'Transporte':400,'Merchandising':500,'Publicidad':400};
+var META=10000,CAJA0=6000;
 var G=[
  [1,'Materiales','Papel couché y cartulina',1100,4],[2,'Materiales','Vinil y celtex',1400,6],[7,'Materiales','Tintas',780,9],[0,'Sueldos','Planilla de octubre',2400,2],[0,'Alquiler','Alquiler del local',900,1],[6,'Transporte','Fletes e instalación',260,7],[3,'Impresión tercerizada','Offset 5 000 etiquetas',920,8],[0,'Publicidad','Anuncios en redes',300,10],
  [1,'Materiales','Papel',1300,17],[2,'Materiales','Vinil',1750,21],[3,'Impresión tercerizada','Impresión de brochures',1100,25],[5,'Servicios','Locución de spot',400,28],[0,'Sueldos','Planilla de septiembre',2400,31],[0,'Alquiler','Alquiler del local',900,32],[0,'Publicidad','Anuncios en redes',300,40],
@@ -264,166 +315,290 @@ var G=[
  [1,'Materiales','Papel',1250,80],[2,'Materiales','Vinil y celtex',1600,86],[3,'Impresión tercerizada','Catálogo corporativo',1900,79],[4,'Merchandising','Lapiceros personalizados',520,95],[0,'Sueldos','Planilla de julio',2400,92],[0,'Alquiler','Alquiler del local',900,93],[0,'Publicidad','Anuncios',250,72],
  [1,'Materiales','Papel',1400,110],[2,'Materiales','Vinil',2000,118],[8,'Servicios','Alquiler de equipos de video',650,114],[5,'Servicios','Locución',350,120],[0,'Sueldos','Planilla de junio',2400,122],[0,'Alquiler','Alquiler del local',900,123],
  [1,'Materiales','Papel',1000,140],[2,'Materiales','Vinil',1500,145],[7,'Materiales','Tintas',700,150],[0,'Sueldos','Planilla de mayo',2400,152],[0,'Alquiler','Alquiler del local',900,153]
-].map(function(a,i){return {id:i+1,pv:a[0]||null,cat:a[1],con:a[2],m:a[3],f:ago(a[4])}});
+].map(function(a,i){return {id:i+1,pv:a[0]||null,cat:a[1],con:a[2],m:a[3],f:ago(a[4]),doc:DOC[a[1]]}});
 var CAT=[['Diseño de logotipo',350],['Diseño de brochure',600],['Diseño de packaging',750],['Flyers (millar)',180],['Tarjetas de presentación (millar)',90],['Gigantografía (por m²)',45],['Vinil adhesivo (por m²)',55],['Rotulado de vehículo',650],['Letrero en alto relieve',900],['Spot de radio',480],['Video institucional',2200],['Fotografía de producto (sesión)',420],['Community manager (mes)',800],['Merchandising: lapiceros (100 u.)',280],['Señalética interior (juego)',1100]];
-var GC=['Materiales','Impresión tercerizada','Sueldos','Alquiler','Servicios','Transporte','Merchandising','Publicidad'];
+var PK=[
+ ['Identidad completa',[['Diseño de logotipo',1,350],['Tarjetas de presentación (millar)',1,90],['Diseño de brochure',1,600]]],
+ ['Campaña de lanzamiento',[['Flyers (millar)',2,180],['Gigantografía (por m²)',10,45],['Spot de radio',1,480]]],
+ ['Flota rotulada (3 vehículos)',[['Rotulado de vehículo',3,650]]],
+ ['Local nuevo: fachada y vidrios',[['Letrero en alto relieve',1,900],['Vinil adhesivo (por m²)',8,55]]]
+];
+var PAGO=['50 % de adelanto y saldo contra entrega','Contado','Crédito a 15 días','Crédito a 30 días'];
 var Q=[
- [41,3,3,'enviada',[['Señalética interior (juego)',1,1100],['Diseño de brochure',2,600]]],
- [42,4,5,'enviada',[['Gigantografía (por m²)',20,45],['Spot de radio',1,480]]],
- [43,8,9,'enviada',[['Vinil adhesivo (por m²)',12,55],['Letrero en alto relieve',1,900]]],
- [38,1,14,'aprobada',[['Rotulado de vehículo',6,650]]],
- [39,2,20,'aprobada',[['Diseño de packaging',1,750]]],
- [40,10,30,'rechazada',[['Video institucional',1,2200]]],
- [44,11,1,'borrador',[['Letrero en alto relieve',2,900],['Video institucional',1,2200]]]
-].map(function(a,i){return {id:i+1,num:a[0],c:a[1],f:ago(a[2]),st:a[3],igv:true,val:15,nota:'',ing:a[3]==='aprobada',it:a[4].map(function(x){return {d:x[0],q:x[1],p:x[2]}})}});
-var cur='panel',S={cv:'kan',cs:'all',cq:'',cp:false,is:'all',gc:'all',vp:false,rp:'6m',qe:null,qd:null};
+ [41,3,3,'enviada',[['Señalética interior (juego)',1,1100],['Diseño de brochure',2,600]],0,15],
+ [42,4,5,'enviada',[['Gigantografía (por m²)',20,45],['Spot de radio',1,480]],5,15],
+ [43,8,9,'enviada',[['Vinil adhesivo (por m²)',12,55],['Letrero en alto relieve',1,900]],0,7],
+ [38,1,14,'aprobada',[['Rotulado de vehículo',6,650]],5,15],
+ [39,2,20,'aprobada',[['Diseño de packaging',1,750]],0,15],
+ [40,10,30,'rechazada',[['Video institucional',1,2200]],0,15],
+ [44,11,1,'borrador',[['Letrero en alto relieve',2,900],['Video institucional',1,2200]],0,15]
+].map(function(a,i){return {id:i+1,num:a[0],c:a[1],f:ago(a[2]),st:a[3],igv:true,val:a[6],desc:a[5],pago:PAGO[0],plazo:7,nota:'',ing:a[3]==='aprobada',it:a[4].map(function(x){return {d:x[0],q:x[1],p:x[2]}})}});
+var cur='panel',S={cv:'kan',cs:'all',cq:'',cp:false,is:'all',il:'all',iq:'',gc:'all',gp:'6m',gq:'',vp:false,rp:'6m',rr:'resumen',qe:null,qd:null,qs:'all',qq:''};
 
-/* totales */
+/* ---------- cálculos ---------- */
 function qsub(q){return q.it.reduce(function(a,x){return a+x.q*x.p},0)}
-function qtot(q){var s=qsub(q);return s+(q.igv?s*.18:0)}
+function qdesc(q){return qsub(q)*(+q.desc||0)/100}
+function qbase(q){return qsub(q)-qdesc(q)}
+function qtot(q){var b=qbase(q);return b+(q.igv?b*.18:0)}
+function qleft(q){var v=pd(q.f);v.setDate(v.getDate()+(+q.val||0));return dd(iso(v),TODAY)}
 function cli(id){return C.filter(function(c){return c.id===id})[0]}
 function prov(id){return V.filter(function(v){return v.id===id})[0]}
 function sum(a,f){return a.reduce(function(s,x){return s+f(x)},0)}
 function inc(m){return sum(I.filter(function(x){return x.est==='cobrado'&&ym(x.f)===m}),function(x){return x.m})}
 function exp(m){return sum(G.filter(function(x){return ym(x.f)===m}),function(x){return x.m})}
 function nid(a){return a.reduce(function(m,x){return Math.max(m,x.id)},0)+1}
+function nm(p){return p==='mes'?1:p==='3m'?3:p==='6m'?6:12}
+function periodFrom(p){if(p==='todo')return '0000-00-00';var d=new Date(T.getFullYear(),T.getMonth()-nm(p)+1,1,12);return iso(d)}
+function prevWin(p){if(p==='todo')return null;var n=nm(p);return [iso(new Date(T.getFullYear(),T.getMonth()-2*n+1,1,12)),iso(new Date(T.getFullYear(),T.getMonth()-n+1,0,12))]}
+var PL={mes:'Este mes','3m':'Últimos 3 meses','6m':'Últimos 6 meses',todo:'Todo el historial'};
+function cobIn(a,b){return sum(I.filter(function(x){return x.est==='cobrado'&&x.f>=a&&(!b||x.f<=b)}),function(x){return x.m})}
+function gasIn(a,b){return sum(G.filter(function(x){return x.f>=a&&(!b||x.f<=b)}),function(x){return x.m})}
+function provTot(from){var o={};G.forEach(function(g){if(g.pv&&(!from||g.f>=from))o[g.pv]=(o[g.pv]||0)+g.m});return o}
+function provRank(from){var pt=provTot(from),all=sum(G.filter(function(g){return g.f>=from}),function(g){return g.m});return V.map(function(v){var last=G.filter(function(g){return g.pv===v.id}).sort(function(a,b){return a.f<b.f?1:-1})[0];return {v:v,t:pt[v.id]||0,pc:all?(pt[v.id]||0)/all*100:0,last:last?last.f:null}}).sort(function(a,b){return b.t-a.t})}
+function facturado(id){return sum(I.filter(function(x){return x.c===id&&x.est==='cobrado'}),function(x){return x.m})}
+function delta(a,b,inv){if(!b)return '';var p=Math.round((a-b)/Math.abs(b)*100),good=inv?p<=0:p>=0;return '<span class="'+(good?'up':'dn')+'">'+(p>=0?'▲ ':'▼ ')+Math.abs(p)+' %</span>'}
+function logc(c,t){c.log.unshift({f:TODAY,t:t})}
 
-/* ---------- iconos ---------- */
+/* ---------- iconos y UI ---------- */
 var IC={panel:'<path d="M3 13h8V3H3zM13 21h8V11h-8zM3 21h8v-6H3zM13 9h8V3h-8z"/>',clientes:'<path d="M16 11a4 4 0 1 0-8 0 4 4 0 0 0 8 0zM4 21c0-4 3.500-6 8-6s8 2 8 6z"/>',cotizaciones:'<path d="M6 2h9l5 5v15H6zM14 3v5h5M9 13h8M9 17h8"/>',ingresos:'<path d="M12 3l7 8h-4v10H9V11H5z"/>',gastos:'<path d="M12 21l-7-8h4V3h6v10h4z"/>',proveedores:'<path d="M3 7l9-4 9 4v3H3zM5 12h3v8H5zM10.500 12h3v8h-3zM16 12h3v8h-3zM3 21h18"/>',reportes:'<path d="M4 3h2v18H4zM9 12h2v9H9zM14 7h2v14h-2zM19 15h2v6h-2z"/>'};
 function ic(k){return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">'+IC[k]+'</svg>'}
 var MODS=[['panel','Panel'],['clientes','Clientes'],['cotizaciones','Cotizaciones'],['ingresos','Ingresos'],['gastos','Gastos'],['proveedores','Proveedores'],['reportes','Reportes']];
-
-/* ---------- gráficos ---------- */
+function head(t,sub,acts){return '<div class="ph"><div><h1>'+t+'</h1>'+(sub?'<p>'+sub+'</p>':'')+'</div><div class="acts noprint">'+(acts||'')+'</div></div>'}
+function chips(list,cur,act){return list.map(function(s){return '<button class="chip" type="button" data-a="'+act+'" data-v="'+esc(s[0])+'" aria-pressed="'+(String(cur)===String(s[0]))+'">'+esc(s[1])+(s[2]!=null?'<small>'+s[2]+'</small>':'')+'</button>'}).join('')}
+function kpi(l,v,sm,cls){return '<div class="kpi'+(cls?' '+cls:'')+'"><span>'+l+'</span><b>'+v+'</b>'+(sm?'<small>'+sm+'</small>':'')+'</div>'}
+function stars(n){var s='';for(var i=1;i<=5;i++)s+=i<=n?'★':'☆';return '<span class="rt" role="img" aria-label="'+n+' de 5">'+s+'</span>'}
+function segTag(c){if(c.seg==null)return '';var t=c.seg<0?'Vencido hace '+(-c.seg)+' d':c.seg===0?'Hoy':c.seg===1?'Mañana':'En '+c.seg+' días';return '<span class="seg'+(c.seg<0?' late':c.seg===0?' now':'')+'">Seguimiento: '+t+'</span>'}
+function barsHTML(rows,fmtv,alt){var mx=Math.max.apply(null,rows.map(function(r){return r.v}).concat([1]));return '<div class="bars">'+rows.map(function(r){return '<div class="bar-r"><span>'+esc(r.l)+'</span><em>'+(fmtv?fmtv(r.v):fmt(r.v))+'</em><div class="tr"><i'+(alt?' class="o"':'')+' style="width:'+Math.max(2,r.v/mx*100)+'%"></i></div></div>'}).join('')+'</div>'}
+function spark(vals){var mx=Math.max.apply(null,vals.concat([1])),w=84,h=26,pts=vals.map(function(v,i){return (i*(w-4)/(vals.length-1)+2).toFixed(1)+','+(h-3-(h-6)*v/mx).toFixed(1)}).join(' ');return '<svg class="spark" viewBox="0 0 '+w+' '+h+'" aria-hidden="true"><polyline points="'+pts+'" fill="none" stroke="#7BB316" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>'}
+function donut(rows,colors){var tot=sum(rows,function(r){return r.v})||1,a=0,h='',R=46,c=2*Math.PI*R;rows.forEach(function(r,i){var len=r.v/tot*c;h+='<circle r="'+R+'" cx="60" cy="60" fill="none" stroke="'+colors[i%colors.length]+'" stroke-width="22" stroke-dasharray="'+len+' '+(c-len)+'" stroke-dashoffset="'+(-a)+'" transform="rotate(-90 60 60)"><title>'+esc(r.l)+': '+fmt(r.v)+'</title></circle>';a+=len});
+ return '<div class="dn-w"><svg viewBox="0 0 120 120" class="donut" role="img" aria-label="Distribución">'+h+'<text x="60" y="64" text-anchor="middle" font-size="13" font-weight="800" fill="#0D1410">'+fmt(tot).replace('S/ ','')+'</text></svg><ul class="dl">'+rows.map(function(r,i){return '<li><i style="background:'+colors[i%colors.length]+'"></i><span>'+esc(r.l)+'</span><b>'+Math.round(r.v/tot*100)+' %</b></li>'}).join('')+'</ul></div>'}
+var COL=['#7BB316','#0D1410','#E0A100','#2B6CB0','#9AA9BA','#C0392B'];
 function chart6(){
  var ms=months(6),a=ms.map(function(m){return inc(m.k)}),b=ms.map(function(m){return exp(m.k)});
  var mx=Math.max.apply(null,a.concat(b,[1000])),top=Math.ceil(mx/2000)*2000,W=560,H=230,L=44,B=28,Tp=10,bw=22,gw=(W-L)/6,h='';
  for(var g=0;g<=4;g++){var y=Tp+(H-B-Tp)*(1-g/4);h+='<line x1="'+L+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="#E3E4D8"/><text x="'+(L-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#5C665F">'+(top*g/4/1000)+'k</text>'}
- ms.forEach(function(m,i){
-  var x0=L+gw*i+gw/2-bw-2,ha=(H-B-Tp)*a[i]/top,hb=(H-B-Tp)*b[i]/top;
-  h+='<rect x="'+x0+'" y="'+(H-B-ha)+'" width="'+bw+'" height="'+ha+'" rx="5" fill="#7BB316"><title>Ingresos '+m.l+': '+fmt(a[i])+'</title></rect>';
-  h+='<rect x="'+(x0+bw+4)+'" y="'+(H-B-hb)+'" width="'+bw+'" height="'+hb+'" rx="5" fill="#0D1410"><title>Gastos '+m.l+': '+fmt(b[i])+'</title></rect>';
-  h+='<text x="'+(L+gw*i+gw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#16201A">'+m.l+'</text>';
- });
+ ms.forEach(function(m,i){var x0=L+gw*i+gw/2-bw-2,ha=(H-B-Tp)*a[i]/top,hb=(H-B-Tp)*b[i]/top;
+  h+='<rect x="'+x0+'" y="'+(H-B-ha)+'" width="'+bw+'" height="'+ha+'" rx="5" fill="#7BB316"><title>Ingresos '+m.l+': '+fmt(a[i])+'</title></rect><rect x="'+(x0+bw+4)+'" y="'+(H-B-hb)+'" width="'+bw+'" height="'+hb+'" rx="5" fill="#0D1410"><title>Gastos '+m.l+': '+fmt(b[i])+'</title></rect><text x="'+(L+gw*i+gw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#16201A">'+m.l+'</text>'});
  return '<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Ingresos y gastos de los últimos 6 meses">'+h+'</svg><div class="legend"><span><i style="background:#7BB316"></i>Ingresos cobrados</span><span><i style="background:#0D1410"></i>Gastos</span></div>';
 }
-function barsHTML(rows,fmtv,alt){var mx=Math.max.apply(null,rows.map(function(r){return r.v}).concat([1]));return '<div class="bars">'+rows.map(function(r){return '<div class="bar-r"><span>'+esc(r.l)+'</span><em>'+(fmtv?fmtv(r.v):fmt(r.v))+'</em><div class="tr"><i'+(alt?' class="o"':'')+' style="width:'+Math.max(2,r.v/mx*100)+'%"></i></div></div>'}).join('')+'</div>'}
+function lineChart(ms,vals){
+ var W=560,H=210,L=50,B=28,Tp=12,mn=Math.min.apply(null,vals.concat([0])),mx=Math.max.apply(null,vals.concat([1])),rg=(mx-mn)||1,h='',pts=[];
+ for(var g=0;g<=4;g++){var v=mn+rg*g/4,y=Tp+(H-B-Tp)*(1-g/4);h+='<line x1="'+L+'" x2="'+W+'" y1="'+y+'" y2="'+y+'" stroke="#E3E4D8"/><text x="'+(L-6)+'" y="'+(y+4)+'" text-anchor="end" font-size="11" fill="#5C665F">'+Math.round(v/100)/10+'k</text>'}
+ var step=(W-L-20)/(ms.length-1||1);
+ ms.forEach(function(m,i){var x=L+10+step*i,y=Tp+(H-B-Tp)*(1-(vals[i]-mn)/rg);pts.push(x+','+y);h+='<text x="'+x+'" y="'+(H-8)+'" text-anchor="middle" font-size="12" font-weight="700" fill="#16201A">'+m.l+'</text>'});
+ h+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="#7BB316" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>';
+ ms.forEach(function(m,i){var p=pts[i].split(',');h+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="5" fill="#0D1410"><title>'+m.l+': '+fmt(vals[i])+'</title></circle>'});
+ return '<svg class="chart" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Saldo acumulado">'+h+'</svg>';
+}
 
-/* ---------- agregados ---------- */
-function provTot(from){var o={};G.forEach(function(g){if(g.pv&&(!from||g.f>=from))o[g.pv]=(o[g.pv]||0)+g.m});return o}
-function periodFrom(p){if(p==='todo')return '0000-00-00';var n=p==='mes'?0:p==='3m'?2:5;var d=new Date(T.getFullYear(),T.getMonth()-n,1,12);return iso(d)}
-var PL={mes:'Este mes','3m':'Últimos 3 meses','6m':'Últimos 6 meses',todo:'Todo el historial'};
-function segTag(c){if(c.seg==null)return '';var t=c.seg<0?'Vencido hace '+(-c.seg)+' d':c.seg===0?'Hoy':c.seg===1?'Mañana':'En '+c.seg+' días';return '<span class="seg'+(c.seg<0?' late':c.seg===0?' now':'')+'">Seguimiento: '+t+'</span>'}
+/* ---------- alertas y actividad ---------- */
+function alerts(){
+ var a=[];
+ C.forEach(function(c){if(c.seg!=null&&c.seg<0)a.push({k:'late',t:'Seguimiento vencido: '+c.n,go:'clientes'});else if(c.seg===0)a.push({k:'now',t:'Seguimiento de hoy: '+c.n,go:'clientes'})});
+ Q.forEach(function(q){if(q.st==='enviada'&&qleft(q)<0)a.push({k:'late',t:'Cotización COT-'+q.num+' vencida ('+cli(q.c).n+')',go:'cotizaciones'});else if(q.st==='enviada'&&qleft(q)<=2)a.push({k:'now',t:'COT-'+q.num+' vence en '+qleft(q)+' d ('+cli(q.c).n+')',go:'cotizaciones'})});
+ I.forEach(function(x){if(x.est==='xcobrar'){var d=dd(TODAY,x.f);if(d>=7)a.push({k:d>=14?'late':'now',t:'Cobro pendiente de '+fmt(x.m)+' · '+cli(x.c).n+' (hace '+d+' d)',go:'ingresos'})}});
+ GC.forEach(function(c){var g=sum(G.filter(function(x){return x.cat===c&&ym(x.f)===CURM}),function(x){return x.m});if(g>BUD[c])a.push({k:'late',t:'Presupuesto excedido en '+c+': '+fmt(g)+' de '+fmt(BUD[c]),go:'gastos'})});
+ return a;
+}
+function activity(){
+ var ev=[];
+ I.forEach(function(x){ev.push({f:x.f,t:(x.est==='cobrado'?'Cobro de ':'Por cobrar ')+fmt(x.m)+' · '+cli(x.c).n})});
+ G.forEach(function(x){ev.push({f:x.f,t:'Gasto de '+fmt(x.m)+' · '+x.con})});
+ Q.forEach(function(q){ev.push({f:q.f,t:'COT-'+q.num+' '+q.st+' · '+cli(q.c).n})});
+ return ev.sort(function(a,b){return a.f<b.f?1:a.f>b.f?-1:0}).slice(0,7);
+}
 
-/* ---------- vistas ---------- */
-function head(t,sub,acts){return '<div class="ph"><div><h1>'+t+'</h1>'+(sub?'<p>'+sub+'</p>':'')+'</div><div class="acts noprint">'+(acts||'')+'</div></div>'}
+/* ---------- PANEL ---------- */
 function vPanel(){
  var pm=months(2)[0].k,i0=inc(CURM),i1=inc(pm),e0=exp(CURM),xc=I.filter(function(x){return x.est==='xcobrar'});
- var dlt=i1?Math.round((i0-i1)/i1*100):0;
- var kp='<div class="kpis"><div class="kpi dark"><span>Ingresos del mes</span><b>'+fmt(i0)+'</b><small>'+(dlt>=0?'<span class="up">▲ '+dlt+' %</span>':'<span class="dn">▼ '+(-dlt)+' %</span>')+' frente al mes anterior</small></div>'
- +'<div class="kpi"><span>Gastos del mes</span><b>'+fmt(e0)+'</b><small>'+G.filter(function(g){return ym(g.f)===CURM}).length+' movimientos</small></div>'
- +'<div class="kpi"><span>Utilidad del mes</span><b class="'+(i0-e0>=0?'up':'dn')+'">'+fmt(i0-e0)+'</b><small>Ingresos − gastos</small></div>'
- +'<div class="kpi"><span>Por cobrar</span><b>'+fmt(sum(xc,function(x){return x.m}))+'</b><small>'+xc.length+' pagos pendientes</small></div></div>';
+ var cl=C.filter(function(c){return c.st==='cli'}).length,dec=cl+C.filter(function(c){return c.st==='noi'}).length;
+ var kp='<div class="kpis">'+kpi('Ingresos del mes',fmt(i0),delta(i0,i1)+' frente al mes anterior','dark')+kpi('Gastos del mes',fmt(e0),delta(e0,exp(pm),true)+' frente al mes anterior')+kpi('Utilidad del mes','<span class="'+(i0-e0>=0?'up':'dn')+'">'+fmt(i0-e0)+'</span>','Margen '+(i0?Math.round((i0-e0)/i0*100):0)+' %')+kpi('Por cobrar',fmt(sum(xc,function(x){return x.m})),xc.length+' pagos pendientes')+'</div>';
+ var pc=Math.min(100,Math.round(i0/META*100));
+ var meta='<section class="card meta" style="margin-bottom:12px"><div class="mh"><h3 style="margin:0">Meta de ventas de '+MES[T.getMonth()]+'</h3><button class="btn ghost sm" type="button" data-a="meta">Cambiar meta</button></div><div class="mbar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+pc+'" aria-label="Avance de la meta"><i style="width:'+pc+'%"></i></div><p><b>'+fmt(i0)+'</b> de '+fmt(META)+' · '+pc+' % · '+(i0>=META?'¡Meta cumplida!':'faltan '+fmt(META-i0))+'</p></section>';
  var cnt={};STG.forEach(function(s){cnt[s[0]]=C.filter(function(c){return c.st===s[0]}).length});var mx=Math.max.apply(null,STG.map(function(s){return cnt[s[0]]}));
  var col={nuevo:'#9AA9BA',int:'#E0A100',cot:'#2B6CB0',cli:'#7BB316',noi:'#C0392B'};
- var fun='<div class="fun">'+STG.map(function(s){return '<button type="button" data-a="stage" data-v="'+s[0]+'" aria-label="Ver '+s[1]+': '+cnt[s[0]]+' clientes"><span>'+s[1]+'</span><div><div class="bar" style="width:'+Math.max(6,cnt[s[0]]/mx*100)+'%;background:'+col[s[0]]+'"></div></div><b>'+cnt[s[0]]+'</b></button>'}).join('')+'</div>';
+ var fun='<div class="fun">'+STG.map(function(s){return '<button type="button" data-a="stage" data-v="'+s[0]+'" aria-label="Ver '+s[1]+': '+cnt[s[0]]+' clientes"><span>'+s[1]+'</span><div><div class="bar" style="width:'+Math.max(6,cnt[s[0]]/mx*100)+'%;background:'+col[s[0]]+'"></div></div><b>'+cnt[s[0]]+'</b></button>'}).join('')+'</div><p class="mini-p">Tasa de cierre: <b>'+(dec?Math.round(cl/dec*100):0)+' %</b> · Pipeline abierto: <b>'+fmt(sum(C.filter(function(c){return PROB[c.st]}),function(c){return c.val}))+'</b></p>';
+ var al=alerts(),alH=al.length?'<div class="list">'+al.slice(0,6).map(function(x){return '<div class="li"><div><b style="font-weight:600">'+esc(x.t)+'</b></div><button class="btn ghost sm" type="button" data-a="go" data-v="'+x.go+'">Ver</button></div>'}).join('')+'</div>'+(al.length>6?'<p class="mini-p">y '+(al.length-6)+' más</p>':''):'<p class="empty">Todo al día. Sin alertas.</p>';
+ var top=C.map(function(c){return {l:c.n,v:facturado(c.id)}}).filter(function(r){return r.v>0}).sort(function(a,b){return b.v-a.v}).slice(0,5);
+ var act='<div class="list">'+activity().map(function(e){return '<div class="li"><div><b style="font-weight:600">'+esc(e.t)+'</b><small>'+fd(e.f)+'</small></div></div>'}).join('')+'</div>';
  var seg=C.filter(function(c){return c.seg!=null&&c.seg<=3}).sort(function(a,b){return a.seg-b.seg});
  var segH=seg.length?'<div class="list">'+seg.map(function(c){return '<div class="li"><div><b>'+esc(c.n)+'</b><small>'+esc(c.ct)+'</small></div>'+segTag(c)+'</div>'}).join('')+'</div>':'<p class="empty">Sin seguimientos próximos.</p>';
  var qp=Q.filter(function(q){return q.st==='enviada'});
- var qH=qp.length?'<div class="list">'+qp.map(function(q){return '<div class="li"><div><b>COT-'+q.num+' · '+esc(cli(q.c).n)+'</b><small>Enviada el '+fd(q.f)+'</small></div><b>'+fmt(qtot(q))+'</b></div>'}).join('')+'</div><p style="margin-top:10px"><b>Total pendiente: '+fmt(sum(qp,qtot))+'</b></p>':'<p class="empty">No hay cotizaciones pendientes.</p>';
- var pt=provTot(periodFrom('6m')),pv=V.filter(function(v){return v.pr}).map(function(v){return {l:v.n,v:pt[v.id]||0}}).sort(function(a,b){return b.v-a.v}).slice(0,4);
- var pr=C.filter(function(c){return c.pr&&c.st!=='noi'}).slice(0,5);
- return head('Panel','Resumen de '+MES[T.getMonth()]+' '+T.getFullYear()+' · todo en una sola pantalla','<button class="btn lime" data-a="go" data-v="cotizaciones" data-new="1">+ Nueva cotización</button>')+kp
- +'<div class="g2"><section class="card"><h3>Ingresos y gastos <small>últimos 6 meses</small></h3>'+chart6()+'</section><section class="card"><h3>Embudo de clientes <small>toque una etapa</small></h3>'+fun+'<h3 style="margin:18px 0 8px">Clientes prioritarios</h3><div class="list">'+pr.map(function(c){return '<div class="li"><div><b>★ '+esc(c.n)+'</b><small>'+esc(c.nota)+'</small></div>'+badge(c.st)+'</div>'}).join('')+'</div></section></div>'
- +'<div class="g3"><section class="card"><h3>Seguimientos <small>próximos 3 días</small></h3>'+segH+'</section><section class="card"><h3>Cotizaciones pendientes</h3>'+qH+'</section><section class="card"><h3>Proveedores prioritarios <small>compras 6 meses</small></h3>'+barsHTML(pv,null,true)+'</section></div>'
+ var qH=qp.length?'<div class="list">'+qp.map(function(q){return '<div class="li"><div><b>COT-'+q.num+' · '+esc(cli(q.c).n)+'</b><small>'+(qleft(q)<0?'Vencida hace '+(-qleft(q))+' d':'Vence en '+qleft(q)+' d')+'</small></div><b>'+fmt(qtot(q))+'</b></div>'}).join('')+'</div><p class="mini-p"><b>Total pendiente: '+fmt(sum(qp,qtot))+'</b></p>':'<p class="empty">No hay cotizaciones pendientes.</p>';
+ var lin=LIN.map(function(l){return {l:l,v:sum(I.filter(function(x){return x.est==='cobrado'&&x.lin===l&&x.f>=periodFrom('6m')}),function(x){return x.m})}}).filter(function(r){return r.v>0}).sort(function(a,b){return b.v-a.v});
+ return head('Panel','Resumen de '+MES[T.getMonth()]+' '+T.getFullYear()+' · todo en una sola pantalla','<button class="btn line" type="button" data-a="i-new">+ Ingreso</button><button class="btn line" type="button" data-a="g-new">+ Gasto</button><button class="btn line" type="button" data-a="cl-new">+ Cliente</button><button class="btn lime" type="button" data-a="go" data-v="cotizaciones" data-new="1">+ Nueva cotización</button>')+kp+meta
+ +'<div class="g2"><section class="card"><h3>Ingresos y gastos <small>últimos 6 meses</small></h3>'+chart6()+'</section><section class="card"><h3>Embudo de clientes <small>toque una etapa</small></h3>'+fun+'</section></div>'
+ +'<div class="g3"><section class="card"><h3>Alertas <small>'+al.length+'</small></h3>'+alH+'</section><section class="card"><h3>Mejores clientes <small>facturado</small></h3>'+barsHTML(top)+'</section><section class="card"><h3>Ventas por línea <small>6 meses</small></h3>'+donut(lin,COL)+'</section></div>'
+ +'<div class="g3" style="margin-top:12px"><section class="card"><h3>Seguimientos <small>próximos 3 días</small></h3>'+segH+'</section><section class="card"><h3>Cotizaciones pendientes</h3>'+qH+'</section><section class="card"><h3>Actividad reciente</h3>'+act+'</section></div>'
  +'<p class="note"><b>Solo en este boceto:</b> los clientes, proveedores y montos son inventados para mostrar cómo funciona. Puede probar todo: los cambios se ven al instante, pero no se guardan.</p>';
 }
+
+/* ---------- CLIENTES ---------- */
 function clCard(c){
  var i=STG.map(function(s){return s[0]}).indexOf(c.st);
- return '<article class="cc'+(c.pr?' pr':'')+'"><button class="star" type="button" data-a="star" data-id="'+c.id+'" aria-pressed="'+c.pr+'" aria-label="Cliente prioritario: '+esc(c.n)+'">★</button><h4><button class="btn ghost" style="padding:0;min-height:0;text-align:left;font:inherit;color:inherit" type="button" data-a="cl-open" data-id="'+c.id+'">'+esc(c.n)+'</button></h4><p>'+esc(c.ct)+'</p><p>'+esc(c.nota)+'</p><div class="mv">'+(i>0?'<button class="btn line sm" type="button" data-a="mv" data-id="'+c.id+'" data-d="-1" aria-label="Mover a '+STG[i-1][1]+'">‹</button>':'')+(i<4?'<button class="btn line sm" type="button" data-a="mv" data-id="'+c.id+'" data-d="1" aria-label="Mover a '+STG[i+1][1]+'">›</button>':'')+segTag(c)+'</div></article>';
+ return '<article class="cc'+(c.pr?' pr':'')+'"><button class="star" type="button" data-a="star" data-id="'+c.id+'" aria-pressed="'+c.pr+'" aria-label="Cliente prioritario: '+esc(c.n)+'">★</button><h4><button class="lnk" type="button" data-a="cl-open" data-id="'+c.id+'">'+esc(c.n)+'</button></h4><p>'+esc(c.ct)+'</p><p>'+esc(c.nota)+'</p><div class="tg"><span class="tag">'+esc(c.ori)+'</span><span class="tag">'+fmt(c.val)+'</span></div><div class="mv">'+(i>0?'<button class="btn line sm" type="button" data-a="mv" data-id="'+c.id+'" data-d="-1" aria-label="Mover a '+STG[i-1][1]+'">‹</button>':'')+(i<4?'<button class="btn line sm" type="button" data-a="mv" data-id="'+c.id+'" data-d="1" aria-label="Mover a '+STG[i+1][1]+'">›</button>':'')+segTag(c)+'</div></article>';
 }
-function clFilter(){var q=S.cq.toLowerCase();return C.filter(function(c){return (S.cs==='all'||c.st===S.cs)&&(!S.cp||c.pr)&&(!q||(c.n+' '+c.ct+' '+c.nota).toLowerCase().indexOf(q)>-1)})}
+function clFilter(){var q=S.cq.toLowerCase();return C.filter(function(c){return (S.cs==='all'||c.st===S.cs)&&(!S.cp||c.pr)&&(!q||(c.n+' '+c.ct+' '+c.nota+' '+c.ori).toLowerCase().indexOf(q)>-1)})}
 function clRes(){
  var L=clFilter();
  if(!L.length)return '<p class="empty">No hay clientes con ese filtro.</p>';
  if(S.cv==='kan'){return '<div class="kan">'+STG.map(function(s){var x=L.filter(function(c){return c.st===s[0]});return '<section class="col" aria-label="'+s[1]+'"><h3>'+s[1]+'<b>'+x.length+'</b></h3>'+(x.map(clCard).join('')||'<p class="empty" style="padding:6px 8px;font-size:.85rem">Vacío</p>')+'</section>'}).join('')+'</div>'}
- return '<div class="tw"><table><thead><tr><th></th><th>Cliente</th><th>Contacto</th><th>Etapa</th><th>Seguimiento</th><th class="r">Facturado</th></tr></thead><tbody>'+L.map(function(c){var f=sum(I.filter(function(x){return x.c===c.id&&x.est==='cobrado'}),function(x){return x.m});return '<tr><td><button class="star" type="button" data-a="star" data-id="'+c.id+'" aria-pressed="'+c.pr+'" aria-label="Prioritario: '+esc(c.n)+'">★</button></td><td><button class="btn ghost" style="font:inherit;font-weight:700;color:inherit;padding:0;min-height:0" type="button" data-a="cl-open" data-id="'+c.id+'">'+esc(c.n)+'</button><small>'+esc(c.tipo)+'</small></td><td>'+esc(c.ct)+'<small>'+esc(c.tel)+'</small></td><td>'+badge(c.st)+'</td><td>'+(segTag(c)||'<small>—</small>')+'</td><td class="r m">'+fmt(f)+'</td></tr>'}).join('')+'</tbody></table></div>';
+ return '<div class="tw"><table><thead><tr><th></th><th>Cliente</th><th>Contacto</th><th>Origen</th><th>Etapa</th><th>Seguimiento</th><th class="r">Oportunidad</th><th class="r">Facturado</th></tr></thead><tbody>'+L.map(function(c){return '<tr><td><button class="star" type="button" data-a="star" data-id="'+c.id+'" aria-pressed="'+c.pr+'" aria-label="Prioritario: '+esc(c.n)+'">★</button></td><td><button class="lnk" style="font-weight:700" type="button" data-a="cl-open" data-id="'+c.id+'">'+esc(c.n)+'</button><small>'+esc(c.tipo)+'</small></td><td>'+esc(c.ct)+'<small>'+esc(c.tel)+'</small></td><td><span class="tag">'+esc(c.ori)+'</span></td><td>'+badge(c.st)+'</td><td>'+(segTag(c)||'<small>—</small>')+'</td><td class="r m">'+fmt(c.val)+'</td><td class="r m">'+fmt(facturado(c.id))+'</td></tr>'}).join('')+'</tbody></table></div>';
 }
 function vClientes(){
- var ch='<button class="chip" type="button" data-a="cs" data-v="all" aria-pressed="'+(S.cs==='all')+'">Todos<small>'+C.length+'</small></button>'+STG.map(function(s){return '<button class="chip" type="button" data-a="cs" data-v="'+s[0]+'" aria-pressed="'+(S.cs===s[0])+'">'+s[1]+'<small>'+C.filter(function(c){return c.st===s[0]}).length+'</small></button>'}).join('');
- return head('Clientes','Embudo de ventas: de interesado a cliente','<button class="btn line" type="button" data-a="cv" data-v="'+(S.cv==='kan'?'list':'kan')+'">'+(S.cv==='kan'?'Ver como lista':'Ver como embudo')+'</button><button class="btn lime" type="button" data-a="cl-new">+ Nuevo cliente</button>')
- +'<div class="chips noprint">'+ch+'<button class="chip" type="button" data-a="cp" aria-pressed="'+S.cp+'">★ Solo prioritarios</button><input class="search" id="csearch" type="search" placeholder="Buscar cliente…" aria-label="Buscar cliente" value="'+esc(S.cq)+'"></div><div id="clres">'+clRes()+'</div>';
+ var cl=C.filter(function(c){return c.st==='cli'}).length,dec=cl+C.filter(function(c){return c.st==='noi'}).length,op=C.filter(function(c){return PROB[c.st]});
+ var ks='<div class="kpis">'+kpi('Clientes activos',cl,C.filter(function(c){return c.pr&&c.st==='cli'}).length+' prioritarios','dark')+kpi('Pipeline abierto',fmt(sum(op,function(c){return c.val})),op.length+' oportunidades')+kpi('Pipeline ponderado',fmt(sum(op,function(c){return c.val*PROB[c.st]})),'Según probabilidad de cada etapa')+kpi('Tasa de cierre',(dec?Math.round(cl/dec*100):0)+' %',cl+' ganados · '+C.filter(function(c){return c.st==='noi'}).length+' perdidos')+'</div>';
+ var ch=chips([['all','Todos',C.length]].concat(STG.map(function(s){return [s[0],s[1],C.filter(function(c){return c.st===s[0]}).length]})),S.cs,'cs');
+ var ori=ORI.map(function(o){return {l:o,v:C.filter(function(c){return c.ori===o}).length}}).filter(function(r){return r.v}).sort(function(a,b){return b.v-a.v});
+ return head('Clientes','Embudo de ventas: de interesado a cliente','<button class="btn line" type="button" data-a="cv" data-v="'+(S.cv==='kan'?'list':'kan')+'">'+(S.cv==='kan'?'Ver como lista':'Ver como embudo')+'</button><button class="btn lime" type="button" data-a="cl-new">+ Nuevo cliente</button>')+ks
+ +'<div class="chips noprint">'+ch+'<button class="chip" type="button" data-a="cp" aria-pressed="'+S.cp+'">★ Solo prioritarios</button><input class="search" id="csearch" type="search" placeholder="Buscar cliente, contacto u origen…" aria-label="Buscar cliente" value="'+esc(S.cq)+'"></div><div id="clres">'+clRes()+'</div>'
+ +'<section class="card" style="margin-top:14px"><h3>¿De dónde llegan sus clientes? <small>por origen</small></h3>'+barsHTML(ori,function(v){return v+(v===1?' cliente':' clientes')})+'</section>';
+}
+function clOpen(id){
+ var c=cli(id),qs=Q.filter(function(q){return q.c===id}),ii=I.filter(function(x){return x.c===id}).sort(function(a,b){return a.f<b.f?1:-1}).slice(0,4),d=$('#dlg');
+ d.innerHTML='<div class="dbody"><h3>'+esc(c.n)+'</h3><p style="margin-bottom:12px">'+badge(c.st)+' '+(c.pr?'<span class="bd st-int">★ Prioritario</span> ':'')+'<span class="tag">'+esc(c.ori)+'</span></p>'
+ +'<div class="sum3">'+kpi('Facturado',fmt(facturado(id)))+kpi('Oportunidad',fmt(c.val))+kpi('Cotizaciones',qs.length)+'</div>'
+ +'<p><b>'+esc(c.ct)+'</b> · '+esc(c.tel)+' · '+esc(c.tipo)+'</p><p style="color:var(--muted);margin:6px 0 12px">'+esc(c.nota)+'</p>'+(c.seg!=null?'<p style="margin-bottom:12px">'+segTag(c)+'</p>':'')
+ +'<div class="dact" style="justify-content:flex-start;margin-bottom:16px"><button class="btn lime" type="button" data-d="quote">Nueva cotización</button><button class="btn wa" type="button" data-d="wa">WhatsApp</button><button class="btn line" type="button" data-d="seg">'+(c.seg!=null?'Seguimiento hecho (+7 días)':'Programar seguimiento')+'</button><button class="btn line" type="button" data-d="edit">Editar</button></div>'
+ +'<h4 class="sh">Historial</h4><div class="addln" style="margin-bottom:8px"><input class="in" id="cnote" placeholder="Agregar nota (llamada, reunión, acuerdo…)" aria-label="Nueva nota"><button class="btn line" type="button" data-d="note">Agregar</button></div><div class="tl">'+c.log.map(function(l){return '<div><i></i><b>'+fd(l.f)+'</b><span>'+esc(l.t)+'</span></div>'}).join('')+'</div>'
+ +(qs.length?'<h4 class="sh">Cotizaciones</h4><div class="list">'+qs.map(function(q){return '<div class="li"><div><b>COT-'+q.num+'</b><small>'+fd(q.f)+'</small></div><span class="bd q-'+q.st+'">'+cap(q.st)+'</span><b>'+fmt(qtot(q))+'</b></div>'}).join('')+'</div>':'')
+ +(ii.length?'<h4 class="sh">Últimos pagos</h4><div class="list">'+ii.map(function(x){return '<div class="li"><div><b>'+esc(x.con)+'</b><small>'+fd(x.f)+' · '+esc(x.pago)+'</small></div><b>'+fmt(x.m)+'</b></div>'}).join('')+'</div>':'')
+ +'<div class="dact" style="margin-top:14px"><button class="btn ghost" type="button" data-d="close">Cerrar</button></div></div>';
+ d.showModal();
+ d.onclick=function(e){var b=e.target.closest('[data-d]');if(e.target===d){d.close();return}if(!b)return;var k=b.getAttribute('data-d');
+  if(k==='close')d.close();
+  else if(k==='edit'){d.close();clForm(c)}
+  else if(k==='seg'){c.seg=7;logc(c,'Seguimiento programado para dentro de 7 días');d.close();render();toast('Seguimiento programado para dentro de 7 días.')}
+  else if(k==='quote'){d.close();go('cotizaciones');qNew(id)}
+  else if(k==='wa'){waOpen('[DEMO] Hola '+c.ct+', le escribo de Imagen y Sonido Publicidad para ver cómo va su proyecto. ¿Conversamos?');toast('Abriendo WhatsApp (número de prueba)…')}
+  else if(k==='note'){var t=$('#cnote').value.trim();if(!t)return;logc(c,t);render();clOpen(id);toast('Nota agregada al historial.')}
+ };
+}
+
+/* ---------- COTIZACIONES ---------- */
+function qFilter(){var q=S.qq.toLowerCase();return Q.filter(function(x){return (S.qs==='all'||x.st===S.qs)&&(!q||('cot-'+x.num+' '+cli(x.c).n).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.f<b.f?1:-1})}
+function qRes(){
+ var L=qFilter();if(!L.length)return '<p class="empty">No hay cotizaciones con ese filtro.</p>';
+ return '<div class="tw"><table><thead><tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Vigencia</th><th>Estado</th><th class="r">Total</th><th></th></tr></thead><tbody>'+L.map(function(q){var l=qleft(q),vg=q.st==='enviada'?(l<0?'<span class="seg late">Vencida hace '+(-l)+' d</span>':'<span class="seg'+(l<=2?' now':'')+'">Vence en '+l+' d</span>'):'<small>—</small>';return '<tr><td class="m">COT-'+q.num+'</td><td>'+esc(cli(q.c).n)+'</td><td>'+fd(q.f)+'</td><td>'+vg+'</td><td><span class="bd q-'+q.st+'">'+cap(q.st)+'</span></td><td class="r m">'+fmt(qtot(q))+'</td><td class="r" style="white-space:nowrap"><button class="btn line sm" type="button" data-a="q-open" data-id="'+q.id+'">Abrir</button> <button class="btn ghost sm" type="button" data-a="q-dup" data-id="'+q.id+'">Duplicar</button></td></tr>'}).join('')+'</tbody></table></div>';
 }
 function vCot(){
  if(S.qe!==null)return vQEdit();
- var L=Q.slice().sort(function(a,b){return a.f<b.f?1:-1});
  var cnt={};['borrador','enviada','aprobada','rechazada'].forEach(function(k){cnt[k]=Q.filter(function(q){return q.st===k}).length});
+ var ap=Q.filter(function(q){return q.st==='aprobada'}),re=cnt.rechazada;
  return head('Cotizaciones','Documentos formales en un minuto, no en una hora','<button class="btn lime" type="button" data-a="q-new">+ Nueva cotización</button>')
- +'<div class="kpis"><div class="kpi"><span>Borradores</span><b>'+cnt.borrador+'</b></div><div class="kpi"><span>Enviadas</span><b>'+cnt.enviada+'</b><small>'+fmt(sum(Q.filter(function(q){return q.st==='enviada'}),qtot))+' pendientes</small></div><div class="kpi"><span>Aprobadas</span><b>'+cnt.aprobada+'</b><small>'+fmt(sum(Q.filter(function(q){return q.st==='aprobada'}),qtot))+'</small></div><div class="kpi"><span>Rechazadas</span><b>'+cnt.rechazada+'</b></div></div>'
- +'<div class="tw"><table><thead><tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Estado</th><th class="r">Total</th><th></th></tr></thead><tbody>'+L.map(function(q){return '<tr><td class="m">COT-'+q.num+'</td><td>'+esc(cli(q.c).n)+'</td><td>'+fd(q.f)+'</td><td><span class="bd q-'+q.st+'">'+q.st.charAt(0).toUpperCase()+q.st.slice(1)+'</span></td><td class="r m">'+fmt(qtot(q))+'</td><td class="r" style="white-space:nowrap"><button class="btn line sm" type="button" data-a="q-open" data-id="'+q.id+'">Abrir</button> <button class="btn ghost sm" type="button" data-a="q-dup" data-id="'+q.id+'">Duplicar</button></td></tr>'}).join('')+'</tbody></table></div>';
+ +'<div class="kpis">'+kpi('Enviadas',cnt.enviada,fmt(sum(Q.filter(function(q){return q.st==='enviada'}),qtot))+' en juego','dark')+kpi('Aprobadas',cnt.aprobada,fmt(sum(ap,qtot)))+kpi('Tasa de aprobación',(ap.length+re?Math.round(ap.length/(ap.length+re)*100):0)+' %',ap.length+' de '+(ap.length+re)+' decididas')+kpi('Ticket promedio',fmt(Q.length?sum(Q,qtot)/Q.length:0),Q.length+' cotizaciones')+'</div>'
+ +'<div class="chips noprint">'+chips([['all','Todas',Q.length],['borrador','Borradores',cnt.borrador],['enviada','Enviadas',cnt.enviada],['aprobada','Aprobadas',cnt.aprobada],['rechazada','Rechazadas',cnt.rechazada]],S.qs,'qs')+'<input class="search" id="qsearch" type="search" placeholder="Buscar por N.º o cliente…" aria-label="Buscar cotización" value="'+esc(S.qq)+'"></div><div id="qres">'+qRes()+'</div>';
 }
 function docHTML(q){
  var c=cli(+q.c),rows=q.it.map(function(x,i){return '<tr><td>'+(i+1)+'</td><td>'+esc(x.d)+'</td><td style="text-align:right">'+x.q+'</td><td style="text-align:right">'+fmt(x.p)+'</td><td style="text-align:right">'+fmt(x.q*x.p)+'</td></tr>'}).join('')||'<tr><td colspan="5" style="text-align:center;color:#777">Agregue trabajos para ver el detalle</td></tr>';
- var s=qsub(q),v=pd(q.f);v.setDate(v.getDate()+(+q.val||0));
+ var v=pd(q.f);v.setDate(v.getDate()+(+q.val||0));
  return '<div class="doc" id="doc"><div class="hd"><div class="co"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#7BB316"/><path d="M9 28c8-9 22-9 30-2" fill="none" stroke="#0D1410" stroke-width="2.6" stroke-linecap="round"/></svg><div><b>IMAGEN Y SONIDO PUBLICIDAD</b><small>Jr. Bolívar N.º 201 · Cajamarca · Cel. 976 159 851 · 976 330 316</small></div></div><div class="no"><b>COTIZACIÓN N.º COT-'+(q.num||'—')+'</b><small>Cajamarca, '+fdy(q.f)+'</small></div></div>'
  +'<dl><dt>Cliente</dt><dd>'+(c?esc(c.n):'—')+'</dd><dt>Atención</dt><dd>'+(c?esc(c.ct):'—')+'</dd><dt>Validez</dt><dd>'+(q.val||0)+' días (hasta el '+fdy(iso(v))+')</dd></dl>'
  +'<table><thead><tr><th>#</th><th>Descripción</th><th style="text-align:right">Cant.</th><th style="text-align:right">P. unit.</th><th style="text-align:right">Importe</th></tr></thead><tbody>'+rows+'</tbody></table>'
- +'<div class="tot"><div><span>Subtotal</span><b>'+fmt(s)+'</b></div>'+(q.igv?'<div><span>IGV (18 %)</span><b>'+fmt(s*.18)+'</b></div>':'')+'<div class="g"><span>Total</span><b>'+fmt(qtot(q))+'</b></div></div>'
- +(q.nota?'<p class="nt"><b>Observaciones:</b> '+esc(q.nota)+'</p>':'')
- +'<p class="nt">Condiciones de ejemplo: adelanto del 50 % al aprobar y saldo contra entrega. Precios y condiciones de este documento son de ejemplo.</p></div>';
+ +'<div class="tot"><div><span>Subtotal</span><b>'+fmt(qsub(q))+'</b></div>'+(+q.desc?'<div><span>Descuento ('+q.desc+' %)</span><b>−'+fmt(qdesc(q))+'</b></div>':'')+(q.igv?'<div><span>IGV (18 %)</span><b>'+fmt(qbase(q)*.18)+'</b></div>':'')+'<div class="g"><span>Total</span><b>'+fmt(qtot(q))+'</b></div></div>'
+ +'<div class="nt"><p><b>Condiciones de pago:</b> '+esc(q.pago)+'.</p><p><b>Plazo de entrega:</b> '+(q.plazo||0)+' días hábiles desde la aprobación.</p>'+(q.nota?'<p><b>Observaciones:</b> '+esc(q.nota)+'</p>':'')+'<p style="margin-top:8px;color:#777">Documento de ejemplo: los precios y condiciones se configuran en el sistema final.</p></div></div>';
 }
 function vQEdit(){
  var q=S.qd;
  return head(q.id?'Cotización COT-'+q.num:'Nueva cotización','Elija el cliente, agregue los trabajos y el documento se arma solo','<button class="btn line qback" type="button" data-a="q-back">← Volver</button>')
  +'<div class="qwrap"><div class="card qform"><div class="fg"><div class="f w"><label for="q-c">Cliente</label><select class="in" id="q-c" data-qf="c"><option value="">Elija un cliente…</option>'+C.map(function(c){return '<option value="'+c.id+'"'+(+q.c===c.id?' selected':'')+'>'+esc(c.n)+'</option>'}).join('')+'</select></div>'
  +'<div class="f"><label for="q-f">Fecha</label><input class="in" id="q-f" type="date" data-qf="f" value="'+q.f+'"></div><div class="f"><label for="q-v">Validez (días)</label><input class="in" id="q-v" type="number" min="1" data-qf="val" value="'+q.val+'"></div>'
- +'<div class="f"><label for="q-s">Estado</label><select class="in" id="q-s" data-qf="st">'+['borrador','enviada','aprobada','rechazada'].map(function(s){return '<option value="'+s+'"'+(q.st===s?' selected':'')+'>'+s.charAt(0).toUpperCase()+s.slice(1)+'</option>'}).join('')+'</select></div><div class="f"><label class="chk"><input type="checkbox" data-qf="igv"'+(q.igv?' checked':'')+'> Incluir IGV 18 %</label></div></div>'
+ +'<div class="f"><label for="q-s">Estado</label><select class="in" id="q-s" data-qf="st">'+['borrador','enviada','aprobada','rechazada'].map(function(s){return '<option value="'+s+'"'+(q.st===s?' selected':'')+'>'+cap(s)+'</option>'}).join('')+'</select></div><div class="f"><label class="chk"><input type="checkbox" data-qf="igv"'+(q.igv?' checked':'')+'> Incluir IGV 18 %</label></div>'
+ +'<div class="f"><label for="q-d">Descuento (%)</label><input class="in" id="q-d" type="number" min="0" max="50" data-qf="desc" value="'+(q.desc||0)+'"></div><div class="f"><label for="q-p">Plazo de entrega (días)</label><input class="in" id="q-p" type="number" min="1" data-qf="plazo" value="'+q.plazo+'"></div>'
+ +'<div class="f w"><label for="q-pg">Condiciones de pago</label><select class="in" id="q-pg" data-qf="pago">'+PAGO.map(function(s){return '<option'+(q.pago===s?' selected':'')+'>'+s+'</option>'}).join('')+'</select></div></div>'
  +'<span class="lb">Trabajos</span><div class="addln"><select class="in" id="q-cat" aria-label="Agregar un trabajo del catálogo">'+CAT.map(function(c,i){return '<option value="'+i+'">'+esc(c[0])+' · '+fmt(c[1])+'</option>'}).join('')+'</select><button class="btn lime" type="button" data-a="q-add">Agregar</button></div>'
+ +'<div class="addln"><select class="in" id="q-pk" aria-label="Agregar un paquete">'+PK.map(function(p,i){return '<option value="'+i+'">Paquete: '+esc(p[0])+'</option>'}).join('')+'</select><button class="btn line" type="button" data-a="q-pack">Agregar paquete</button></div>'
  +'<div class="qlines" id="qlines">'+qLines(q)+'</div><button class="btn ghost" type="button" data-a="q-custom">+ Otro trabajo (a medida)</button>'
  +'<div class="f w" style="margin-top:12px"><label for="q-n">Observaciones (opcional)</label><textarea class="in" id="q-n" rows="2" data-qf="nota">'+esc(q.nota)+'</textarea></div><p class="err" id="qerr" role="alert"></p>'
  +'<div class="dact" style="justify-content:flex-start"><button class="btn lime" type="button" data-a="q-save">Guardar</button><button class="btn wa" type="button" data-a="q-wa">Enviar por WhatsApp</button><button class="btn line" type="button" data-a="q-print">Imprimir / PDF</button></div>'
- +'<p class="fine" style="font-size:.78rem;color:var(--muted);margin-top:10px">Los precios del catálogo son de ejemplo. En el sistema final usted carga los suyos. Al aprobar, el cliente pasa a «Cliente» y se crea el ingreso por cobrar.</p></div>'
+ +'<p style="font-size:.78rem;color:var(--muted);margin-top:10px">Los precios del catálogo son de ejemplo; en el sistema final usted carga los suyos. Al aprobar, el cliente pasa a «Cliente» y se crea el ingreso por cobrar del 50 %.</p></div>'
  +'<div id="qprev">'+docHTML(q)+'</div></div>';
 }
 function qLines(q){return q.it.map(function(x,i){return '<div class="ql"><input class="in" aria-label="Descripción" data-qi="'+i+'" data-qk="d" value="'+esc(x.d)+'"><input class="in" aria-label="Cantidad" type="number" min="1" data-qi="'+i+'" data-qk="q" value="'+x.q+'"><input class="in" aria-label="Precio unitario" type="number" min="0" data-qi="'+i+'" data-qk="p" value="'+x.p+'"><button class="del" type="button" data-a="q-del" data-id="'+i+'" aria-label="Quitar trabajo">✕</button></div>'}).join('')||'<p class="empty" style="padding:6px 0">Aún no agregó trabajos.</p>'}
+
+/* ---------- INGRESOS ---------- */
+function iFilter(){var q=S.iq.toLowerCase();return I.filter(function(x){return (S.is==='all'||x.est===S.is)&&(S.il==='all'||x.lin===S.il)&&(!q||(x.con+' '+cli(x.c).n+' '+x.pago).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.f<b.f?1:-1})}
+function iRes(){
+ var L=iFilter();if(!L.length)return '<p class="empty">No hay ingresos con ese filtro.</p>';
+ return '<div class="tw"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Concepto</th><th>Línea</th><th>Pago</th><th>Estado</th><th class="r">Monto</th><th></th></tr></thead><tbody>'+L.map(function(x){var d=dd(TODAY,x.f);return '<tr><td>'+fd(x.f)+'</td><td>'+esc(cli(x.c).n)+'</td><td>'+esc(x.con)+'</td><td><span class="tag">'+esc(x.lin)+'</span></td><td>'+esc(x.pago)+'</td><td><span class="bd p-'+x.est+'">'+(x.est==='cobrado'?'Cobrado':'Por cobrar')+'</span>'+(x.est==='xcobrar'?'<small>'+(d>=14?'<span class="dn">Hace '+d+' días</span>':'Hace '+d+' días')+'</small>':'')+'</td><td class="r m">'+fmt(x.m)+'</td><td class="r" style="white-space:nowrap">'+(x.est==='xcobrar'?'<button class="btn line sm" type="button" data-a="i-cob" data-id="'+x.id+'">Marcar cobrado</button> <button class="btn ghost sm" type="button" data-a="i-rec" data-id="'+x.id+'">Recordar</button>':'')+'</td></tr>'}).join('')+'</tbody><tfoot><tr><td colspan="6"><b>'+L.length+' movimientos</b></td><td class="r m">'+fmt(sum(L,function(x){return x.m}))+'</td><td></td></tr></tfoot></table></div>';
+}
 function vIng(){
- var L=I.filter(function(x){return S.is==='all'||x.est===S.is}).sort(function(a,b){return a.f<b.f?1:-1});
- var xc=I.filter(function(x){return x.est==='xcobrar'}),h=months(6);
- var ch=[['all','Todos'],['cobrado','Cobrados'],['xcobrar','Por cobrar']].map(function(s){return '<button class="chip" type="button" data-a="is" data-v="'+s[0]+'" aria-pressed="'+(S.is===s[0])+'">'+s[1]+'</button>'}).join('');
- return head('Ingresos','Todo lo que entra, con su forma de pago','<button class="btn lime" type="button" data-a="i-new">+ Registrar ingreso</button>')
- +'<div class="kpis"><div class="kpi dark"><span>Cobrado este mes</span><b>'+fmt(inc(CURM))+'</b></div><div class="kpi"><span>Por cobrar</span><b>'+fmt(sum(xc,function(x){return x.m}))+'</b><small>'+xc.length+' pagos</small></div><div class="kpi"><span>Cobrado en 6 meses</span><b>'+fmt(sum(h,function(m){return inc(m.k)}))+'</b></div><div class="kpi"><span>Promedio mensual</span><b>'+fmt(sum(h,function(m){return inc(m.k)})/6)+'</b></div></div>'
- +'<div class="chips noprint">'+ch+'</div><div class="tw"><table><thead><tr><th>Fecha</th><th>Cliente</th><th>Concepto</th><th>Pago</th><th>Estado</th><th class="r">Monto</th><th></th></tr></thead><tbody>'+L.map(function(x){return '<tr><td>'+fd(x.f)+'</td><td>'+esc(cli(x.c).n)+'</td><td>'+esc(x.con)+'</td><td>'+esc(x.pago)+'</td><td><span class="bd p-'+x.est+'">'+(x.est==='cobrado'?'Cobrado':'Por cobrar')+'</span></td><td class="r m">'+fmt(x.m)+'</td><td class="r">'+(x.est==='xcobrar'?'<button class="btn line sm" type="button" data-a="i-cob" data-id="'+x.id+'">Marcar cobrado</button>':'')+'</td></tr>'}).join('')+'</tbody></table></div>';
+ var xc=I.filter(function(x){return x.est==='xcobrar'}),f6=periodFrom('6m'),cob6=I.filter(function(x){return x.est==='cobrado'&&x.f>=f6});
+ var lin=LIN.map(function(l){return {l:l,v:sum(cob6.filter(function(x){return x.lin===l}),function(x){return x.m})}}).filter(function(r){return r.v}).sort(function(a,b){return b.v-a.v});
+ var pg=['Transferencia','Yape','Plin','Efectivo'].map(function(p){return {l:p,v:sum(cob6.filter(function(x){return x.pago===p}),function(x){return x.m})}}).filter(function(r){return r.v}).sort(function(a,b){return b.v-a.v});
+ var late=xc.filter(function(x){return dd(TODAY,x.f)>=14});
+ return head('Ingresos','Todo lo que entra, por línea de servicio y forma de pago','<button class="btn lime" type="button" data-a="i-new">+ Registrar ingreso</button>')
+ +'<div class="kpis">'+kpi('Cobrado este mes',fmt(inc(CURM)),delta(inc(CURM),inc(months(2)[0].k))+' frente al mes anterior','dark')+kpi('Por cobrar',fmt(sum(xc,function(x){return x.m})),xc.length+' pagos'+(late.length?' · <span class="dn">'+late.length+' con más de 14 días</span>':''))+kpi('Cobrado en 6 meses',fmt(sum(cob6,function(x){return x.m})),cob6.length+' cobros')+kpi('Ticket promedio',fmt(cob6.length?sum(cob6,function(x){return x.m})/cob6.length:0),'por cobro')+'</div>'
+ +'<div class="g2 eq"><section class="card"><h3>Por línea de servicio <small>6 meses</small></h3>'+donut(lin,COL)+'</section><section class="card"><h3>Por forma de pago <small>6 meses</small></h3>'+barsHTML(pg)+'</section></div>'
+ +'<div class="chips noprint">'+chips([['all','Todos'],['cobrado','Cobrados'],['xcobrar','Por cobrar']],S.is,'is')+'<select class="in sel" id="ilin" aria-label="Filtrar por línea"><option value="all">Todas las líneas</option>'+LIN.map(function(l){return '<option'+(S.il===l?' selected':'')+'>'+l+'</option>'}).join('')+'</select><input class="search" id="isearch" type="search" placeholder="Buscar cliente o concepto…" aria-label="Buscar ingreso" value="'+esc(S.iq)+'"></div><div id="ires">'+iRes()+'</div>';
+}
+
+/* ---------- GASTOS ---------- */
+function gFilter(){var q=S.gq.toLowerCase(),f=periodFrom(S.gp);return G.filter(function(g){return g.f>=f&&(S.gc==='all'||g.cat===S.gc)&&(!q||(g.con+' '+(g.pv?prov(g.pv).n:'')+' '+g.cat).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.f<b.f?1:-1})}
+function gRes(){
+ var L=gFilter();if(!L.length)return '<p class="empty">No hay gastos con ese filtro.</p>';
+ return '<div class="tw"><table><thead><tr><th>Fecha</th><th>Categoría</th><th>Proveedor</th><th>Concepto</th><th>Comprobante</th><th class="r">Monto</th></tr></thead><tbody>'+L.map(function(g){return '<tr><td>'+fd(g.f)+'</td><td>'+esc(g.cat)+'</td><td>'+(g.pv?esc(prov(g.pv).n):'<small>—</small>')+'</td><td>'+esc(g.con)+'</td><td><span class="tag">'+esc(g.doc||'—')+'</span></td><td class="r m">'+fmt(g.m)+'</td></tr>'}).join('')+'</tbody><tfoot><tr><td colspan="5"><b>'+L.length+' movimientos</b></td><td class="r m">'+fmt(sum(L,function(g){return g.m}))+'</td></tr></tfoot></table></div>';
 }
 function vGas(){
  var from=periodFrom('6m'),rows=GC.map(function(c){return {l:c,v:sum(G.filter(function(g){return g.cat===c&&g.f>=from}),function(g){return g.m})}}).filter(function(r){return r.v>0}).sort(function(a,b){return b.v-a.v});
- var L=G.filter(function(g){return S.gc==='all'||g.cat===S.gc}).sort(function(a,b){return a.f<b.f?1:-1});
- var h=months(6),tot=sum(h,function(m){return exp(m.k)});
- var ch='<button class="chip" type="button" data-a="gc" data-v="all" aria-pressed="'+(S.gc==='all')+'">Todos</button>'+GC.map(function(c){return '<button class="chip" type="button" data-a="gc" data-v="'+esc(c)+'" aria-pressed="'+(S.gc===c)+'">'+c+'</button>'}).join('');
- return head('Gastos','Materiales, planilla, alquiler y más, por categoría','<button class="btn lime" type="button" data-a="g-new">+ Registrar gasto</button>')
- +'<div class="kpis"><div class="kpi dark"><span>Gastado este mes</span><b>'+fmt(exp(CURM))+'</b></div><div class="kpi"><span>Gastos en 6 meses</span><b>'+fmt(tot)+'</b></div><div class="kpi"><span>Promedio mensual</span><b>'+fmt(tot/6)+'</b></div><div class="kpi"><span>Mayor categoría</span><b style="font-size:1.15rem">'+(rows[0]?esc(rows[0].l):'—')+'</b><small>'+(rows[0]?fmt(rows[0].v):'')+'</small></div></div>'
- +'<section class="card" style="margin-bottom:14px"><h3>Gasto por categoría <small>últimos 6 meses</small></h3>'+barsHTML(rows,null,true)+'</section>'
- +'<div class="chips noprint">'+ch+'</div><div class="tw"><table><thead><tr><th>Fecha</th><th>Categoría</th><th>Proveedor</th><th>Concepto</th><th class="r">Monto</th></tr></thead><tbody>'+L.map(function(g){return '<tr><td>'+fd(g.f)+'</td><td>'+esc(g.cat)+'</td><td>'+(g.pv?esc(prov(g.pv).n):'<small>—</small>')+'</td><td>'+esc(g.con)+'</td><td class="r m">'+fmt(g.m)+'</td></tr>'}).join('')+'</tbody></table></div>';
+ var h=months(6),tot=sum(h,function(m){return exp(m.k)}),mbud=sum(GC,function(c){return BUD[c]});
+ var bud=GC.map(function(c){var g=sum(G.filter(function(x){return x.cat===c&&ym(x.f)===CURM}),function(x){return x.m}),p=Math.round(g/BUD[c]*100);return '<div class="bgt"><div><b>'+c+'</b><span>'+fmt(g)+' de '+fmt(BUD[c])+'</span></div><div class="mbar sm'+(p>100?' over':p>85?' warn':'')+'" role="progressbar" aria-valuenow="'+Math.min(p,100)+'" aria-valuemin="0" aria-valuemax="100" aria-label="'+c+'"><i style="width:'+Math.min(p,100)+'%"></i></div><em class="'+(p>100?'dn':'')+'">'+p+' %</em></div>'}).join('');
+ var doc=['Factura','Boleta','Recibo','Planilla'].map(function(d){return {l:d,v:sum(G.filter(function(g){return g.doc===d&&g.f>=from}),function(g){return g.m})}}).filter(function(r){return r.v});
+ return head('Gastos','Materiales, planilla, alquiler y más, contra su presupuesto','<button class="btn line" type="button" data-a="bud">Ajustar presupuestos</button><button class="btn lime" type="button" data-a="g-new">+ Registrar gasto</button>')
+ +'<div class="kpis">'+kpi('Gastado este mes',fmt(exp(CURM)),'de '+fmt(mbud)+' presupuestados','dark')+kpi('Gastos en 6 meses',fmt(tot),delta(exp(CURM),exp(months(2)[0].k),true)+' mes actual vs anterior')+kpi('Promedio mensual',fmt(tot/6))+kpi('Mayor categoría','<span style="font-size:1.15rem">'+(rows[0]?esc(rows[0].l):'—')+'</span>',rows[0]?fmt(rows[0].v):'')+'</div>'
+ +'<div class="g2 eq"><section class="card"><h3>Presupuesto del mes <small>'+MES[T.getMonth()]+'</small></h3><div class="bgts">'+bud+'</div></section><section class="card"><h3>Gasto por categoría <small>6 meses</small></h3>'+barsHTML(rows,null,true)+'<h3 style="margin:18px 0 10px">Por tipo de comprobante</h3>'+barsHTML(doc,null,true)+'</section></div>'
+ +'<div class="chips noprint">'+chips(Object.keys(PL).map(function(k){return [k,PL[k]]}),S.gp,'gp')+'</div><div class="chips noprint">'+chips([['all','Todas']].concat(GC.map(function(c){return [c,c]})),S.gc,'gc')+'<input class="search" id="gsearch" type="search" placeholder="Buscar concepto o proveedor…" aria-label="Buscar gasto" value="'+esc(S.gq)+'"></div><div id="gres">'+gRes()+'</div>';
 }
-function provRank(from){var pt=provTot(from),all=sum(G.filter(function(g){return g.f>=from}),function(g){return g.m});return V.map(function(v){var last=G.filter(function(g){return g.pv===v.id}).sort(function(a,b){return a.f<b.f?1:-1})[0];return {v:v,t:pt[v.id]||0,pc:all?(pt[v.id]||0)/all*100:0,last:last?last.f:null}}).sort(function(a,b){return b.t-a.t})}
+
+/* ---------- PROVEEDORES ---------- */
 function vProv(){
- var from=periodFrom('6m'),R=provRank(from),P=R.filter(function(r){return r.v.pr}),L=S.vp?P:R;
- var ch=[[false,'Todos',V.length],[true,'★ Prioritarios',P.length]].map(function(s){return '<button class="chip" type="button" data-a="vp" data-v="'+s[0]+'" aria-pressed="'+(S.vp===s[0])+'">'+s[1]+'<small>'+s[2]+'</small></button>'}).join('');
+ var from=periodFrom('6m'),R=provRank(from),P=R.filter(function(r){return r.v.pr}),L=S.vp?P:R,ms=months(6);
  return head('Proveedores','Con quién compra más y quiénes son prioritarios','<button class="btn lime" type="button" data-a="v-new">+ Nuevo proveedor</button>')
- +'<section class="card" style="margin-bottom:14px"><h3>Reporte de proveedores prioritarios <small>compras de los últimos 6 meses</small></h3>'+barsHTML(P.map(function(r){return {l:r.v.n,v:r.t}}),null,true)+'<p style="margin-top:12px;color:var(--muted);font-size:.86rem">Los '+P.length+' proveedores prioritarios concentran el <b>'+Math.round(sum(P,function(r){return r.pc}))+' %</b> de todas las compras a proveedores.</p></section>'
- +'<div class="chips noprint">'+ch+'</div><div class="tw"><table><thead><tr><th></th><th>Proveedor</th><th>Rubro</th><th>Contacto</th><th>Última compra</th><th class="r">Compras 6 m.</th><th class="r">% gasto</th></tr></thead><tbody>'+L.map(function(r){return '<tr><td><button class="star" type="button" data-a="vstar" data-id="'+r.v.id+'" aria-pressed="'+r.v.pr+'" aria-label="Prioritario: '+esc(r.v.n)+'">★</button></td><td><b>'+esc(r.v.n)+'</b></td><td>'+esc(r.v.cat)+'</td><td>'+esc(r.v.ct)+'<small>'+esc(r.v.tel)+'</small></td><td>'+(r.last?fd(r.last):'—')+'</td><td class="r m">'+fmt(r.t)+'</td><td class="r m">'+r.pc.toFixed(1)+' %</td></tr>'}).join('')+'</tbody></table></div>';
+ +'<div class="kpis">'+kpi('Proveedores',V.length,P.length+' prioritarios','dark')+kpi('Compras en 6 meses',fmt(sum(R,function(r){return r.t})),'a proveedores identificados')+kpi('Peso de prioritarios',Math.round(sum(P,function(r){return r.pc}))+' %','del gasto total')+kpi('Calificación promedio',(sum(V,function(v){return v.rt})/V.length).toFixed(1)+' / 5',stars(Math.round(sum(V,function(v){return v.rt})/V.length)))+'</div>'
+ +'<section class="card" style="margin-bottom:14px"><h3>Reporte de proveedores prioritarios <small>compras de los últimos 6 meses</small></h3>'+barsHTML(P.map(function(r){return {l:r.v.n,v:r.t}}),null,true)+'</section>'
+ +'<div class="chips noprint">'+chips([[false,'Todos',V.length],[true,'★ Prioritarios',P.length]],S.vp,'vp')+'</div><div class="tw"><table class="pv"><thead><tr><th></th><th>Proveedor</th><th>Rubro</th><th>Calificación</th><th>Pago</th><th>Tendencia 6 m.</th><th>Última compra</th><th class="r">Compras 6 m.</th><th class="r">% gasto</th></tr></thead><tbody>'+L.map(function(r){var tr=ms.map(function(m){return sum(G.filter(function(g){return g.pv===r.v.id&&ym(g.f)===m.k}),function(g){return g.m})});return '<tr><td><button class="star" type="button" data-a="vstar" data-id="'+r.v.id+'" aria-pressed="'+r.v.pr+'" aria-label="Prioritario: '+esc(r.v.n)+'">★</button></td><td><button class="lnk" style="font-weight:700" type="button" data-a="v-open" data-id="'+r.v.id+'">'+esc(r.v.n)+'</button><small>'+esc(r.v.ct)+' · '+esc(r.v.tel)+'</small></td><td>'+esc(r.v.cat)+'</td><td>'+stars(r.v.rt)+'</td><td>'+esc(r.v.plazo)+'</td><td>'+spark(tr)+'</td><td>'+(r.last?fd(r.last):'—')+'</td><td class="r m">'+fmt(r.t)+'</td><td class="r m">'+r.pc.toFixed(1)+' %</td></tr>'}).join('')+'</tbody></table></div>';
 }
+function vOpen(id){
+ var v=prov(id),hs=G.filter(function(g){return g.pv===id}).sort(function(a,b){return a.f<b.f?1:-1}),tot=sum(hs,function(g){return g.m}),d=$('#dlg');
+ d.innerHTML='<div class="dbody"><h3>'+esc(v.n)+'</h3><p style="margin-bottom:12px">'+(v.pr?'<span class="bd st-int">★ Prioritario</span> ':'')+'<span class="tag">'+esc(v.cat)+'</span> '+stars(v.rt)+'</p><div class="sum3">'+kpi('Compras totales',fmt(tot))+kpi('Pedidos',hs.length)+kpi('Promedio',fmt(hs.length?tot/hs.length:0))+'</div><p><b>'+esc(v.ct)+'</b> · '+esc(v.tel)+' · Pago: '+esc(v.plazo)+'</p>'
+ +'<div class="dact" style="justify-content:flex-start;margin:14px 0"><button class="btn wa" type="button" data-d="wa">Pedir cotización por WhatsApp</button><button class="btn line" type="button" data-d="edit">Editar</button><button class="btn ghost" type="button" data-d="close">Cerrar</button></div>'
+ +'<h4 class="sh">Historial de compras</h4><div class="list">'+(hs.slice(0,8).map(function(g){return '<div class="li"><div><b>'+esc(g.con)+'</b><small>'+fd(g.f)+' · '+esc(g.doc)+'</small></div><b>'+fmt(g.m)+'</b></div>'}).join('')||'<p class="empty">Aún sin compras.</p>')+'</div></div>';
+ d.showModal();
+ d.onclick=function(e){var b=e.target.closest('[data-d]');if(e.target===d){d.close();return}if(!b)return;var k=b.getAttribute('data-d');
+  if(k==='close')d.close();else if(k==='edit'){d.close();vForm(v)}
+  else if(k==='wa'){waOpen('[DEMO] Buenas tardes, le escribo de Imagen y Sonido Publicidad. ¿Me podría enviar su cotización actualizada de '+v.cat.toLowerCase()+'?');toast('Abriendo WhatsApp (número de prueba)…')}
+ };
+}
+
+/* ---------- REPORTES ---------- */
 function vRep(){
- var from=periodFrom(S.rp),ii=I.filter(function(x){return x.f>=from}),gg=G.filter(function(x){return x.f>=from});
+ var from=periodFrom(S.rp),pw=prevWin(S.rp),ii=I.filter(function(x){return x.f>=from}),gg=G.filter(function(x){return x.f>=from});
  var ci=sum(ii.filter(function(x){return x.est==='cobrado'}),function(x){return x.m}),xc=sum(ii.filter(function(x){return x.est==='xcobrar'}),function(x){return x.m}),ge=sum(gg,function(x){return x.m}),ut=ci-ge;
- var byC=C.map(function(c){var a=ii.filter(function(x){return x.c===c.id});return {c:c,cob:sum(a.filter(function(x){return x.est==='cobrado'}),function(x){return x.m}),xc:sum(a.filter(function(x){return x.est==='xcobrar'}),function(x){return x.m})}}).filter(function(r){return r.cob+r.xc>0}).sort(function(a,b){return b.cob+b.xc-a.cob-a.xc});
- var byCat=GC.map(function(c){return {l:c,v:sum(gg.filter(function(g){return g.cat===c}),function(g){return g.m})}}).filter(function(r){return r.v>0}).sort(function(a,b){return b.v-a.v});
- var R=provRank(from).filter(function(r){return r.v.pr});
- var ch=Object.keys(PL).map(function(k){return '<button class="chip" type="button" data-a="rp" data-v="'+k+'" aria-pressed="'+(S.rp===k)+'">'+PL[k]+'</button>'}).join('');
- var cnt=STG.map(function(s){return {l:s[1],v:C.filter(function(c){return c.st===s[0]}).length}});
+ var pci=pw?cobIn(pw[0],pw[1]):0,pge=pw?gasIn(pw[0],pw[1]):0;
+ var rt=[['resumen','Resumen'],['clientes','Clientes'],['servicios','Servicios'],['proveedores','Proveedores'],['flujo','Flujo de caja']];
+ var body='';
+ if(S.rr==='resumen'){
+  var byCat=GC.map(function(c){return {l:c,v:sum(gg.filter(function(g){return g.cat===c}),function(g){return g.m})}}).filter(function(r){return r.v>0}).sort(function(a,b){return b.v-a.v});
+  var cnt=STG.map(function(s){return {l:s[1],v:C.filter(function(c){return c.st===s[0]}).length}});
+  body='<div class="g2 eq"><section class="card"><h3>Gastos por categoría</h3>'+(byCat.length?barsHTML(byCat,null,true):'<p class="empty">Sin gastos en este período.</p>')+'</section><section class="card"><h3>Clientes por etapa</h3>'+barsHTML(cnt,function(v){return v+''})+'<p class="mini-p">'+C.filter(function(c){return c.pr&&c.st!=='noi'}).length+' clientes prioritarios activos.</p></section></div>';
+ }else if(S.rr==='clientes'){
+  var byC=C.map(function(c){var a=ii.filter(function(x){return x.c===c.id}),qs=Q.filter(function(q){return q.c===c.id&&q.f>=from});return {c:c,cob:sum(a.filter(function(x){return x.est==='cobrado'}),function(x){return x.m}),xc:sum(a.filter(function(x){return x.est==='xcobrar'}),function(x){return x.m}),cot:sum(qs,qtot),nq:qs.length}}).filter(function(r){return r.cob+r.xc+r.cot>0}).sort(function(a,b){return b.cob+b.xc-a.cob-a.xc});
+  var tcob=sum(byC,function(r){return r.cob})||1;
+  body='<section class="card" style="margin-bottom:12px"><h3>Ventas por cliente <small>'+PL[S.rp]+'</small></h3><div class="tw" style="border:0"><table style="min-width:560px"><thead><tr><th>Cliente</th><th>Etapa</th><th class="r">Cobrado</th><th class="r">Por cobrar</th><th class="r">Cotizado</th><th class="r">% ventas</th></tr></thead><tbody>'+(byC.map(function(r){return '<tr><td>'+(r.c.pr?'★ ':'')+esc(r.c.n)+'</td><td>'+badge(r.c.st)+'</td><td class="r m">'+fmt(r.cob)+'</td><td class="r m">'+(r.xc?fmt(r.xc):'—')+'</td><td class="r m">'+(r.cot?fmt(r.cot):'—')+'</td><td class="r m">'+(r.cob/tcob*100).toFixed(1)+' %</td></tr>'}).join('')||'<tr><td colspan="6" class="empty">Sin movimientos en este período.</td></tr>')+'</tbody></table></div></section>'
+  +'<div class="g2 eq"><section class="card"><h3>Mejores 5 clientes</h3>'+barsHTML(byC.slice(0,5).map(function(r){return {l:r.c.n,v:r.cob}}))+'</section><section class="card"><h3>Clientes por origen</h3>'+barsHTML(ORI.map(function(o){return {l:o,v:C.filter(function(c){return c.ori===o}).length}}).filter(function(r){return r.v}).sort(function(a,b){return b.v-a.v}),function(v){return v+''})+'</section></div>';
+ }else if(S.rr==='servicios'){
+  var ln=LIN.map(function(l){var a=ii.filter(function(x){return x.lin===l&&x.est==='cobrado'});return {l:l,v:sum(a,function(x){return x.m}),n:a.length}}).sort(function(a,b){return b.v-a.v}),tl=sum(ln,function(r){return r.v})||1;
+  body='<div class="g2 eq"><section class="card"><h3>Ventas por línea de servicio</h3>'+donut(ln.filter(function(r){return r.v}),COL)+'</section><section class="card"><h3>Detalle</h3><div class="tw" style="border:0"><table style="min-width:340px"><thead><tr><th>Línea</th><th class="r">Trabajos</th><th class="r">Ventas</th><th class="r">%</th></tr></thead><tbody>'+ln.map(function(r){return '<tr><td>'+r.l+'</td><td class="r m">'+r.n+'</td><td class="r m">'+fmt(r.v)+'</td><td class="r m">'+(r.v/tl*100).toFixed(1)+' %</td></tr>'}).join('')+'</tbody></table></div></section></div>';
+ }else if(S.rr==='proveedores'){
+  var R=provRank(from);
+  body='<section class="card" style="margin-bottom:12px"><h3>Proveedores prioritarios <small>compras del período</small></h3>'+barsHTML(R.filter(function(r){return r.v.pr}).map(function(r){return {l:r.v.n,v:r.t}}),null,true)+'</section><section class="card"><h3>Todos los proveedores</h3><div class="tw" style="border:0"><table style="min-width:560px"><thead><tr><th>Proveedor</th><th>Rubro</th><th>Calificación</th><th>Pago</th><th class="r">Compras</th><th class="r">% gasto</th></tr></thead><tbody>'+R.map(function(r){return '<tr><td>'+(r.v.pr?'★ ':'')+esc(r.v.n)+'</td><td>'+esc(r.v.cat)+'</td><td>'+stars(r.v.rt)+'</td><td>'+esc(r.v.plazo)+'</td><td class="r m">'+fmt(r.t)+'</td><td class="r m">'+r.pc.toFixed(1)+' %</td></tr>'}).join('')+'</tbody></table></div></section>';
+ }else{
+  var ms=months(S.rp==='todo'?6:Math.max(nm(S.rp),2)),w0=ms[0].k+'-01',pv0=iso(new Date(pd(w0).getTime()-864e5)),acc=CAJA0+cobIn('0000-00-00',pv0)-gasIn('0000-00-00',pv0),op=acc,rows=ms.map(function(m){var c=inc(m.k),x=sum(I.filter(function(y){return y.est==='xcobrar'&&ym(y.f)===m.k}),function(y){return y.m}),g=exp(m.k);acc+=c-g;return {m:m,c:c,x:x,g:g,s:c-g,a:acc}});
+  body='<section class="card" style="margin-bottom:12px"><h3>Saldo acumulado <small>cobrado − gastos</small></h3>'+lineChart(rows.map(function(r){return r.m}),rows.map(function(r){return r.a}))+'</section><section class="card"><h3>Flujo de caja mensual <small>saldo inicial de ejemplo: '+fmt(op)+'</small></h3><div class="tw" style="border:0"><table style="min-width:560px"><thead><tr><th>Mes</th><th class="r">Ingresos cobrados</th><th class="r">Por cobrar</th><th class="r">Gastos</th><th class="r">Saldo del mes</th><th class="r">Saldo acumulado</th></tr></thead><tbody>'+rows.map(function(r){return '<tr><td>'+cap(r.m.l)+'</td><td class="r m">'+fmt(r.c)+'</td><td class="r m">'+(r.x?fmt(r.x):'—')+'</td><td class="r m">'+fmt(r.g)+'</td><td class="r m"><span class="'+(r.s>=0?'up':'dn')+'">'+fmt(r.s)+'</span></td><td class="r m">'+fmt(r.a)+'</td></tr>'}).join('')+'</tbody></table></div></section>';
+ }
  return head('Reportes',PL[S.rp]+' · listos para imprimir o descargar','<button class="btn line" type="button" data-a="csv">Descargar CSV</button><button class="btn lime" type="button" data-a="print">Imprimir / PDF</button>')
- +'<div class="chips noprint">'+ch+'</div>'
- +'<div class="kpis"><div class="kpi dark"><span>Ingresos cobrados</span><b>'+fmt(ci)+'</b></div><div class="kpi"><span>Gastos</span><b>'+fmt(ge)+'</b></div><div class="kpi"><span>Utilidad</span><b class="'+(ut>=0?'up':'dn')+'">'+fmt(ut)+'</b><small>Margen '+(ci?Math.round(ut/ci*100):0)+' %</small></div><div class="kpi"><span>Por cobrar</span><b>'+fmt(xc)+'</b></div></div>'
- +'<div class="g2"><section class="card"><h3>Ingresos por cliente</h3><div class="tw" style="border:0"><table style="min-width:420px"><thead><tr><th>Cliente</th><th class="r">Cobrado</th><th class="r">Por cobrar</th></tr></thead><tbody>'+(byC.map(function(r){return '<tr><td>'+(r.c.pr?'★ ':'')+esc(r.c.n)+'</td><td class="r m">'+fmt(r.cob)+'</td><td class="r m">'+(r.xc?fmt(r.xc):'—')+'</td></tr>'}).join('')||'<tr><td colspan="3" class="empty">Sin ingresos en este período.</td></tr>')+'</tbody></table></div></section><section class="card"><h3>Gastos por categoría</h3>'+(byCat.length?barsHTML(byCat,null,true):'<p class="empty">Sin gastos en este período.</p>')+'</section></div>'
- +'<div class="g2"><section class="card"><h3>Proveedores prioritarios <small>compras del período</small></h3>'+barsHTML(R.map(function(r){return {l:r.v.n,v:r.t}}),null,true)+'</section><section class="card"><h3>Clientes por etapa</h3>'+barsHTML(cnt,function(v){return v+''})+'<p style="margin-top:12px;color:var(--muted);font-size:.86rem">'+C.filter(function(c){return c.pr&&c.st!=='noi'}).length+' clientes prioritarios activos.</p></section></div>';
+ +'<div class="chips noprint">'+chips(rt,S.rr,'rr')+'</div><div class="chips noprint">'+chips(Object.keys(PL).map(function(k){return [k,PL[k]]}),S.rp,'rp')+'</div>'
+ +'<div class="kpis">'+kpi('Ingresos cobrados',fmt(ci),pw?delta(ci,pci)+' vs período anterior':'','dark')+kpi('Gastos',fmt(ge),pw?delta(ge,pge,true)+' vs período anterior':'')+kpi('Utilidad','<span class="'+(ut>=0?'up':'dn')+'">'+fmt(ut)+'</span>','Margen '+(ci?Math.round(ut/ci*100):0)+' %')+kpi('Por cobrar',fmt(xc),ii.filter(function(x){return x.est==='xcobrar'}).length+' pagos pendientes')+'</div>'+body;
 }
 var VIEW={panel:vPanel,clientes:vClientes,cotizaciones:vCot,ingresos:vIng,gastos:vGas,proveedores:vProv,reportes:vRep};
 
@@ -438,7 +613,7 @@ function openForm(o){
   else h+='<div class="f'+w+'"><label for="'+id+'">'+f.l+'</label><input class="in" id="'+id+'" type="'+(f.t||'text')+'"'+(f.t==='number'?' min="0" step="any" inputmode="decimal"':'')+' value="'+esc(v==null?'':v)+'"></div>';
  });
  h+='</div><p class="err" id="derr" role="alert"></p><div class="dact"><button class="btn line" type="button" id="dcan">Cancelar</button><button class="btn lime" type="submit">'+(o.ok||'Guardar')+'</button></div></form>';
- d.innerHTML=h;d.showModal();
+ d.innerHTML=h;d.onclick=null;d.showModal();
  var fi=$('#df input,#df select');if(fi)fi.focus();
  $('#dcan').onclick=function(){d.close()};
  $('#df').onsubmit=function(e){
@@ -449,31 +624,25 @@ function openForm(o){
  };
 }
 $('#dlg').addEventListener('click',function(e){if(e.target===this)this.close()});
+function sel(a){return a.map(function(x){return [x,x]})}
 function selC(){return C.map(function(c){return [c.id,c.n]})}
 function selV(){return [['','— Sin proveedor —']].concat(V.map(function(v){return [v.id,v.n]}))}
-function clForm(c){var n=!c;c=c||{n:'',tipo:'Empresa',ct:'',tel:'',st:'nuevo',pr:false,nota:''};
- openForm({title:n?'Nuevo cliente':'Editar cliente',vals:c,fields:[{k:'n',l:'Nombre o empresa',w:1,req:1},{k:'ct',l:'Contacto'},{k:'tel',l:'Teléfono'},{k:'tipo',l:'Tipo',t:'select',o:[['Empresa','Empresa'],['Institución','Institución'],['Persona','Persona']]},{k:'st',l:'Etapa',t:'select',o:STG},{k:'pr',l:'Cliente prioritario ★',t:'check',w:1},{k:'nota',l:'Nota',t:'area',w:1}],
- save:function(v){if(n){v.id=nid(C);v.seg=null;C.push(v);toast('Cliente agregado.')}else{for(var k in v)c[k]=v[k];toast('Cliente actualizado.')}}})}
-function iForm(){openForm({title:'Registrar ingreso',vals:{c:C[0].id,f:iso(T),pago:'Yape',est:'cobrado',m:'',con:''},fields:[{k:'c',l:'Cliente',t:'select',o:selC(),w:1},{k:'con',l:'Concepto',w:1,req:1},{k:'m',l:'Monto (S/)',t:'number',req:1},{k:'f',l:'Fecha',t:'date',req:1},{k:'pago',l:'Forma de pago',t:'select',o:['Yape','Plin','Transferencia','Efectivo'].map(function(x){return [x,x]})},{k:'est',l:'Estado',t:'select',o:[['cobrado','Cobrado'],['xcobrar','Por cobrar']]}],
+function clForm(c){var n=!c;c=c||{n:'',tipo:'Empresa',ct:'',tel:'',st:'nuevo',pr:false,nota:'',ori:'WhatsApp',val:''};
+ openForm({title:n?'Nuevo cliente':'Editar cliente',vals:c,fields:[{k:'n',l:'Nombre o empresa',w:1,req:1},{k:'ct',l:'Contacto'},{k:'tel',l:'Teléfono'},{k:'tipo',l:'Tipo',t:'select',o:sel(['Empresa','Institución','Persona'])},{k:'st',l:'Etapa',t:'select',o:STG},{k:'ori',l:'¿Cómo llegó?',t:'select',o:sel(ORI)},{k:'val',l:'Oportunidad estimada (S/)',t:'number'},{k:'pr',l:'Cliente prioritario ★',t:'check',w:1},{k:'nota',l:'Nota',t:'area',w:1}],
+ save:function(v){v.val=v.val||0;if(n){v.id=nid(C);v.seg=null;v.log=[{f:TODAY,t:'Cliente registrado'}];C.push(v);toast('Cliente agregado.')}else{for(var k in v)c[k]=v[k];toast('Cliente actualizado.')}}})}
+function iForm(){openForm({title:'Registrar ingreso',vals:{c:C[0].id,f:TODAY,pago:'Yape',est:'cobrado',lin:LIN[0],m:'',con:''},fields:[{k:'c',l:'Cliente',t:'select',o:selC(),w:1},{k:'con',l:'Concepto',w:1,req:1},{k:'lin',l:'Línea de servicio',t:'select',o:sel(LIN)},{k:'m',l:'Monto (S/)',t:'number',req:1},{k:'f',l:'Fecha',t:'date',req:1},{k:'pago',l:'Forma de pago',t:'select',o:sel(['Yape','Plin','Transferencia','Efectivo'])},{k:'est',l:'Estado',t:'select',o:[['cobrado','Cobrado'],['xcobrar','Por cobrar']]}],
  save:function(v){v.id=nid(I);v.c=+v.c;I.push(v);toast('Ingreso registrado: '+fmt(v.m))}})}
-function gForm(){openForm({title:'Registrar gasto',vals:{cat:'Materiales',f:iso(T),pv:'',m:'',con:''},fields:[{k:'cat',l:'Categoría',t:'select',o:GC.map(function(x){return [x,x]})},{k:'pv',l:'Proveedor',t:'select',o:selV()},{k:'con',l:'Concepto',w:1,req:1},{k:'m',l:'Monto (S/)',t:'number',req:1},{k:'f',l:'Fecha',t:'date',req:1}],
- save:function(v){v.id=nid(G);v.pv=v.pv?+v.pv:null;G.push(v);toast('Gasto registrado: '+fmt(v.m))}})}
-function vForm(){openForm({title:'Nuevo proveedor',vals:{cat:'Materiales',pr:false},fields:[{k:'n',l:'Nombre',w:1,req:1},{k:'cat',l:'Rubro',t:'select',o:['Materiales','Impresión tercerizada','Merchandising','Servicios','Transporte'].map(function(x){return [x,x]})},{k:'ct',l:'Contacto'},{k:'tel',l:'Teléfono'},{k:'pr',l:'Proveedor prioritario ★',t:'check',w:1}],
- save:function(v){v.id=nid(V);V.push(v);toast('Proveedor agregado.')}})}
-function clOpen(id){
- var c=cli(id),f=sum(I.filter(function(x){return x.c===id&&x.est==='cobrado'}),function(x){return x.m}),qs=Q.filter(function(q){return q.c===id}),d=$('#dlg');
- d.innerHTML='<div class="dbody"><h3>'+esc(c.n)+'</h3><p style="margin-bottom:12px">'+badge(c.st)+' '+(c.pr?'<span class="bd st-int">★ Prioritario</span>':'')+'</p><div class="sum3"><div class="kpi"><span>Facturado</span><b style="font-size:1.2rem">'+fmt(f)+'</b></div><div class="kpi"><span>Cotizaciones</span><b style="font-size:1.2rem">'+qs.length+'</b></div><div class="kpi"><span>Tipo</span><b style="font-size:1.2rem">'+esc(c.tipo)+'</b></div></div><p><b>'+esc(c.ct)+'</b> · '+esc(c.tel)+'</p><p style="color:var(--muted);margin:6px 0 14px">'+esc(c.nota)+'</p>'+(c.seg!=null?'<p style="margin-bottom:14px">'+segTag(c)+'</p>':'')+'<div class="dact" style="justify-content:flex-start"><button class="btn lime" type="button" data-d="quote">Nueva cotización</button>'+(c.seg!=null?'<button class="btn line" type="button" data-d="seg">Seguimiento hecho (+7 días)</button>':'<button class="btn line" type="button" data-d="seg">Programar seguimiento</button>')+'<button class="btn line" type="button" data-d="edit">Editar</button><button class="btn ghost" type="button" data-d="close">Cerrar</button></div></div>';
- d.showModal();
- d.onclick=function(e){var b=e.target.closest('[data-d]');if(e.target===d){d.close();return}if(!b)return;var k=b.getAttribute('data-d');
-  if(k==='close')d.close();
-  else if(k==='edit'){d.close();clForm(c)}
-  else if(k==='seg'){c.seg=7;d.close();render();toast('Seguimiento programado para dentro de 7 días.')}
-  else if(k==='quote'){d.close();go('cotizaciones');qNew(id)}
- };
-}
+function gForm(){openForm({title:'Registrar gasto',vals:{cat:'Materiales',f:TODAY,pv:'',m:'',con:'',doc:'Factura'},fields:[{k:'cat',l:'Categoría',t:'select',o:sel(GC)},{k:'pv',l:'Proveedor',t:'select',o:selV()},{k:'con',l:'Concepto',w:1,req:1},{k:'m',l:'Monto (S/)',t:'number',req:1},{k:'f',l:'Fecha',t:'date',req:1},{k:'doc',l:'Comprobante',t:'select',o:sel(['Factura','Boleta','Recibo','Planilla'])}],
+ save:function(v){v.id=nid(G);v.pv=v.pv?+v.pv:null;G.push(v);var p=sum(G.filter(function(x){return x.cat===v.cat&&ym(x.f)===CURM}),function(x){return x.m});toast('Gasto registrado: '+fmt(v.m)+(p>BUD[v.cat]?' · ¡Ojo! Pasó el presupuesto de '+v.cat+'.':''))}})}
+function vForm(v){var n=!v;v=v||{n:'',cat:'Materiales',ct:'',tel:'',pr:false,rt:4,plazo:'Contado'};
+ openForm({title:n?'Nuevo proveedor':'Editar proveedor',vals:v,fields:[{k:'n',l:'Nombre',w:1,req:1},{k:'cat',l:'Rubro',t:'select',o:sel(['Materiales','Impresión tercerizada','Merchandising','Servicios','Transporte'])},{k:'plazo',l:'Forma de pago',t:'select',o:sel(['Contado','15 días','30 días'])},{k:'ct',l:'Contacto'},{k:'tel',l:'Teléfono'},{k:'rt',l:'Calificación',t:'select',o:[[5,'5 · Excelente'],[4,'4 · Muy bueno'],[3,'3 · Regular'],[2,'2 · Bajo'],[1,'1 · Malo']]},{k:'pr',l:'Proveedor prioritario ★',t:'check',w:1}],
+ save:function(x){x.rt=+x.rt;if(n){x.id=nid(V);V.push(x);toast('Proveedor agregado.')}else{for(var k in x)v[k]=x[k];toast('Proveedor actualizado.')}}})}
+function budForm(){var vals={},f=GC.map(function(c,i){vals['b'+i]=BUD[c];return {k:'b'+i,l:c,t:'number',req:1}});
+ openForm({title:'Presupuesto mensual por categoría',vals:vals,fields:f,save:function(v){GC.forEach(function(c,i){BUD[c]=v['b'+i]});toast('Presupuestos actualizados.')}})}
+function metaForm(){openForm({title:'Meta de ventas del mes',vals:{m:META},fields:[{k:'m',l:'Meta (S/)',t:'number',req:1,w:1}],save:function(v){META=v.m;toast('Meta actualizada: '+fmt(META))}})}
 
 /* ---------- cotización: acciones ---------- */
-function qNew(cid){S.qe=0;S.qd={id:0,num:nextNum(),c:cid||'',f:iso(T),st:'borrador',igv:true,val:15,nota:'',ing:false,it:[]};render()}
+function qNew(cid){S.qe=0;S.qd={id:0,num:nextNum(),c:cid||'',f:TODAY,st:'borrador',igv:true,val:15,desc:0,pago:PAGO[0],plazo:7,nota:'',ing:false,it:[]};render()}
 function nextNum(){return Q.reduce(function(m,q){return Math.max(m,q.num)},0)+1}
 function qUpdatePrev(){$('#qprev').innerHTML=docHTML(S.qd)}
 function qSave(){
@@ -483,8 +652,8 @@ function qSave(){
  if(q.it.some(function(x){return !(x.q>0)||!(x.p>=0)||!x.d})){er.textContent='Revise cantidades, precios y descripciones.';return false}
  er.textContent='';
  q.c=+q.c;var c=cli(q.c),msg='Cotización guardada.';
- if(q.st==='aprobada'&&!q.ing){q.ing=true;c.st='cli';I.push({id:nid(I),c:q.c,con:'Cotización COT-'+q.num+' (50 % de adelanto)',m:Math.round(qtot(q)*50)/100,f:iso(T),pago:'Transferencia',est:'xcobrar'});msg='Aprobada: '+esc(c.n)+' pasó a «Cliente» y se creó un ingreso por cobrar del 50 %.'}
- else if(q.st==='enviada'&&(c.st==='nuevo'||c.st==='int'))c.st='cot';
+ if(q.st==='aprobada'&&!q.ing){q.ing=true;c.st='cli';logc(c,'Aprobó la cotización COT-'+q.num);I.push({id:nid(I),c:q.c,con:'Cotización COT-'+q.num+' (50 % de adelanto)',m:Math.round(qtot(q)*50)/100,f:TODAY,pago:'Transferencia',est:'xcobrar',lin:LIN[0]});msg='Aprobada: '+c.n+' pasó a «Cliente» y se creó un ingreso por cobrar del 50 %.'}
+ else if(q.st==='enviada'&&(c.st==='nuevo'||c.st==='int')){c.st='cot';logc(c,'Se envió la cotización COT-'+q.num)}
  if(!q.id){q.id=nid(Q);Q.push(q)}else{Q[Q.map(function(x){return x.id}).indexOf(q.id)]=q}
  toast(msg);return true;
 }
@@ -499,17 +668,20 @@ main.addEventListener('click',function(e){
   case 'stage':S.cs=v;go('clientes');break;
   case 'cv':S.cv=v;render();break;case 'cs':S.cs=v;render();break;case 'cp':S.cp=!S.cp;render();break;
   case 'star':cli(id).pr=!cli(id).pr;render();break;
-  case 'mv':var c=cli(id),k=STG.map(function(s){return s[0]}),n=k.indexOf(c.st)+ +b.getAttribute('data-d');c.st=k[n];render();toast(c.n+' → '+stn(c.st));break;
+  case 'mv':var c=cli(id),k=STG.map(function(s){return s[0]}),n=k.indexOf(c.st)+ +b.getAttribute('data-d'),old=c.st;c.st=k[n];logc(c,'Etapa: '+stn(old)+' → '+stn(c.st));render();toast(c.n+' → '+stn(c.st));break;
   case 'cl-new':clForm();break;case 'cl-open':clOpen(id);break;
-  case 'is':S.is=v;render();break;case 'gc':S.gc=v;render();break;case 'vp':S.vp=v==='true';render();break;case 'rp':S.rp=v;render();break;
-  case 'i-new':iForm();break;case 'g-new':gForm();break;case 'v-new':vForm();break;
+  case 'qs':S.qs=v;render();break;
+  case 'is':S.is=v;render();break;case 'gc':S.gc=v;render();break;case 'gp':S.gp=v;render();break;case 'vp':S.vp=v==='true';render();break;case 'rp':S.rp=v;render();break;case 'rr':S.rr=v;render();break;
+  case 'i-new':iForm();break;case 'g-new':gForm();break;case 'v-new':vForm();break;case 'bud':budForm();break;case 'meta':metaForm();break;
   case 'i-cob':I.filter(function(x){return x.id===id})[0].est='cobrado';render();toast('Pago marcado como cobrado.');break;
-  case 'vstar':prov(id).pr=!prov(id).pr;render();break;
+  case 'i-rec':var ix=I.filter(function(x){return x.id===id})[0],cx=cli(ix.c);waOpen('[DEMO] Hola '+cx.ct+', le recordamos el saldo pendiente de '+fmt(ix.m)+' por «'+ix.con+'». Puede pagar por Yape, Plin o transferencia. Gracias.');toast('Abriendo WhatsApp con el recordatorio (número de prueba)…');break;
+  case 'vstar':prov(id).pr=!prov(id).pr;render();break;case 'v-open':vOpen(id);break;
   case 'q-new':qNew();break;
   case 'q-open':S.qd=JSON.parse(JSON.stringify(Q.filter(function(q){return q.id===id})[0]));S.qe=id;render();break;
-  case 'q-dup':var o=JSON.parse(JSON.stringify(Q.filter(function(q){return q.id===id})[0]));o.id=0;o.num=nextNum();o.f=iso(T);o.st='borrador';o.ing=false;S.qd=o;S.qe=0;render();toast('Copia lista para editar.');break;
+  case 'q-dup':var o=JSON.parse(JSON.stringify(Q.filter(function(q){return q.id===id})[0]));o.id=0;o.num=nextNum();o.f=TODAY;o.st='borrador';o.ing=false;S.qd=o;S.qe=0;render();toast('Copia lista para editar.');break;
   case 'q-back':S.qe=null;S.qd=null;render();break;
   case 'q-add':var cat=CAT[+$('#q-cat').value];S.qd.it.push({d:cat[0],q:1,p:cat[1]});$('#qlines').innerHTML=qLines(S.qd);qUpdatePrev();break;
+  case 'q-pack':PK[+$('#q-pk').value][1].forEach(function(x){S.qd.it.push({d:x[0],q:x[1],p:x[2]})});$('#qlines').innerHTML=qLines(S.qd);qUpdatePrev();break;
   case 'q-custom':S.qd.it.push({d:'Trabajo a medida',q:1,p:0});$('#qlines').innerHTML=qLines(S.qd);qUpdatePrev();break;
   case 'q-del':S.qd.it.splice(id,1);$('#qlines').innerHTML=qLines(S.qd);qUpdatePrev();break;
   case 'q-save':if(qSave()){S.qe=null;S.qd=null;render()}break;
@@ -522,14 +694,19 @@ main.addEventListener('click',function(e){
 main.addEventListener('input',function(e){
  var t=e.target;
  if(t.id==='csearch'){S.cq=t.value;$('#clres').innerHTML=clRes();return}
- if(t.hasAttribute('data-qf')){var k=t.getAttribute('data-qf');S.qd[k]=t.type==='checkbox'?t.checked:(k==='val'?+t.value:t.value);qUpdatePrev();return}
+ if(t.id==='qsearch'){S.qq=t.value;$('#qres').innerHTML=qRes();return}
+ if(t.id==='isearch'){S.iq=t.value;$('#ires').innerHTML=iRes();return}
+ if(t.id==='gsearch'){S.gq=t.value;$('#gres').innerHTML=gRes();return}
+ if(t.hasAttribute('data-qf')){var k=t.getAttribute('data-qf');S.qd[k]=t.type==='checkbox'?t.checked:(k==='val'||k==='desc'||k==='plazo'?+t.value:t.value);qUpdatePrev();return}
  if(t.hasAttribute('data-qi')){var it=S.qd.it[+t.getAttribute('data-qi')],kk=t.getAttribute('data-qk');it[kk]=kk==='d'?t.value:parseFloat(t.value)||0;qUpdatePrev()}
 });
-main.addEventListener('change',function(e){var t=e.target;if(t.getAttribute('data-qf')==='st'||t.getAttribute('data-qf')==='igv'){S.qd[t.getAttribute('data-qf')]=t.type==='checkbox'?t.checked:t.value;qUpdatePrev()}});
+main.addEventListener('change',function(e){var t=e.target;
+ if(t.id==='ilin'){S.il=t.value;$('#ires').innerHTML=iRes();return}
+ if(t.hasAttribute('data-qf')&&(t.tagName==='SELECT'||t.type==='checkbox')){var k=t.getAttribute('data-qf');S.qd[k]=t.type==='checkbox'?t.checked:t.value;qUpdatePrev()}});
 function csv(){
- var from=periodFrom(S.rp),rows=[['Tipo','Fecha','Cliente / Proveedor','Concepto','Categoría / Pago','Estado','Monto (S/)']];
- I.filter(function(x){return x.f>=from}).forEach(function(x){rows.push(['Ingreso',x.f,cli(x.c).n,x.con,x.pago,x.est==='cobrado'?'Cobrado':'Por cobrar',x.m])});
- G.filter(function(x){return x.f>=from}).forEach(function(x){rows.push(['Gasto',x.f,x.pv?prov(x.pv).n:'',x.con,x.cat,'Pagado',-x.m])});
+ var from=periodFrom(S.rp),rows=[['Tipo','Fecha','Cliente / Proveedor','Concepto','Línea / Categoría','Pago / Comprobante','Estado','Monto (S/)']];
+ I.filter(function(x){return x.f>=from}).forEach(function(x){rows.push(['Ingreso',x.f,cli(x.c).n,x.con,x.lin,x.pago,x.est==='cobrado'?'Cobrado':'Por cobrar',x.m])});
+ G.filter(function(x){return x.f>=from}).forEach(function(x){rows.push(['Gasto',x.f,x.pv?prov(x.pv).n:'',x.con,x.cat,x.doc,'Pagado',-x.m])});
  var t='﻿'+rows.map(function(r){return r.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'text/csv;charset=utf-8'}));a.download='reporte-imagen-y-sonido-'+S.rp+'.csv';document.body.appendChild(a);a.click();a.remove();toast('Reporte descargado (CSV, abre en Excel).');
 }
@@ -537,11 +714,10 @@ function csv(){
 /* ---------- navegación ---------- */
 function go(v){location.hash='#/'+v;if(cur===v)render()}
 function nav(){
- var n={clientes:C.length,cotizaciones:Q.filter(function(q){return q.st==='enviada'}).length};
+ var n={panel:alerts().length,clientes:C.length,cotizaciones:Q.filter(function(q){return q.st==='enviada'}).length};
  $('#nav').innerHTML=MODS.map(function(m){return '<a href="#/'+m[0]+'"'+(cur===m[0]?' aria-current="page"':'')+'>'+ic(m[0])+m[1]+(n[m[0]]?'<span class="n">'+n[m[0]]+'</span>':'')+'</a>'}).join('');
 }
 function render(){
- var y=window.scrollY;
  main.innerHTML=VIEW[cur]();nav();
  $('#topt').textContent=MODS.filter(function(m){return m[0]===cur})[0][1];
  document.title='Boceto Imagen y Sonido · '+$('#topt').textContent;
