@@ -479,7 +479,7 @@ function clOpen(id){
 function qFilter(){var q=S.qq.toLowerCase();return Q.filter(function(x){return (S.qs==='all'||x.st===S.qs)&&(!q||('cot-'+x.num+' '+cli(x.c).n).toLowerCase().indexOf(q)>-1)}).sort(function(a,b){return a.f<b.f?1:-1})}
 function qRes(){
  var L=qFilter();if(!L.length)return '<p class="empty">No hay cotizaciones con ese filtro.</p>';
- return '<div class="tw"><table><thead><tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Vigencia</th><th>Estado</th><th class="r">Total</th><th></th></tr></thead><tbody>'+L.map(function(q){var l=qleft(q),vg=q.st==='enviada'?(l<0?'<span class="seg late">Vencida hace '+(-l)+' d</span>':'<span class="seg'+(l<=2?' now':'')+'">Vence en '+l+' d</span>'):'<small>—</small>';return '<tr><td class="m">COT-'+q.num+'</td><td>'+esc(cli(q.c).n)+'</td><td>'+fd(q.f)+'</td><td>'+vg+'</td><td><span class="bd q-'+q.st+'">'+cap(q.st)+'</span></td><td class="r m">'+fmt(qtot(q))+'</td><td class="r" style="white-space:nowrap"><button class="btn line sm" type="button" data-a="q-open" data-id="'+q.id+'">Abrir</button> <button class="btn ghost sm" type="button" data-a="q-dup" data-id="'+q.id+'">Duplicar</button></td></tr>'}).join('')+'</tbody></table></div>';
+ return '<div class="tw"><table><thead><tr><th>N.º</th><th>Cliente</th><th>Fecha</th><th>Vigencia</th><th>Estado</th><th class="r">Total</th><th></th></tr></thead><tbody>'+L.map(function(q){var l=qleft(q),vg=q.st==='enviada'?(l<0?'<span class="seg late">Vencida hace '+(-l)+' d</span>':'<span class="seg'+(l<=2?' now':'')+'">Vence en '+l+' d</span>'):'<small>—</small>';return '<tr><td class="m">COT-'+q.num+'</td><td>'+esc(cli(q.c).n)+'</td><td>'+fd(q.f)+'</td><td>'+vg+'</td><td><span class="bd q-'+q.st+'">'+cap(q.st)+'</span></td><td class="r m">'+fmt(qtot(q))+'</td><td class="r" style="white-space:nowrap"><button class="btn line sm" type="button" data-a="q-open" data-id="'+q.id+'">Abrir</button> <button class="btn line sm" type="button" data-a="q-pdfrow" data-id="'+q.id+'">PDF</button> <button class="btn ghost sm" type="button" data-a="q-dup" data-id="'+q.id+'">Duplicar</button></td></tr>'}).join('')+'</tbody></table></div>';
 }
 function vCot(){
  if(S.qe!==null)return vQEdit();
@@ -510,7 +510,7 @@ function vQEdit(){
  +'<div class="addln"><select class="in" id="q-pk" aria-label="Agregar un paquete">'+PK.map(function(p,i){return '<option value="'+i+'">Paquete: '+esc(p[0])+'</option>'}).join('')+'</select><button class="btn line" type="button" data-a="q-pack">Agregar paquete</button></div>'
  +'<div class="qlines" id="qlines">'+qLines(q)+'</div><button class="btn ghost" type="button" data-a="q-custom">+ Otro trabajo (a medida)</button>'
  +'<div class="f w" style="margin-top:12px"><label for="q-n">Observaciones (opcional)</label><textarea class="in" id="q-n" rows="2" data-qf="nota">'+esc(q.nota)+'</textarea></div><p class="err" id="qerr" role="alert"></p>'
- +'<div class="dact" style="justify-content:flex-start"><button class="btn lime" type="button" data-a="q-save">Guardar</button><button class="btn wa" type="button" data-a="q-wa">Enviar por WhatsApp</button><button class="btn line" type="button" data-a="q-print">Imprimir / PDF</button></div>'
+ +'<div class="dact" style="justify-content:flex-start"><button class="btn lime" type="button" data-a="q-pdf">Descargar PDF</button><button class="btn line" type="button" data-a="q-save">Guardar</button><button class="btn wa" type="button" data-a="q-wa">Enviar por WhatsApp</button><button class="btn ghost" type="button" data-a="q-print">Imprimir</button></div>'
  +'<p style="font-size:.78rem;color:var(--muted);margin-top:10px">Los precios del catálogo son de ejemplo; en el sistema final usted carga los suyos. Al aprobar, el cliente pasa a «Cliente» y se crea el ingreso por cobrar del 50 %.</p></div>'
  +'<div id="qprev">'+docHTML(q)+'</div></div>';
 }
@@ -659,6 +659,79 @@ function qSave(){
 }
 function waOpen(m){var a=document.createElement('a');a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(m);a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
 
+
+/* ---------- PDF real (sin librerías) ---------- */
+var HW=[278,278,355,556,556,889,667,191,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,278,278,584,584,584,556,1015,667,667,722,722,667,611,778,722,278,500,667,556,833,722,778,667,778,722,667,611,722,667,944,667,667,611,278,278,278,469,556,333,556,556,500,556,556,278,556,556,222,222,500,222,833,556,556,556,556,333,500,278,556,500,722,500,500,500,334,260,334,584];
+var BW=[278,333,474,556,556,889,722,238,333,333,389,584,278,333,278,278,556,556,556,556,556,556,556,556,556,556,333,333,584,584,584,611,975,722,722,722,722,667,611,778,722,278,556,722,611,833,722,778,667,778,722,667,611,722,667,944,667,667,611,333,278,333,584,556,333,556,611,556,611,556,333,611,611,278,278,556,278,889,611,611,611,611,389,556,333,611,556,778,556,556,500,389,280,389,584];
+function pc(s){return String(s==null?'':s).replace(/\u00b2/g,'2').replace(/[−–—]/g,'-').replace(/…/g,'...').replace(/[‘’]/g,"'").replace(/[“”«»]/g,'"').replace(/★/g,'*').replace(/ /g,' ').replace(/[^\x00-\xff]/g,'?')}
+function pw(s,sz,b){var W=b?BW:HW,t=0;for(var i=0;i<s.length;i++){var c=s.charCodeAt(i);if(c<32||c>126){c=s.charAt(i).normalize('NFD').charCodeAt(0);if(c<32||c>126)c=63}t+=W[c-32]}return t*sz/1000}
+function pwrap(s,w,sz,b){var out=[],cur='';pc(s).split(' ').forEach(function(wd){var t=cur?cur+' '+wd:wd;if(pw(t,sz,b)>w&&cur){out.push(cur);cur=wd}else cur=t});if(cur)out.push(cur);return out.length?out:['']}
+function pesc(s){return s.replace(/[\\()]/g,'\\$&')}
+function pdfQ(q){
+ var c=cli(+q.c),pages=[],P=null,y=0,GR='0.482 0.702 0.086',INK='0.051 0.078 0.063',DG='0.247 0.42 0.059',MU='0.4 0.4 0.4';
+ function np(){P=[];pages.push(P);y=800}
+ function T(x,yy,s,sz,b,col,right){s=pc(s);if(right)x-=pw(s,sz,b);P.push('BT /'+(b?'F2':'F1')+' '+sz+' Tf '+(col||INK)+' rg '+x.toFixed(1)+' '+yy.toFixed(1)+' Td ('+pesc(s)+') Tj ET')}
+ function R(x,yy,w,h,col){P.push(col+' rg '+x+' '+yy+' '+w+' '+h+' re f')}
+ function L(x1,y1,x2,y2,col,wd){P.push(col+' RG '+(wd||.6)+' w '+x1+' '+y1+' m '+x2+' '+y2+' l S')}
+ function head(){
+  var cx=58,cy=y-4,r=18,k=.5523*r;
+  P.push(GR+' rg '+(cx+r)+' '+cy+' m '+(cx+r)+' '+(cy+k)+' '+(cx+k)+' '+(cy+r)+' '+cx+' '+(cy+r)+' c '+(cx-k)+' '+(cy+r)+' '+(cx-r)+' '+(cy+k)+' '+(cx-r)+' '+cy+' c '+(cx-r)+' '+(cy-k)+' '+(cx-k)+' '+(cy-r)+' '+cx+' '+(cy-r)+' c '+(cx+k)+' '+(cy-r)+' '+(cx+r)+' '+(cy-k)+' '+(cx+r)+' '+cy+' c f');
+  P.push(INK+' RG 2 w '+(cx-14)+' '+(cy-4)+' m '+(cx-6)+' '+(cy+6)+' '+(cx+8)+' '+(cy+6)+' '+(cx+15)+' '+(cy-2)+' c S');
+  T(86,y-2,'IMAGEN Y SONIDO PUBLICIDAD',13,true);
+  T(86,y-14,'Jr. Bolívar N.º 201 · Cajamarca · Cel. 976 159 851 · 976 330 316',7.5,false,MU);
+  T(555,y-2,'COTIZACIÓN N.º COT-'+q.num,13,true,DG,true);
+  T(555,y-15,'Cajamarca, '+fdy(q.f),8.5,false,MU,true);
+  L(40,y-28,555,y-28,GR,2.5);y-=52;
+ }
+ np();head();
+ var v=pd(q.f);v.setDate(v.getDate()+(+q.val||0));
+ [['Cliente',c?c.n:'-'],['Atención',c?c.ct:'-'],['Validez',(q.val||0)+' días (hasta el '+fdy(iso(v))+')']].forEach(function(r){T(40,y,r[0],9,true,MU);T(110,y,r[1],10,false);y-=15});
+ y-=10;
+ function th(){R(40,y-6,515,20,'0.94 0.95 0.9');T(46,y,'#',8,true,MU);T(62,y,'DESCRIPCIÓN',8,true,MU);T(395,y,'CANT.',8,true,MU,true);T(470,y,'P. UNIT.',8,true,MU,true);T(551,y,'IMPORTE',8,true,MU,true);y-=22}
+ th();
+ q.it.forEach(function(x,i){
+  var ln=pwrap(x.d,290,9.5,false),h=ln.length*12+6;
+  if(y-h<170){np();y=800;head();th()}
+  ln.forEach(function(s,j){T(62,y-j*12,s,9.5,false)});
+  T(46,y,String(i+1),9.5,false,MU);T(395,y,String(x.q),9.5,false,INK,true);T(470,y,fmt(x.p),9.5,false,INK,true);T(551,y,fmt(x.q*x.p),9.5,true,INK,true);
+  y-=h-2;L(40,y+4,555,y+4,'0.88 0.89 0.84',.5);y-=8;
+ });
+ if(!q.it.length)T(62,y,'Sin trabajos agregados',9.5,false,MU);
+ if(y<190){np();head()}
+ y-=6;
+ var rows=[['Subtotal',fmt(qsub(q))]];if(+q.desc)rows.push(['Descuento ('+q.desc+' %)','-'+fmt(qdesc(q))]);if(q.igv)rows.push(['IGV (18 %)',fmt(qbase(q)*.18)]);
+ rows.forEach(function(r){T(440,y,r[0],9.5,false,MU,true);T(551,y,r[1],9.5,false,INK,true);y-=15});
+ L(380,y+9,555,y+9,INK,1.2);y-=6;
+ T(440,y,'TOTAL',11,true,INK,true);T(551,y,fmt(qtot(q)),13,true,DG,true);y-=34;
+ L(40,y+12,555,y+12,'0.7 0.7 0.7',.5);
+ pwrap('Condiciones de pago: '+q.pago+'.',515,9,false).forEach(function(s){T(40,y,s,9,false);y-=12});
+ T(40,y,'Plazo de entrega: '+(q.plazo||0)+' días hábiles desde la aprobación.',9,false);y-=12;
+ if(q.nota)pwrap('Observaciones: '+q.nota,515,9,false).forEach(function(s){T(40,y,s,9,false);y-=12});
+ y-=8;T(40,y,'Quedamos atentos a su confirmación. Gracias por confiar en Imagen y Sonido Publicidad.',9,false,MU);
+ pages.forEach(function(pg,i){P=pg;L(40,46,555,46,'0.85 0.85 0.8',.5);T(40,34,'Documento de ejemplo: los precios y condiciones se configuran en el sistema final.',7,false,'0.55 0.55 0.55');T(555,34,'Página '+(i+1)+' de '+pages.length,7,false,'0.55 0.55 0.55',true)});
+ var objs=[],n=pages.length;
+ objs[1]='<< /Type /Catalog /Pages 2 0 R >>';
+ var kids=[];for(var i=0;i<n;i++)kids.push((6+i*2)+' 0 R');
+ objs[2]='<< /Type /Pages /Kids ['+kids.join(' ')+'] /Count '+n+' >>';
+ objs[3]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>';
+ objs[4]='<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>';
+ objs[5]='<< /Producer (Sistema Imagen y Sonido - boceto) >>';
+ pages.forEach(function(pg,i){var s=pg.join('\n');objs[6+i*2]='<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents '+(7+i*2)+' 0 R >>';objs[7+i*2]='<< /Length '+s.length+' >>\nstream\n'+s+'\nendstream'});
+ var out='%PDF-1.4\n',off=[];
+ for(var k=1;k<objs.length;k++){off[k]=out.length;out+=k+' 0 obj\n'+objs[k]+'\nendobj\n'}
+ var xr=out.length;out+='xref\n0 '+objs.length+'\n0000000000 65535 f \n';
+ for(k=1;k<objs.length;k++)out+=('0000000000'+off[k]).slice(-10)+' 00000 n \n';
+ out+='trailer\n<< /Size '+objs.length+' /Root 1 0 R /Info 5 0 R >>\nstartxref\n'+xr+'\n%%EOF';
+ var u=new Uint8Array(out.length);for(var j=0;j<out.length;j++)u[j]=out.charCodeAt(j)&255;
+ return new Blob([u],{type:'application/pdf'});
+}
+function qPdfDownload(q){
+ var c=cli(+q.c),b=pdfQ(q),a=document.createElement('a');
+ a.href=URL.createObjectURL(b);a.download='Cotizacion-COT-'+q.num+'-'+(c?c.n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,''):'cliente')+'.pdf';
+ document.body.appendChild(a);a.click();a.remove();setTimeout(function(){URL.revokeObjectURL(a.href)},4000);
+ toast('PDF descargado: '+a.download);
+}
+
 /* ---------- eventos ---------- */
 var main=$('#view');
 main.addEventListener('click',function(e){
@@ -686,6 +759,8 @@ main.addEventListener('click',function(e){
   case 'q-del':S.qd.it.splice(id,1);$('#qlines').innerHTML=qLines(S.qd);qUpdatePrev();break;
   case 'q-save':if(qSave()){S.qe=null;S.qd=null;render()}break;
   case 'q-wa':if(!S.qd.c){$('#qerr').textContent='Elija un cliente.';break}var cc=cli(+S.qd.c);waOpen('[DEMO] Hola '+cc.ct+', le envío la cotización COT-'+S.qd.num+' de Imagen y Sonido Publicidad por '+fmt(qtot(S.qd))+' (válida '+S.qd.val+' días). Quedo atento a su respuesta.');toast('Abriendo WhatsApp (número de prueba)…');break;
+  case 'q-pdf':if(!S.qd.c){$('#qerr').textContent='Elija un cliente.';break}if(!S.qd.it.length){$('#qerr').textContent='Agregue al menos un trabajo.';break}$('#qerr').textContent='';qPdfDownload(S.qd);break;
+  case 'q-pdfrow':qPdfDownload(Q.filter(function(q){return q.id===id})[0]);break;
   case 'q-print':document.body.classList.add('printing-doc');window.print();setTimeout(function(){document.body.classList.remove('printing-doc')},500);break;
   case 'print':window.print();break;
   case 'csv':csv();break;
