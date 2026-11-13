@@ -137,6 +137,13 @@
     .carta-head p{margin:0;color:var(--muted);max-width:560px}
     .empty{padding:36px;border:1px dashed var(--line);border-radius:12px;text-align:center;color:var(--muted)}
 
+    .works-p{max-width:760px;color:var(--muted);margin:0 0 18px;font-size:15px}
+    .works{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .work{display:flex;flex-direction:column;gap:6px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;transition:border-color .2s,transform .2s}
+    .work:hover{border-color:var(--gold);transform:translateY(-2px)}
+    .work strong{font-family:var(--serif);font-size:22px;color:var(--gold2);margin-top:6px}
+    .work small{color:var(--muted);font-size:13.5px}
+    .work em{font-style:normal;color:var(--gold);font-size:13px;font-weight:600;margin-top:8px}
     /* promos */
     .promos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .promo{border:1px dashed #5a4a22;border-radius:14px;padding:22px;background:linear-gradient(160deg,#1c1710,#121110)}
@@ -190,6 +197,7 @@
     .gate-box small{display:block;margin-top:16px;font-size:11px;color:#8f8878}
 
     @media(max-width:900px){
+      .works{grid-template-columns:1fr}
       .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .list{grid-template-columns:1fr}
       .promos,.info-grid{grid-template-columns:1fr}
@@ -251,7 +259,7 @@
   <div class="demo-shell">
     <p class="demo-note">Boceto de propuesta preparado por Kevin Huamán para Licorería La Juerga Cax · Precios y fotos de su carta de whiskies; lo demás es de ejemplo.</p>
     <div class="wrap view-selector">
-      <div class="selector-intro">Dos formas de mostrar su carta<span>Elija cuál le gusta más</span></div>
+      <div class="selector-intro">Dos formas de mostrar su carta<span>Primer borrador: se mejora con su contenido</span></div>
       <div class="tabs" role="tablist" aria-label="Vistas de la propuesta">
         <button class="tab" id="tab1" role="tab" aria-selected="true" aria-controls="main" data-view="1"><span>Vista 1</span><small>Vitrina</small></button>
         <button class="tab" id="tab2" role="tab" aria-selected="false" aria-controls="main" tabindex="-1" data-view="2"><span>Vista 2</span><small>Carta rápida</small></button>
@@ -330,6 +338,17 @@
       </section>
 
       <section style="padding-top:0">
+        <div class="wrap">
+          <div class="sec-head"><div><div class="eyebrow">Trabajos terminados</div><h2>Así se ve una página terminada</h2></div></div>
+          <p class="works-p">Esta demo es un primer borrador: las dos vistas se pueden mejorar según el contenido que usted prefiera (fotos, productos, promos, colores y textos). Para que vea cómo queda una página ya terminada, estos son trabajos que hemos hecho. Cada web se diseña con las fotos reales del negocio y con un botón para escribir por WhatsApp con el mensaje ya armado.</p>
+          <div class="works">
+            <a class="work" href="https://bega.com.pe" target="_blank" rel="noopener"><span class="tag">Trujillo</span><strong>BEGA</strong><small>Alquiler de manlift y elevadores tijera</small><em>Ver la web ↗</em></a>
+            <a class="work" href="https://gruasvp.com" target="_blank" rel="noopener"><span class="tag">Trujillo</span><strong>Grúas VP</strong><small>Izaje y carga pesada</small><em>Ver la web ↗</em></a>
+            <a class="work" href="https://nayumi.com.pe" target="_blank" rel="noopener"><span class="tag">Lima</span><strong>Nayumi</strong><small>Agencia de empleos</small><em>Ver la web ↗</em></a>
+          </div>
+        </div>
+      </section>
+      <section style="padding-top:0">
         <div class="wrap info-grid">
           <div class="box"><h3>Delivery</h3><p>Pedidos al <a href="tel:+51967250082" style="color:var(--gold2)">967 25 00 82</a> o al fijo <a href="tel:+5176601953" style="color:var(--gold2)">076 60 19 53</a>.</p><p>Zona de reparto: Baños del Inca y Cajamarca.</p></div>
           <div class="box"><h3>Medios de pago</h3><div class="pay"><span>Yape</span><span>Plin</span><span>BBVA</span><span>Scotiabank</span><span>Interbank</span><span>Visa</span><span>Mastercard</span></div></div>
@@ -355,6 +374,17 @@
           <p class="cats-note" id="count2">14 productos · <span class="tag ex">de ejemplo</span> otras categorías se sumarían aquí</p>
           <div class="list" id="list"></div>
           <div class="empty" id="empty2" hidden>No encontramos ese whisky. Prueba con otro nombre o quita el filtro.</div>
+        </div>
+      </section>
+      <section style="padding-top:0">
+        <div class="wrap">
+          <div class="sec-head"><div><div class="eyebrow">Trabajos terminados</div><h2>Así se ve una página terminada</h2></div></div>
+          <p class="works-p">Esta demo es un primer borrador: las dos vistas se pueden mejorar según el contenido que usted prefiera (fotos, productos, promos, colores y textos). Para que vea cómo queda una página ya terminada, estos son trabajos que hemos hecho. Cada web se diseña con las fotos reales del negocio y con un botón para escribir por WhatsApp con el mensaje ya armado.</p>
+          <div class="works">
+            <a class="work" href="https://bega.com.pe" target="_blank" rel="noopener"><span class="tag">Trujillo</span><strong>BEGA</strong><small>Alquiler de manlift y elevadores tijera</small><em>Ver la web ↗</em></a>
+            <a class="work" href="https://gruasvp.com" target="_blank" rel="noopener"><span class="tag">Trujillo</span><strong>Grúas VP</strong><small>Izaje y carga pesada</small><em>Ver la web ↗</em></a>
+            <a class="work" href="https://nayumi.com.pe" target="_blank" rel="noopener"><span class="tag">Lima</span><strong>Nayumi</strong><small>Agencia de empleos</small><em>Ver la web ↗</em></a>
+          </div>
         </div>
       </section>
       <section style="padding-top:0">
