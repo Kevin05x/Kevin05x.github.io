@@ -108,6 +108,9 @@ td small{color:var(--muted)}.mg{color:var(--teal);font-weight:600}.vz{color:var(
 .hc svg{width:100%;height:auto;display:block}.hc text{font:500 11px "IBM Plex Sans",sans-serif;fill:#a9b2bf}.hc .v{fill:#eef1f5;font-weight:700}
 .al li{display:block!important;border-bottom:1px solid var(--line)}.al li b{color:var(--ink)}.al .w{color:var(--warm)}.al .d{color:var(--danger)}.al .g{color:var(--teal)}
 .top-r{display:grid;grid-template-columns:1fr 54px;gap:4px 10px;align-items:center;margin:9px 0;font-size:.88rem}.top-r i{grid-column:1/-1;display:block;height:7px;border-radius:99px;background:var(--line);overflow:hidden}.top-r i b{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2))}.top-r span:last-of-type{text-align:right;color:var(--muted)}
+.app[data-tema="claro"]{--bg:#f3f5fa;--surface:#fff;--surface-2:#eef1f8;--ink:#141824;--muted:#566077;--line:#dde2ec;--accent:#2f5cf0;--accent-2:#2447c9;--teal:#0b8a68;--teal-soft:#d9f3ea;--warm:#9a5b00;--warm-soft:#fff0d1;--danger:#c23b24;--danger-soft:#fde2dc;--app:#f3f5fa;color:var(--ink);color-scheme:light;box-shadow:0 30px 80px -40px rgba(20,24,36,.35)}
+.app[data-tema="claro"] .pay button[aria-pressed="true"]{background:#e6edff;border-color:#2f5cf0;color:#1b3fc4}.app[data-tema="claro"] .al-b{color:#7a4a00;border-color:#f0d7a0}.app[data-tema="claro"] .hc text{fill:#566077}.app[data-tema="claro"] .hc .v{fill:#141824}
+.app[data-tema="claro"] .pb .pi{background:#e4eaf8;border-radius:12px;width:52px}.app[data-tema="claro"] .ic.sm{background:#e4eaf8;border-radius:6px;padding:2px;box-sizing:content-box}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);background:#16224a;border:1px solid var(--accent);color:#fff;font:600 .92rem "IBM Plex Sans";padding:11px 18px;border-radius:999px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60;max-width:92vw;text-align:center}.toast.on{opacity:1;transform:translate(-50%,0)}
 @media (max-width:700px){.at{padding:8px 6px}.at button{padding:8px 9px;font-size:.84rem}.at .tg,.at .sp{display:none}#p-inv table{min-width:0}#p-inv th:nth-child(3),#p-inv td:nth-child(3),#p-inv th:nth-child(4),#p-inv td:nth-child(4),#p-inv th:nth-child(5),#p-inv td:nth-child(5){display:none}#p-inv th,#p-inv td{padding:8px 6px}.kp b{font-size:1.25rem}}
 @media (max-width:700px){.at{gap:1px}.at button{padding:8px 7px;font-size:.8rem}#p-inv td{font-size:.84rem}#p-inv td small{display:none}#p-inv th:nth-child(6),#p-inv td:nth-child(6){display:none}#p-inv .rb{padding:3px 8px}#p-inv .tw{padding:8px}}
@@ -129,7 +132,7 @@ td small{color:var(--muted)}.mg{color:var(--teal);font-weight:600}.vz{color:var(
 
 <main class="wide">
 <div data-panel="demo" class="on">
-  <div class="dh"><div><h2>Pruébelo usted mismo</h2><p>Escanee o toque productos, cobre (efectivo, Yape, tarjeta o fiado) y mire cómo cambian el inventario, las cuentas por cobrar, el cierre de caja y el resumen del día con su ganancia.</p></div><button class="btn sm" id="reset">Reiniciar demo</button></div>
+  <div class="dh"><div><h2>Pruébelo usted mismo</h2><p>Escanee o toque productos, cobre (efectivo, Yape, tarjeta o fiado) y mire cómo cambian el inventario, las cuentas por cobrar, el cierre de caja y el resumen del día con su ganancia.</p></div><span style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn sm" id="tema" type="button" aria-pressed="false">Modo claro</button><button class="btn sm" id="reset">Reiniciar demo</button></span></div>
   <div class="app" id="app">
     <div class="at" role="tablist"><button data-v="venta" aria-pressed="true">Venta</button><button data-v="inv" aria-pressed="false">Inventario</button><button data-v="cobrar" aria-pressed="false">Por cobrar</button><button data-v="caja" aria-pressed="false">Caja y cierre</button><button data-v="res" aria-pressed="false">Resumen</button><span class="sp"></span><span class="tg"><i class="dot"></i>Caja abierta · Datos de ejemplo</span></div>
     <div class="pane on" id="p-venta"><div class="venta">
@@ -342,6 +345,9 @@ $('bq').addEventListener('input',grid);$('rec').addEventListener('input',ticket)
 function tab(t){var ok=false;document.querySelectorAll('[data-panel]').forEach(function(p){var on=p.getAttribute('data-panel')===t;p.classList.toggle('on',on);if(on)ok=true});if(!ok){tab('demo');return}document.querySelectorAll('[data-tab]').forEach(function(b){b.setAttribute('aria-selected',b.getAttribute('data-tab')===t?'true':'false')})}
 tab((location.hash||'#demo').slice(1));clients();all();
 })();
+
+(function(){var b=document.getElementById('tema'),a=document.getElementById('app');if(!b||!a)return;function set(c){if(c){a.dataset.tema='claro'}else{delete a.dataset.tema}b.textContent=c?'Modo oscuro':'Modo claro';b.setAttribute('aria-pressed',String(c))}
+b.addEventListener('click',function(){set(a.dataset.tema!=='claro')});if(/[?&]tema=claro/.test(location.search))set(true)})();
 </script>
 </body>
 </html>
