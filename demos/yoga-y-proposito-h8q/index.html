@@ -736,9 +736,11 @@ var secs=$$('main section[id]'),links=$$('#links a');
 if('IntersectionObserver' in window){
  var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
  secs.forEach(function(s){so.observe(s)});
- var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('shown');ro.unobserve(e.target)}})},{threshold:.12});
- $$('.rv').forEach(function(el){ro.observe(el)});
-}else{$$('.rv').forEach(function(el){el.classList.add('shown')})}
+ var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('shown');ro.unobserve(e.target)}})},{threshold:.05,rootMargin:'0px 0px 12% 0px'});
+ /* observa también lo que se dibuja después (horarios, tarifas, talleres) */
+ var watch=function(){$$('.rv:not(.shown)').forEach(function(el){ro.observe(el)})};
+ watch();new MutationObserver(watch).observe(document.body,{childList:true,subtree:true});
+}else{$$('.rv').forEach(function(el){el.classList.add('shown')});new MutationObserver(function(){$$('.rv:not(.shown)').forEach(function(el){el.classList.add('shown')})}).observe(document.body,{childList:true,subtree:true})}
 /* tema noche */
 $('#theme').addEventListener('click',function(){
  var n=document.documentElement.getAttribute('data-theme')==='night';
