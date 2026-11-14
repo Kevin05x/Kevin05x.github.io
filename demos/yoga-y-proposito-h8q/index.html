@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Boceto Yoga y Propósito Cajamarca</title>
+<meta name="description" content="Boceto de la web de Yoga y Propósito, estudio de yoga en Cajamarca.">
+<meta name="theme-color" content="#F4EEE4">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500&display=swap">
+<style>
+:root{
+--cream:#F4EEE4;--paper:#FBF8F2;--card:#FFFDF9;--ink:#3B2D22;--muted:#6F5F50;--terra:#B9764F;--terra-d:#94593A;--sage:#DCDBB4;--olive:#8E9B6A;--brown:#6B5638;--line:rgba(59,45,34,.16);
+--btn-bg:#3B2D22;--btn-ink:#FBF8F2;--glow:#F3D9B8;--glow2:#C98A62;
+--fd:'Cormorant Garamond','Cormorant',Georgia,'Times New Roman',serif;--fb:'Jost','Helvetica Neue',Arial,sans-serif;
+--r:22px;--shadow:0 24px 60px -28px rgba(59,45,34,.45)}
+[data-theme=night]{--cream:#1B1510;--paper:#241C15;--card:#2B2219;--ink:#F3EADD;--muted:#BDAA94;--terra:#D79A74;--terra-d:#E3AA85;--sage:#33341F;--olive:#AAB67F;--brown:#52402C;--line:rgba(243,234,221,.16);--btn-bg:#E8C9A9;--btn-ink:#241B14;--glow:#7A4B2E;--glow2:#2A1A10;--shadow:0 24px 60px -28px rgba(0,0,0,.8)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{background:var(--cream);color:var(--ink);font:300 17px/1.65 var(--fb);overflow-x:hidden;transition:background .5s,color .5s}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.07;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .3 0 0 0 0 .22 0 0 0 0 .15 0 0 0 .9 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");mix-blend-mode:multiply}
+[data-theme=night] body::before{mix-blend-mode:screen;opacity:.05}
+img,svg{max-width:100%;display:block}
+[hidden]{display:none!important}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--terra);outline-offset:3px;border-radius:6px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.wrap{width:100%;max-width:1240px;margin:0 auto;padding:0 clamp(18px,4vw,48px);position:relative;z-index:2}
+section{position:relative;z-index:2;padding:clamp(64px,9vw,130px) 0}
+.demo-note{position:relative;z-index:60;background:var(--brown);color:#FBF8F2;text-align:center;font:400 .78rem/1.4 var(--fb);letter-spacing:.04em;padding:9px 14px}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:500;line-height:1;letter-spacing:-.01em}
+h1{font-size:clamp(3.1rem,8.4vw,7.2rem);line-height:.92;font-weight:500}
+h2{font-size:clamp(2.3rem,5.4vw,4.4rem);margin-bottom:18px}
+h3{font-size:clamp(1.7rem,3vw,2.3rem)}
+em{font-style:italic;color:var(--terra-d)}
+.eyebrow{display:flex;align-items:center;gap:14px;font:400 .74rem/1 var(--fb);letter-spacing:.26em;text-transform:uppercase;color:var(--terra-d);margin-bottom:22px}
+.eyebrow::before{content:"";width:44px;height:1px;background:currentColor}
+.eyebrow b{font-weight:500}
+.lead{font-size:clamp(1.05rem,1.5vw,1.25rem);color:var(--muted);max-width:56ch}
+.tag{display:inline-block;font:400 .68rem/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);border-radius:99px;padding:6px 11px;color:var(--muted)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--btn-bg);color:var(--btn-ink);border:1px solid var(--btn-bg);border-radius:99px;padding:15px 28px;min-height:50px;font:400 .84rem/1 var(--fb);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:transform .35s cubic-bezier(.2,.7,.2,1),background .3s,color .3s,box-shadow .3s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -14px rgba(59,45,34,.6)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--cream)}
+.btn.terra{background:var(--terra-d);border-color:var(--terra-d);color:#fff}
+[data-theme=night] .btn.terra{color:#1B1510}
+.btn.sm{padding:11px 18px;min-height:42px;font-size:.72rem}
+.btn svg{width:18px;height:18px;flex:none}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+/* nav */
+.prog{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--terra),var(--olive));z-index:80}
+.nav{position:sticky;top:0;z-index:70;background:color-mix(in srgb,var(--cream) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.on{border-color:var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:74px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.logo svg{width:38px;height:38px}
+.logo b{display:block;font:500 1.32rem/1 var(--fd);letter-spacing:.02em}
+.logo small{display:block;font:400 .58rem/1 var(--fb);letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+.links{display:flex;gap:22px;list-style:none;white-space:nowrap}
+.links a{text-decoration:none;font:400 .74rem/1 var(--fb);letter-spacing:.12em;text-transform:uppercase;padding:10px 0;position:relative}
+.links a::after{content:"";position:absolute;left:0;bottom:2px;height:1px;width:0;background:var(--terra-d);transition:width .35s}
+.links a:hover::after,.links a.on::after{width:100%}
+.nav-r{display:flex;gap:10px;align-items:center}
+.ibtn{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:transparent;cursor:pointer;display:grid;place-items:center;transition:background .3s}
+.ibtn:hover{background:var(--sage)}
+.ibtn svg{width:20px;height:20px}
+.burger{display:none}
+/* hero */
+.hero{padding-top:clamp(36px,6vw,80px);padding-bottom:clamp(60px,8vw,110px);overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:clamp(24px,5vw,72px);align-items:center}
+.hero h1 em{display:inline-block}
+.hero p.lead{margin:26px 0 32px}
+.next{display:flex;gap:18px;align-items:center;margin-top:34px;padding:18px 22px;border:1px solid var(--line);border-radius:var(--r);background:color-mix(in srgb,var(--card) 70%,transparent);max-width:520px}
+.next .dot{width:12px;height:12px;border-radius:50%;background:var(--olive);flex:none;box-shadow:0 0 0 0 rgba(142,155,106,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 14px rgba(142,155,106,0)}100%{box-shadow:0 0 0 0 rgba(142,155,106,0)}}
+.next small{display:block;font:400 .66rem/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.next b{display:block;font:500 1.35rem/1.15 var(--fd)}
+.next span{font-size:.92rem;color:var(--muted)}
+.facts{display:flex;gap:clamp(18px,3vw,40px);flex-wrap:wrap;margin-top:38px}
+.facts div b{display:block;font:500 2.3rem/1 var(--fd);color:var(--terra-d)}
+.facts div span{font:400 .7rem/1.3 var(--fb);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+/* arch figure */
+.arch{position:relative;aspect-ratio:400/560;border-radius:999px 999px 28px 28px;overflow:hidden;box-shadow:var(--shadow);background:var(--sage);isolation:isolate}
+.arch .art,.arch .up{position:absolute;inset:0;width:100%;height:100%}
+.arch .up{object-fit:cover;z-index:2}
+.arch .art svg{width:100%;height:100%}
+.arch.has .art{visibility:hidden}
+.arch .swap{position:absolute;z-index:3;left:50%;bottom:14px;transform:translateX(-50%);background:rgba(251,248,242,.86);color:#3B2D22;border:0;border-radius:99px;padding:9px 16px;font:400 .66rem/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;white-space:nowrap;backdrop-filter:blur(6px);opacity:.0;transition:opacity .3s}
+.arch:hover .swap,.arch:focus-within .swap,.arch.has .swap{opacity:1}
+@media (hover:none){.arch .swap{opacity:1}}
+.hero-fig{position:relative;max-width:470px;margin-left:auto;width:100%}
+.hero-fig::before{content:"";position:absolute;inset:-18px;border-radius:999px 999px 36px 36px;border:1px solid var(--line);z-index:0}
+.hero-fig::after{content:"";position:absolute;inset:-36px;border-radius:999px 999px 44px 44px;border:1px solid var(--line);opacity:.5;z-index:0}
+.chip-f{position:absolute;z-index:4;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:12px 16px;box-shadow:var(--shadow);font:400 .8rem/1.25 var(--fb)}
+.chip-f b{display:block;font:500 1.5rem/1 var(--fd);color:var(--terra-d)}
+.chip-f.a{left:-22px;bottom:92px}.chip-f.b{right:-14px;top:70px;text-align:center}
+.float{animation:fl 7s ease-in-out infinite}.float.d{animation-delay:-3s}
+@keyframes fl{50%{transform:translateY(-10px)}}
+/* marquee */
+.mq{overflow:hidden;border-block:1px solid var(--line);padding:22px 0;position:relative;z-index:2;background:var(--paper)}
+.mq div{display:flex;gap:46px;width:max-content;animation:mq 38s linear infinite}
+.mq span{font:italic 500 clamp(1.8rem,3.4vw,2.8rem)/1 var(--fd);color:var(--ink);white-space:nowrap;display:flex;align-items:center;gap:46px}
+.mq span::after{content:"✦";font-size:.9rem;color:var(--terra);font-style:normal}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* styles */
+.sty{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px}
+.scard{position:relative;border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:clamp(26px,3.4vw,46px);overflow:hidden;display:flex;flex-direction:column;gap:18px;transition:transform .5s cubic-bezier(.2,.7,.2,1),box-shadow .5s}
+.scard:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.scard .num{font:italic 400 5.4rem/1 var(--fd);color:var(--sage);position:absolute;right:22px;top:6px;pointer-events:none}
+[data-theme=night] .scard .num{color:rgba(255,255,255,.07)}
+.scard h3{font-size:clamp(2rem,3.6vw,3rem)}
+.scard.i{background:linear-gradient(160deg,var(--card),color-mix(in srgb,var(--sage) 55%,var(--card)))}
+.meter{display:flex;align-items:center;gap:10px;font:400 .72rem/1 var(--fb);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.meter i{width:26px;height:8px;border-radius:99px;background:var(--line)}
+.meter i.f{background:var(--terra)}
+.ul{list-style:none;display:grid;gap:8px;font-size:.95rem}
+.ul li{display:flex;gap:10px;align-items:flex-start}.ul li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--terra);margin-top:.7em;flex:none}
+.scard .btn{align-self:flex-start;margin-top:auto}
+/* quiz */
+.quiz{margin-top:28px;border-radius:var(--r);background:var(--brown);color:#FBF8F2;padding:clamp(26px,4vw,56px);display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(22px,4vw,56px);position:relative;overflow:hidden}
+.quiz h3{font-size:clamp(2rem,3.8vw,3.2rem)}
+.quiz h3 em{color:#F0C9A8}
+.quiz p{opacity:.85;margin-top:14px}
+.qbox{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:18px;padding:clamp(18px,3vw,30px);min-height:300px;display:flex;flex-direction:column}
+.qstep{font:400 .68rem/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;opacity:.7;margin-bottom:12px}
+.qq{font:500 clamp(1.4rem,2.4vw,1.9rem)/1.15 var(--fd);margin-bottom:18px}
+.qopt{display:grid;gap:10px}
+.qopt button{text-align:left;background:transparent;border:1px solid rgba(255,255,255,.35);border-radius:14px;padding:14px 16px;min-height:50px;cursor:pointer;color:#FBF8F2;transition:background .3s,transform .3s}
+.qopt button:hover{background:rgba(255,255,255,.14);transform:translateX(4px)}
+.qres{margin:auto 0}
+.qres h4{font-size:clamp(2rem,3.4vw,2.8rem);color:#F0C9A8;margin:8px 0 12px}
+.qbar{height:3px;background:rgba(255,255,255,.2);border-radius:3px;margin-bottom:20px;overflow:hidden}.qbar i{display:block;height:100%;background:#F0C9A8;transition:width .5s}
+.quiz .btn{background:#FBF8F2;color:#3B2D22;border-color:#FBF8F2}
+.quiz .btn.ghost{background:transparent;color:#FBF8F2;border-color:rgba(255,255,255,.5)}
+/* horarios */
+.week{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.day{position:relative;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:var(--card);display:flex;flex-direction:column;gap:10px;transition:transform .4s,box-shadow .4s}
+.day:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
+.day.today{border-color:var(--terra);box-shadow:0 0 0 1px var(--terra)}
+.day .dn{font:400 .72rem/1 var(--fb);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.day .hr{font:500 3.2rem/1 var(--fd)}
+.day .hr small{font:400 .9rem var(--fb);margin-left:4px;color:var(--muted)}
+.day .st{font:italic 500 1.5rem/1.1 var(--fd);color:var(--terra-d)}
+.day.m{background:linear-gradient(170deg,var(--card),color-mix(in srgb,var(--sage) 60%,var(--card)))}
+.day .hoy{position:absolute;top:16px;right:16px;background:var(--terra-d);color:#fff;font:400 .6rem/1 var(--fb);letter-spacing:.16em;text-transform:uppercase;padding:6px 9px;border-radius:99px}
+[data-theme=night] .day .hoy{color:#1B1510}
+.note-s{margin-top:20px;font-size:.88rem;color:var(--muted)}
+/* reservar */
+.book{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(20px,3vw,40px);margin-top:44px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:var(--r);background:var(--card);padding:clamp(22px,3vw,40px)}
+.step{margin-bottom:34px}.step:last-child{margin-bottom:0}
+.step h4{display:flex;align-items:center;gap:12px;font:500 1.55rem/1 var(--fd);margin-bottom:16px}
+.step h4 i{font:400 .78rem/1 var(--fb);font-style:normal;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--sage);color:var(--ink)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chipb{background:transparent;border:1px solid var(--line);border-radius:16px;padding:12px 16px;min-height:54px;cursor:pointer;text-align:left;transition:all .3s;line-height:1.25}
+.chipb b{display:block;font:500 1.12rem/1.1 var(--fd)}.chipb span{font-size:.8rem;color:var(--muted)}
+.chipb:hover{border-color:var(--terra)}
+.chipb[aria-pressed=true]{background:var(--ink);color:var(--cream);border-color:var(--ink)}.chipb[aria-pressed=true] span{color:inherit;opacity:.75}
+.plans{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.plans .chipb{text-align:center;padding:14px 8px}
+.plans .chipb b{font-size:1.7rem}
+.fld{display:grid;gap:7px;margin-bottom:14px}
+.fld label{line-height:1.4;font:400 .7rem/1.4 var(--fb);letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+.in{width:100%;background:transparent;border:0;border-bottom:1px solid var(--ink);padding:12px 2px;min-height:48px;border-radius:0;outline:none;font-size:1rem}
+.in:focus{border-color:var(--terra);box-shadow:0 1px 0 var(--terra)}
+select.in{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--ink) 50%),linear-gradient(135deg,var(--ink) 50%,transparent 50%);background-position:calc(100% - 14px) 22px,calc(100% - 8px) 22px;background-size:6px 6px;background-repeat:no-repeat;padding-right:28px}
+select.in option{color:#3B2D22}
+.sum{position:sticky;top:96px;background:var(--ink);color:var(--cream);border-radius:var(--r);padding:clamp(24px,3vw,38px);overflow:hidden}
+[data-theme=night] .sum{background:var(--card);color:var(--ink);border:1px solid var(--line)}
+.sum small{font:400 .66rem/1 var(--fb);letter-spacing:.24em;text-transform:uppercase;opacity:.65}
+.sum h4{font:italic 500 2rem/1.1 var(--fd);margin:10px 0 18px}
+.sum dl{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;font-size:.95rem;border-top:1px solid rgba(255,255,255,.2);padding-top:16px}
+.sum dt{opacity:.65}.sum dd{text-align:right;font-weight:400}
+.sum .tot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid rgba(255,255,255,.2);margin-top:18px;padding-top:16px}
+.sum .tot b{font:500 2.8rem/1 var(--fd)}
+.sum .btn{width:100%;margin-top:18px;background:#FBF8F2;color:#3B2D22;border-color:#FBF8F2}
+[data-theme=night] .sum .btn{background:var(--btn-bg);color:var(--btn-ink)}
+.sum .btn.ghost{background:transparent;color:inherit;border-color:rgba(255,255,255,.4);margin-top:10px}
+.sum .fine{font-size:.78rem;opacity:.6;margin-top:14px;line-height:1.5}
+.err{color:#B3261E;font-size:.86rem;min-height:1.2em}
+[data-theme=night] .err{color:#FF9C8F}
+/* tarifas */
+.prices{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.pc{border:1px solid var(--line);border-radius:var(--r);padding:28px 22px;background:var(--card);display:flex;flex-direction:column;gap:6px;position:relative;transition:transform .4s,box-shadow .4s}
+.pc:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.pc .k{font:400 .72rem/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+.pc .p{font:500 3.6rem/1 var(--fd);margin:10px 0 2px}.pc .p sup{font:400 1rem var(--fb);vertical-align:top;position:relative;top:.7em;margin-right:4px;color:var(--muted)}
+.pc .pp{color:var(--terra-d);font:italic 500 1.25rem var(--fd)}
+.pc small{color:var(--muted);font-size:.84rem}
+.calc{margin-top:26px;border-radius:var(--r);background:var(--sage);color:#3B2D22;padding:clamp(24px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:center}
+[data-theme=night] .calc{color:var(--ink)}
+.calc h3{font-size:clamp(1.9rem,3.4vw,2.8rem)}
+.calc label{display:flex;justify-content:space-between;font:400 .72rem/1 var(--fb);letter-spacing:.2em;text-transform:uppercase;margin:22px 0 8px}
+input[type=range]{width:100%;accent-color:var(--terra-d);height:34px;background:transparent}
+.calc .out{background:color-mix(in srgb,var(--card) 78%,transparent);border-radius:18px;padding:clamp(20px,3vw,32px)}
+.calc .out b.big{display:block;font:500 clamp(3rem,6vw,4.6rem)/1 var(--fd)}
+.calc .out p{font-size:.95rem;margin-top:6px}
+.calc .out .save{color:var(--terra-d);font:italic 500 1.35rem var(--fd)}
+/* talleres */
+.ev{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:44px}
+.evc{position:relative;border-radius:var(--r);padding:30px 26px;background:var(--brown);color:#FBF8F2;display:flex;flex-direction:column;gap:12px;overflow:hidden;min-height:330px}
+.evc.hi{background:linear-gradient(165deg,#8B6B45,#5E4A30)}
+.evc .d{display:flex;align-items:baseline;gap:10px;font:500 4.2rem/.9 var(--fd)}
+.evc .d span{font:400 .74rem/1.3 var(--fb);letter-spacing:.2em;text-transform:uppercase;opacity:.8}
+.evc h4{font:500 1.8rem/1.08 var(--fd)}
+.evc h4 em{color:#F0C9A8}
+.evc p{font-size:.92rem;opacity:.85}
+.evc .st{position:absolute;top:20px;right:20px;border:1px solid rgba(255,255,255,.45);border-radius:99px;padding:6px 11px;font:400 .62rem/1 var(--fb);letter-spacing:.16em;text-transform:uppercase}
+.evc .cd{font:500 1.5rem/1 var(--fd);color:#F0C9A8}
+.evc .row{margin-top:auto}
+.evc .btn{background:#FBF8F2;color:#3B2D22;border-color:#FBF8F2}.evc .btn.ghost{background:transparent;color:#FBF8F2;border-color:rgba(255,255,255,.5)}
+.evc.past{opacity:.72;filter:saturate(.7)}
+.sprig{position:absolute;right:-30px;bottom:-40px;width:200px;opacity:.28;pointer-events:none}
+/* equipo */
+.team{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,3vw,48px);margin-top:46px;align-items:start}
+.mem.q{align-self:stretch;border:1px solid var(--line);border-radius:999px 999px 24px 24px;padding:clamp(60px,9vw,120px) clamp(22px,3vw,40px) 36px;background:var(--card);display:flex;flex-direction:column;gap:18px;align-items:flex-start;justify-content:center;text-align:left}
+.mem.q .qt{font:italic 500 clamp(1.9rem,3vw,2.6rem)/1.08 var(--fd);color:var(--ink)}
+.mem.q p{color:var(--muted)}
+.mem .arch{max-width:360px;border-radius:999px 999px 24px 24px}
+.mem h3{margin:22px 0 4px}.mem p{color:var(--muted)}
+.mem .tag{margin-top:12px}
+/* respira */
+.breath{background:var(--brown);color:#FBF8F2;overflow:hidden}
+.breath .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,80px);align-items:center}
+.breath h2 em{color:#F0C9A8}
+.breath .lead{color:#E8DCCB}
+.orb{position:relative;width:min(100%,420px);aspect-ratio:1;margin:0 auto;display:grid;place-items:center}
+.orb .ring{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.28)}
+.orb .ring.r2{inset:9%;border-color:rgba(255,255,255,.18)}
+.orb .core{width:52%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#FFE9CF,#E3A67B 55%,#B9764F);box-shadow:0 0 90px 10px rgba(240,201,168,.35);transform:scale(.7);transition:transform 4s cubic-bezier(.45,0,.35,1)}
+.orb .lab{position:absolute;inset:0;display:grid;place-items:center;text-align:center;pointer-events:none;color:#3B2D22}
+.orb .lab b{display:block;font:500 clamp(1.6rem,3.4vw,2.4rem)/1 var(--fd)}
+.orb .lab span{font:400 .8rem/1 var(--fb);letter-spacing:.2em}
+.breath .btn{background:#FBF8F2;color:#3B2D22;border-color:#FBF8F2}.breath .btn.ghost{background:transparent;color:#FBF8F2;border-color:rgba(255,255,255,.5)}
+.bstat{margin-top:18px;font-size:.9rem;opacity:.8}
+/* galeria */
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px;align-items:end}
+.gal figure:nth-child(odd){margin-bottom:46px}
+.gal .arch{aspect-ratio:3/4.4;border-radius:999px 999px 20px 20px}
+.gal figcaption{margin-top:12px;font:400 .72rem/1.35 var(--fb);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-align:center}
+.tip{margin-top:24px;font-size:.88rem;color:var(--muted);border:1px dashed var(--line);border-radius:14px;padding:14px 18px}
+/* casa */
+.home{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:44px}
+.hc{display:flex;flex-direction:column;gap:12px;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:var(--card);text-decoration:none;transition:transform .4s,box-shadow .4s,background .4s;min-height:240px}
+.hc:hover{transform:translateY(-6px);box-shadow:var(--shadow);background:var(--sage)}
+.hc svg{width:40px;height:40px;color:var(--terra-d)}
+.hc h4{font:500 1.6rem/1.05 var(--fd)}.hc p{font-size:.9rem;color:var(--muted)}
+.hc .go{margin-top:auto;font:400 .7rem/1 var(--fb);letter-spacing:.2em;text-transform:uppercase;color:var(--terra-d)}
+/* faq */
+.faq{margin-top:40px;max-width:900px}
+details{border-bottom:1px solid var(--line);padding:0}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;font:500 clamp(1.3rem,2.4vw,1.8rem)/1.15 var(--fd);min-height:60px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:300 2rem/1 var(--fb);color:var(--terra-d);transition:transform .35s;flex:none}
+details[open] summary::after{transform:rotate(45deg)}
+details p{padding:0 4px 26px;color:var(--muted);max-width:68ch}
+details .tag{margin-left:8px;vertical-align:middle}
+/* reseñas + ubicacion */
+.rev{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(22px,4vw,60px);align-items:center}
+.score{font:500 clamp(6rem,16vw,12rem)/.8 var(--fd);color:var(--terra-d)}
+.stars{color:var(--terra);letter-spacing:6px;font-size:1.5rem;margin:10px 0 6px}
+.loc{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);align-items:stretch}
+.map{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);background:var(--sage);min-height:360px;position:relative}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.map .pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);text-align:center}
+.map .pin b{display:block;background:var(--ink);color:var(--cream);border-radius:14px;padding:10px 16px;font:500 1.15rem/1.1 var(--fd);white-space:nowrap}
+.map .pin i{display:block;width:3px;height:26px;background:var(--ink);margin:0 auto}
+.map .pin u{display:block;width:16px;height:16px;border-radius:50%;background:var(--terra);margin:-2px auto 0;box-shadow:0 0 0 8px rgba(185,118,79,.25)}
+.info{display:grid;gap:22px;align-content:center}
+.info div h4{font:400 .72rem/1 var(--fb);letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.info div p{font:500 1.5rem/1.2 var(--fd)}
+/* footer */
+footer{position:relative;z-index:2;background:var(--ink);color:var(--cream);padding:clamp(54px,7vw,90px) 0 110px}
+[data-theme=night] footer{background:#120D09}
+footer .big{font:italic 500 clamp(2.4rem,7vw,6rem)/.95 var(--fd);max-width:16ch}
+footer .big em{color:#F0C9A8}
+footer .cols{display:flex;flex-wrap:wrap;gap:32px 64px;margin-top:44px;padding-top:30px;border-top:1px solid rgba(255,255,255,.2);font-size:.92rem}
+footer .cols h5{font:400 .66rem/1 var(--fb);letter-spacing:.24em;text-transform:uppercase;opacity:.6;margin-bottom:12px}
+footer a{text-decoration:none;display:block;padding:4px 0;opacity:.9}footer a:hover{text-decoration:underline}
+footer .legal{margin-top:36px;font-size:.78rem;opacity:.55;max-width:70ch}
+.wa-fab{position:fixed;right:clamp(14px,3vw,28px);bottom:clamp(14px,3vw,28px);z-index:75;display:flex;align-items:center;gap:10px;background:#1F7A4D;color:#fff;border-radius:99px;padding:0 22px 0 16px;min-height:56px;text-decoration:none;font:400 .76rem/1 var(--fb);letter-spacing:.14em;text-transform:uppercase;box-shadow:0 16px 34px -12px rgba(0,0,0,.55);transition:transform .3s}
+.wa-fab:hover{transform:translateY(-3px)}
+.wa-fab svg{width:26px;height:26px}
+.toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--cream);padding:13px 20px;border-radius:99px;font-size:.88rem;z-index:90;transition:all .35s;max-width:92vw;text-align:center}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.shown{opacity:1;transform:none}
+.rv.d1{transition-delay:.12s}.rv.d2{transition-delay:.24s}.rv.d3{transition-delay:.36s}
+/* responsive */
+@media (max-width:1180px){
+ .links{display:none}.burger{display:grid}
+ .nav.open .links{display:flex;position:absolute;left:0;right:0;top:74px;flex-direction:column;gap:0;background:var(--cream);border-bottom:1px solid var(--line);padding:8px clamp(18px,4vw,48px) 20px}
+ .nav.open .links a{display:block;padding:16px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+}
+@media (max-width:1060px){
+ .prices,.home{grid-template-columns:repeat(2,1fr)}
+ .gal{grid-template-columns:repeat(2,1fr)}.gal figure:nth-child(odd){margin-bottom:0}
+ .ev{grid-template-columns:1fr}.evc{min-height:0}
+}
+@media (max-width:860px){
+ .hero .wrap,.sty,.quiz,.book,.calc,.breath .wrap,.rev,.loc{grid-template-columns:1fr}
+ .hero-fig{margin:34px auto 0;max-width:380px}
+ .week{grid-template-columns:repeat(2,1fr)}
+ .sum{position:static}
+ .chip-f.a{left:-6px}.chip-f.b{right:-6px}
+ .team{grid-template-columns:1fr 1fr;gap:18px}.mem.q{grid-column:1/-1;border-radius:var(--r);padding:30px 24px}
+ .map{min-height:300px}
+}
+@media (max-width:560px){
+ body{font-size:16px}
+ .nav .wrap{height:66px}.nav.open .links{top:66px}
+ .nav-r .btn{display:none}
+ .logo small{display:none}
+ .week,.prices,.home{grid-template-columns:1fr}
+ .plans{grid-template-columns:repeat(2,1fr)}
+ .chips .chipb{flex:1 1 calc(50% - 10px)}
+ .team{grid-template-columns:1fr}
+ .hero-fig::after{display:none}
+ .chip-f{padding:9px 12px}.chip-f b{font-size:1.2rem}
+ .wa-fab span{display:none}.wa-fab{padding:0 16px}
+ .facts div b{font-size:1.9rem}
+ .next{padding:14px 16px}
+ .gal{gap:12px}
+ .calc label{font-size:.66rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+@media print{.nav,.wa-fab,.mq,.prog{display:none}body::before{display:none}}
+
+</style></head><body>
+<!-- Boceto de propuesta preparado por Kevin Huamán para Yoga y Propósito · horarios, tarifas, talleres y enlaces tomados de su Instagram; fotos, textos de equipo y preguntas frecuentes de ejemplo -->
+<div class="demo-note">Boceto de propuesta preparado por Kevin Huamán para Yoga y Propósito · horarios, tarifas y talleres tomados de su Instagram; fotos y algunos textos son de ejemplo</div>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<header class="nav" id="nav">
+ <div class="wrap">
+  <a class="logo" href="#inicio" aria-label="Yoga y Propósito, inicio">
+   <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 46V22a19 19 0 0 1 38 0v24z" fill="none" stroke="currentColor" stroke-width="1.4"/><text x="24" y="33" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="19" font-weight="500" fill="currentColor">YP</text><path d="M24 7l1.2 3 3 1.2-3 1.200L24 15.500l-1.200-3.100-3-1.200 3-1.200z" fill="#B9764F"/></svg>
+   <span><b>Yoga &amp; Propósito</b><small>Sala holística · Cajamarca</small></span>
+  </a>
+  <ul class="links" id="links">
+   <li><a href="#estilos">Estilos</a></li><li><a href="#horarios">Horarios</a></li><li><a href="#reservar">Reservar</a></li><li><a href="#tarifas">Tarifas</a></li><li><a href="#talleres">Talleres</a></li><li><a href="#equipo">Equipo</a></li><li><a href="#casa">Desde casa</a></li><li><a href="#ubicacion">Ubicación</a></li>
+  </ul>
+  <div class="nav-r">
+   <button class="ibtn" id="theme" type="button" aria-label="Cambiar a modo noche" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path id="thico" d="M20 14.5A8 8 0 0 1 9.500 4 8 8 0 1 0 20 14.500z"/></svg></button>
+   <a class="btn sm" href="#reservar">Reservar</a>
+   <button class="ibtn burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg></button>
+  </div>
+ </div>
+</header>
+
+<main id="inicio">
+<section class="hero">
+ <div class="wrap">
+  <div>
+   <div class="eyebrow rv"><b>Estudio de yoga · Desde 2023</b></div>
+   <h1 class="rv d1">Un lugar para <em>conectar</em> contigo</h1>
+   <p class="lead rv d2">Yoga para cuidar el cuerpo, la mente y las emociones en el día a día. Clases en la Calle Huaraz 230, en Cajamarca.</p>
+   <div class="row rv d2">
+    <a class="btn terra" href="#reservar">Reservar mi clase</a>
+    <a class="btn ghost" href="#horarios">Ver horarios</a>
+   </div>
+   <div class="next rv d3" aria-live="off">
+    <span class="dot" aria-hidden="true"></span>
+    <div><small>Próxima clase</small><b id="nx-t">Calculando…</b><span id="nx-c"></span></div>
+   </div>
+   <div class="facts rv d3">
+    <div><b>1 h 10</b><span>de práctica<br>por clase</span></div>
+    <div><b>2</b><span>estilos<br>de yoga</span></div>
+    <div><b>5,0</b><span>en Google<br>15 reseñas</span></div>
+   </div>
+  </div>
+  <div class="hero-fig rv d2">
+   <figure class="arch" data-slot>
+    <div class="art" data-art="sun"></div>
+    <img class="up" alt="Foto subida para probar" hidden>
+    <button class="swap" type="button">Probar con su foto</button>
+    <input type="file" accept="image/*" hidden aria-label="Elegir foto para probar">
+   </figure>
+   <div class="chip-f a float"><b>Calle Huaraz 230</b>Cajamarca</div>
+   <div class="chip-f b float d"><b>+1 300</b>en Instagram</div>
+  </div>
+ </div>
+</section>
+
+<div class="mq" aria-hidden="true"><div>
+ <span>Respira</span><span>Fluye</span><span>Conecta</span><span>Sostén</span><span>Suelta</span><span>Escucha tu cuerpo</span><span>Vuelve a ti</span>
+ <span>Respira</span><span>Fluye</span><span>Conecta</span><span>Sostén</span><span>Suelta</span><span>Escucha tu cuerpo</span><span>Vuelve a ti</span>
+</div></div>
+
+<section id="estilos">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>01 · Nuestros estilos</b></div>
+  <h2 class="rv">Dos formas de <em>practicar</em></h2>
+  <p class="lead rv">Cada estilo tiene su ritmo. La intensidad puede variar según cada clase y cada persona.</p>
+  <div class="sty">
+   <article class="scard rv">
+    <span class="num" aria-hidden="true">i</span>
+    <span class="tag" style="align-self:flex-start">Intensidad 4 de 5</span>
+    <h3>Mindful Yoga</h3>
+    <p>Secuencia fluida de posturas al ritmo de la respiración para regular el sistema nervioso, con enfoque cuerpo y mente. Se trabaja la gestión emocional y la confianza en uno mismo.</p>
+    <div class="meter" aria-label="Intensidad 4 de 5"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i></div>
+    <ul class="ul"><li>Posturas fluidas con la respiración</li><li>Regula el sistema nervioso</li><li>Gestión emocional y confianza</li></ul>
+    <a class="btn ghost sm" href="#reservar" data-pick="Mindful Yoga">Reservar Mindful Yoga</a>
+   </article>
+   <article class="scard i rv d1">
+    <span class="num" aria-hidden="true">ii</span>
+    <span class="tag" style="align-self:flex-start">Intensidad 3 de 5</span>
+    <h3>Yoga Integrativo</h3>
+    <p>Efecto terapéutico para potenciar la autopercepción y el autoconocimiento. Se aprenden los ciclos naturales y se trabaja fuerza, flexibilidad, resistencia y respiración.</p>
+    <div class="meter" aria-label="Intensidad 3 de 5"><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i></div>
+    <ul class="ul"><li>Autopercepción y autoconocimiento</li><li>Fuerza, flexibilidad y resistencia</li><li>Aprende los ciclos naturales</li></ul>
+    <a class="btn ghost sm" href="#reservar" data-pick="Yoga Integrativo">Reservar Yoga Integrativo</a>
+   </article>
+  </div>
+  <div class="quiz rv" id="quiz">
+   <div>
+    <div class="eyebrow" style="color:#F0C9A8"><b>Sin compromiso</b></div>
+    <h3>¿Qué estilo es <em>para mí</em>?</h3>
+    <p>Tres preguntas rápidas y le sugerimos por dónde empezar. Si queda con dudas, nos escribe «Yoga» por WhatsApp.</p>
+   </div>
+   <div class="qbox" id="qbox"></div>
+  </div>
+ </div>
+</section>
+
+<section id="horarios" style="background:var(--paper)">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>02 · Horarios de noviembre</b></div>
+  <h2 class="rv">Cuatro noches de <em>yoga</em> a la semana</h2>
+  <p class="lead rv">Clases de lunes a jueves a las 7:00 p. m. Cada clase dura 1 hora y 10 minutos.</p>
+  <div class="week" id="week"></div>
+  <p class="note-s rv">Horario publicado por el estudio para noviembre; puede cambiar cada mes. Se confirma por WhatsApp al reservar.</p>
+ </div>
+</section>
+
+<section id="reservar">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>03 · Reserve su lugar</b></div>
+  <h2 class="rv">Elija su clase en <em>tres pasos</em></h2>
+  <p class="lead rv">Arma su mensaje y se abre WhatsApp con todo listo. El estudio le confirma el cupo.</p>
+  <div class="book">
+   <div class="panel rv">
+    <div class="step"><h4><i>1</i>Elija el día</h4><div class="chips" id="b-dates" role="group" aria-label="Fechas de clase"></div></div>
+    <div class="step"><h4><i>2</i>Elija su plan</h4><div class="plans" id="b-plans" role="group" aria-label="Planes"></div><p class="note-s" id="b-plan-n"></p></div>
+    <div class="step"><h4><i>3</i>Sus datos</h4>
+     <div class="fld"><label for="b-name">Su nombre</label><input class="in" id="b-name" autocomplete="given-name" placeholder="Ej. María"></div>
+     <div class="fld"><label for="b-exp">¿Cómo se siente con el yoga?</label><select class="in" id="b-exp"><option value="es mi primera vez">Es mi primera vez</option><option value="he practicado alguna vez">He practicado alguna vez</option><option value="practico con frecuencia">Practico con frecuencia</option></select></div>
+     <div class="fld"><label for="b-note">¿Algo que debamos saber? (opcional)</label><textarea class="in" id="b-note" rows="2" placeholder="Lesiones, embarazo, dudas…"></textarea></div>
+    </div>
+   </div>
+   <aside class="sum rv d1" aria-live="polite">
+    <small>Su reserva</small>
+    <h4 id="s-style">—</h4>
+    <dl><dt>Día</dt><dd id="s-date">—</dd><dt>Hora</dt><dd>7:00 p. m.</dd><dt>Duración</dt><dd>1 h 10 min</dd><dt>Plan</dt><dd id="s-plan">—</dd><dt>Lugar</dt><dd>Calle Huaraz 230</dd></dl>
+    <div class="tot"><small>Total</small><b id="s-tot">S/ 0</b></div>
+    <p class="err" id="b-err" role="alert"></p>
+    <button class="btn" type="button" id="b-send"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15L2 22l5.200-1.400A10 10 0 1 0 12 2zm5.200 14.200c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 .9-2.300c.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500.2.500.8 1.800.9 2 .1.100.1.300 0 .5-.1.200-.1.300-.3.500l-.4.500c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.4.100.6-.1l.8-1c.2-.3.4-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.100.1.600-.1 1.200z"/></svg>Reservar por WhatsApp</button>
+    <button class="btn ghost" type="button" id="b-ics">Agregar a mi calendario</button>
+    <button class="btn ghost" type="button" id="b-copy">Copiar mensaje</button>
+    <p class="fine">Boceto: el mensaje se abre en WhatsApp, pero esta página no guarda ni envía sus datos a ningún servidor. Los cupos los confirma el estudio.</p>
+   </aside>
+  </div>
+ </div>
+</section>
+
+<section id="tarifas" style="background:var(--paper)">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>04 · Nuestras tarifas</b></div>
+  <h2 class="rv">Más clases, <em>menos costo</em> por clase</h2>
+  <p class="lead rv">Tarifas publicadas por el estudio. Aplican términos y condiciones.</p>
+  <div class="prices" id="prices"></div>
+  <div class="calc rv">
+   <div>
+    <h3>¿Cuál plan me <em>conviene</em>?</h3>
+    <label for="c-f"><span>Clases por semana</span><b id="c-fv">2</b></label>
+    <input type="range" id="c-f" min="1" max="4" step="1" value="2" aria-describedby="c-out">
+    <label for="c-m"><span>Durante</span><b id="c-mv">1 mes</b></label>
+    <input type="range" id="c-m" min="1" max="3" step="1" value="1">
+   </div>
+   <div class="out" id="c-out" aria-live="polite"></div>
+  </div>
+ </div>
+</section>
+
+<section id="talleres">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>05 · Talleres y programas</b></div>
+  <h2 class="rv">Más allá de <em>la clase</em></h2>
+  <p class="lead rv">Talleres y programas del estudio. Los precios se consultan por WhatsApp.</p>
+  <div class="ev" id="ev"></div>
+ </div>
+</section>
+
+<section id="equipo" style="background:var(--paper)">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>06 · Quienes la guían</b></div>
+  <h2 class="rv">Un equipo que <em>acompaña</em></h2>
+  <div class="team">
+   <article class="mem rv"><figure class="arch" data-slot><div class="art" data-art="portrait1"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></figure><h3>Katheleen Ruiz</h3><p>Instructora de yoga</p><span class="tag">Texto de ejemplo: aquí va su presentación</span></article>
+   <article class="mem rv d1"><figure class="arch" data-slot><div class="art" data-art="portrait2"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></figure><h3>Marlyn Pellissier</h3><p>Instructora y facilitadora de talleres</p><span class="tag">Texto de ejemplo: aquí va su presentación</span></article>
+   <article class="mem q rv d2"><p class="qt">«¿Tiene dudas si el yoga es para usted?»</p><p>Escríbanos «Yoga» por WhatsApp y el estudio le responde sus preguntas antes de reservar.</p><a class="btn terra" target="_blank" rel="noopener" href="#" id="t-wa">Escribir «Yoga»</a></article>
+  </div>
+ </div>
+</section>
+
+<section class="breath" id="respira">
+ <div class="wrap">
+  <div>
+   <div class="eyebrow rv" style="color:#F0C9A8"><b>07 · Un respiro</b></div>
+   <h2 class="rv">¿Necesita un <em>respiro</em>? Hágalo ahora</h2>
+   <p class="lead rv">Tres minutos de respiración guiada: inhale 4 segundos, sostenga 4 y exhale 6. Siga el círculo.</p>
+   <div class="row rv" style="margin-top:26px"><button class="btn" id="br-go" type="button">Comenzar</button><button class="btn ghost" id="br-reset" type="button">Reiniciar</button></div>
+   <p class="bstat" id="br-stat" aria-live="polite">Ciclos completados: 0</p>
+  </div>
+  <div class="orb rv d1" aria-hidden="true"><div class="ring"></div><div class="ring r2"></div><div class="core" id="br-core"></div><div class="lab"><div><b id="br-t">Listo</b><span id="br-n"></span></div></div></div>
+ </div>
+</section>
+
+<section id="espacio">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>08 · El espacio</b></div>
+  <h2 class="rv">Una sala pensada para <em>soltar</em></h2>
+  <div class="gal">
+   <figure class="rv"><div class="arch" data-slot><div class="art" data-art="hills"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></div><figcaption>Sala de práctica</figcaption></figure>
+   <figure class="rv d1"><div class="arch" data-slot><div class="art" data-art="rings"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></div><figcaption>Rincón de calma</figcaption></figure>
+   <figure class="rv d2"><div class="arch" data-slot><div class="art" data-art="lotus"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></div><figcaption>Talleres</figcaption></figure>
+   <figure class="rv d3"><div class="arch" data-slot><div class="art" data-art="sun2"></div><img class="up" alt="Foto subida para probar" hidden><button class="swap" type="button">Probar con su foto</button><input type="file" accept="image/*" hidden aria-label="Elegir foto para probar"></div><figcaption>Salidas al aire libre</figcaption></figure>
+  </div>
+  <p class="tip rv"><b>Solo en este boceto:</b> estos marcos son ilustraciones de ejemplo. Toque «Probar con su foto» para ver cómo luciría una foto real de su estudio (queda solo en su pantalla, no se guarda ni se envía). En la web final van sus fotos originales en alta resolución.</p>
+ </div>
+</section>
+
+<section id="casa" style="background:var(--paper)">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>09 · Desde casa</b></div>
+  <h2 class="rv">El yoga también <em>lo acompaña</em></h2>
+  <p class="lead rv">Los canales que el estudio ya tiene, reunidos en un solo lugar.</p>
+  <div class="home">
+   <a class="hc rv" href="https://www.youtube.com/@yogayproposito" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="2.500" y="5.500" width="19" height="13" rx="4"/><path d="M10 9.500v5l4.500-2.500z" fill="currentColor"/></svg><h4>¿Practicamos desde casa?</h4><p>Prácticas en el canal de YouTube del estudio.</p><span class="go">Ver en YouTube →</span></a>
+   <a class="hc rv d1" href="https://hotmart.com/es/club/yoga-y-proposito" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M12 3l2.600 5.400 5.900.8-4.300 4.100 1 5.800L12 16.300 6.800 19.100l1-5.800L3.500 9.200l5.900-.8z"/></svg><h4>Prácticas grabadas VIP</h4><p>El club con prácticas grabadas para hacer a su ritmo.</p><span class="go">Entrar al club →</span></a>
+   <a class="hc rv d2" href="https://katheleenruiz.substack.com/subscribe" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.500 7l8.500 6 8.500-6"/></svg><h4>Newsletter</h4><p>Reflexiones y novedades en su correo.</p><span class="go">Suscribirme →</span></a>
+   <a class="hc rv d3" href="https://www.instagram.com/yogayproposito/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.500" cy="6.500" r="1" fill="currentColor"/></svg><h4>@yogayproposito</h4><p>Horarios, talleres y el día a día del estudio.</p><span class="go">Seguir en Instagram →</span></a>
+  </div>
+ </div>
+</section>
+
+<section id="faq">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>10 · Preguntas frecuentes</b></div>
+  <h2 class="rv">Si es su <em>primera vez</em></h2>
+  <div class="faq rv">
+   <details><summary>Nunca he practicado yoga, ¿puedo ir?</summary><p>El estudio recibe a quienes recién empiezan. Escríbanos «Yoga» por WhatsApp y le respondemos sus preguntas antes de reservar.</p></details>
+   <details><summary>¿Cuánto dura una clase?</summary><p>Una hora y diez minutos de práctica.</p></details>
+   <details><summary>¿Cuál estilo me conviene: Mindful o Integrativo?</summary><p>Mindful Yoga es fluido y va al ritmo de la respiración (intensidad 4 de 5). Yoga Integrativo es más terapéutico y de autoconocimiento (intensidad 3 de 5). Puede hacer el pequeño test de la sección «Estilos».</p></details>
+   <details><summary>¿Cómo reservo mi lugar?</summary><p>Elija día y plan en la sección «Reservar» y envíe el mensaje por WhatsApp al 938 949 673. El estudio le confirma el cupo.</p></details>
+   <details><summary>¿Los planes tienen vigencia?<span class="tag">Se confirma por WhatsApp</span></summary><p>Las tarifas aplican términos y condiciones. La vigencia de cada plan se confirma directamente con el estudio.</p></details>
+   <details><summary>¿Qué debo llevar a la clase?<span class="tag">Texto de ejemplo</span></summary><p>Ropa cómoda que le permita moverse y una botella de agua. El estudio le indica si necesita algo más.</p></details>
+   <details><summary>¿Hay talleres y programas?</summary><p>Sí. En noviembre hay un taller de gestión emocional y un programa de preparación para el parto y yoga prenatal. Vea la sección «Talleres».</p></details>
+  </div>
+ </div>
+</section>
+
+<section id="resenas" style="background:var(--paper)">
+ <div class="wrap">
+  <div class="rev">
+   <div class="rv"><div class="score">5,0</div><div class="stars" aria-hidden="true">★ ★ ★ ★ ★</div><span class="tag">15 reseñas en Google</span></div>
+   <div class="rv d1">
+    <div class="eyebrow"><b>11 · Quienes ya practicaron</b></div>
+    <h2>Calificación <em>perfecta</em> en Google</h2>
+    <p class="lead">Aquí se mostrarán los testimonios reales de sus alumnas y alumnos, con su permiso. Por ahora puede leer todas las reseñas en Google Maps.</p>
+    <div class="row" style="margin-top:24px"><a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Yoga+y+Prop%C3%B3sito+Cajamarca">Leer reseñas en Google</a></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section id="ubicacion">
+ <div class="wrap">
+  <div class="eyebrow rv"><b>12 · Cómo llegar</b></div>
+  <h2 class="rv">Lo esperamos en <em>Calle Huaraz</em></h2>
+  <div class="loc" style="margin-top:40px">
+   <div class="map rv" aria-label="Ilustración de ubicación, no es un mapa real">
+    <svg viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="600" height="400" fill="var(--sage)"/><g stroke="var(--cream)" stroke-width="16" fill="none" opacity=".9"><path d="M-20 120H620M-20 280H620M140-20V420M330-20V420M500-20V420"/></g><g stroke="var(--cream)" stroke-width="5" fill="none" opacity=".7"><path d="M-20 200H620M60-20V420M240-20V420M420-20V420"/></g><g fill="var(--olive)" opacity=".35"><rect x="150" y="130" width="70" height="60" rx="8"/><rect x="345" y="210" width="140" height="60" rx="8"/><rect x="20" y="290" width="100" height="90" rx="8"/><rect x="510" y="30" width="80" height="80" rx="8"/></g></svg>
+    <div class="pin"><b>Yoga &amp; Propósito</b><i></i><u></u></div>
+   </div>
+   <div class="info rv d1">
+    <div><h4>Dirección</h4><p>Calle Huaraz 230<br>Cajamarca, Perú</p></div>
+    <div><h4>Clases</h4><p>Lunes a jueves · 7:00 p. m.</p></div>
+    <div><h4>Reservas e informes</h4><p>WhatsApp 938 949 673</p></div>
+    <div class="row"><a class="btn terra" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Calle+Huaraz+230+Cajamarca">Cómo llegar</a><a class="btn ghost" href="#reservar">Reservar clase</a></div>
+   </div>
+  </div>
+  <p class="note-s rv">La ilustración de arriba es referencial; el botón abre la ubicación en Google Maps.</p>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="wrap">
+  <p class="big">Vuelva a <em>usted</em>, una clase a la vez.</p>
+  <div class="cols">
+   <div><h5>Estudio</h5><a href="#estilos">Estilos</a><a href="#horarios">Horarios</a><a href="#tarifas">Tarifas</a><a href="#talleres">Talleres</a></div>
+   <div><h5>Contacto</h5><a id="f-wa" href="#" target="_blank" rel="noopener">WhatsApp 938 949 673</a><a href="https://www.instagram.com/yogayproposito/" target="_blank" rel="noopener">Instagram @yogayproposito</a><a href="https://www.youtube.com/@yogayproposito" target="_blank" rel="noopener">YouTube</a></div>
+   <div><h5>Dirección</h5><span>Calle Huaraz 230<br>Cajamarca, Perú</span></div>
+  </div>
+  <p class="legal">Boceto de propuesta preparado por Kevin Huamán para Yoga y Propósito. Los horarios de noviembre, tarifas, estilos, talleres y enlaces provienen de lo que el estudio publica en su Instagram y su Linktree; las ilustraciones, las presentaciones del equipo y las preguntas marcadas como ejemplo son referenciales.</p>
+ </div>
+</footer>
+
+<a class="wa-fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.600 15L2 22l5.200-1.400A10 10 0 1 0 12 2zm5.200 14.200c-.2.600-1.300 1.200-1.800 1.200-.5.100-1 .2-3.300-.7-2.800-1.100-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 .9-2.300c.2-.3.5-.3.700-.3h.5c.2 0 .4 0 .6.500.2.500.8 1.800.9 2 .1.100.1.300 0 .5-.1.200-.1.300-.3.500l-.4.500c-.1.200-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.200 1 2.100 1.300 2.400 1.500.3.100.4.100.6-.1l.8-1c.2-.3.4-.2.600-.1l1.900.9c.3.100.5.200.5.300.1.100.1.600-.1 1.200z"/></svg><span>Escribir</span></a>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var WA='51938949673';
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function pad(n){return n<10?'0'+n:''+n}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var DIAS=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+var MESES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+function lima(){return new Date(new Date().toLocaleString('en-US',{timeZone:'America/Lima'}))}
+function toast(m){var t=$('#toast');t.textContent=m;t.classList.add('on');clearTimeout(toast._t);toast._t=setTimeout(function(){t.classList.remove('on')},3600)}
+function waLink(m){return 'https://wa.me/'+WA+'?text='+encodeURIComponent(m)}
+function waOpen(m){var a=document.createElement('a');a.href=waLink(m);a.target='_blank';a.rel='noopener';document.body.appendChild(a);a.click();a.remove()}
+var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ---------- datos (del Instagram del estudio) ---------- */
+var CL={1:'Mindful Yoga',2:'Yoga Integrativo',3:'Mindful Yoga',4:'Yoga Integrativo'};
+var PLANS=[{k:1,n:'1 sesión',p:35},{k:4,n:'4 sesiones',p:120},{k:8,n:'8 sesiones',p:180},{k:12,n:'12 sesiones',p:250}];
+var FAB=waLink('Hola, buenas tardes. Vi la página de Yoga y Propósito y quisiera más información sobre las clases.');
+$('#fab').href=FAB;$('#f-wa').href=FAB;$('#t-wa').href=waLink('Yoga');
+
+function sessions(n){
+ var now=lima(),out=[];
+ for(var i=0;out.length<n&&i<60;i++){
+  var d=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i,19,0,0);
+  if(CL[d.getDay()]&&d>now)out.push({d:d,style:CL[d.getDay()]});
+ }
+ return out;
+}
+function fdate(d){return cap(DIAS[d.getDay()])+' '+d.getDate()+' de '+MESES[d.getMonth()]}
+function fshort(d){return DIAS[d.getDay()].slice(0,3)+' '+d.getDate()+' '+MESES[d.getMonth()].slice(0,3)}
+
+/* ---------- ilustraciones SVG (arcos, hojas, sol) ---------- */
+function leaf(x,y,r,rot,col,op){
+ return '<g transform="translate('+x.toFixed(1)+' '+y.toFixed(1)+') rotate('+rot.toFixed(1)+')" opacity="'+op+'"><path d="M0 0C'+(r*.38)+' '+(-r*.3)+' '+(r*.36)+' '+(-r*.85)+' 0 '+(-r)+'C'+(-r*.36)+' '+(-r*.85)+' '+(-r*.38)+' '+(-r*.3)+' 0 0Z" fill="none" stroke="'+col+'" stroke-width="1.2"/><path d="M0 0V'+(-r*.92)+'" stroke="'+col+'" stroke-width=".8" fill="none"/></g>';
+}
+function sprig(x,y,len,ang,n,col,op,flip){
+ var a=ang*Math.PI/180,h='',steps=n,ex=x+Math.sin(a)*len,ey=y-Math.cos(a)*len;
+ var cx=x+Math.sin(a)*len*.5+(flip?-1:1)*len*.18,cy=y-Math.cos(a)*len*.5;
+ h+='<path d="M'+x+' '+y+'Q'+cx.toFixed(1)+' '+cy.toFixed(1)+' '+ex.toFixed(1)+' '+ey.toFixed(1)+'" fill="none" stroke="'+col+'" stroke-width="1.3" opacity="'+op+'"/>';
+ for(var i=1;i<=steps;i++){
+  var t=i/(steps+1),px=(1-t)*(1-t)*x+2*(1-t)*t*cx+t*t*ex,py=(1-t)*(1-t)*y+2*(1-t)*t*cy+t*t*ey;
+  var side=i%2?1:-1,tan=Math.atan2(ey-y,ex-x)*180/Math.PI+90;
+  h+=leaf(px,py,len*.2*(1-t*.35),tan+side*52,col,op);
+ }
+ h+=leaf(ex,ey,len*.16,ang,col,op);
+ return h;
+}
+var ART={
+ sun:function(){return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="sk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--glow)"/><stop offset=".62" stop-color="#E9B590"/><stop offset="1" stop-color="var(--glow2)"/></linearGradient><radialGradient id="sn1" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#FFF3E0"/><stop offset=".6" stop-color="#F7D2A8"/><stop offset="1" stop-color="#F0B98A" stop-opacity="0"/></radialGradient></defs><rect width="400" height="560" fill="url(#sk1)"/><circle cx="200" cy="250" r="150" fill="url(#sn1)"><animate attributeName="r" values="140;158;140" dur="8s" repeatCount="indefinite"/></circle><circle cx="200" cy="250" r="78" fill="#FFF1DC" opacity=".95"/><g fill="none" stroke="#FFF" stroke-opacity=".5"><circle cx="200" cy="250" r="110"/><circle cx="200" cy="250" r="140" stroke-opacity=".3"/></g><path d="M0 430C70 380 140 400 210 390S340 350 400 380V560H0Z" fill="#8E9B6A" opacity=".85"/><path d="M0 470C90 430 170 450 250 438S350 420 400 440V560H0Z" fill="#6B7A4C"/><path d="M0 510C100 485 200 500 300 490S370 485 400 495V560H0Z" fill="#4C5A35"/>'+sprig(48,540,230,12,6,'#F4EEE4',.7)+sprig(352,540,250,-10,6,'#F4EEE4',.7,true)+'<g fill="#FFF4E0" opacity=".85"><circle cx="90" cy="120" r="2"/><circle cx="320" cy="90" r="1.6"/><circle cx="270" cy="160" r="1.4"/><circle cx="120" cy="200" r="1.2"/></g></svg>'},
+ sun2:function(){return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="sk2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#A9B79A"/><stop offset=".6" stop-color="#E7D4B1"/><stop offset="1" stop-color="#C79A6B"/></linearGradient></defs><rect width="400" height="560" fill="url(#sk2)"/><circle cx="270" cy="190" r="46" fill="#FFF3DC"/><path d="M0 360L90 270L170 340L260 240L400 380V560H0Z" fill="#6B7A4C" opacity=".75"/><path d="M0 420L120 330L220 410L320 320L400 400V560H0Z" fill="#4C5A35"/><path d="M0 500C100 470 200 490 400 470V560H0Z" fill="#3A4527"/><g fill="#F4EEE4"><circle cx="120" cy="150" r="1.6"/><circle cx="60" cy="90" r="1.2"/></g></svg>'},
+ hills:function(){return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="hl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F2DFC4"/><stop offset="1" stop-color="#D49E78"/></linearGradient></defs><rect width="400" height="560" fill="url(#hl)"/><path d="M100 560V260a100 100 0 0 1 200 0V560Z" fill="#B9764F" opacity=".35"/><path d="M130 560V280a70 70 0 0 1 140 0V560Z" fill="#B9764F" opacity=".45"/><rect x="40" y="470" width="320" height="90" fill="#6B5638" opacity=".55"/><g><ellipse cx="200" cy="468" rx="60" ry="8" fill="#3B2D22" opacity=".25"/><circle cx="170" cy="446" r="7" fill="#F4EEE4" opacity=".9"/><circle cx="230" cy="448" r="5" fill="#F4EEE4" opacity=".8"/></g>'+sprig(40,540,200,8,5,'#6B5638',.65)+sprig(360,540,200,-8,5,'#6B5638',.65,true)+'</svg>'},
+ rings:function(){var r='';for(var i=0;i<9;i++)r+='<circle cx="200" cy="270" r="'+(30+i*22)+'" fill="none" stroke="#FBF8F2" stroke-width="1" opacity="'+(0.75-i*.07).toFixed(2)+'"/>';return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="rg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6B5638"/><stop offset="1" stop-color="#3B2D22"/></linearGradient></defs><rect width="400" height="560" fill="url(#rg)"/>'+r+'<circle cx="200" cy="270" r="22" fill="#F0C9A8"/>'+sprig(200,560,170,0,5,'#F0C9A8',.5)+'</svg>'},
+ lotus:function(){var p='',i;for(i=0;i<7;i++){var a=-75+i*25;p+='<path transform="translate(200 360) rotate('+a+')" d="M0 0C-34 -40 -30 -110 0 -150C30 -110 34 -40 0 0Z" fill="#F4D9C2" fill-opacity="'+(0.25+Math.abs(3-i)*.0)+'" stroke="#FBF8F2" stroke-opacity=".85" stroke-width="1.2"/>'}
+  return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><defs><linearGradient id="lt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C98A62"/><stop offset="1" stop-color="#5E4A30"/></linearGradient></defs><rect width="400" height="560" fill="url(#lt)"/><g opacity=".8">'+p+'</g><path d="M0 430C100 405 220 440 400 410V560H0Z" fill="#4C5A35" opacity=".9"/><g fill="#FFF4E0" opacity=".8"><circle cx="80" cy="100" r="1.5"/><circle cx="330" cy="130" r="2"/><circle cx="300" cy="60" r="1.2"/></g></svg>'},
+ portrait1:function(){return portrait('#DCDBB4','#8E9B6A','KR')},
+ portrait2:function(){return portrait('#F0D5BE','#B9764F','MP')}
+};
+function portrait(bg,fg,ini){
+ return '<svg viewBox="0 0 400 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><rect width="400" height="560" fill="'+bg+'"/><circle cx="200" cy="250" r="140" fill="'+fg+'" opacity=".18"/><circle cx="200" cy="250" r="96" fill="none" stroke="'+fg+'" stroke-width="1.4"/><text x="200" y="272" text-anchor="middle" font-family="Cormorant Garamond,Georgia,serif" font-size="78" font-style="italic" fill="'+fg+'">'+ini+'</text>'+sprig(60,560,230,10,6,fg,.55)+sprig(340,560,230,-10,6,fg,.55,true)+'</svg>';
+}
+$$('[data-art]').forEach(function(el){var f=ART[el.getAttribute('data-art')];if(f)el.innerHTML=f()});
+/* subir foto de prueba (solo en pantalla) */
+$$('[data-slot]').forEach(function(fig){
+ var btn=$('.swap',fig),inp=$('input[type=file]',fig),img=$('.up',fig);
+ btn.addEventListener('click',function(){
+  if(fig.classList.contains('has')){fig.classList.remove('has');img.hidden=true;img.removeAttribute('src');btn.textContent='Probar con su foto';return}
+  inp.click();
+ });
+ inp.addEventListener('change',function(){
+  var f=inp.files&&inp.files[0];if(!f)return;
+  var u=URL.createObjectURL(f);img.src=u;img.hidden=false;fig.classList.add('has');btn.textContent='Quitar foto';toast('Así luciría su foto. Queda solo en su pantalla.');inp.value='';
+ });
+});
+
+/* ---------- navegación ---------- */
+var nav=$('#nav'),prog=$('#prog');
+function onScroll(){
+ var y=window.scrollY||0,h=document.documentElement.scrollHeight-innerHeight;
+ prog.style.width=(h>0?y/h*100:0)+'%';nav.classList.toggle('on',y>10);
+}
+window.addEventListener('scroll',onScroll,{passive:true});onScroll();
+$('#burger').addEventListener('click',function(){var o=nav.classList.toggle('open');this.setAttribute('aria-expanded',o);this.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')});
+$$('#links a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open');$('#burger').setAttribute('aria-expanded','false')})});
+var secs=$$('main section[id]'),links=$$('#links a');
+if('IntersectionObserver' in window){
+ var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+ secs.forEach(function(s){so.observe(s)});
+ var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('shown');ro.unobserve(e.target)}})},{threshold:.12});
+ $$('.rv').forEach(function(el){ro.observe(el)});
+}else{$$('.rv').forEach(function(el){el.classList.add('shown')})}
+/* tema noche */
+$('#theme').addEventListener('click',function(){
+ var n=document.documentElement.getAttribute('data-theme')==='night';
+ document.documentElement.setAttribute('data-theme',n?'':'night');
+ this.setAttribute('aria-pressed',!n);this.setAttribute('aria-label',n?'Cambiar a modo noche':'Cambiar a modo día');
+ $('#thico').setAttribute('d',n?'M20 14.5A8 8 0 0 1 9.5 4 8 8 0 1 0 20 14.5z':'M12 4v2M12 18v2M4 12h2M18 12h2M6.300 6.300l1.400 1.400M16.300 16.300l1.400 1.400M17.700 6.300l-1.400 1.400M7.700 16.300l-1.400 1.400M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z');
+});
+
+/* ---------- próxima clase (reloj en vivo, hora de Lima) ---------- */
+function tickNext(){
+ var s=sessions(1)[0];if(!s)return;
+ var now=lima(),ms=s.d-now,m=Math.floor(ms/60000),d=Math.floor(m/1440),h=Math.floor(m%1440/60),mi=m%60;
+ var hoy=s.d.toDateString()===now.toDateString(),man=new Date(now.getFullYear(),now.getMonth(),now.getDate()+1).toDateString()===s.d.toDateString();
+ $('#nx-t').textContent=(hoy?'Hoy':man?'Mañana':fdate(s.d))+' · 7:00 p. m. · '+s.style;
+ $('#nx-c').textContent='Faltan '+(d?d+' d ':'')+h+' h '+pad(mi)+' min';
+}
+tickNext();setInterval(tickNext,30000);
+
+/* ---------- semana ---------- */
+(function(){
+ var now=lima(),dow=now.getDay(),h='';
+ [1,2,3,4].forEach(function(k){
+  var m=CL[k]==='Mindful Yoga';
+  h+='<article class="day rv'+(m?' m':'')+(dow===k&&now.getHours()<19?' today':'')+'">'+(dow===k&&now.getHours()<19?'<span class="hoy">Hoy</span>':'')+'<span class="dn">'+cap(DIAS[k])+'</span><div class="hr">7:00<small>p. m.</small></div><div class="st">'+CL[k]+'</div><span class="tag" style="align-self:flex-start">Intensidad '+(m?4:3)+' de 5</span><a class="btn ghost sm" href="#reservar" data-pickday="'+k+'" style="margin-top:auto;align-self:flex-start">Reservar '+DIAS[k]+'</a></article>';
+ });
+ $('#week').innerHTML=h;
+})();
+
+/* ---------- reserva ---------- */
+var B={si:0,pi:1,list:sessions(8)};
+function renderBook(){
+ $('#b-dates').innerHTML=B.list.map(function(s,i){return '<button type="button" class="chipb" aria-pressed="'+(i===B.si)+'" data-di="'+i+'"><b>'+fshort(s.d)+'</b><span>'+s.style+'</span></button>'}).join('');
+ $('#b-plans').innerHTML=PLANS.map(function(p,i){return '<button type="button" class="chipb" aria-pressed="'+(i===B.pi)+'" data-pi="'+i+'"><b>S/ '+p.p+'</b><span>'+p.n+'</span></button>'}).join('');
+ var s=B.list[B.si],p=PLANS[B.pi];
+ $('#s-style').textContent=s.style;$('#s-date').textContent=fdate(s.d);$('#s-plan').textContent=p.n;$('#s-tot').textContent='S/ '+p.p;
+ $('#b-plan-n').textContent=p.k>1?'Cada sesión le sale a S/ '+(p.p/p.k).toFixed(2).replace(/\.00$/,'')+' en lugar de S/ 35. Aplican términos y condiciones.':'Una clase suelta de 1 hora y 10 minutos.';
+}
+function bookMsg(){
+ var s=B.list[B.si],p=PLANS[B.pi],n=$('#b-name').value.trim(),e=$('#b-exp').value,o=$('#b-note').value.trim();
+ return 'Hola, buenas. '+(n?'Soy '+n+'. ':'')+'Quisiera reservar mi lugar en '+s.style+' el '+fdate(s.d).toLowerCase()+' a las 7:00 p. m.\nPlan: '+p.n+' (S/ '+p.p+').\nPara mí '+e+'.'+(o?'\nQuiero comentarle: '+o+'.':'')+'\n¿Hay cupo? Gracias.\n(Mensaje armado desde la web de Yoga y Propósito)';
+}
+function needName(){if(!$('#b-name').value.trim()){$('#b-err').textContent='Escriba su nombre para armar el mensaje.';$('#b-name').focus();return false}$('#b-err').textContent='';return true}
+$('#b-dates').addEventListener('click',function(e){var b=e.target.closest('[data-di]');if(!b)return;B.si=+b.getAttribute('data-di');renderBook()});
+$('#b-plans').addEventListener('click',function(e){var b=e.target.closest('[data-pi]');if(!b)return;B.pi=+b.getAttribute('data-pi');renderBook()});
+$('#b-send').addEventListener('click',function(){if(needName())waOpen(bookMsg())});
+$('#b-copy').addEventListener('click',function(){
+ if(!needName())return;var m=bookMsg();
+ if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(m).then(function(){toast('Mensaje copiado.')},function(){toast('No se pudo copiar; use el botón de WhatsApp.')})}else toast('Su navegador no permite copiar; use el botón de WhatsApp.');
+});
+function icsDate(d){return d.getFullYear()+pad(d.getMonth()+1)+pad(d.getDate())+'T'+pad(d.getHours())+pad(d.getMinutes())+'00'}
+function icsDownload(title,start,mins,desc,name){
+ var end=new Date(start.getTime()+mins*60000),now=new Date();
+ var L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Boceto Yoga y Proposito//ES','CALSCALE:GREGORIAN','BEGIN:VEVENT','UID:'+now.getTime()+'@yogayproposito-boceto','DTSTAMP:'+now.getUTCFullYear()+pad(now.getUTCMonth()+1)+pad(now.getUTCDate())+'T'+pad(now.getUTCHours())+pad(now.getUTCMinutes())+'00Z','DTSTART;TZID=America/Lima:'+icsDate(start),'DTEND;TZID=America/Lima:'+icsDate(end),'SUMMARY:'+title,'LOCATION:Calle Huaraz 230\\, Cajamarca','DESCRIPTION:'+desc,'BEGIN:VALARM','TRIGGER:-PT1H','ACTION:DISPLAY','DESCRIPTION:'+title,'END:VALARM','END:VEVENT','END:VCALENDAR'];
+ var a=document.createElement('a');a.href=URL.createObjectURL(new Blob([L.join('\r\n')],{type:'text/calendar;charset=utf-8'}));a.download=name;document.body.appendChild(a);a.click();a.remove();
+ toast('Evento descargado: ábralo para guardarlo en su calendario.');
+}
+$('#b-ics').addEventListener('click',function(){var s=B.list[B.si];icsDownload('Yoga y Propósito · '+s.style,s.d,70,'Clase de 1 hora y 10 minutos. Confirme su cupo por WhatsApp 938 949 673.','yoga-y-proposito-clase.ics')});
+document.addEventListener('click',function(e){
+ var a=e.target.closest('[data-pick]');
+ if(a){var st=a.getAttribute('data-pick');var i=B.list.map(function(x){return x.style}).indexOf(st);if(i>-1){B.si=i;renderBook()}}
+ var d=e.target.closest('[data-pickday]');
+ if(d){var k=+d.getAttribute('data-pickday');var j=B.list.map(function(x){return x.d.getDay()}).indexOf(k);if(j>-1){B.si=j;renderBook()}}
+});
+renderBook();
+
+/* ---------- tarifas y calculadora ---------- */
+$('#prices').innerHTML=PLANS.map(function(p,i){
+ var pp=p.p/p.k,sv=p.k*35-p.p;
+ return '<article class="pc rv d'+i+'"><span class="k">'+p.n+'</span><div class="p"><sup>S/</sup>'+p.p+'</div><div class="pp">'+(p.k>1?'S/ '+pp.toFixed(2).replace(/\.00$/,'')+' por clase':'Clase suelta')+'</div><small>'+(sv>0?'Ahorra S/ '+sv+' frente a clases sueltas':'1 hora y 10 minutos de práctica')+'</small><a class="btn ghost sm" href="#reservar" data-plan="'+i+'" style="margin-top:14px;align-self:flex-start">Elegir</a></article>';
+}).join('');
+$('#prices').addEventListener('click',function(e){var b=e.target.closest('[data-plan]');if(b){B.pi=+b.getAttribute('data-plan');renderBook()}});
+function best(N){
+ var cap2=N+12,min=[0],pick=[null],c,i;
+ for(c=1;c<=cap2;c++){min[c]=Infinity;PLANS.forEach(function(p){if(c-p.k>=0&&min[c-p.k]+p.p<min[c]){min[c]=min[c-p.k]+p.p;pick[c]=p}})}
+ var bc=N,bv=min[N];for(c=N;c<=cap2;c++)if(min[c]<bv){bv=min[c];bc=c}
+ var cnt={};c=bc;while(c>0){var p=pick[c];cnt[p.k]=(cnt[p.k]||0)+1;c-=p.k}
+ return {total:bv,classes:bc,cnt:cnt};
+}
+function calc(){
+ var f=+$('#c-f').value,m=+$('#c-m').value,N=Math.round(f*4.33*m);
+ $('#c-fv').textContent=f+(f===1?' clase':' clases');$('#c-mv').textContent=m+(m===1?' mes':' meses');
+ var r=best(N),parts=[];
+ PLANS.slice().reverse().forEach(function(p){if(r.cnt[p.k])parts.push(r.cnt[p.k]+' × '+(p.k===1?'clase suelta':'plan de '+p.k))});
+ var sv=N*35-r.total;
+ $('#c-out').innerHTML='<small style="font:400 .66rem/1 var(--fb);letter-spacing:.22em;text-transform:uppercase">Para ~'+N+' clases</small><b class="big">S/ '+r.total+'</b><p>'+esc(parts.join(' + '))+' ('+r.classes+' clases en total)</p><p class="save">'+(sv>0?'Ahorra S/ '+sv+' frente a clases sueltas':'Sin ahorro: conviene la clase suelta')+'</p><p style="font-size:.8rem;opacity:.75;margin-top:8px">Cálculo referencial con las tarifas publicadas; la vigencia de cada plan se confirma con el estudio.</p>';
+}
+$('#c-f').addEventListener('input',calc);$('#c-m').addEventListener('input',calc);calc();
+
+/* ---------- talleres ---------- */
+(function(){
+ var Y=lima().getFullYear(),now=lima();
+ var E=[
+  {d:new Date(Y,10,7,9,30),day:'07',w:'Sábado',t:'Taller <em>Calma</em> el ruido mental',p:'Un espacio para bajar el ritmo de la mente.'},
+  {d:new Date(Y,10,10,19,0),day:'10',w:'Martes',t:'Programa de <em>preparación para el parto</em> y yoga prenatal',p:'Inicio del programa para quienes esperan un bebé.',prog:1},
+  {d:new Date(Y,10,21,9,30),day:'21',w:'Sábado',t:'Taller <em>Yoga</em> y gestión emocional',p:'Un espacio de diálogo y práctica para reconocer, comprender y expresar nuestro mundo emocional. 9:30 a. m. · Calle Huaraz 230. Facilita Marlyn Pellissier.',hi:1}
+ ];
+ var h='';
+ E.forEach(function(e,i){
+  var past=e.d<now&&!e.prog,run=e.prog&&e.d<now,st=run?'En curso':past?'Realizado':'Próximo';
+  h+='<article class="evc rv d'+i+(e.hi?' hi':'')+(past?' past':'')+'"><span class="st">'+st+'</span><div class="d">'+e.day+'<span>'+e.w+'<br>Noviembre</span></div><h4>'+e.t+'</h4><p>'+e.p+'</p>'+(e.hi&&!past?'<div class="cd" id="ev-cd"></div>':'')+'<div class="row">'+(past?'<a class="btn ghost sm" target="_blank" rel="noopener" href="'+waLink('Hola, buenas. Quisiera saber si habrá una próxima fecha del taller "'+e.t.replace(/<[^>]+>/g,'')+'".')+'">Avisarme la próxima fecha</a>':'<a class="btn sm" target="_blank" rel="noopener" href="'+waLink('TALLER. Hola, buenas. Quisiera los detalles y el precio de: '+e.t.replace(/<[^>]+>/g,'')+'.')+'">Pedir detalles</a>'+(e.hi?'<button class="btn ghost sm" type="button" data-ics="'+i+'">Agregar al calendario</button>':''))+'</div><svg class="sprig" viewBox="0 0 200 260" aria-hidden="true">'+sprig(100,255,230,6,6,'#F4EEE4',1)+'</svg></article>';
+ });
+ $('#ev').innerHTML=h;
+ $('#ev').addEventListener('click',function(ev){var b=ev.target.closest('[data-ics]');if(!b)return;var e=E[+b.getAttribute('data-ics')];icsDownload('Taller '+e.t.replace(/<[^>]+>/g,''),e.d,120,'Taller en Yoga y Propósito. Duración de ejemplo: confirme el horario y el precio por WhatsApp 938 949 673.','taller-yoga-y-proposito.ics')});
+ var tg=E[2].d;
+ function cd(){var el=$('#ev-cd');if(!el)return;var ms=tg-lima();if(ms<=0){el.textContent='¡Hoy es el taller!';return}var m=Math.floor(ms/60000);el.textContent='Faltan '+Math.floor(m/1440)+' d '+Math.floor(m%1440/60)+' h '+pad(m%60)+' min'}
+ cd();setInterval(cd,30000);
+})();
+
+/* ---------- test de estilo ---------- */
+(function(){
+ var Q=[
+  {q:'¿Qué busca con más ganas hoy?',o:[['Calmar la mente y las emociones','m'],['Conocerme mejor y moverme con intención','i']]},
+  {q:'¿Cómo está su energía últimamente?',o:[['Con ganas de moverme y sudar un poco','m'],['Cansada o con poca energía; prefiero algo más suave','i']]},
+  {q:'¿Qué le gustaría trabajar en el cuerpo?',o:[['Fluir con la respiración, de postura en postura','m'],['Fuerza, flexibilidad y resistencia, con calma','i']]}
+ ],S={i:0,m:0,n:0};
+ function draw(){
+  var b=$('#qbox');
+  if(S.n<Q.length){
+   var q=Q[S.n];
+   b.innerHTML='<div class="qbar"><i style="width:'+(S.n/Q.length*100)+'%"></i></div><div class="qstep">Pregunta '+(S.n+1)+' de '+Q.length+'</div><div class="qq">'+q.q+'</div><div class="qopt">'+q.o.map(function(o,i){return '<button type="button" data-o="'+o[1]+'">'+o[0]+'</button>'}).join('')+'</div>';
+  }else{
+   var mind=S.m>=S.i,st=mind?'Mindful Yoga':'Yoga Integrativo';
+   b.innerHTML='<div class="qbar"><i style="width:100%"></i></div><div class="qres"><div class="qstep">Le sugerimos empezar por</div><h4>'+st+'</h4><p>'+(mind?'Secuencias fluidas al ritmo de la respiración, con enfoque en regular el sistema nervioso y la gestión emocional. Intensidad 4 de 5.':'Una práctica terapéutica para potenciar la autopercepción, con fuerza, flexibilidad y respiración. Intensidad 3 de 5.')+'</p><div class="row" style="margin-top:18px"><a class="btn sm" href="#reservar" data-pick="'+st+'">Reservar '+st+'</a><button class="btn ghost sm" type="button" data-redo="1">Repetir test</button></div></div>';
+  }
+ }
+ $('#qbox').addEventListener('click',function(e){
+  var o=e.target.closest('[data-o]');if(o){S[o.getAttribute('data-o')]++;S.n++;draw();return}
+  if(e.target.closest('[data-redo]')){S={i:0,m:0,n:0};draw()}
+ });
+ draw();
+})();
+
+/* ---------- respiración guiada ---------- */
+(function(){
+ var core=$('#br-core'),t=$('#br-t'),n=$('#br-n'),go=$('#br-go'),st=$('#br-stat'),cyc=0,run=false,tm=null,ph=0,left=0,started=false;
+ var P=[{l:'Inhale',s:4,sc:1.28},{l:'Sostenga',s:4,sc:1.28},{l:'Exhale',s:6,sc:.7}];
+ function setScale(p){if(REDUCE)return;core.style.transitionDuration=p.s+'s';core.style.transform='scale('+p.sc+')'}
+ function step(){
+  if(left<=0){ph++;if(ph>=P.length){ph=0;cyc++;st.textContent='Ciclos completados: '+cyc+(cyc>=3?' · ¡Buen trabajo!':'')}left=P[ph].s}
+  var p=P[ph];t.textContent=p.l;n.textContent=left+' s';
+  if(left===p.s)setScale(p);
+  left--;
+ }
+ function stop(txt){run=false;clearInterval(tm);go.textContent=txt;if(!REDUCE){core.style.transitionDuration='1.2s';core.style.transform='scale(.7)'}}
+ go.addEventListener('click',function(){
+  if(run){stop('Continuar');return}
+  if(!started){started=true;ph=0;left=P[0].s}
+  run=true;go.textContent='Pausar';
+  step();tm=setInterval(step,1000);
+ });
+ $('#br-reset').addEventListener('click',function(){stop('Comenzar');started=false;ph=0;left=0;cyc=0;t.textContent='Listo';n.textContent='';st.textContent='Ciclos completados: 0'});
+})();
+})();
+
+</script>
+</body></html>
