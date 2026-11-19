@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow,noarchive">
+<title>Boceto Hotel Americano Jaén</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,800;1,9..144,500&family=Figtree:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+:root{
+  /* Vista 1 · Crema y cobre (paleta de ejemplo hasta tener el logo) */
+  --esp:#2a1a12; --esp2:#3b2519; --cobre:#b5622f; --cobre2:#d98a52; --crema:#f6ecdb; --papel:#fcf7ee; --linea:#e6d8bf; --mut:#6d5a4b; --ok:#2f7a55; --card:#fff;
+  /* Vista 2 · Medianoche */
+  --n0:#0a1220; --n1:#101c30; --n2:#17263f; --n3:#22365a; --ambar:#f3b65b; --agua:#45c7cf; --niebla:#a9b9d3; --blanco:#f3f7ff;
+  --f-serif:"Fraunces",Georgia,"Times New Roman",serif; --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif; --f-tech:"Space Grotesk","Figtree",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{margin:0;background:var(--papel);color:var(--esp);font-family:var(--f-body);line-height:1.6;font-size:16px;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body[data-view="2"]{background:var(--n0);color:var(--blanco)}
+img,svg{max-width:100%;display:block}
+a{color:inherit}
+button,input,select{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--cobre2);outline-offset:2px}
+body[data-view="2"] :focus-visible{outline-color:var(--ambar)}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;line-height:1.08;text-wrap:balance}
+
+/* ---------- Banner y selector de vistas ---------- */
+.boceto{background:#150d08;color:#e8d9c4;font-size:.78rem;text-align:center;padding:.55rem max(14px,env(safe-area-inset-right,0px)) .55rem max(14px,env(safe-area-inset-left,0px))}
+.boceto b{color:var(--cobre2)}
+.vsel{position:sticky;top:0;z-index:60;background:rgba(21,13,8,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(255,255,255,.08)}
+.vsel .in{display:flex;align-items:center;justify-content:center;gap:.6rem;padding:.55rem 0}
+.vsel span{font:700 .68rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:#bda78e;margin-right:.3rem}
+.vsel button{border:1.5px solid rgba(255,255,255,.25);background:transparent;color:#f1e4d0;padding:.5rem 1rem;border-radius:999px;font-weight:700;font-size:.86rem;cursor:pointer;transition:background .15s,color .15s}
+.vsel button[aria-pressed="true"]{background:#f6ecdb;color:#2a1a12;border-color:#f6ecdb}
+.vsel button small{font-weight:600;opacity:.75;margin-left:.3rem}
+
+/* ---------- Comunes ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.55rem;padding:.95rem 1.5rem;border-radius:999px;border:2px solid transparent;font:800 .95rem/1 var(--f-body);text-decoration:none;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+.btn:hover{transform:translateY(-2px)}
+.btn.sm{padding:.7rem 1.1rem;font-size:.85rem}
+.chip{display:inline-block;font-size:.72rem;font-weight:700;padding:.25rem .65rem;border-radius:999px}
+.ej{font-size:.68rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:.15rem .5rem;border-radius:6px;vertical-align:middle;white-space:nowrap}
+.wa-float{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:55;width:58px;height:58px;border-radius:50%;background:#25d366;display:grid;place-items:center;box-shadow:0 12px 30px -8px rgba(0,0,0,.5);transition:transform .2s}
+.wa-float:hover{transform:scale(1.08)}
+.wa-float svg{width:30px;height:30px;fill:#fff}
+
+/* =================== VISTA 1 · CREMA Y COBRE =================== */
+#v1 h1,#v1 h2,#v1 h3{font-family:var(--f-serif);letter-spacing:-.015em}
+#v1 h1{font-size:clamp(2.3rem,5.4vw,4rem);font-weight:800}
+#v1 h2{font-size:clamp(1.7rem,3.6vw,2.5rem);font-weight:800}
+#v1 h3{font-size:1.22rem;font-weight:700}
+#v1 .eyebrow{font:800 .72rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--cobre);margin-bottom:.9rem;display:flex;align-items:center;gap:.7rem}
+#v1 .eyebrow::before{content:"";width:30px;height:2px;background:currentColor}
+#v1 .ej{background:#f9e3d0;color:#8a4417}
+#v1 .btn{background:var(--cobre);color:#fff;border-color:var(--cobre)}
+#v1 .btn:hover{background:#98501f;border-color:#98501f;box-shadow:0 12px 28px rgba(181,98,47,.35)}
+#v1 .btn.ghost{background:transparent;color:var(--esp);border-color:var(--esp)}
+#v1 .btn.ghost:hover{background:var(--esp);color:#fff;border-color:var(--esp)}
+.v1top{background:var(--papel);border-bottom:1px solid var(--linea)}
+.v1top .in{display:flex;align-items:center;gap:1rem;height:68px}
+.brand{display:flex;align-items:center;gap:.75rem;text-decoration:none}
+.brand .mk{width:44px;height:44px;border-radius:12px;background:var(--esp);color:var(--cobre2);display:grid;place-items:center;font:800 1.4rem var(--f-serif);box-shadow:inset 0 0 0 2px var(--cobre)}
+.brand b{display:block;font:800 1.15rem/1 var(--f-serif)}
+.brand small{display:block;font:700 .62rem var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--cobre);margin-top:3px}
+.v1top nav{margin-left:auto;display:flex;gap:1.5rem}
+.v1top nav a{text-decoration:none;font-weight:600;font-size:.88rem;color:var(--mut)}
+.v1top nav a:hover{color:var(--cobre)}
+
+.v1hero{background:var(--crema);position:relative;overflow:hidden}
+.v1hero .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding:clamp(2.2rem,5vw,4rem) 0 6.5rem}
+.v1hero h1 em{font-style:italic;color:var(--cobre);font-weight:500}
+.lead{color:var(--mut);font-size:1.08rem;max-width:50ch;margin:1.1rem 0 1.6rem}
+.cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.score{display:inline-flex;gap:.7rem;align-items:center;margin-top:1.5rem;font-size:.86rem;color:var(--mut)}
+.score b{font:800 1.5rem var(--f-serif);color:var(--esp)}
+.score .s{color:var(--cobre);letter-spacing:.1em}
+.art{border-radius:26px;overflow:hidden;border:1px solid var(--linea);box-shadow:0 30px 50px -30px rgba(42,26,18,.5);background:#fff}
+.art figcaption{font-size:.72rem;color:var(--mut);padding:.5rem .9rem;background:#fff;border-top:1px solid var(--linea)}
+
+.book{margin-top:-4.4rem;position:relative;z-index:5}
+.book form{background:var(--card);border:1px solid var(--linea);border-radius:24px;padding:1.4rem;box-shadow:0 26px 56px -28px rgba(42,26,18,.5);display:grid;grid-template-columns:repeat(5,1fr);gap:.9rem;align-items:end}
+.fld label{display:block;font:800 .66rem var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:.35rem}
+.fld input,.fld select{width:100%;padding:.78rem .8rem;border:1.5px solid var(--linea);border-radius:12px;background:var(--papel);font-weight:600;font-size:.94rem;min-height:46px}
+.fld input:focus,.fld select:focus{border-color:var(--cobre);outline:none;box-shadow:0 0 0 3px rgba(181,98,47,.18)}
+.opts{grid-column:1/-1;display:flex;gap:.7rem;flex-wrap:wrap}
+.opt{display:flex;align-items:center;gap:.55rem;border:1.5px solid var(--linea);border-radius:999px;padding:.5rem .95rem;cursor:pointer;font-weight:600;font-size:.88rem;background:var(--papel);transition:background .15s,border-color .15s}
+.opt input{accent-color:var(--cobre);width:18px;height:18px}
+.opt:has(input:checked){background:#f9e3d0;border-color:var(--cobre)}
+.opt small{color:var(--mut);font-weight:500}
+.sum{grid-column:1/-1;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;align-items:center;border-top:1px dashed var(--linea);padding-top:1rem;font-size:.9rem;color:var(--mut)}
+.sum b{color:var(--esp)}
+.sum .tot{font:800 1.5rem var(--f-serif);color:var(--cobre)}
+.sum small{display:block;font-size:.72rem}
+.aviso{grid-column:1/-1;margin:0;font-size:.84rem;font-weight:600;color:#8a4417;background:#fdf0e3;border-radius:12px;padding:.6rem .85rem}
+.aviso.err{color:#a02d1b;background:#fdeae6}
+
+section.s1{padding:clamp(3rem,7vw,5rem) 0}
+.head{max-width:60ch;margin-bottom:2rem}
+.incl{background:var(--esp);color:#f6ecdb;padding:2rem 0}
+.incl ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(6,1fr);gap:1rem}
+.incl li{display:flex;flex-direction:column;align-items:center;text-align:center;gap:.6rem;font-weight:600;font-size:.84rem}
+.incl .ic{width:54px;height:54px;border-radius:50%;border:1.5px solid var(--cobre2);display:grid;place-items:center;color:var(--cobre2)}
+.incl svg,.ico{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.incl small{display:block;font-weight:500;font-size:.7rem;color:#d3bfa6;margin-top:-.4rem}
+
+.rooms{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
+.room{background:var(--card);border:1.5px solid var(--linea);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.room:hover{transform:translateY(-4px);box-shadow:0 22px 40px -26px rgba(42,26,18,.55)}
+.room.sel{border-color:var(--cobre);box-shadow:0 0 0 3px rgba(181,98,47,.18)}
+.room .im{height:96px;display:grid;place-items:center;background:linear-gradient(135deg,#f3dcc0,#e8c39b);color:var(--esp2)}
+.room .im svg{width:50px;height:50px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.room .bd{padding:1rem;display:flex;flex-direction:column;gap:.5rem;flex:1}
+.room p{margin:0;color:var(--mut);font-size:.84rem}
+.room .pr{margin-top:auto;padding-top:.4rem}
+.room .pr b{font:800 1.5rem var(--f-serif);color:var(--cobre)}
+.room .pr small{display:block;color:var(--mut);font-size:.72rem}
+.note{margin-top:1.2rem;color:var(--mut);font-size:.82rem}
+
+.cafe{background:var(--esp);color:#f6ecdb}
+.cafe .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center}
+.cafe h2{color:#fff}
+.cafe h2 em{font-style:italic;font-weight:500;color:var(--cobre2)}
+.cafe .eyebrow{color:var(--cobre2)}
+.cafe p{color:#dccab4}
+.mom{display:grid;gap:.8rem;margin-top:1.4rem}
+.mom div{display:flex;gap:1rem;align-items:center;background:var(--esp2);border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:.85rem 1.1rem}
+.mom b{font:800 1.05rem var(--f-serif);min-width:7.5rem;color:var(--cobre2)}
+.mom span{font-size:.88rem;color:#dccab4}
+.cafe .box{background:var(--esp2);border:1px dashed rgba(217,138,82,.6);border-radius:22px;padding:1.6rem}
+.cafe .box h3{color:#fff;margin-bottom:.5rem}
+.cafe .box ul{margin:.8rem 0 1.2rem;padding:0;list-style:none;display:grid;gap:.5rem}
+.cafe .box li{display:flex;gap:.6rem;color:#dccab4;font-size:.92rem}
+.cafe .box li::before{content:"✓";color:var(--cobre2);font-weight:800}
+.cafe .btn{background:var(--cobre2);border-color:var(--cobre2);color:#2a1a12}
+.cafe .btn:hover{background:#f0a56d;border-color:#f0a56d}
+
+.info{background:var(--crema)}
+.info .grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:start}
+.info dl{margin:1.3rem 0 0;display:grid;gap:1rem}
+.info dt{font:800 .66rem var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--cobre)}
+.info dd{margin:.15rem 0 0;font-weight:600}
+.info dd small{display:block;font-weight:500;color:var(--mut);font-size:.8rem}
+.cts{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.4rem}
+details{background:var(--card);border:1px solid var(--linea);border-radius:14px;margin-bottom:.7rem}
+summary{cursor:pointer;list-style:none;padding:1rem 1.2rem;font-weight:700;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font:800 1.3rem var(--f-serif);color:var(--cobre);transition:transform .2s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{margin:0;padding:0 1.2rem 1.1rem;color:var(--mut)}
+footer.f1{background:#150d08;color:#bda78e;padding:2.2rem 0 3.4rem;font-size:.88rem}
+footer.f1 .row{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap}
+footer.f1 a{color:#fff}
+
+/* =================== VISTA 2 · MEDIANOCHE =================== */
+#v2{font-family:var(--f-body);background:radial-gradient(1100px 600px at 85% -10%,rgba(69,199,207,.16),transparent 60%),radial-gradient(900px 500px at -10% 20%,rgba(243,182,91,.1),transparent 60%),var(--n0)}
+#v2 h1,#v2 h2,#v2 h3{font-family:var(--f-tech);letter-spacing:-.02em}
+#v2 h1{font-size:clamp(2.2rem,5.2vw,3.8rem);font-weight:700}
+#v2 h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:700}
+#v2 h3{font-size:1.1rem;font-weight:700}
+#v2 .ej{background:rgba(243,182,91,.16);color:var(--ambar)}
+#v2 .btn{background:var(--ambar);color:#1a1205;border-color:var(--ambar)}
+#v2 .btn:hover{background:#ffc972;border-color:#ffc972;box-shadow:0 12px 30px rgba(243,182,91,.3)}
+#v2 .btn.ghost{background:transparent;color:var(--blanco);border-color:rgba(255,255,255,.35)}
+#v2 .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.v2top .in{display:flex;align-items:center;gap:1rem;height:66px}
+.v2top .brand .mk{background:linear-gradient(135deg,var(--ambar),#e58f3b);color:#1a1205;box-shadow:none;border-radius:50%}
+.v2top .brand small{color:var(--agua)}
+.v2top .tag{margin-left:auto;font:700 .72rem var(--f-tech);letter-spacing:.12em;text-transform:uppercase;color:var(--niebla);display:flex;align-items:center;gap:.5rem}
+.v2top .tag i{width:8px;height:8px;border-radius:50%;background:var(--agua);box-shadow:0 0 0 4px rgba(69,199,207,.2)}
+.v2hero{padding:clamp(1.8rem,5vw,3.4rem) 0 1rem}
+.v2hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--ambar),var(--agua));-webkit-background-clip:text;background-clip:text;color:transparent}
+.v2hero p{color:var(--niebla);max-width:56ch;font-size:1.05rem;margin:.9rem 0 1.4rem}
+.why{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem}
+.why button{display:flex;flex-direction:column;align-items:flex-start;gap:.3rem;text-align:left;padding:.95rem 1rem;border-radius:16px;border:1.5px solid var(--n3);background:var(--n1);cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.why button:hover{transform:translateY(-2px);border-color:var(--niebla)}
+.why button[aria-pressed="true"]{border-color:var(--ambar);background:linear-gradient(160deg,var(--n2),var(--n1));box-shadow:0 0 0 3px rgba(243,182,91,.14)}
+.why svg{width:26px;height:26px;stroke:var(--ambar);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.why b{font:700 1rem var(--f-tech)}
+.why small{color:var(--niebla);font-size:.78rem;line-height:1.35}
+
+.v2grid{display:grid;grid-template-columns:1.12fr .88fr;gap:1.2rem;margin:1.4rem 0 3rem;align-items:start}
+.panel{background:linear-gradient(170deg,var(--n2),var(--n1));border:1px solid var(--n3);border-radius:24px;padding:clamp(1.1rem,3vw,1.7rem)}
+.panel h2{margin-bottom:.4rem}
+.panel .sub{color:var(--niebla);font-size:.9rem;margin:0 0 1rem}
+.rec{display:grid;gap:.8rem}
+.rec .name{font:700 1.5rem var(--f-tech)}
+.rec .pr{font:700 1.7rem var(--f-tech);color:var(--ambar)}
+.rec .pr small{font:500 .78rem var(--f-body);color:var(--niebla)}
+.tags{display:flex;gap:.45rem;flex-wrap:wrap}
+.tags .chip{background:rgba(69,199,207,.12);color:var(--agua);border:1px solid rgba(69,199,207,.3)}
+.rec p{margin:0;color:var(--niebla);font-size:.94rem}
+
+.dialwrap{display:grid;grid-template-columns:minmax(220px,300px) 1fr;gap:1.2rem;align-items:center;margin-top:.8rem}
+.dial{width:100%;height:auto}
+.dial text{font-family:var(--f-tech);fill:var(--niebla);font-size:10px}
+.clock{font:700 2.1rem var(--f-tech);color:#fff}
+.legend{list-style:none;margin:.6rem 0 0;padding:0;display:grid;gap:.45rem}
+.legend li{display:flex;align-items:center;gap:.6rem;font-size:.86rem;color:var(--niebla);padding:.4rem .65rem;border-radius:10px;border:1px solid transparent;transition:background .15s,color .15s,border-color .15s}
+.legend li i{width:12px;height:12px;border-radius:4px;flex:none;opacity:.35}
+.legend li.on{color:#fff;background:rgba(255,255,255,.05);border-color:var(--n3)}
+.legend li.on i{opacity:1}
+.legend li span{margin-left:auto;font:600 .72rem var(--f-tech);color:var(--niebla)}
+.slider{width:100%;margin:1rem 0 .3rem;accent-color:var(--ambar);height:34px}
+.hint{min-height:2.6em;margin:.2rem 0 0;font-size:.88rem;color:var(--ambar);font-weight:600}
+
+.side{position:sticky;top:64px}
+.side form{display:grid;gap:.8rem}
+#v2 .fld label{color:var(--niebla)}
+#v2 .fld input,#v2 .fld select{background:var(--n0);border-color:var(--n3);color:var(--blanco);color-scheme:dark}
+#v2 .fld input:focus,#v2 .fld select:focus{border-color:var(--ambar);box-shadow:0 0 0 3px rgba(243,182,91,.2);outline:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+#v2 .opt{background:var(--n0);border-color:var(--n3)}
+#v2 .opt:has(input:checked){background:rgba(243,182,91,.12);border-color:var(--ambar)}
+#v2 .opt input{accent-color:var(--ambar)}
+#v2 .opt small{color:var(--niebla)}
+.tot2{display:flex;justify-content:space-between;align-items:baseline;border-top:1px dashed var(--n3);padding-top:.9rem;color:var(--niebla);font-size:.88rem}
+.tot2 b{font:700 1.7rem var(--f-tech);color:#fff}
+.tot2 small{display:block;font-size:.72rem}
+#v2 .aviso{background:rgba(243,182,91,.12);color:var(--ambar)}
+#v2 .aviso.err{background:rgba(255,120,100,.14);color:#ff9d8d}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin-bottom:3rem}
+.facts div{background:var(--n1);border:1px solid var(--n3);border-radius:16px;padding:1rem}
+.facts b{display:block;font:700 1.05rem var(--f-tech);color:#fff}
+.facts small{color:var(--niebla);font-size:.8rem;display:block;margin-top:.2rem}
+.facts em{font-style:normal;color:var(--agua);font:700 .66rem var(--f-tech);letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:.35rem}
+footer.f2{border-top:1px solid var(--n3);color:var(--niebla);padding:2rem 0 3.4rem;font-size:.86rem}
+footer.f2 .row{display:flex;justify-content:space-between;gap:1.2rem;flex-wrap:wrap}
+footer.f2 a{color:#fff}
+
+@media (max-width:980px){
+  .v1top nav{display:none}.v1top .btn{margin-left:auto}
+  .v1hero .grid,.cafe .grid,.info .grid{grid-template-columns:1fr}
+  .art{max-width:520px}
+  .book form{grid-template-columns:1fr 1fr}
+  .incl ul{grid-template-columns:repeat(3,1fr)}
+  .rooms{grid-template-columns:1fr 1fr}
+  .v2grid{grid-template-columns:1fr}
+  .side{position:static}
+  .why{grid-template-columns:1fr 1fr}
+}
+@media (max-width:620px){
+  .book form{grid-template-columns:1fr}
+  .rooms{grid-template-columns:1fr}
+  .incl ul{grid-template-columns:repeat(2,1fr)}
+  .dialwrap{grid-template-columns:1fr}
+  .dial{max-width:280px;margin:0 auto}
+  .facts{grid-template-columns:1fr}
+  .vsel span{display:none}
+  .vsel button small{display:none}
+  .brand small{display:none}
+  .v2top .tag{display:none}
+  .mom b{min-width:6rem}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style></head>
+<body data-view="1">
+<div class="boceto">Boceto de propuesta preparado por <b>Kevin Huamán</b> para el Hotel Americano · Las <b>tarifas, tipos de habitación y horarios de servicios</b> son de ejemplo, la ilustración es referencial y los colores son de prueba hasta ver su logo</div>
+
+<div class="vsel" role="group" aria-label="Elegir propuesta"><div class="wrap in">
+  <span>Propuesta</span>
+  <button type="button" data-v="1" aria-pressed="true">Vista 1<small>· Crema y cobre</small></button>
+  <button type="button" data-v="2" aria-pressed="false">Vista 2<small>· Medianoche</small></button>
+</div></div>
+
+<!-- ======================= VISTA 1 ======================= -->
+<div id="v1">
+<header class="v1top"><div class="wrap in">
+  <a class="brand" href="#inicio1"><span class="mk">A</span><span><b>Hotel Americano</b><small>Jaén · Cajamarca</small></span></a>
+  <nav><a href="#hab1">Habitaciones</a><a href="#cafe1">American Café</a><a href="#info1">Ubicación</a><a href="#faq1">Preguntas</a></nav>
+  <a class="btn sm" data-wa="Quisiera información sobre el Hotel Americano." href="#">Escribir por WhatsApp</a>
+</div></header>
+
+<main id="inicio1">
+<div class="v1hero"><div class="wrap grid">
+  <div>
+    <div class="eyebrow">Hotel Americano · Universidad 120, Jaén</div>
+    <h1>Descanse en Jaén y <em>reserve directo</em> con el hotel</h1>
+    <p class="lead">Habitaciones con baño privado, TV cable, ambiente climatizado, Wi-Fi y cochera. Elija sus fechas, vea el total estimado y pida su reserva por WhatsApp en un minuto.</p>
+    <div class="cta"><a class="btn" href="#reservar1">Armar mi reserva</a><a class="btn ghost" href="#hab1">Ver habitaciones</a></div>
+    <div class="score"><b>4,4</b><span><span class="s">★★★★☆</span><br>168 reseñas en Google Maps</span></div>
+  </div>
+  <figure class="art" style="margin:0">
+    <svg viewBox="0 0 600 440" role="img" aria-label="Ilustración referencial de un hotel de cuatro pisos con palmeras al atardecer">
+      <defs>
+        <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f7c99a"/><stop offset=".6" stop-color="#fbe3c4"/><stop offset="1" stop-color="#fdf0dc"/></linearGradient>
+        <linearGradient id="muro" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2e1f"/><stop offset="1" stop-color="#2a1a12"/></linearGradient>
+      </defs>
+      <rect width="600" height="440" fill="url(#cielo)"/>
+      <circle cx="470" cy="120" r="56" fill="#f3a763" opacity=".85"/><circle cx="470" cy="120" r="84" fill="#f3a763" opacity=".18"/>
+      <path d="M0 330 Q150 290 300 318 T600 300 V440 H0Z" fill="#e5c79e" opacity=".7"/>
+      <g>
+        <rect x="150" y="96" width="300" height="270" rx="6" fill="url(#muro)"/>
+        <rect x="140" y="86" width="320" height="16" rx="4" fill="#b5622f"/>
+        <rect x="215" y="52" width="170" height="34" rx="8" fill="#150d08"/>
+        <text x="300" y="75" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="19" letter-spacing="4" fill="#d98a52">AMERICANO</text>
+        <g fill="#f3c47e">
+          <rect x="172" y="120" width="36" height="34" rx="3"/><rect x="226" y="120" width="36" height="34" rx="3" opacity=".35"/><rect x="282" y="120" width="36" height="34" rx="3"/><rect x="338" y="120" width="36" height="34" rx="3" opacity=".35"/><rect x="392" y="120" width="36" height="34" rx="3"/>
+          <rect x="172" y="170" width="36" height="34" rx="3" opacity=".35"/><rect x="226" y="170" width="36" height="34" rx="3"/><rect x="282" y="170" width="36" height="34" rx="3" opacity=".35"/><rect x="338" y="170" width="36" height="34" rx="3"/><rect x="392" y="170" width="36" height="34" rx="3" opacity=".35"/>
+          <rect x="172" y="220" width="36" height="34" rx="3"/><rect x="226" y="220" width="36" height="34" rx="3"/><rect x="282" y="220" width="36" height="34" rx="3" opacity=".35"/><rect x="338" y="220" width="36" height="34" rx="3"/><rect x="392" y="220" width="36" height="34" rx="3"/>
+          <rect x="172" y="270" width="36" height="34" rx="3" opacity=".35"/><rect x="226" y="270" width="36" height="34" rx="3"/><rect x="338" y="270" width="36" height="34" rx="3" opacity=".35"/><rect x="392" y="270" width="36" height="34" rx="3"/>
+        </g>
+        <rect x="270" y="316" width="60" height="50" rx="4" fill="#150d08"/>
+        <path d="M258 318 H342 L334 300 H266Z" fill="#b5622f"/>
+        <circle cx="300" cy="342" r="3" fill="#d98a52"/>
+      </g>
+      <rect x="0" y="366" width="600" height="74" fill="#d9b88a"/>
+      <rect x="0" y="366" width="600" height="6" fill="#c79d68"/>
+      <g stroke="#2a1a12" stroke-width="5" stroke-linecap="round" fill="none">
+        <path d="M70 366 Q74 300 62 250"/><path d="M530 366 Q526 310 540 262"/>
+      </g>
+      <g fill="#3f7a52">
+        <path d="M62 250 Q20 236 8 262 Q40 250 62 250Z"/><path d="M62 250 Q36 214 8 216 Q42 226 62 250Z"/><path d="M62 250 Q80 210 112 214 Q84 228 62 250Z"/><path d="M62 250 Q104 240 118 268 Q86 252 62 250Z"/>
+        <path d="M540 262 Q580 246 594 272 Q562 260 540 262Z"/><path d="M540 262 Q566 224 594 226 Q562 238 540 262Z"/><path d="M540 262 Q520 222 490 226 Q516 238 540 262Z"/><path d="M540 262 Q500 252 486 280 Q516 264 540 262Z"/>
+      </g>
+      <g fill="#2a1a12"><rect x="198" y="390" width="204" height="10" rx="5" opacity=".18"/></g>
+    </svg>
+    <figcaption>Ilustración referencial · aquí irán las fotos reales del hotel (de su Instagram y su ficha de Google)</figcaption>
+  </figure>
+</div></div>
+
+<div class="wrap book" id="reservar1">
+  <form id="f1" novalidate>
+    <div class="fld"><label for="in1">Llegada</label><input type="date" id="in1" required></div>
+    <div class="fld"><label for="out1">Salida</label><input type="date" id="out1" required></div>
+    <div class="fld"><label for="g1">Huéspedes</label><select id="g1"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+    <div class="fld"><label for="r1">Habitación</label><select id="r1"></select></div>
+    <div class="fld"><label for="h1">Hora de llegada</label><select id="h1"></select></div>
+    <div class="opts">
+      <label class="opt"><input type="checkbox" id="air1"> Necesito recojo del aeropuerto <small>(el hotel lo ofrece)</small></label>
+      <label class="opt"><input type="checkbox" id="car1"> Llego en auto: cochera</label>
+      <label class="opt"><input type="checkbox" id="rs1"> Pedir algo a la habitación al llegar</label>
+    </div>
+    <p class="aviso err" id="err1" hidden></p>
+    <p class="aviso" id="av1" hidden></p>
+    <div class="sum">
+      <div><span id="resumen1">Elija sus fechas</span><small>Tarifas de ejemplo (la matrimonial está tomada de su web actual). El hotel confirma la disponibilidad.</small></div>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap"><span class="tot" id="tot1">S/ 0</span><button class="btn" id="go1" type="submit">Pedir reserva por WhatsApp</button></div>
+    </div>
+  </form>
+</div>
+
+<section class="incl" style="margin-top:3.4rem" id="serv1"><div class="wrap"><ul>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 12h16v6H4zM6 12V6h12v6M4 18v2M20 18v2"/></svg></span>Baño privado</li>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 21h8M12 17v4"/></svg></span>TV cable</li>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3v18M5 7l14 10M19 7L5 17"/></svg></span>Ambiente climatizado</li>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M2 9a15 15 0 0120 0M5 12.5a10 10 0 0114 0M8.5 16a5 5 0 017 0"/><circle cx="12" cy="19" r="1"/></svg></span>Wi-Fi</li>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 16l1.5-5a2 2 0 011.9-1.4h7.2A2 2 0 0117.5 11L19 16M3 16h18v3H3zM7 19v1.5M17 19v1.5"/></svg></span>Cochera</li>
+  <li><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>Recepción 24 h</li>
+</ul></div></section>
+
+<section class="s1" id="hab1"><div class="wrap">
+  <div class="head"><div class="eyebrow">Habitaciones</div><h2>Elija su habitación y vea el precio al instante</h2></div>
+  <div class="rooms" id="rooms1"></div>
+  <p class="note">Solo la <b>matrimonial a S/ 110</b> aparece hoy en su web; los demás tipos y tarifas son de ejemplo. Algunas habitaciones tienen bañera de hidromasaje (dato de Booking): se muestra cuál según su inventario real.</p>
+</div></section>
+
+<section class="s1 cafe" id="cafe1"><div class="wrap grid">
+  <div>
+    <div class="eyebrow">American Café · Resto bar</div>
+    <h2>Su estadía empieza con un buen <em>café americano</em></h2>
+    <p>El hotel tiene restaurante, bar y servicio a la habitación. Esta sección sería la carta digital: con fotos reales de sus platos, precios al día y pedido por WhatsApp.</p>
+    <div class="mom">
+      <div><b>Mañana</b><span>Desayuno y café para empezar el día</span></div>
+      <div><b>Tarde</b><span>Almuerzo y cafetería; piscina en temporada <span class="ej">por confirmar</span></span></div>
+      <div><b>Noche</b><span>Resto bar para cerrar el día sin salir del hotel</span></div>
+    </div>
+  </div>
+  <div class="box">
+    <h3>Pedido a la habitación, por WhatsApp</h3>
+    <p style="margin:0">Marque su número de habitación, elija de la carta y el pedido le llega a recepción ya ordenado.</p>
+    <ul><li>Carta con fotos y precios reales</li><li>Hora de entrega acordada con recepción</li><li>Sin llamadas ni mensajes sueltos</li></ul>
+    <a class="btn" data-wa="Quisiera pedir a la habitación del Hotel Americano." href="#">Probar el pedido</a>
+  </div>
+</div></section>
+
+<section class="s1 info" id="info1"><div class="wrap grid">
+  <div>
+    <div class="eyebrow">Ubicación y contacto</div>
+    <h2>Universidad 120, Jaén</h2>
+    <dl>
+      <div><dt>Dirección</dt><dd>Universidad 120, Jaén, Cajamarca</dd></div>
+      <div><dt>Teléfonos</dt><dd>WhatsApp 937 480 022<small>Fijo (076) 786-030</small></dd></div>
+      <div><dt>Horarios de la estadía</dt><dd>Check-in desde las 09:00 · Check-out hasta las 14:00<small>Según su ficha en Booking: se confirma con el hotel</small></dd></div>
+      <div><dt>Redes</dt><dd>Instagram @hotelamericano2020</dd></div>
+    </dl>
+    <div class="cts"><a class="btn" data-wa="Quisiera información sobre el Hotel Americano." href="#">Escribir por WhatsApp</a><a class="btn ghost" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Hotel+Americano+Universidad+120+Ja%C3%A9n+Cajamarca">Abrir en Google Maps</a></div>
+  </div>
+  <div id="faq1">
+    <details open><summary>¿A qué hora puedo llegar?</summary><p>La recepción atiende las 24 horas. Si su vuelo o bus llega temprano o de madrugada, indíquelo en la reserva y el hotel le confirma cómo recibirlo.</p></details>
+    <details><summary>¿El hotel recoge del aeropuerto?</summary><p>Su ficha indica traslado desde el aeropuerto. Marque la casilla al reservar y el hotel confirma la hora y el costo.</p></details>
+    <details><summary>¿Tienen cochera?</summary><p>Sí, el hotel cuenta con cochera. Avise al reservar para que le guarden el espacio.</p></details>
+    <details><summary>¿Hay piscina?</summary><p>Hay referencias de piscina de temporada. <span class="ej">por confirmar</span> con el hotel en qué meses está disponible.</p></details>
+  </div>
+</div></section>
+</main>
+<footer class="f1"><div class="wrap row"><div><b style="color:#fff">Hotel Americano</b> · Universidad 120, Jaén</div><div>Boceto preparado por <a href="https://kevin05x.github.io/" target="_blank" rel="noopener">Kevin Huamán</a> · Cajamarca</div></div></footer>
+</div>
+
+<!-- ======================= VISTA 2 ======================= -->
+<div id="v2" hidden>
+<header class="v2top"><div class="wrap in">
+  <a class="brand" href="#inicio2"><span class="mk">A</span><span><b>Hotel Americano</b><small>Jaén · Cajamarca</small></span></a>
+  <div class="tag"><i></i>Recepción 24 h</div>
+</div></header>
+<main id="inicio2" class="wrap">
+  <section class="v2hero">
+    <h1>¿Qué lo trae a Jaén? <em>Armamos su estadía</em></h1>
+    <p>Elija el motivo de su viaje y el hotel le muestra la habitación que conviene, qué servicios usará y a qué hora. Después pida la reserva por WhatsApp.</p>
+    <div class="why" id="why2" role="group" aria-label="Motivo del viaje"></div>
+  </section>
+
+  <div class="v2grid">
+    <div style="display:grid;gap:1.2rem">
+      <section class="panel" id="rec2" aria-live="polite"></section>
+      <section class="panel">
+        <h2>Su día en el hotel, hora por hora</h2>
+        <p class="sub">Mueva la barra y vea qué está disponible a esa hora. Los horarios con la etiqueta <span class="ej">ejemplo</span> se ajustan a los reales.</p>
+        <div class="dialwrap">
+          <svg class="dial" id="dial" viewBox="0 0 300 300" role="img" aria-label="Reloj de 24 horas con los servicios del hotel"></svg>
+          <div>
+            <div class="clock" id="clock">14:00</div>
+            <ul class="legend" id="legend"></ul>
+          </div>
+        </div>
+        <input class="slider" id="hr2" type="range" min="0" max="23.5" step="0.5" value="14" aria-label="Hora del día">
+        <p class="hint" id="hint2"></p>
+      </section>
+    </div>
+
+    <aside class="side"><section class="panel">
+      <h2>Reserve con su plan</h2>
+      <p class="sub" id="plan2">Plan: Trabajo</p>
+      <form id="f2" novalidate>
+        <div class="two">
+          <div class="fld"><label for="in2">Llegada</label><input type="date" id="in2" required></div>
+          <div class="fld"><label for="out2">Salida</label><input type="date" id="out2" required></div>
+        </div>
+        <div class="two">
+          <div class="fld"><label for="g2">Huéspedes</label><select id="g2"><option>1</option><option selected>2</option><option>3</option><option>4</option></select></div>
+          <div class="fld"><label for="r2">Habitación</label><select id="r2"></select></div>
+        </div>
+        <label class="opt"><input type="checkbox" id="air2"> Recojo del aeropuerto <small>(a coordinar)</small></label>
+        <label class="opt"><input type="checkbox" id="car2"> Cochera</label>
+        <p class="aviso err" id="err2" hidden></p>
+        <p class="aviso" id="av2" hidden></p>
+        <div class="tot2"><div><span id="resumen2">Elija sus fechas</span><small>Tarifa de ejemplo</small></div><b id="tot2">S/ 0</b></div>
+        <button class="btn" type="submit">Pedir reserva por WhatsApp</button>
+      </form>
+    </section></aside>
+  </div>
+
+  <div class="facts">
+    <div><em>Dato del hotel</em><b>Universidad 120, Jaén</b><small>WhatsApp 937 480 022 · fijo (076) 786-030</small></div>
+    <div><em>Según Booking</em><b>Check-in 09:00 · Check-out 14:00</b><small>Se confirma con el hotel al reservar</small></div>
+    <div><em>Google Maps</em><b>4,4 ★ · 168 reseñas</b><small>Instagram @hotelamericano2020</small></div>
+  </div>
+</main>
+<footer class="f2"><div class="wrap row"><div><b style="color:#fff">Hotel Americano</b> · Universidad 120, Jaén</div><div>Boceto preparado por <a href="https://kevin05x.github.io/" target="_blank" rel="noopener">Kevin Huamán</a> · Cajamarca</div></div></footer>
+</div>
+
+<a class="wa-float" data-wa="Quisiera información sobre el Hotel Americano." href="#" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 32 32"><path d="M16 3C9 3 3.4 8.6 3.4 15.6c0 2.3.6 4.4 1.7 6.3L3 29l7.3-2c1.8 1 3.800 1.500 5.800 1.500 7 0 12.600-5.600 12.600-12.600S23 3 16 3zm0 23c-1.900 0-3.700-.5-5.200-1.500l-.4-.2-4.300 1.200 1.200-4.200-.3-.4a10.200 10.200 0 01-1.600-5.500C5.400 9.800 10.200 5.200 16 5.200S26.600 9.800 26.600 15.500 21.800 26 16 26zm5.800-7.700c-.3-.2-1.900-.9-2.200-1-.3-.1-.5-.2-.7.200-.2.300-.8 1-1 1.200-.2.200-.4.200-.7.100-.3-.2-1.400-.5-2.600-1.600-1-.9-1.600-1.900-1.800-2.200-.2-.3 0-.5.100-.7l.5-.6c.2-.2.200-.3.300-.5.100-.2.100-.4 0-.6-.1-.2-.7-1.700-1-2.300-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.100-.9.400-.3.300-1.200 1.200-1.200 2.800s1.200 3.300 1.400 3.500c.2.200 2.400 3.700 5.800 5.100.8.400 1.500.6 2 .8.800.3 1.600.2 2.200.1.700-.1 1.900-.8 2.200-1.500.3-.7.300-1.400.2-1.500-.1-.1-.3-.2-.6-.4z"/></svg></a>
+
+<script>
+(function(){
+  var WA="51937480022";
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  function saludo(){var h=new Date().getHours();return h<12?"Buenos días":(h<19?"Buenas tardes":"Buenas noches")}
+  function wa(msg){return "https://wa.me/"+WA+"?text="+encodeURIComponent(saludo()+", "+msg)}
+  function soles(n){return "S/ "+n.toLocaleString("es-PE")}
+  function iso(d){var m=d.getMonth()+1,dd=d.getDate();return d.getFullYear()+"-"+(m<10?"0":"")+m+"-"+(dd<10?"0":"")+dd}
+  function addDays(d,n){var x=new Date(d.getTime());x.setDate(x.getDate()+n);return x}
+  function fechaTxt(s){var p=s.split("-");var m=["ene","feb","mar","abr","may","jun","jul","ago","sep","oct","nov","dic"];return parseInt(p[2],10)+" "+m[parseInt(p[1],10)-1]}
+  function noches(a,b){if(!a||!b)return 0;var x=new Date(a+"T12:00:00"),y=new Date(b+"T12:00:00");return Math.round((y-x)/86400000)}
+
+  /* Datos: la matrimonial (S/ 110) figura en la web actual del hotel; el resto es de ejemplo */
+  var ROOMS=[
+    {id:"simple",n:"Simple",cap:1,p:80,pub:false,d:"Para una persona: baño privado, TV cable y Wi-Fi.",ic:'<path d="M3 17V9h8a4 4 0 014 4v4M3 17h18M3 13h12M5 17v2M19 17v2"/>'},
+    {id:"matri",n:"Matrimonial",cap:2,p:110,pub:true,d:"Cama de dos plazas, baño privado, TV cable y ambiente climatizado.",ic:'<path d="M3 18V8M21 18v-6a3 3 0 00-3-3h-7v6M3 14h18M3 18h18M6 11h3"/>'},
+    {id:"doble",n:"Doble",cap:2,p:130,pub:false,d:"Dos camas, ideal para colegas o amigos de viaje.",ic:'<path d="M2 17v-6h9v6M13 17v-6h9v6M2 17h20M2 20v-3M22 20v-3"/>'},
+    {id:"triple",n:"Triple",cap:3,p:170,pub:false,d:"Para tres personas, con baño privado y TV cable.",ic:'<path d="M2 17v-5h6v5M9 17v-5h6v5M16 17v-5h6v5M2 17h20"/>'},
+    {id:"hidro",n:"Matrimonial con hidromasaje",cap:2,p:160,pub:false,d:"Con bañera de hidromasaje (solo algunas habitaciones del hotel).",ic:'<path d="M4 12h16v3a4 4 0 01-4 4H8a4 4 0 01-4-4zM7 12V7a2 2 0 013-1M6 21l1-2M18 21l-1-2"/>'}
+  ];
+  function room(id){return ROOMS.filter(function(r){return r.id===id})[0]}
+  var HOY=new Date(), D1=iso(addDays(HOY,2)), D2=iso(addDays(HOY,3));
+
+  /* --------- Selector de vistas --------- */
+  function setView(v){
+    document.body.setAttribute("data-view",v);
+    $("#v1").hidden=(v!=="1"); $("#v2").hidden=(v!=="2");
+    $$(".vsel button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.v===v?"true":"false")});
+    if(history.replaceState)history.replaceState(null,"",v==="2"?"#vista2":"#vista1");
+    window.scrollTo(0,0);
+  }
+  $$(".vsel button").forEach(function(b){b.addEventListener("click",function(){setView(b.dataset.v)})});
+  $$("[data-wa]").forEach(function(a){a.href=wa(a.getAttribute("data-wa"));a.target="_blank";a.rel="noopener"});
+
+  /* --------- VISTA 1 --------- */
+  var r1=$("#r1"), h1=$("#h1");
+  ROOMS.forEach(function(r){var o=document.createElement("option");o.value=r.id;o.textContent=r.n+" · "+soles(r.p);r1.appendChild(o)});
+  r1.value="matri";
+  [["","Aún no lo sé"],["04:00","Madrugada (00:00 a 08:00)"],["09:00","Mañana (08:00 a 12:00)"],["14:00","Tarde (12:00 a 18:00)"],["20:00","Noche (18:00 a 24:00)"]].forEach(function(x){var o=document.createElement("option");o.value=x[0];o.textContent=x[1];h1.appendChild(o)});
+  h1.value="14:00";
+  $("#in1").value=D1;$("#out1").value=D2;$("#in1").min=iso(HOY);$("#out1").min=D1;
+
+  var rg=$("#rooms1");
+  ROOMS.forEach(function(r){
+    var el=document.createElement("article");el.className="room";el.dataset.id=r.id;
+    el.innerHTML='<div class="im"><svg viewBox="0 0 24 24" aria-hidden="true">'+r.ic+'</svg></div><div class="bd"><h3>'+r.n+'</h3><p>'+r.d+'</p><span class="chip" style="background:#f6ecdb;color:#6d5a4b;align-self:flex-start">Hasta '+r.cap+' '+(r.cap>1?"personas":"persona")+'</span><div class="pr"><b>'+soles(r.p)+'</b> <small>por noche · '+(r.pub?'tarifa de su web, confirmar':'<span class="ej">ejemplo</span>')+'</small></div><button type="button" class="btn sm">Elegir esta</button></div>';
+    el.querySelector("button").addEventListener("click",function(){r1.value=r.id;calc1();document.getElementById("reservar1").scrollIntoView({behavior:"smooth",block:"center"})});
+    rg.appendChild(el);
+  });
+
+  function calc1(){
+    var a=$("#in1").value,b=$("#out1").value,g=parseInt($("#g1").value,10),r=room(r1.value),n=noches(a,b);
+    var err=$("#err1"),av=$("#av1"),av1=[];
+    err.hidden=true;av.hidden=true;
+    $$(".room").forEach(function(e){e.classList.toggle("sel",e.dataset.id===r.id)});
+    $("#out1").min=a||iso(HOY);
+    if(!a||!b||n<=0){$("#resumen1").textContent="Elija llegada y salida";$("#tot1").textContent="S/ 0";if(a&&b&&n<=0){err.textContent="La salida debe ser después de la llegada.";err.hidden=false}return null}
+    if(g>r.cap){var sug=ROOMS.filter(function(x){return x.cap>=g}).sort(function(x,y){return x.p-y.p})[0];err.textContent="La "+r.n.toLowerCase()+" es para "+r.cap+" "+(r.cap>1?"personas":"persona")+". Para "+g+" le conviene la "+(sug?sug.n.toLowerCase():"habitación triple")+(g>3?" o dos habitaciones":"")+".";err.hidden=false}
+    var h=h1.value;
+    if(h==="04:00")av1.push("Llega de madrugada: la recepción atiende 24 h, pero avise para que lo esperen y revisen si hay habitación lista antes del check-in de las 09:00.");
+    else if(h==="09:00")av1.push("Check-in desde las 09:00 (según Booking): si llega antes, pida entrada anticipada.");
+    if($("#air1").checked)av1.push("El hotel le confirma hora y costo del recojo.");
+    if(av1.length){av.textContent=av1.join(" ");av.hidden=false}
+    var tot=n*r.p;
+    $("#resumen1").innerHTML="<b>"+n+" "+(n>1?"noches":"noche")+"</b> · "+r.n+" · "+g+" "+(g>1?"huéspedes":"huésped")+" · "+fechaTxt(a)+" a "+fechaTxt(b);
+    $("#tot1").textContent=soles(tot);
+    return {n:n,r:r,g:g,a:a,b:b,tot:tot};
+  }
+  ["in1","out1","g1","r1","h1","air1","car1","rs1"].forEach(function(id){$("#"+id).addEventListener("input",calc1);$("#"+id).addEventListener("change",calc1)});
+  $("#f1").addEventListener("submit",function(e){
+    e.preventDefault();var s=calc1();if(!s||!$("#err1").hidden)return;
+    var m="quisiera reservar en el Hotel Americano: habitación "+s.r.n.toLowerCase()+", del "+fechaTxt(s.a)+" al "+fechaTxt(s.b)+" ("+s.n+" "+(s.n>1?"noches":"noche")+"), "+s.g+" "+(s.g>1?"huéspedes":"huésped")+".";
+    if(h1.value)m+=" Llegada aproximada: "+h1.options[h1.selectedIndex].text.toLowerCase()+".";
+    if($("#air1").checked)m+=" Necesito recojo desde el aeropuerto.";
+    if($("#car1").checked)m+=" Llego en auto y necesito cochera.";
+    if($("#rs1").checked)m+=" Me gustaría pedir algo a la habitación al llegar.";
+    m+=" Total referencial: "+soles(s.tot)+". ¿Tienen disponibilidad?";
+    window.open(wa(m),"_blank","noopener");
+  });
+  calc1();
+
+  /* --------- VISTA 2 --------- */
+  var PLANES=[
+    {id:"trabajo",t:"Trabajo",s:"Reuniones, visitas a campo o cursos",room:"simple",g:1,ic:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 13h18"/>',
+     h:"Para trabajar tranquilo",d:"Una habitación simple o matrimonial con Wi-Fi, ambiente climatizado y baño privado. La recepción atiende 24 h, así que puede llegar después de su jornada.",tags:["Wi-Fi","Climatizado","Cochera","Recepción 24 h"],hl:["rec","chk"]},
+    {id:"descanso",t:"Descanso",s:"Escapada en pareja",room:"hidro",g:2,ic:'<path d="M12 21s-7-4.4-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.600-7 10-7 10z"/>',
+     h:"Para desconectar",d:"La matrimonial con hidromasaje (solo algunas habitaciones), piscina en temporada y resto bar para cerrar la noche sin salir del hotel.",tags:["Hidromasaje","Piscina de temporada","Resto bar","Climatizado"],hl:["pis","bar"]},
+    {id:"familia",t:"Familia",s:"Viaje con niños o parientes",room:"triple",g:3,ic:'<circle cx="8" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M2 20c0-3.500 2.700-6 6-6s6 2.500 6 6M14 20c.3-2.400 1.800-4 4-4s3.700 1.600 4 4"/>',
+     h:"Para ir todos juntos",d:"Una habitación triple para no separarse, desayuno en el American Café y piscina en temporada para los más chicos.",tags:["Hasta 3 personas","Desayuno","Piscina de temporada","Cochera"],hl:["des","pis"]},
+    {id:"paso",t:"De paso",s:"Vuelo o bus con horario raro",room:"matri",g:1,ic:'<path d="M2 16l20-8-6 12-3-5-5 1z"/>',
+     h:"Para llegar a cualquier hora",d:"Recepción 24 h, traslado desde el aeropuerto y cochera si viaja en auto. Avise la hora de su vuelo o bus y lo reciben.",tags:["Recepción 24 h","Traslado aeropuerto","Cochera","Check-in anticipado"],hl:["rec","chk"]}
+  ];
+  var SERV=[
+    {k:"rec",n:"Recepción",r:[[0,24]],c:"#45c7cf",t:"24 h",real:true},
+    {k:"chk",n:"Check-in",r:[[9,24]],c:"#f3b65b",t:"desde 09:00",real:true},
+    {k:"des",n:"Desayuno · American Café",r:[[7,10]],c:"#e58f3b",t:"07:00 a 10:00",real:false},
+    {k:"pis",n:"Piscina (de temporada)",r:[[10,18]],c:"#7fd6ff",t:"10:00 a 18:00",real:false},
+    {k:"bar",n:"Resto bar",r:[[18,23]],c:"#c99bff",t:"18:00 a 23:00",real:false}
+  ];
+  var plan=PLANES[0];
+  var why=$("#why2");
+  PLANES.forEach(function(p){
+    var b=document.createElement("button");b.type="button";b.setAttribute("aria-pressed","false");b.dataset.id=p.id;
+    b.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true">'+p.ic+'</svg><b>'+p.t+'</b><small>'+p.s+'</small>';
+    b.addEventListener("click",function(){setPlan(p.id)});why.appendChild(b);
+  });
+  var r2=$("#r2");
+  ROOMS.forEach(function(r){var o=document.createElement("option");o.value=r.id;o.textContent=r.n+" · "+soles(r.p);r2.appendChild(o)});
+  $("#in2").value=D1;$("#out2").value=D2;$("#in2").min=iso(HOY);$("#out2").min=D1;
+
+  function setPlan(id){
+    plan=PLANES.filter(function(p){return p.id===id})[0];
+    $$("button",why).forEach(function(b){b.setAttribute("aria-pressed",b.dataset.id===id?"true":"false")});
+    var r=room(plan.room);
+    r2.value=r.id;$("#g2").value=String(plan.g);
+    $("#air2").checked=(id==="paso");$("#car2").checked=false;
+    $("#plan2").textContent="Plan: "+plan.t+" · "+plan.h;
+    $("#rec2").innerHTML='<h2>'+plan.h+'</h2><p class="sub">Lo que le recomendamos para "'+plan.t.toLowerCase()+'"</p><div class="rec"><div class="name">'+r.n+'</div><div class="pr">'+soles(r.p)+' <small>por noche · '+(r.pub?'tarifa de su web, confirmar':'<span class="ej">ejemplo</span>')+'</small></div><p>'+plan.d+'</p><div class="tags">'+plan.tags.map(function(t){return '<span class="chip">'+t+'</span>'}).join("")+'</div></div>';
+    calc2();drawLegend();
+  }
+
+  /* Reloj de 24 h */
+  var NS="http://www.w3.org/2000/svg",C=150;
+  function pt(r,h){var a=(h/24)*2*Math.PI-Math.PI/2;return [C+r*Math.cos(a),C+r*Math.sin(a)]}
+  function arc(r,h1,h2){if(h2-h1>=24)h2=h1+23.999;var a=pt(r,h1),b=pt(r,h2),big=(h2-h1)>12?1:0;return "M"+a[0].toFixed(2)+" "+a[1].toFixed(2)+" A"+r+" "+r+" 0 "+big+" 1 "+b[0].toFixed(2)+" "+b[1].toFixed(2)}
+  function el(n,at,p){var e=document.createElementNS(NS,n);for(var k in at)e.setAttribute(k,at[k]);(p||dial).appendChild(e);return e}
+  var dial=$("#dial"),hand,dot;
+  (function build(){
+    el("circle",{cx:C,cy:C,r:134,fill:"#0a1220",stroke:"#22365a","stroke-width":1});
+    for(var h=0;h<24;h++){var a=pt(h%6===0?126:130,h),b=pt(136,h);el("line",{x1:a[0],y1:a[1],x2:b[0],y2:b[1],stroke:h%6===0?"#a9b9d3":"#22365a","stroke-width":h%6===0?1.6:1})}
+    [[0,"0"],[6,"6"],[12,"12"],[18,"18"]].forEach(function(x){var p=pt(146,x[0]);var t=el("text",{x:p[0],y:p[1]+3.5,"text-anchor":"middle"});t.textContent=x[1]});
+    SERV.forEach(function(s,i){var r=118-i*17;s.r.forEach(function(rg){el("path",{d:arc(r,rg[0],rg[1]),fill:"none",stroke:s.c,"stroke-width":9,"stroke-linecap":"round",opacity:.9,"data-k":s.k})})});
+    hand=el("line",{x1:C,y1:C,x2:C,y2:C-100,stroke:"#fff","stroke-width":2,"stroke-linecap":"round"});
+    dot=el("circle",{cx:C,cy:C,r:5,fill:"#fff"});
+  })();
+  function drawHand(h){var p=pt(96,h);hand.setAttribute("x2",p[0]);hand.setAttribute("y2",p[1])}
+  var legend=$("#legend");
+  SERV.forEach(function(s){var li=document.createElement("li");li.dataset.k=s.k;li.innerHTML='<i style="background:'+s.c+'"></i>'+s.n+'<span>'+s.t+(s.real?'':' · ejemplo')+'</span>';legend.appendChild(li)});
+  function on(s,h){return s.r.some(function(rg){return h>=rg[0]&&h<rg[1]})}
+  function fmt(h){var hh=Math.floor(h),mm=(h-hh)>=.5?"30":"00";return (hh<10?"0":"")+hh+":"+mm}
+  function drawLegend(){
+    var h=parseFloat($("#hr2").value);
+    drawHand(h);$("#clock").textContent=fmt(h);
+    $$("li",legend).forEach(function(li){var s=SERV.filter(function(x){return x.k===li.dataset.k})[0];li.classList.toggle("on",on(s,h))});
+    $$("path[data-k]",dial).forEach(function(p){p.setAttribute("opacity",plan.hl.indexOf(p.getAttribute("data-k"))>=0?1:.45)});
+    var m;
+    if(h<5)m="Llega de madrugada: avise por WhatsApp y recepción (24 h) lo espera. Se revisa si puede entrar antes de las 09:00.";
+    else if(h<9)m="Antes del check-in de las 09:00: pida entrada anticipada y deje el equipaje en recepción si hace falta.";
+    else if(h<10)m="Check-in abierto y desayuno todavía servido (horario de ejemplo).";
+    else if(h<14)m="Check-in abierto. Es la hora en que salen los huéspedes de la noche anterior (check-out hasta las 14:00).";
+    else if(h<18)m="Tarde tranquila: habitaciones listas, y la piscina si es temporada (por confirmar).";
+    else if(h<23)m="Noche: resto bar abierto (horario de ejemplo) y recepción 24 h para lo que necesite.";
+    else m="Llegada tardía: recepción 24 h. Avise y le dejan la habitación lista.";
+    $("#hint2").textContent=m;
+  }
+  $("#hr2").addEventListener("input",drawLegend);
+
+  function calc2(){
+    var a=$("#in2").value,b=$("#out2").value,g=parseInt($("#g2").value,10),r=room(r2.value),n=noches(a,b);
+    var err=$("#err2"),av=$("#av2");err.hidden=true;av.hidden=true;
+    $("#out2").min=a||iso(HOY);
+    if(!a||!b||n<=0){$("#resumen2").textContent="Elija llegada y salida";$("#tot2").textContent="S/ 0";if(a&&b&&n<=0){err.textContent="La salida debe ser después de la llegada.";err.hidden=false}return null}
+    if(g>r.cap){var sug=ROOMS.filter(function(x){return x.cap>=g}).sort(function(x,y){return x.p-y.p})[0];err.textContent="La "+r.n.toLowerCase()+" es para "+r.cap+" "+(r.cap>1?"personas":"persona")+". Para "+g+" le conviene la "+(sug?sug.n.toLowerCase():"triple")+(g>3?" o dos habitaciones":"")+".";err.hidden=false}
+    if($("#air2").checked){av.textContent="Indique su hora de vuelo al escribir: el hotel confirma el recojo y su costo.";av.hidden=false}
+    var tot=n*r.p;
+    $("#resumen2").innerHTML="<b style='color:#fff'>"+n+" "+(n>1?"noches":"noche")+"</b> · "+fechaTxt(a)+" a "+fechaTxt(b);
+    $("#tot2").textContent=soles(tot);
+    return {n:n,r:r,g:g,a:a,b:b,tot:tot};
+  }
+  ["in2","out2","g2","r2","air2","car2"].forEach(function(id){$("#"+id).addEventListener("input",calc2);$("#"+id).addEventListener("change",calc2)});
+  $("#f2").addEventListener("submit",function(e){
+    e.preventDefault();var s=calc2();if(!s||!$("#err2").hidden)return;
+    var m="quisiera reservar en el Hotel Americano: habitación "+s.r.n.toLowerCase()+", del "+fechaTxt(s.a)+" al "+fechaTxt(s.b)+" ("+s.n+" "+(s.n>1?"noches":"noche")+"), "+s.g+" "+(s.g>1?"huéspedes":"huésped")+". Viajo por "+plan.t.toLowerCase()+".";
+    if($("#air2").checked)m+=" Necesito recojo desde el aeropuerto.";
+    if($("#car2").checked)m+=" Llego en auto y necesito cochera.";
+    m+=" Total referencial: "+soles(s.tot)+". ¿Tienen disponibilidad?";
+    window.open(wa(m),"_blank","noopener");
+  });
+  setPlan("trabajo");
+
+  setView(location.hash==="#vista2"?"2":"1");
+})();
+</script>
+</body></html>
