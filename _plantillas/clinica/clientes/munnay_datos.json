@@ -1,0 +1,1996 @@
+{
+ "grupos": [
+  {
+   "n": "Tratamientos Estéticos",
+   "items": [
+    {
+     "slug": "laser-fotona",
+     "n": "Reducción de manchas"
+    },
+    {
+     "slug": "tatuaje",
+     "n": "Eliminación de Tatuajes"
+    },
+    {
+     "slug": "mesoterapia-facial",
+     "n": "Mesoterapia Facial"
+    },
+    {
+     "slug": "aumento-de-labios-con-acido-hialuronico",
+     "n": "Aumento de Labios con Ácido Hialurónico"
+    },
+    {
+     "slug": "rinomodelacion-con-acido-hialuronico",
+     "n": "Rinomodelación con Ácido Hialurónico"
+    },
+    {
+     "slug": "reduccion-de-ojeras",
+     "n": "Reducción de Ojeras"
+    }
+   ]
+  },
+  {
+   "n": "Tratamientos Faciales",
+   "items": [
+    {
+     "slug": "limpieza-facial",
+     "n": "Limpieza Facial"
+    },
+    {
+     "slug": "hydrafacial-syndeo-cajamarca",
+     "n": "Hydrafacial Syndeo"
+    },
+    {
+     "slug": "tratamiento-de-acne-y-secuelas",
+     "n": "Tratamiento de Acné y Secuelas"
+    }
+   ]
+  },
+  {
+   "n": "Tratamientos Corporales",
+   "items": [
+    {
+     "slug": "depilacion-laser",
+     "n": "Depilación Láser"
+    },
+    {
+     "slug": "onda-coolwaves",
+     "n": "Reducción de Grasa"
+    },
+    {
+     "slug": "enzimas-pb-serum",
+     "n": "Enzimas PB Serum"
+    }
+   ]
+  },
+  {
+   "n": "Antienvejecimiento",
+   "items": [
+    {
+     "slug": "bioestimuladores",
+     "n": "Bioestimuladores"
+    },
+    {
+     "slug": "toxina-botulinica",
+     "n": "Toxina Botulínica"
+    },
+    {
+     "slug": "exion",
+     "n": "Exion"
+    }
+   ]
+  }
+ ],
+ "trat": [
+  {
+   "slug": "laser-fotona",
+   "nombre": "Reducción de manchas",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_fotona",
+   "h": "Láser Fotona StarWalker MaQX",
+   "sub": "Para Manchas en la piel",
+   "premios_t": "",
+   "intro": [
+    "El Fotona StarWalker es la solución perfecta para lograr una piel más uniforme, joven y libre de imperfecciones. Gracias a su tecnología de vanguardia, este láser ofrece resultados excepcionales en el tratamiento de manchas en la piel, con seguridad y efectividad respaldadas por evidencia médica."
+   ],
+   "ben": [
+    {
+     "t": "Tratamientos no invasivos y sin tiempo de recuperación",
+     "p": "Tratamientos seguros y no invasivos que mejoran tu apariencia sin detener tu ritmo de vida."
+    },
+    {
+     "t": "Resultados clínicamente comprobados",
+     "p": "Combina tecnología de última generación con evidencia científica para tratar el melasma y las manchas de forma efectiva."
+    },
+    {
+     "t": "Seguridad para todos los fototipos de piel",
+     "p": "Diseñado para ser seguro en todos los tonos de piel, evitando riesgos como la hiperpigmentación post tratamiento."
+    }
+   ],
+   "mid": [
+    {
+     "h": "El láser más potente para eliminar manchas está en Cajamarca",
+     "ps": [
+      "StarWalker combina cuatro longitudes de onda complementarias y 14 modalidades de láser, y es un equipo muy versátil y polivalente que realiza una amplia gama de tratamientos estéticos."
+     ],
+     "chips": []
+    },
+    {
+     "h": "Tipos de manchas que tratamos",
+     "ps": [],
+     "chips": [
+      "Melasma",
+      "Lentigos",
+      "Pecas",
+      "Lunares"
+     ]
+    },
+    {
+     "h": "",
+     "ps": [
+      "Trata tus manchas a tiempo."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de iniciar tu tratamiento con láser Fotona",
+   "items": [
+    {
+     "t": "Tipo de tratamiento",
+     "ps": [
+      "Existen varios tipos de láser Fotona, cada uno diseñado para abordar necesidades específicas, como cicatrices de acné, varices, lesiones vasculares, estrías e incluso para regenerar y rehidratar la piel.",
+      "Por ello, si estás pensando realizar este tratamiento, es imprescindible hablar con tu especialista sobre tus necesidades para poder determinar qué tipo de láser se utilizará para tu caso particular."
+     ],
+     "li": []
+    },
+    {
+     "t": "Expectativas realistas",
+     "ps": [
+      "Cada persona es única, así como el comportamiento de su piel. Debes ser consciente de que el nivel de mejora, la rapidez de los resultados o el número total de sesiones para lograr unos resultados óptimos puede variar según el tipo de tratamiento y la respuesta individual de cada paciente.",
+      "Por ello, te recomendamos preguntar siempre a tu especialista, quien te proporcionará información detallada sobre lo que puedes esperar y tener así unas expectativas realistas sobre los resultados."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Es doloroso el láser Fotona?",
+     "ps": [
+      "Aunque es cierto que algunos pacientes pueden experimentar una sensación de calor en la piel durante el tratamiento, no resulta doloroso, ya que se va aplicando aire frío a través de otro equipo.",
+      "En cuanto a los posibles efectos secundarios, debes saber que la piel es un órgano muy sensible y tras el tratamiento puede producirse enrojecimiento, hinchazón o descamación de la piel, aunque suele ser de manera leve y temporal."
+     ],
+     "li": []
+    },
+    {
+     "t": "Debes suspender activos como retinol o ácidos",
+     "ps": [
+      "Estos productos son activos fotosensibilizantes, es decir, hacen que tu piel sea más sensible a la luz y al calor, lo cual puede aumentar el riesgo de:"
+     ],
+     "li": [
+      "Irritación o enrojecimiento excesivo",
+      "Quemaduras leves o descamación intensa",
+      "Manchas postinflamatorias (hiperpigmentación)"
+     ]
+    },
+    {
+     "t": "Tu piel no debe estar bronceada",
+     "ps": [
+      "El bronceado aumenta la melanina en tu piel, y el láser Fotona actúa reconociendo ciertas diferencias de pigmento. Si tu piel está más oscura de lo habitual por exposición al sol o cabinas de bronceado, el tratamiento deberá esperar hasta que recupere su tono natural."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "Empieza el gran cambio y olvídate de las manchas no deseadas",
+   "res": [
+    "r_las1",
+    "r_las2"
+   ],
+   "premios": [],
+   "marcas": [
+    "Fotona StarWalker MaQX"
+   ],
+   "rutina": [
+    "Protector Solar",
+    "Vitamina C"
+   ]
+  },
+  {
+   "slug": "tatuaje",
+   "nombre": "Eliminación de Tatuajes",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_tatu",
+   "h": "Láser Fotona StarWalker",
+   "sub": "Elimina tu tatuaje de forma segura, eficaz y definitiva",
+   "premios_t": "",
+   "intro": [
+    "Tecnología láser de última generación para borrar el pasado sin dañar tu piel. Gracias al uso del láser Fotona StarWalker MaQX, logramos resultados clínicamente comprobados incluso en tatuajes con tintas oscuras o de colores complejos, minimizando el riesgo de cicatrices o hiperpigmentaciones."
+   ],
+   "ben": [
+    {
+     "t": "Eliminación precisa sin dañar la piel",
+     "p": "La tecnología láser avanzada como el Fotona StarWalker MaQX permite atacar exclusivamente los pigmentos del tatuaje, preservando la piel sana y reduciendo el riesgo de cicatrices o quemaduras."
+    },
+    {
+     "t": "Resultados visibles en menos sesiones",
+     "p": "Gracias a los pulsos ultra cortos (nanosegundos), la tinta se fragmenta en partículas más pequeñas, lo que acelera su eliminación natural por el cuerpo y reduce la cantidad total de sesiones necesarias."
+    },
+    {
+     "t": "Eficaz en todos los colores de tinta",
+     "p": "A diferencia de otros métodos, nuestro sistema láser actúa sobre una amplia gama de colores, logrando resultados uniformes y completos."
+    }
+   ],
+   "mid": [
+    {
+     "h": "El láser más potente para eliminar tatuajes está en Cajamarca",
+     "ps": [
+      "StarWalker combina cuatro longitudes de onda complementarias y 14 modalidades de láser, y es un equipo muy versátil y polivalente que realiza una amplia gama de tratamientos estéticos."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de iniciar tu tratamiento de eliminación de tatuajes con láser Fotona StarWalker MaQX",
+   "items": [
+    {
+     "t": "Tipo de tatuaje y pigmento",
+     "ps": [
+      "No todos los tatuajes responden igual al tratamiento láser. El Fotona StarWalker MaQX utiliza tecnología Q-Switched de alta energía para eliminar distintos tipos de pigmento, pero el número de sesiones dependerá de:",
+      "Color del tatuaje: los pigmentos oscuros como el negro y azul responden mejor; colores como verde y rojo requieren más sesiones.",
+      "Densidad y profundidad: los tatuajes profesionales suelen tener más tinta que los amateur.",
+      "Antigüedad del tatuaje: los más antiguos pueden eliminarse más fácilmente porque parte del pigmento ya ha sido degradado por el cuerpo.",
+      "Por eso, una evaluación médica previa es clave para diseñar un protocolo personalizado."
+     ],
+     "li": []
+    },
+    {
+     "t": "Ten expectativas realistas",
+     "ps": [
+      "Cada piel reacciona de forma diferente. La eliminación completa puede tomar entre 4 y 10 sesiones, y es posible que queden ligeras sombras o cambios en la pigmentación de la piel.",
+      "Tu especialista te indicará:",
+      "Si se requiere tratamiento complementario (peelings, cremas despigmentantes o sesiones de láser fraccionado)"
+     ],
+     "li": [
+      "Cuántas sesiones se estiman en tu caso",
+      "Qué resultados puedes esperar"
+     ]
+    },
+    {
+     "t": "¿El tratamiento duele?",
+     "ps": [
+      "El láser Fotona StarWalker MaQX genera una sensación de microimpactos térmicos en la piel (como chispazos de banda elástica). No es un dolor intenso, pero puede causar molestia.",
+      "Para mejorar tu experiencia:",
+      "Es normal presentar enrojecimiento, inflamación o costras leves después de cada sesión."
+     ],
+     "li": [
+      "Se aplica anestesia tópica local",
+      "Se usa aire frío o sistemas de enfriamiento dérmico",
+      "Las sesiones son rápidas y bien toleradas"
+     ]
+    },
+    {
+     "t": "Suspende activos como retinol o ácidos antes del tratamiento",
+     "ps": [
+      "Los productos con ingredientes como:",
+      "deben suspenderse al menos 7 días antes del tratamiento. Estos activos hacen que la piel esté más sensible al calor del láser y pueden provocar:",
+      "Tu especialista te dará una guía pre y post tratamiento personalizada."
+     ],
+     "li": [
+      "Ácido glicólico",
+      "Ácido salicílico",
+      "Retinol o derivados de vitamina A",
+      "Irritación intensa",
+      "Riesgo de quemaduras",
+      "Pigmentación postinflamatoria"
+     ]
+    },
+    {
+     "t": "Tu piel no debe estar bronceada",
+     "ps": [
+      "Evita el sol directo y las camas de bronceado 2 a 4 semanas antes de tu sesión. El exceso de melanina en la piel puede:",
+      "El tono natural de tu piel es el ideal para iniciar el protocolo."
+     ],
+     "li": [
+      "Disminuir la efectividad del tratamiento",
+      "Aumentar el riesgo de quemaduras o hiperpigmentación",
+      "Interferir en la correcta detección del pigmento del tatuaje por el láser"
+     ]
+    }
+   ],
+   "cta": "Empieza el gran cambio y olvídate de los tatuajes no deseados",
+   "res": [
+    "r_tat1",
+    "r_tat2",
+    "r_tat3",
+    "r_tat4"
+   ],
+   "premios": [],
+   "marcas": [
+    "Fotona StarWalker MaQX"
+   ],
+   "rutina": [
+    "Protector Solar",
+    "Piel Sensible"
+   ]
+  },
+  {
+   "slug": "mesoterapia-facial",
+   "nombre": "Mesoterapia Facial",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_meso",
+   "h": "Mesoterapia Facial con RRS®HA",
+   "sub": "Hidratación profunda y revitalización desde la primera sesión",
+   "premios_t": "",
+   "intro": [
+    "Vitaminas, ácido hialurónico y antioxidantes microinyectados directamente en tu piel para restaurar su frescura, firmeza y luminosidad natural."
+   ],
+   "ben": [
+    {
+     "t": "Hidratación profunda desde las capas internas de la piel",
+     "p": "Gracias a la aplicación intradérmica de ácido hialurónico no reticulado y vitaminas, la mesoterapia facial restablece el equilibrio hídrico cutáneo, mejorando la elasticidad y firmeza de forma inmediata."
+    },
+    {
+     "t": "Estimulación de colágeno y regeneración celular",
+     "p": "Los principios activos aplicados activan la producción natural de colágeno y elastina, lo que mejora la densidad dérmica, atenúa arrugas finas y favorece una piel más firme y joven."
+    },
+    {
+     "t": "Mejora visible del tono, textura y luminosidad",
+     "p": "La combinación de antioxidantes, minerales y aminoácidos ayuda a uniformar el tono, cerrar poros y aportar un brillo saludable, combatiendo el aspecto apagado y los signos de fatiga."
+    }
+   ],
+   "mid": [
+    {
+     "h": "El mejor tratamiento para dar vida a tu piel y devolver su belleza",
+     "ps": [
+      "RRS®HA combina ácido hialurónico, vitaminas y aminoácidos, logrando un tratamiento versátil que hidrata, revitaliza y mejora la calidad de la piel en múltiples niveles."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de iniciar tu tratamiento de Mesoterapia",
+   "items": [
+    {
+     "t": "Sesiones recomendadas",
+     "ps": [
+      "Para obtener resultados óptimos con la mesoterapia RRS®HA, se recomienda realizar entre 3 a 6 sesiones, dependiendo del estado de la piel y los objetivos del tratamiento. Cada sesión se aplica con un intervalo de 15 días, lo que permite una absorción progresiva de los principios activos y una estimulación continua de la piel. Este protocolo favorece una hidratación profunda, mayor firmeza y revitalización visible desde las primeras aplicaciones."
+     ],
+     "li": []
+    },
+    {
+     "t": "Recuperación",
+     "ps": [
+      "Tras la aplicación de la mesoterapia, es posible experimentar una leve inflamación, enrojecimiento o pequeños hematomas en la zona tratada. Estos efectos son normales y temporales, y suelen desaparecer en un periodo de 24 a 48 horas. Durante este tiempo, se recomienda evitar la exposición solar directa y seguir las indicaciones del profesional para asegurar una recuperación rápida y óptimos resultados."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Después de la aplicación de mesoterapia, es importante no masajear la zona tratada para evitar la dispersión del producto. Además, se recomienda no aplicar maquillaje ni productos cosméticos durante las primeras 24 horas, con el fin de prevenir irritaciones o infecciones. Seguir estos cuidados garantiza una mejor absorción de los activos y optimiza los resultados del tratamiento."
+     ],
+     "li": []
+    },
+    {
+     "t": "Visibilidad de los resultados",
+     "ps": [
+      "Los efectos de la mesoterapia comienzan a notarse desde la segunda sesión, con una piel visiblemente más luminosa, firme y revitalizada. A medida que avanzan las aplicaciones, los resultados se intensifican, ofreciendo un rostro más saludable y rejuvenecido."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Desde qué edad?",
+     "ps": [
+      "La mesoterapia es una excelente opción a partir de los 25 años, ya que ayuda a prevenir el envejecimiento prematuro, manteniendo la piel hidratada, elástica y con una apariencia fresca por más tiempo. Es el tratamiento perfecto para quienes desean cuidar su piel antes de que aparezcan los primeros signos de la edad."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Dale a tu piel el glow que merece!",
+   "res": [],
+   "premios": [],
+   "marcas": [
+    "RRS®HA"
+   ],
+   "rutina": [
+    "Serum Hidratante",
+    "Crema Hidratante"
+   ]
+  },
+  {
+   "slug": "aumento-de-labios-con-acido-hialuronico",
+   "nombre": "Aumento de Labios con Ácido Hialurónico",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_labios",
+   "h": "Aumento de labios con Ácido Hialurónico Juvéderm y Skinfill",
+   "sub": "Labios con volumen, forma y naturalidad",
+   "premios_t": "",
+   "intro": [
+    "El aumento de labios con ácido hialurónico es la opción ideal para dar volumen, definición y simetría a tus labios sin necesidad de cirugía. En Munnay, utilizamos productos de alta gama como Juvéderm y Skinfill, que garantizan resultados naturales, precisos y en armonía con tu rostro."
+   ],
+   "ben": [
+    {
+     "t": "Define y da volumen de forma natural",
+     "p": "Modelamos tus labios respetando su forma original, mejorando simetría y proyección."
+    },
+    {
+     "t": "Hidratación intensa desde adentro",
+     "p": "El ácido hialurónico retiene agua, dejando los labios suaves, jugosos y saludables."
+    },
+    {
+     "t": "Resultados inmediatos y reversibles",
+     "p": "Notas el cambio al instante, y es 100% reabsorbible con el tiempo."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Resalta tu belleza con el método más seguro",
+     "ps": [
+      "El aumento de labios con Juvéderm y Skinfill realza el volumen y la forma de tus labios sin cirugía. Resultados inmediatos, naturales y seguros con productos de alta calidad que también hidratan y suavizan la piel."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de hacerte un aumento de labios",
+   "items": [
+    {
+     "t": "Duración de los resultados",
+     "ps": [
+      "La duración del efecto del aumento de labios varía entre 9 y 12 meses, dependiendo del tipo de ácido hialurónico utilizado, los cuidados posteriores y el estilo de vida del paciente. Además, se pueden realizar retoques opcionales para mantener el resultado en el tiempo.",
+      "Factores como la exposición solar, el tabaquismo o la actividad física intensa pueden influir en la duración del efecto."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "Cada piel reacciona de forma diferente, y es importante entender que, tras el tratamiento, puede presentarse una ligera inflamación o enrojecimiento durante las primeras 24 a 72 horas. Estos efectos son totalmente normales y tienden a desaparecer de forma progresiva."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Para asegurar una correcta adaptación del producto y prolongar los resultados, se recomienda evitar besar, exponerse a fuentes de calor intenso (como saunas o sol directo) y aplicar maquillaje en la zona tratada durante las primeras 24 horas."
+     ],
+     "li": []
+    },
+    {
+     "t": "Requiere una evaluación previa",
+     "ps": [
+      "Cada rostro tiene una armonía única, por eso es fundamental una valoración personalizada antes del tratamiento. Solo así podremos identificar tus necesidades específicas y recomendarte la mejor técnica para lograr resultados naturales y equilibrados."
+     ],
+     "li": []
+    },
+    {
+     "t": "Médicos especializados",
+     "ps": [
+      "Tu seguridad es lo primero. Por eso, este tratamiento es realizado exclusivamente por profesionales médicos capacitados, garantizando resultados estéticos seguros, precisos y armoniosos."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Luce los labios que siempre soñaste!",
+   "res": [],
+   "premios": [],
+   "marcas": [
+    "Juvéderm",
+    "Skinfill"
+   ],
+   "rutina": [
+    "Serum Hidratante"
+   ]
+  },
+  {
+   "slug": "rinomodelacion-con-acido-hialuronico",
+   "nombre": "Rinomodelación con Ácido Hialurónico",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_rino",
+   "h": "Rinomodelación con Ácido Hialurónico Juvéderm y Skinfill",
+   "sub": "Armoniza tu perfil sin cirugías",
+   "premios_t": "",
+   "intro": [
+    "La rinomodelación con ácido hialurónico es la alternativa ideal para perfilar tu nariz sin cirugía. En Munnay, utilizamos productos de alta gama como Juvéderm y Skinfill, que garantizan resultados precisos, naturales y armoniosos."
+   ],
+   "ben": [
+    {
+     "t": "Resultados inmediatos y sin bisturí",
+     "p": "Corrige el perfil, levanta la punta nasal y suaviza el caballete en minutos."
+    },
+    {
+     "t": "Totalmente reversible y seguro",
+     "p": "Utilizamos ácido hialurónico de alta calidad, compatible y reabsorbible."
+    },
+    {
+     "t": "Sin tiempo de incapacidad",
+     "p": "Puedes retomar tu rutina el mismo día."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Define tu perfil con el método más seguro y no invasivo",
+     "ps": [
+      "La rinomodelación con Juvéderm y Skinfill redefine tu nariz sin cirugía. Resultados inmediatos, naturales y seguros con productos de alta calidad."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de hacerte tu rinomodelación",
+   "items": [
+    {
+     "t": "Duración de los resultados",
+     "ps": [
+      "La duración del efecto varía entre 12 y 18 meses, dependiendo del tipo de ácido hialurónico utilizado, los cuidados posteriores y el estilo de vida del paciente.",
+      "Factores como la exposición solar, el tabaquismo y la actividad física intensa pueden influir en la duración del resultado."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "Cada piel reacciona de forma diferente, y es importante entender que, tras el tratamiento, puede presentarse una ligera inflamación o enrojecimiento durante las primeras 24 a 48 horas. Estos efectos son totalmente normales y tienden a desaparecer de forma progresiva."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Para asegurar una correcta adaptación del producto y prolongar los resultados, se recomienda evitar el uso de gafas pesadas, así como exponerse a fuentes de calor extremo (como saunas, baños calientes o sol intenso) durante los primeros días."
+     ],
+     "li": []
+    },
+    {
+     "t": "Requiere una evaluación previa",
+     "ps": [
+      "Cada rostro tiene una armonía única, por eso es fundamental una valoración personalizada antes del tratamiento. Solo así podremos identificar tus necesidades específicas y recomendarte la mejor técnica para lograr resultados naturales y equilibrados."
+     ],
+     "li": []
+    },
+    {
+     "t": "Médicos especializados",
+     "ps": [
+      "Tu seguridad es lo primero. Por eso, este tratamiento es realizado exclusivamente por profesionales médicos capacitados, garantizando resultados estéticos seguros, precisos y armoniosos."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "Nariz más armónica, sin joroba, punta más definida y perfil estilizado.",
+   "res": [],
+   "premios": [],
+   "marcas": [
+    "Juvéderm",
+    "Skinfill"
+   ],
+   "rutina": [
+    "Protector Solar"
+   ]
+  },
+  {
+   "slug": "reduccion-de-ojeras",
+   "nombre": "Reducción de Ojeras",
+   "grupo": "Tratamientos Estéticos",
+   "gi": 0,
+   "img": "t_ojeras",
+   "h": "",
+   "sub": "Despídete del aspecto cansado",
+   "premios_t": "",
+   "intro": [
+    "El tratamiento de ojeras con ácido hialurónico es la opción ideal para atenuar surcos, mejorar la luminosidad y dar un aspecto más descansado a tu mirada sin necesidad de cirugía."
+   ],
+   "ben": [
+    {
+     "t": "Ilumina la mirada al instante",
+     "p": "Rellena el surco lagrimal y mejora el tono de la piel en la zona."
+    },
+    {
+     "t": "Hidratación profunda y larga duración",
+     "p": "Rejuvenece desde dentro sin cirugía ni dolor."
+    },
+    {
+     "t": "Reversibilidad y seguridad",
+     "p": "Procedimiento seguro con ácido hialurónico especializado para la zona periocular."
+    }
+   ],
+   "mid": [
+    {
+     "h": "",
+     "ps": [
+      "Realza tu belleza con una mirada fresca y natural, de forma segura.",
+      "El tratamiento de ojeras con ácido hialurónico corrige surcos y devuelve la luminosidad a tu mirada sin cirugía. Resultados inmediatos, naturales y seguros, con efecto hidratante y revitalizante."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de hacerte un tratamiento de ojeras",
+   "items": [
+    {
+     "t": "Duración de los resultados",
+     "ps": [
+      "La duración del efecto del tratamiento de ojeras varía entre 9 y 12 meses, dependiendo del tipo de ácido hialurónico utilizado, los cuidados posteriores y el estilo de vida del paciente. Además, se pueden realizar retoques opcionales para mantener el resultado en el tiempo.",
+      "Factores como la exposición solar, el tabaquismo, el descanso o la actividad física intensa pueden influir en la duración del efecto."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "El tiempo de recuperación es mínimo. Es posible que aparezca una leve hinchazón temporal tras el tratamiento, lo cual es totalmente normal y desaparece de forma progresiva según la respuesta de cada piel."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Para asegurar una buena adaptación del producto y prolongar los resultados, se recomienda no aplicar cremas ni maquillaje en la zona tratada durante las primeras 24 horas."
+     ],
+     "li": []
+    },
+    {
+     "t": "Requiere una evaluación previa",
+     "ps": [
+      "No todos los tipos de ojera se corrigen con relleno. Por eso, es fundamental una valoración personalizada antes del tratamiento, que nos permita identificar tus necesidades específicas y definir si el ácido hialurónico es la opción más adecuada para lograr resultados naturales y seguros."
+     ],
+     "li": []
+    },
+    {
+     "t": "Producto específico",
+     "ps": [
+      "Para el tratamiento de ojeras se utiliza un tipo de ácido hialurónico de baja densidad, especialmente formulado para la delicada zona del contorno de ojos. Esto garantiza resultados naturales, seguros y en armonía con tu rostro."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Mira el cambio desde el primer día!",
+   "res": [],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Contorno de ojos"
+   ]
+  },
+  {
+   "slug": "limpieza-facial",
+   "nombre": "Limpieza Facial",
+   "grupo": "Tratamientos Faciales",
+   "gi": 1,
+   "img": "t_limp",
+   "h": "Limpieza Facial Profesional",
+   "sub": "Tu piel necesita respirar",
+   "premios_t": "",
+   "intro": [
+    "La limpieza facial profesional es ideal para renovar tu piel en profundidad. En Munnay combinamos vaporización, extracción, mascarillas, esencias marinas y masajes relajantes para dejar tu rostro limpio, hidratado y radiante."
+   ],
+   "ben": [
+    {
+     "t": "Elimina impurezas profundas",
+     "p": "Extraemos puntos negros, células muertas y sebo acumulado."
+    },
+    {
+     "t": "Piel más suave y luminosa",
+     "p": "Mejora la textura y el tono de forma visible desde el primer día."
+    },
+    {
+     "t": "Prepara la piel para otros tratamientos",
+     "p": "Potencia la efectividad de productos o procedimientos posteriores."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Luce un rostro renovado con la mejor limpieza facial de Cajamarca",
+     "ps": [
+      "La limpieza facial profesional en Munnay purifica y renueva tu piel en profundidad, sin procedimientos invasivos. Resultados inmediatos, visibles y seguros gracias a un protocolo completo que hidrata, desinflama y deja tu rostro suave, equilibrado y radiante."
+     ],
+     "chips": []
+    },
+    {
+     "h": "Paso a paso",
+     "steps": [
+      {
+       "t": "Vaporización",
+       "p": "Abrimos tus poros para una limpieza profunda, preparando la piel con vapor o productos especiales que suavizan la superficie. Esto permite eliminar impurezas, puntos negros y grasa acumulada de forma más efectiva y sin dañar la piel. Además, ayuda a que los tratamientos posteriores penetren mejor, dejando tu rostro más limpio, suave y renovado."
+      },
+      {
+       "t": "Leche desmaquillante",
+       "p": "Eliminamos maquillaje e impurezas suavemente usando productos adecuados para tu tipo de piel. Este paso inicial limpia en profundidad sin irritar, retirando residuos acumulados durante el día y dejando la piel lista para recibir los siguientes tratamientos de la limpieza facial."
+      },
+      {
+       "t": "Loción tónica",
+       "p": "Equilibramos el pH de tu piel y la preparamos para lo que viene, aplicando una loción tónica que calma, refresca y restablece su equilibrio natural. Esto es clave para que la piel esté en óptimas condiciones y pueda aprovechar al máximo los tratamientos que vienen después, como la exfoliación, extracción o hidratación."
+      },
+      {
+       "t": "Extracción",
+       "p": "Realizamos la extracción de impurezas acumuladas, como puntos negros, espinillas y grasa atrapada en los poros. Lo hacemos de forma cuidadosa y técnica, minimizando la irritación y respetando la piel, para lograr un rostro más limpio, libre de obstrucciones y con una textura más uniforme."
+      },
+      {
+       "t": "Mascarilla desinflamatoria",
+       "p": "Aplicamos una mascarilla desinflamatoria que ayuda a calmar la piel después de la extracción. Su fórmula reduce el enrojecimiento, cierra los poros y aporta una sensación de frescura, ayudando a que la piel se recupere más rápido y luzca más uniforme y saludable."
+      },
+      {
+       "t": "Esencias marinas",
+       "p": "Aplicamos esencias marinas ricas en minerales y nutrientes, que revitalizan y fortalecen la piel desde las capas más profundas. Estas esencias ayudan a hidratar, regenerar y aportar luminosidad natural, dejando el rostro fresco y lleno de vida."
+      },
+      {
+       "t": "Masajes relajantes",
+       "p": "Finalizamos con masajes relajantes que no solo ayudan a liberar el estrés, sino que también estimulan la circulación y mejoran la absorción de los productos aplicados. Es el cierre perfecto para que te vayas con una piel renovada y una sensación de bienestar total."
+      }
+     ]
+    }
+   ],
+   "cinco_t": "",
+   "items": [],
+   "cta": "¡Renueva tu piel desde hoy!",
+   "res": [],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Limpiadores",
+    "Exfoliante Tónico"
+   ]
+  },
+  {
+   "slug": "hydrafacial-syndeo-cajamarca",
+   "nombre": "Hydrafacial Syndeo",
+   "grupo": "Tratamientos Faciales",
+   "gi": 1,
+   "img": "t_hydra",
+   "h": "",
+   "sub": "Limpieza avanzada, hidratación intensa, resultados instantáneos",
+   "premios_t": "El tratamiento galardonado",
+   "intro": [
+    "HydraFacial Syndeo es la opción ideal para limpiar, hidratar y revitalizar tu piel sin necesidad de procedimientos invasivos. En Munnay, trabajamos con tecnología de última generación que garantiza resultados visibles, seguros y en armonía con las necesidades de tu piel, desde la primera sesión.",
+    "Reconocido por expertos, elegido por miles: eso es HydraFacial."
+   ],
+   "ben": [
+    {
+     "t": "Tecnología patentada para limpieza profunda",
+     "p": "El sistema Vortex-Fusion limpia, extrae e hidrata en un solo paso."
+    },
+    {
+     "t": "Combina exfoliación + infusión de activos",
+     "p": "Incluye suero antioxidante, ácido hialurónico y péptidos."
+    },
+    {
+     "t": "Sin dolor ni irritación",
+     "p": "Es apto incluso para pieles sensibles."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Dale un glow up a tu piel con el facial favorito de Hollywood",
+     "ps": [
+      "HydraFacial Syndeo limpia, exfolia e hidrata tu piel sin necesidad de procedimientos invasivos. Resultados inmediatos, visibles y seguros con tecnología de última generación que renueva, suaviza e ilumina tu rostro desde la primera sesión."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "3 pasos para una piel perfecta",
+   "items": [
+    {
+     "t": "Duración de la sesión",
+     "ps": [
+      "HydraFacial Syndeo tiene una duración aproximada de 45 minutos, en los cuales tu piel pasa por un proceso completo de limpieza, exfoliación, extracción e hidratación profunda.",
+      "Es un tratamiento rápido, efectivo y sin tiempo de recuperación, ideal para incluir en tu rutina de cuidado sin interrumpir tu día."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "HydraFacial Syndeo no requiere tiempo de recuperación. Es un tratamiento no invasivo, por lo que puedes retomar tus actividades al instante con la piel visiblemente más fresca, limpia y luminosa. Ideal incluso antes de eventos o salidas importantes."
+     ],
+     "li": []
+    },
+    {
+     "t": "Frecuencia del tratamiento",
+     "ps": [
+      "Para mantener la piel saludable, luminosa y con resultados prolongados, se recomienda realizar el tratamiento HydraFacial Syndeo cada 4 semanas. Esta frecuencia permite una renovación constante y un cuidado profundo adaptado al ciclo natural de tu piel."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Qué trata el HydraFacial Syndeo?",
+     "ps": [
+      "HydraFacial Syndeo está especialmente diseñado para tratar poros dilatados, líneas finas de expresión, tono apagado, textura irregular y deshidratación. Es un tratamiento versátil que mejora visiblemente la salud y apariencia de la piel desde la primera sesión."
+     ],
+     "li": []
+    },
+    {
+     "t": "HydraFacial es seguro todo el año",
+     "ps": [
+      "HydraFacial Syndeo es un tratamiento seguro y eficaz en cualquier estación, incluso durante el verano. Su tecnología no sensibiliza la piel al sol, por lo que puedes mantener tu rutina de cuidado sin interrupciones y lucir una piel radiante todo el año."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Tu piel merece un HydraFacial!",
+   "res": [],
+   "premios": [
+    "r_hy1",
+    "r_hy2",
+    "r_hy3"
+   ],
+   "marcas": [
+    "HydraFacial Syndeo"
+   ],
+   "rutina": [
+    "Serum Hidratante",
+    "Protector Solar"
+   ]
+  },
+  {
+   "slug": "tratamiento-de-acne-y-secuelas",
+   "nombre": "Tratamiento de Acné y Secuelas",
+   "grupo": "Tratamientos Faciales",
+   "gi": 1,
+   "img": "t_acne",
+   "h": "",
+   "sub": "Combina Láser Fotona, Celluma LED e Isotretinoína para una piel libre de imperfecciones",
+   "premios_t": "",
+   "intro": [
+    "En Munnay tratamos el acné activo y sus secuelas con tecnología avanzada como Láser Fotona, Celluma LED e Isotretinoína. Un enfoque seguro y personalizado para lograr una piel más limpia, uniforme y libre de imperfecciones."
+   ],
+   "ben": [
+    {
+     "t": "Actúa sobre el acné activo y sus marcas",
+     "p": "El láser Fotona elimina bacterias, reduce la inflamación y estimula la regeneración dérmica."
+    },
+    {
+     "t": "Mejora la textura y reduce cicatrices",
+     "p": "La combinación con Celluma (LED terapia) potencia la cicatrización y la uniformidad del rostro."
+    },
+    {
+     "t": "Enfoque médico integral",
+     "p": "Incluye evaluación y tratamiento oral (Isotretinoína) en casos moderados o severos."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Logra una piel libre de imperfecciones",
+     "ps": [
+      "En Munnay tratamos el acné activo y sus secuelas sin cirugía, utilizando Láser Fotona, Celluma LED e Isotretinoína. Resultados seguros, visibles y una piel más uniforme desde las primeras sesiones."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de iniciar tu tratamiento de acné",
+   "items": [
+    {
+     "t": "Duración del tratamiento",
+     "ps": [
+      "El tratamiento para el acné activo y sus secuelas tiene una duración estimada de 3 a 6 meses, dependiendo del grado de acné, tipo de piel y respuesta individual al tratamiento. Durante este tiempo se realiza un seguimiento personalizado para asegurar resultados progresivos, seguros y duraderos."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "El tiempo de recuperación por sesión es mínimo. Puede presentarse un leve enrojecimiento temporal entre 24 y 48 horas, dependiendo de la sensibilidad de la piel y el tipo de tratamiento aplicado. Estos efectos son normales y desaparecen progresivamente."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Es fundamental aplicar protección solar de forma estricta y evitar el uso de exfoliantes o productos irritantes durante los días posteriores al tratamiento. Estos cuidados ayudan a proteger la piel en su proceso de recuperación y optimizan los resultados."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Para qué es ideal?",
+     "ps": [
+      "Este tratamiento está indicado para casos de acné inflamatorio, acné quístico y cicatrices post acné. Gracias a la combinación de tecnologías como Láser Fotona, Celluma LED e Isotretinoína, se logra una mejora visible en la textura, inflamación y apariencia general de la piel."
+     ],
+     "li": []
+    },
+    {
+     "t": "Evaluación médica obligatoria",
+     "ps": [
+      "Cada piel y tipo de acné es distinto, por eso realizamos una evaluación médica previa para diagnosticar con precisión y personalizar el tratamiento según las necesidades específicas de tu piel."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Puedes tener una piel libre de secuelas!",
+   "res": [],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Acné y Piel Grasa",
+    "Limpiadores"
+   ]
+  },
+  {
+   "slug": "depilacion-laser",
+   "nombre": "Depilación Láser",
+   "grupo": "Tratamientos Corporales",
+   "gi": 2,
+   "img": "t_depi",
+   "h": "Depilación Láser Motus AX",
+   "sub": "Piel suave, sin dolor y sin vello",
+   "premios_t": "",
+   "intro": [
+    "La Depilación láser con Motus AX es la alternativa más segura, eficaz y cómoda para decirle adiós al vello no deseado. En Munnay, utilizamos esta tecnología de última generación que permite resultados visibles en un número determinado de sesiones, sin dolor y apta para todo tipo de piel, incluso las más sensibles."
+   ],
+   "ben": [
+    {
+     "t": "Tecnología Alexandrita con movimiento",
+     "p": "Permite tratar pieles claras y oscuras sin dolor y con alta efectividad."
+    },
+    {
+     "t": "Rápido y cómodo",
+     "p": "El cabezal con enfriamiento integrado reduce la molestia y trata zonas grandes en minutos."
+    },
+    {
+     "t": "Resultados duraderos",
+     "p": "Reduce hasta el 90% del vello con sesiones constantes."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Tratamiento Rápido y Sin Dolor",
+     "ps": [
+      "Motus AX ofrece una depilación láser rápida, casi indolora y más eficiente gracias a su tecnología Moveo, que permite tratar áreas grandes de forma continua y uniforme."
+     ],
+     "chips": []
+    },
+    {
+     "h": "Seguridad y Comodidad",
+     "ps": [
+      "Motus AX prioriza la seguridad y comodidad del paciente. Su tecnología Moveo y sistema de enfriamiento reducen riesgos y molestias durante el tratamiento."
+     ],
+     "chips": []
+    },
+    {
+     "h": "Zonas de depilación",
+     "ps": [],
+     "chips": [
+      "Piernas",
+      "Bikini",
+      "Brazos",
+      "Espalda"
+     ]
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de realizarte depilación láser con Motus AX",
+   "items": [
+    {
+     "t": "Sesiones recomendadas",
+     "ps": [
+      "La depilación láser con Motus AX requiere entre 6 y 8 sesiones, con un intervalo de 4 a 6 semanas entre cada una, porque el láser actúa solo sobre el vello que está en fase de crecimiento. El número exacto se define en tu evaluación según la zona, el tipo de vello y de piel."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "No requiere recuperación. Puede aparecer un leve enrojecimiento que desaparece en pocas horas y puedes retomar tus actividades el mismo día."
+     ],
+     "li": []
+    },
+    {
+     "t": "Antes de la sesión",
+     "ps": [
+      "Rasura la zona 24 horas antes y evita cera, pinzas o decoloración durante las 4 semanas previas: el láser necesita que la raíz del vello esté presente para actuar."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados con el sol",
+     "ps": [
+      "Evita el sol directo y las camas de bronceado 2 semanas antes y después de cada sesión, y usa protector solar en las zonas expuestas. La piel bronceada aumenta el riesgo de manchas."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Es doloroso?",
+     "ps": [
+      "El cabezal con enfriamiento integrado y la tecnología Moveo hacen que la sesión sea casi indolora: la mayoría lo describe como un calor leve y pasajero, apto incluso para pieles sensibles."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Piel suave y sin vello, sin dolor!",
+   "res": [],
+   "premios": [],
+   "marcas": [
+    "Motus AX",
+    "Deka"
+   ],
+   "rutina": [
+    "Piel Sensible",
+    "Protector Solar"
+   ]
+  },
+  {
+   "slug": "onda-coolwaves",
+   "nombre": "Reducción de Grasa",
+   "grupo": "Tratamientos Corporales",
+   "gi": 2,
+   "img": "t_onda",
+   "h": "Onda Coolwaves",
+   "sub": "Remodelación corporal con resultados visibles y duraderos",
+   "premios_t": "",
+   "intro": [
+    "Onda Coolwaves es la solución efectiva para tratar grasa localizada, celulitis y flacidez sin cirugía. En Munnay usamos tecnología de microondas avanzada que reduce medidas, tonifica y ofrece resultados visibles desde las primeras sesiones."
+   ],
+   "ben": [
+    {
+     "t": "Reduce grasa localizada y flacidez",
+     "p": "Emite microondas que destruyen selectivamente el tejido graso y reafirman la piel."
+    },
+    {
+     "t": "No invasivo y sin cirugía",
+     "p": "No requiere agujas ni cortes, y puedes retomar tus actividades al instante."
+    },
+    {
+     "t": "Activa colágeno y tonifica",
+     "p": "Ideal para abdomen, muslos, brazos y flancos."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Moldea tu cuerpo sin cirugía con la tecnología favorita para grasa localizada",
+     "ps": [
+      "Reduce grasa localizada, combate la celulitis y mejora la firmeza de tu piel sin cirugía. Onda Coolwaves es la tecnología no invasiva que transforma tu figura con resultados visibles desde la primera sesión."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de algún tratamiento con Onda Coolwaves",
+   "items": [
+    {
+     "t": "Duración de la sesión",
+     "ps": [
+      "Cada sesión de Onda Coolwaves tiene una duración de 30 a 45 minutos por zona tratada, lo que permite trabajar de manera precisa y efectiva en áreas específicas como el abdomen, muslos, caderas o papada, sin afectar tu rutina diaria."
+     ],
+     "li": []
+    },
+    {
+     "t": "Número de sesiones recomendadas",
+     "ps": [
+      "Se recomienda un protocolo de 4 a 6 sesiones, con una frecuencia de una por semana, para lograr una reducción progresiva de grasa localizada, mejorar la firmeza de la piel y disminuir visiblemente la celulitis. Los resultados se potencian con constancia y seguimiento profesional."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "El tratamiento con Onda Coolwaves no requiere tiempo de recuperación. Puedes retomar tus actividades de inmediato. Es posible que aparezca un leve enrojecimiento temporal en la zona tratada, el cual desaparece en pocas horas."
+     ],
+     "li": []
+    },
+    {
+     "t": "Resultados visibles",
+     "ps": [
+      "Los efectos de Onda Coolwaves comienzan a notarse desde la segunda sesión, con mejoras progresivas en la reducción de grasa localizada, firmeza de la piel y apariencia de la celulitis. Los resultados se intensifican con cada sesión y se mantienen en el tiempo con constancia y cuidado adecuado."
+     ],
+     "li": []
+    },
+    {
+     "t": "Onda para hombres y mujeres",
+     "ps": [
+      "Onda Coolwaves es un tratamiento seguro y eficaz tanto para hombres como para mujeres. Requiere una evaluación previa para personalizar el protocolo según las necesidades específicas de cada cuerpo y zona a tratar."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¿Lista para empezar?",
+   "res": [
+    "r_onda1",
+    "r_onda2",
+    "r_onda3",
+    "r_onda4"
+   ],
+   "premios": [],
+   "marcas": [
+    "Onda Coolwaves"
+   ],
+   "rutina": [
+    "Suplementos"
+   ]
+  },
+  {
+   "slug": "enzimas-pb-serum",
+   "nombre": "Enzimas PB Serum",
+   "grupo": "Tratamientos Corporales",
+   "gi": 2,
+   "img": "t_enz",
+   "h": "",
+   "sub": "Remodelación facial y corporal con biotecnología inteligente",
+   "premios_t": "",
+   "intro": [
+    "Las Enzimas PB Serum de segunda generación tratan grasa localizada, fibrosis y envejecimiento cutáneo sin cirugía. En Munnay aplicamos microinyecciones precisas que drenan, regeneran y mejoran zonas difíciles como papada, abdomen o muslos, con resultados naturales y progresivos."
+   ],
+   "ben": [
+    {
+     "t": "Drena, descompone y regenera",
+     "p": "Combina enzimas específicas para tratar fibrosis, grasa localizada y envejecimiento cutáneo."
+    },
+    {
+     "t": "Aplicación precisa y sin bisturí",
+     "p": "Resultados naturales mediante microinyecciones localizadas."
+    },
+    {
+     "t": "Acelera resultados en áreas difíciles",
+     "p": "Ideal para papada, abdomen, muslos, brazos, o celulitis."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Potencia tu belleza con enzimas que actúan donde más lo necesitas",
+     "ps": [
+      "El tratamiento con Enzimas PB Serum reduce grasa localizada, fibrosis y signos de envejecimiento sin cirugía. Resultados naturales y seguros con microinyecciones precisas que regeneran y mejoran la piel desde adentro."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de tu tratamiento con Enzimas",
+   "items": [
+    {
+     "t": "Número de sesiones",
+     "ps": [
+      "El número de sesiones varía entre 2 a 6, dependiendo de la zona tratada, el tipo de enzima utilizada y el objetivo del tratamiento.",
+      "Algunas áreas requieren mayor intervención para lograr resultados visibles, mientras que otras responden más rápidamente. La valoración médica determinará el protocolo ideal para ti."
+     ],
+     "li": []
+    },
+    {
+     "t": "Duración del procedimiento",
+     "ps": [
+      "Cada sesión con Enzimas PB Serum tiene una duración aproximada de 20 a 30 minutos, dependiendo de la zona a tratar. Es un procedimiento rápido, preciso y sin necesidad de tiempo de recuperación."
+     ],
+     "li": []
+    },
+    {
+     "t": "Cuidados posteriores",
+     "ps": [
+      "Puede presentarse una leve inflamación o pequeños hematomas temporales en la zona tratada. Estos efectos son normales y desaparecen en pocos días, permitiéndote retomar tus actividades con normalidad."
+     ],
+     "li": []
+    },
+    {
+     "t": "Visibilidad de los resultados",
+     "ps": [
+      "Los efectos del tratamiento con Enzimas PB Serum suelen notarse desde la segunda sesión, con mejoras progresivas en la textura, firmeza y apariencia de la piel en la zona tratada."
+     ],
+     "li": []
+    },
+    {
+     "t": "Médicos especializados",
+     "ps": [
+      "Para potenciar los resultados del tratamiento con Enzimas PB Serum, se puede combinar con aparatología especializada como Radiofrecuencia Exion u Onda Coolwaves. Esto mejora la absorción, activa la circulación y acelera los efectos regenerativos."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Moldea las zonas que más te cuestan!",
+   "res": [
+    "r_enz1",
+    "r_enz2"
+   ],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Suplementos"
+   ]
+  },
+  {
+   "slug": "bioestimuladores",
+   "nombre": "Bioestimuladores",
+   "grupo": "Antienvejecimiento",
+   "gi": 3,
+   "img": "t_bio",
+   "h": "",
+   "sub": "Regeneración profunda, firmeza natural, resultados duraderos",
+   "premios_t": "",
+   "intro": [
+    "Los bioestimuladores de colágeno son la alternativa ideal para quienes buscan recuperar la firmeza y elasticidad de su piel de manera progresiva y segura. En Munnay, utilizamos productos de alta calidad que estimulan la producción natural de colágeno, mejorando la estructura de la piel desde adentro. El resultado: una apariencia rejuvenecida, armónica y duradera, sin recurrir a procedimientos invasivos."
+   ],
+   "ben": [
+    {
+     "t": "Estimulación biológica del colágeno",
+     "p": "Activa los fibroblastos para producir colágeno y elastina de forma natural, mejorando la firmeza y densidad de la piel."
+    },
+    {
+     "t": "Resultados progresivos y duraderos",
+     "p": "A diferencia de otros tratamientos, sus efectos se incrementan con el tiempo, generando una mejora visible y sostenida en la calidad cutánea."
+    },
+    {
+     "t": "Seguridad y compatibilidad total",
+     "p": "Biocompatibles y mínimamente invasivos, son ideales para rostro, cuello, escote y cuerpo, con mínima inflamación y sin alterar los rasgos faciales."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Devuélvele a tu piel su firmeza natural desde adentro",
+     "ps": [
+      "Los bioestimuladores de colágeno son el secreto para una piel más tensa, firme y rejuvenecida sin recurrir a cirugías. Estimulan la producción natural de colágeno, redefiniendo el contorno facial y mejorando la calidad de tu piel de forma progresiva, segura y duradera. Ideal para lograr un efecto lifting sin perder naturalidad."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de aplicarte bioestimuladores de colágeno",
+   "items": [
+    {
+     "t": "Duración de la sesión",
+     "ps": [
+      "La aplicación de bioestimuladores dura entre 30 y 60 minutos, dependiendo de las áreas a tratar. Es un procedimiento mínimamente invasivo, realizado con microinyecciones precisas que estimulan la producción natural de colágeno."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "El tratamiento tiene una recuperación rápida. Puede haber leve inflamación o enrojecimiento durante las primeras 24-48 horas, pero no interfiere con las actividades diarias. No requiere incapacidad médica ni cuidados complejos."
+     ],
+     "li": []
+    },
+    {
+     "t": "Frecuencia del tratamiento",
+     "ps": [
+      "Se recomiendan entre 1 y 3 sesiones al año, según la edad, calidad de la piel y tipo de bioestimulador usado (como ácido poliláctico o hidroxiapatita de calcio). Los resultados se potencian con el tiempo y pueden durar hasta 18-24 meses."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Qué tratan los bioestimuladores?",
+     "ps": [
+      "Son ideales para tratar flacidez facial, pérdida de volumen, desmejoramiento del contorno mandibular, cuello, brazos o glúteos. Mejoran la densidad dérmica, restauran firmeza y redefinen el rostro de manera natural y progresiva."
+     ],
+     "li": []
+    },
+    {
+     "t": "Son seguros y compatibles con otras técnicas",
+     "ps": [
+      "Los bioestimuladores son altamente seguros, con estudios clínicos que respaldan su eficacia. Pueden combinarse con otros tratamientos como láser, toxina botulínica o ácido hialurónico para potenciar resultados sin riesgo de interacción."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Recupera la firmeza de tu piel!",
+   "res": [
+    "t_bio"
+   ],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Retinol",
+    "Antienvejecimiento"
+   ]
+  },
+  {
+   "slug": "toxina-botulinica",
+   "nombre": "Toxina Botulínica",
+   "grupo": "Antienvejecimiento",
+   "gi": 3,
+   "img": "t_toxina",
+   "h": "",
+   "sub": "Suaviza tus líneas sin perder tu expresión natural",
+   "premios_t": "",
+   "intro": [
+    "La toxina botulínica es el tratamiento estrella para prevenir y corregir arrugas de expresión. Rápida, segura y eficaz, relaja suavemente los músculos faciales para lograr un rostro más fresco, armónico y rejuvenecido, sin alterar tu esencia."
+   ],
+   "ben": [
+    {
+     "t": "Relaja los músculos, no tu expresión",
+     "p": "Reduce arrugas dinámicas manteniendo una apariencia natural y armónica."
+    },
+    {
+     "t": "Previene y corrige los signos del envejecimiento",
+     "p": "Ideal desde edades tempranas para retrasar la formación de líneas profundas."
+    },
+    {
+     "t": "Resultados visibles en pocos días",
+     "p": "Mejoras evidentes a partir del tercer día, con efecto completo en 7 a 10 días y duración de hasta 6 meses."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Redefine tu mirada, relaja tu rostro, potencia tu belleza natural",
+     "ps": [
+      "La toxina botulínica es el tratamiento más eficaz para suavizar líneas de expresión sin perder naturalidad. Su acción precisa relaja los músculos responsables de las arrugas, brindando una apariencia más fresca, armónica y rejuvenecida desde las primeras semanas. Ideal para prevenir el envejecimiento facial sin cirugías ni tiempos de recuperación."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "5 cosas que debes saber antes de aplicarte toxina botulínica",
+   "items": [
+    {
+     "t": "Duración de la sesión",
+     "ps": [
+      "La aplicación de toxina botulínica es rápida: suele durar entre 15 y 30 minutos. Se realiza mediante microinyecciones precisas en los músculos responsables de las arrugas de expresión. No requiere anestesia ni preparación previa compleja."
+     ],
+     "li": []
+    },
+    {
+     "t": "Tiempo de recuperación",
+     "ps": [
+      "Es un tratamiento ambulatorio y mínimamente invasivo. Puedes retomar tus actividades normales el mismo día. Se recomienda evitar ejercicio, exposición al calor intenso y manipulación de la zona durante las primeras 24 horas."
+     ],
+     "li": []
+    },
+    {
+     "t": "Frecuencia del tratamiento",
+     "ps": [
+      "La duración del efecto varía entre 3 y 6 meses, según el metabolismo de cada paciente y la dosis aplicada. Para mantener los resultados, se sugiere repetir el procedimiento 2 a 3 veces por año, bajo evaluación médica."
+     ],
+     "li": []
+    },
+    {
+     "t": "¿Qué trata la toxina botulínica?",
+     "ps": [
+      "Está indicada para suavizar líneas de expresión como patas de gallo, entrecejo y frente. También se utiliza con fines terapéuticos (bruxismo, hiperhidrosis, migrañas) y preventivos, evitando que las arrugas se profundicen con el tiempo."
+     ],
+     "li": []
+    },
+    {
+     "t": "Es segura y personalizada",
+     "ps": [
+      "La toxina botulínica es segura cuando es aplicada por profesionales entrenados. La dosis y el diseño del tratamiento son personalizados según la anatomía, edad y objetivos estéticos de cada paciente, respetando la naturalidad del rostro."
+     ],
+     "li": []
+    }
+   ],
+   "cta": "¡Suaviza tus líneas de expresión hoy!",
+   "res": [],
+   "premios": [],
+   "marcas": [],
+   "rutina": [
+    "Antienvejecimiento",
+    "Protector Solar"
+   ]
+  },
+  {
+   "slug": "exion",
+   "nombre": "Exion",
+   "grupo": "Antienvejecimiento",
+   "gi": 3,
+   "img": "t_exion",
+   "h": "",
+   "sub": "Regeneración inteligente con tecnología EXION",
+   "premios_t": "",
+   "intro": [
+    "En Munnay, trabajamos con la innovadora plataforma EXION de BTL, la única tecnología que combina radiofrecuencia monopolar y ultrasonido focalizado para estimular de forma no invasiva la producción de colágeno, elastina y ácido hialurónico desde las capas más profundas de la piel.",
+    "¿Qué es EXION FRACC y EXION FACE?",
+    "EXION FRACC está diseñado para renovar la textura de la piel, reducir poros, líneas finas y cicatrices mediante una regeneración controlada y profunda de la dermis, sin dañar la superficie.",
+    "EXION FACE aplica energía selectiva para inducir un tensado cutáneo progresivo, ideal para redefinir contornos faciales, disminuir la flacidez y recuperar la densidad dérmica."
+   ],
+   "ben": [
+    {
+     "t": "Producción endógena de colágeno y ácido hialurónico",
+     "p": "La tecnología EXION estimula la biogénesis natural de colágeno y ácido hialurónico sin necesidad de inyecciones, promoviendo una piel más firme, densa e hidratada."
+    },
+    {
+     "t": "Efecto lifting sin cirugía",
+     "p": "Mejora el contorno facial, la línea mandibular y la firmeza del cuello sin cortes, sin dolor y sin tiempo de inactividad, gracias a una acción térmica controlada en profundidad."
+    },
+    {
+     "t": "Regeneración cutánea progresiva y duradera",
+     "p": "Los resultados mejoran semana tras semana, con mayor uniformidad de la piel, reducción de arrugas y una apariencia visiblemente rejuvenecida por más de 12 meses."
+    }
+   ],
+   "mid": [
+    {
+     "h": "Devuélvele a tu piel su firmeza natural desde adentro",
+     "ps": [
+      "La combinación perfecta entre ciencia, tecnología y naturalidad.",
+      "EXION FRACC y EXION FACE representan una revolución en medicina estética no invasiva. A través de una sinergia única de radiofrecuencia monopolar y ultrasonido focalizado, estos dispositivos estimulan intensamente la producción natural de colágeno, elastina y ácido hialurónico desde las capas más profundas de la piel.",
+      "El resultado: una piel más firme, tensa y uniforme, con efecto lifting progresivo, sin necesidad de agujas ni cirugía."
+     ],
+     "chips": []
+    },
+    {
+     "h": "",
+     "ps": [
+      "Ambos tratamientos son ideales para quienes buscan resultados reales, naturales y duraderos, con mínima recuperación."
+     ],
+     "chips": []
+    }
+   ],
+   "cinco_t": "Información técnica del tratamiento",
+   "items": [],
+   "cta": "Ambos tratamientos son ideales para quienes buscan resultados reales, naturales y duraderos, con mínima recuperación.",
+   "res": [],
+   "premios": [],
+   "marcas": [
+    "BTL EXION"
+   ],
+   "rutina": [
+    "Antienvejecimiento",
+    "Retinol"
+   ],
+   "ficha": [
+    [
+     "Duración de la sesión",
+     "30 a 60 minutos por zona. No requiere anestesia ni cuidados especiales."
+    ],
+    [
+     "Recuperación",
+     "No hay tiempo de inactividad. Puede haber leve enrojecimiento transitorio."
+    ],
+    [
+     "Frecuencia recomendada",
+     "1 sesión cada 4 a 6 semanas (entre 2 a 4 sesiones por protocolo)."
+    ],
+    [
+     "Zonas tratables",
+     "rostro, cuello, contorno ocular, escote, brazos, abdomen y más."
+    ]
+   ]
+  }
+ ],
+ "prods": [
+  {
+   "id": 7462,
+   "n": "ISDIN Foto Ultra Magic Repair Fusion Water FPS 50 Protector Solar Facial 50ml",
+   "p": 140.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Isdin",
+   "sku": "IAC-00074",
+   "st": 7,
+   "ag": false,
+   "img": "p7462"
+  },
+  {
+   "id": 7449,
+   "n": "MEDIK8 Bakuchiol Peptides Suero Antiedad Natural 30ml",
+   "p": 300.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00078",
+   "st": 1,
+   "ag": false,
+   "img": "p7449"
+  },
+  {
+   "id": 8488,
+   "n": "MEDIK8 Blemish SOS Tratamiento Localizado Antiacné",
+   "p": 155.0,
+   "c": [
+    "Acné y Piel Grasa"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00077",
+   "st": 3,
+   "ag": false,
+   "img": "p8488"
+  },
+  {
+   "id": 7477,
+   "n": "MEDIK8 C – Tetra Suero Antioxidante de Vitamina C 30ml",
+   "p": 245.0,
+   "c": [
+    "Vitamina C"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00106",
+   "st": 2,
+   "ag": false,
+   "img": "p7477"
+  },
+  {
+   "id": 7444,
+   "n": "MEDIK8 C -Tetra Luxe Serum Lipídico Vitamina C 30ml",
+   "p": 365.0,
+   "c": [
+    "Vitamina C"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00056",
+   "st": 5,
+   "ag": false,
+   "img": "p7444"
+  },
+  {
+   "id": 7474,
+   "n": "MEDIK8 Calmwise Colour Correct Corrector de Rojeces 50ml",
+   "p": 285.0,
+   "c": [
+    "Piel Sensible"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00040",
+   "st": 6,
+   "ag": false,
+   "img": "p7474"
+  },
+  {
+   "id": 7475,
+   "n": "MEDIK8 Calmwise Serum Elixir Calmante 15ml",
+   "p": 215.0,
+   "c": [
+    "Piel Sensible"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00013",
+   "st": 6,
+   "ag": false,
+   "img": "p7475"
+  },
+  {
+   "id": 7476,
+   "n": "MEDIK8 Calmwise Soothing Cleanser Limpiador Calmante 150ml",
+   "p": 155.0,
+   "c": [
+    "Limpiadores",
+    "Piel Sensible"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00012",
+   "st": 3,
+   "ag": false,
+   "img": "p7476"
+  },
+  {
+   "id": 7459,
+   "n": "MEDIK8 Crystal Retinal 3 Suero Nocturno con Retinal 30ml",
+   "p": 285.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00071",
+   "st": 2,
+   "ag": false,
+   "img": "p7459"
+  },
+  {
+   "id": 7465,
+   "n": "MEDIK8 Crystal Retinal 6 Suero Nocturno con Retinal 30ml",
+   "p": 380.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00079",
+   "st": 6,
+   "ag": false,
+   "img": "p7465"
+  },
+  {
+   "id": 7481,
+   "n": "MEDIK8 Hydr8 B5 Intense Suero Hidratante Avanzado",
+   "p": 325.0,
+   "c": [
+    "Serum Hidratante"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00070",
+   "st": 4,
+   "ag": false,
+   "img": "p7481"
+  },
+  {
+   "id": 7480,
+   "n": "MEDIK8 Hydr8 B5 Serum Hidratante Ligero 30ml",
+   "p": 250.0,
+   "c": [
+    "Serum Hidratante"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00054",
+   "st": 5,
+   "ag": false,
+   "img": "p7480"
+  },
+  {
+   "id": 7455,
+   "n": "MEDIK8 Intelligent Retinol 3TR Suero Antiedad 15ml",
+   "p": 230.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00006",
+   "st": 5,
+   "ag": false,
+   "img": "p7455"
+  },
+  {
+   "id": 7456,
+   "n": "MEDIK8 Intelligent Retinol 6TR Suero Antiedad 15ml",
+   "p": 265.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00007",
+   "st": 5,
+   "ag": false,
+   "img": "p7456"
+  },
+  {
+   "id": 7483,
+   "n": "MEDIK8 Intelligent Retinol Eye TR Contorno de Ojos 7ml",
+   "p": 160.0,
+   "c": [
+    "Contorno de ojos",
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00055",
+   "st": 6,
+   "ag": false,
+   "img": "p7483"
+  },
+  {
+   "id": 8490,
+   "n": "MEDIK8 Liquid Peptides Advanced MP Suero Antiedad",
+   "p": 370.0,
+   "c": [
+    "Antienvejecimiento"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00188",
+   "st": 2,
+   "ag": false,
+   "img": "p8490"
+  },
+  {
+   "id": 7460,
+   "n": "MEDIK8 Press and Glow Tónico Exfoliante Diario",
+   "p": 175.0,
+   "c": [
+    "Exfoliante Tónico"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00072",
+   "st": 1,
+   "ag": false,
+   "img": "p7460"
+  },
+  {
+   "id": 7454,
+   "n": "MEDIK8 Retinol 3TR Suero Renovador Nocturno con Vitamina A 15ml",
+   "p": 200.0,
+   "c": [
+    "Retinol"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00005",
+   "st": 4,
+   "ag": false,
+   "img": "p7454"
+  },
+  {
+   "id": 7110,
+   "n": "MUNNAY Colágeno Hidrolizado con Biotina Suplemento Antiedad en Polvo Lata 500g",
+   "p": 130.0,
+   "c": [
+    "Suplementos"
+   ],
+   "m": "Munnay",
+   "sku": "COL-04379",
+   "st": 22,
+   "ag": false,
+   "img": "p7110"
+  },
+  {
+   "id": 7466,
+   "n": "MUNNAY Colágeno Hidrolizado de Tiburón Ayuda al Tratamiento de la Artritis en Polvo Lata 500g",
+   "p": 130.0,
+   "c": [
+    "Suplementos"
+   ],
+   "m": "Munnay",
+   "sku": "IAC-00111",
+   "st": 10,
+   "ag": false,
+   "img": "p7466"
+  },
+  {
+   "id": 7446,
+   "n": "TIZO 3 Primer Sunscreen Tinted FPS 40 Protector Solar con Efecto Mate 50g",
+   "p": 175.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00085",
+   "st": 4,
+   "ag": false,
+   "img": "p7446"
+  },
+  {
+   "id": 8494,
+   "n": "TIZO AM Replenish Non-Tinted FPS 40 Hidratante Sin Color 50g",
+   "p": 200.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00195",
+   "st": 12,
+   "ag": false,
+   "img": "p8494"
+  },
+  {
+   "id": 7470,
+   "n": "TIZO AM Replenish Tinted FPS 40 Hidratante con Color 50g",
+   "p": 200.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00116",
+   "st": 3,
+   "ag": false,
+   "img": "p7470"
+  },
+  {
+   "id": 8492,
+   "n": "TIZO Daily Moisture Hidratante Facial Ligero 85g",
+   "p": 240.0,
+   "c": [
+    "Crema Hidratante"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00115",
+   "st": 1,
+   "ag": false,
+   "img": "p8492"
+  },
+  {
+   "id": 7472,
+   "n": "TIZO Foaming Cleanser Espuma Limpiadora Facial 120ml",
+   "p": 130.0,
+   "c": [
+    "Limpiadores"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00123",
+   "st": 6,
+   "ag": false,
+   "img": "p7472"
+  },
+  {
+   "id": 7488,
+   "n": "TIZO Gentle Amino Gel Limpiador Facial Suave 120ml",
+   "p": 170.0,
+   "c": [
+    "Limpiadores"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00122",
+   "st": 6,
+   "ag": false,
+   "img": "p7488"
+  },
+  {
+   "id": 7469,
+   "n": "TIZO Serum Antioxidante Vitamina C y E Photoceutical 30ml",
+   "p": 430.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00117",
+   "st": 6,
+   "ag": false,
+   "img": "p7469"
+  },
+  {
+   "id": 7447,
+   "n": "TIZO Ultra Zinc Tinted FPS 40 Protector Solar con Color 100g",
+   "p": 175.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00086",
+   "st": 3,
+   "ag": false,
+   "img": "p7447"
+  },
+  {
+   "id": 7461,
+   "n": "ISDIN Fusion Water Magic Oil Control FPS 50 Protector Solar Facial Antibrillo 50ml",
+   "p": 115.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Isdin",
+   "sku": "IAC-00073",
+   "st": null,
+   "ag": true,
+   "img": "p7461"
+  },
+  {
+   "id": 7451,
+   "n": "MEDIK8 C Tetra Cream Hidratante con Vitamina C 50ml",
+   "p": 260.0,
+   "c": [
+    "Vitamina C"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00002",
+   "st": null,
+   "ag": true,
+   "img": "p7451"
+  },
+  {
+   "id": 7458,
+   "n": "MEDIK8 Clarifying Foam Espuma Limpiadora Facial 150ml",
+   "p": 160.0,
+   "c": [
+    "Limpiadores"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00011",
+   "st": null,
+   "ag": true,
+   "img": "p7458"
+  },
+  {
+   "id": 7478,
+   "n": "MEDIK8 Clarity Peptides Suero Iluminador con Péptidos 30ml",
+   "p": 235.0,
+   "c": [
+    "Piel Sensible"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00027",
+   "st": null,
+   "ag": true,
+   "img": "p7478"
+  },
+  {
+   "id": 7457,
+   "n": "MEDIK8 Cream Cleanse Limpiador Facial Cremoso",
+   "p": 145.0,
+   "c": [
+    "Vitamina C"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00010",
+   "st": null,
+   "ag": true,
+   "img": "p7457"
+  },
+  {
+   "id": 7452,
+   "n": "MEDIK8 Daily Radiance Vitamin C Crema de Día con FPS30 50ml",
+   "p": 335.0,
+   "c": [
+    "Vitamina C"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00003",
+   "st": null,
+   "ag": true,
+   "img": "p7452"
+  },
+  {
+   "id": 7482,
+   "n": "MEDIK8 Illuminating Eye Balm Contorno de Ojos Iluminador",
+   "p": 225.0,
+   "c": [
+    "Contorno de ojos"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00020",
+   "st": null,
+   "ag": true,
+   "img": "p7482"
+  },
+  {
+   "id": 7484,
+   "n": "MEDIK8 Liquid Peptides Suero Antiedad Multipeptídico 30ml",
+   "p": 300.0,
+   "c": [
+    "Antienvejecimiento"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00030",
+   "st": null,
+   "ag": true,
+   "img": "p7484"
+  },
+  {
+   "id": 7486,
+   "n": "MEDIK8 Physical Sunscreen FPS50+ Protector Solar Mineral 60ml",
+   "p": 245.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00049",
+   "st": null,
+   "ag": true,
+   "img": "p7486"
+  },
+  {
+   "id": 7464,
+   "n": "MEDIK8 Press and Clear Loción Exfoliante para Piel Grasa 150ml",
+   "p": 210.0,
+   "c": [
+    "Exfoliante Tónico"
+   ],
+   "m": "Medik8",
+   "sku": "IAC-00076",
+   "st": null,
+   "ag": true,
+   "img": "p7464"
+  },
+  {
+   "id": 7467,
+   "n": "MUNNAY Green Moringa con Citrato de Magnesio Suplemento Detox y Energía en Polvo 500g",
+   "p": 150.0,
+   "c": [
+    "Suplementos"
+   ],
+   "m": "Munnay",
+   "sku": "IAC-00112",
+   "st": null,
+   "ag": true,
+   "img": "p7467"
+  },
+  {
+   "id": 7448,
+   "n": "TIZO Mineral Stick FPS 45 Protector Solar en Barra Sin Color 30g",
+   "p": 140.0,
+   "c": [
+    "Protector Solar"
+   ],
+   "m": "Tizo",
+   "sku": "IAC-00110",
+   "st": null,
+   "ag": true,
+   "img": "p7448"
+  }
+ ],
+ "cats": [
+  "Acné y Piel Grasa",
+  "Antienvejecimiento",
+  "Contorno de ojos",
+  "Crema Hidratante",
+  "Exfoliante Tónico",
+  "Limpiadores",
+  "Piel Sensible",
+  "Protector Solar",
+  "Retinol",
+  "Serum Hidratante",
+  "Suplementos",
+  "Vitamina C"
+ ],
+ "nos": {
+  "titulo": "Transformando la belleza en bienestar",
+  "desde": 2021,
+  "intro": "Desde el 2021 somos pioneros en tratamientos médicos estéticos en Cajamarca, ofreciendo tecnología de última generación y un equipo altamente calificado para cuidar tu piel y realzar tu mejor versión.",
+  "equipo_t": "Un equipo apasionado",
+  "equipo_p": "Contamos con un equipo multidisciplinario de profesionales altamente capacitados en medicina estética, dermatología y cuidado integral de la piel.",
+  "equipo": [
+   {
+    "n": "Dra. Sofía Terrones",
+    "r": "Méd. Cirujano",
+    "img": "team1"
+   },
+   {
+    "n": "Dr. Carlos Martínez",
+    "r": "Méd. Especialista Cirujano",
+    "img": "team5"
+   },
+   {
+    "n": "Belén García",
+    "r": "Tec. Enfermera",
+    "img": "team2"
+   },
+   {
+    "n": "Pilar Chávez",
+    "r": "Tec. en Fisioterapia",
+    "img": "team4"
+   },
+   {
+    "n": "Dra. Mónica Castillo",
+    "r": "Méd. Cirujano",
+    "img": "team3"
+   }
+  ],
+  "mision": "Proporcionar servicios estéticos de alta calidad y tecnología avanzada, enfocados en realzar la belleza y confianza de nuestros clientes. Ofrecemos atención personalizada y segura, garantizada por un equipo de expertos comprometidos con la excelencia. Nos dedicamos a crear un entorno de trabajo enriquecedor, siempre poniendo las necesidades y deseos de nuestros clientes como nuestra máxima prioridad.",
+  "vision": "En los próximos 5 años, nos consolidaremos como líderes indiscutibles en la industria de la estética en el norte del Perú, ofreciendo servicios personalizados y seguros que transformen la experiencia estética de nuestros clientes. Nos esforzamos porque nuestra marca, Munnay, sea reconocida como un símbolo de confianza, empoderamiento y autoestima, ayudando a cada individuo a alcanzar una verdadera autoconfianza y autenticidad."
+ }
+}
