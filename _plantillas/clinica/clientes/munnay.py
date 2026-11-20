@@ -34,7 +34,7 @@ CFG=dict(
  marcas=[dict(id="tizo",n="Tizo",img="b_tizo"),dict(id="munnay",n="Munnay",img="b_munnay"),dict(id="medik8",n="Medik8",img="b_medik8"),dict(id="isdin",n="Isdin",img="b_isdin")],
  resenas=dict(nota=4.7,total=193,url="https://www.fresha.com/es/a/munnay-medicina-estetica-cajamarca-cajamarca-av-via-de-evitamiento-sur-414-sx2kduoo#modal-reviews",
   p="Nuestros pacientes lo confirman con más de 4 estrellas en Google, Facebook y Fresha que destacan nuestro profesionalismo, tecnología avanzada y el trato humano que nos diferencia.",
-  items=[dict(n="Daniela del Rosario. M",f="Fresha",t="Excelente trato y amabilidad. Realizan seguimientos telefónicos después de algún procedimiento, lo cual me encantó y es 100% confiable en los productos que usan. ❤️"),
+  items=[dict(n="Daniela del Rosario. M",f="Fresha",t="Excelente trato y amabilidad. Realizan seguimientos telefónicos después de algún procedimiento, lo cual me encantó y es 100% confiable en los productos que usan."),
    dict(n="Julio Cesar O",f="Fresha",t="Me gusto mucho esta sesión porque se adecuaron a mis necesidades. Aun quedan varias sesiones de depilación laser y espero que la experiencia final sea muy satisfactoria. Por el momento esta todo bien."),
    dict(n="Mariela Silvana E",f="Fresha",t="Solo como recomendación que prefiero que me atiendan los doctores o al menos puedan revisarme y ya luego las señoritas realizar el procedimiento."),
    dict(n="Elías Rubén Q",f="Fresha",t="Bastante agradable, me gustó el servicio, en cuanto al resultado, si me encantó… muy bueno."),

@@ -61,7 +61,6 @@ document.addEventListener("change",function(e){var t=e.target;
  if(t.name==="env"){shipSel=t.value;$("#csum").innerHTML=csumHTML()}
  if(t.id==="bt")bk.t=t.value});
 document.addEventListener("input",function(e){var t=e.target;if(t.id==="sbusca"){S.q=t.value;S.n=12;shopGrid()}if(t.id==="sq")doSearch(t.value)});
-document.addEventListener("pointermove",function(e){var c=e.target.closest&&e.target.closest(".spot");if(c){var r=c.getBoundingClientRect();c.style.setProperty("--mx",(e.clientX-r.left)+"px");c.style.setProperty("--my",(e.clientY-r.top)+"px")}});
 document.addEventListener("keydown",function(e){if(e.key==="Escape"){closeModal();closeDrawer();$("#mnav").classList.remove("open");$("#dd").classList.remove("open");var f=$("#filt");if(f)f.classList.remove("open");bg(0)}});
 var dd=$("#dd");
 function ddHover(){var d=$("#dd");if(!d)return;var tm;d.addEventListener("mouseenter",function(){clearTimeout(tm);d.classList.add("open")});d.addEventListener("mouseleave",function(){tm=setTimeout(function(){d.classList.remove("open")},180)})}
